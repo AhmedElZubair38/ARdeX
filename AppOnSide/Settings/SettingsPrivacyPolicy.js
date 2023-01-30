@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
+import { Linking } from 'react-native';
 
 
 function SettingsPrivacyPolicy() {
@@ -17,25 +18,41 @@ function SettingsPrivacyPolicy() {
       <View style={styles.rectangle}>
         <Text style={styles.header}>Privacy Policy</Text>
         <ScrollView>
+        <View style={[styles.fieldContainer, { marginTop: 30 }]}>
         <Text style={styles.text}>
 
-            Your privacy is important to us. This privacy policy describes how we handle your personal information and protect your privacy when you use our social media app.
+            <Text style={{ fontWeight: 'bold', color: '#FF4C68'}}>
+            Your privacy is important to us. {'\n'}{'\n'} 
             
-            1. Information Collection and Use
-            We collect information from you when you register for an account, such as your name and email address. We may also collect information about your location, if you choose to enable this feature in the app.
+            This privacy policy describes how we handle your personal information and protect your privacy when you use our social media app. {'\n'}{'\n'}
+            </Text>
+
+            <Text style={{ fontWeight: 'bold'}}>
+            1. Information Collection and Use{'\n'}{'\n'}
+            </Text>
+            We collect information from you when you register for an account, such as your name and email address. We may also collect information about your location, if you choose to enable this feature in the app.{'\n'}{'\n'}{'\n'}
             
-            2. Information Sharing and Disclosure
-            We will not share or sell your personal information to any third party without your consent, except as required by law.
+            <Text style={{ fontWeight: 'bold'}}>
+            2. Information Sharing and Disclosure{'\n'}{'\n'}
+            </Text>
+            We will not share or sell your personal information to any third party without your consent, except as required by law.{'\n'}{'\n'}
             
-            3. Security
-            We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, disclosure, alteration, or destruction.
+            <Text style={{ fontWeight: 'bold'}}>
+            3. Security{'\n'}{'\n'}
+            </Text>
+            We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, disclosure, alteration, or destruction.{'\n'}{'\n'}{'\n'}
             
-            4. Changes to This Privacy Policy
-            We may make changes to this privacy policy from time to time, so please review it regularly. If we make any material changes, we will notify you in advance, either through the app or by email.
+            <Text style={{ fontWeight: 'bold'}}>
+            4. Changes to This Privacy Policy{'\n'}{'\n'}
+            </Text>
+            We may make changes to this privacy policy from time to time, so please review it regularly. If we make any material changes, we will notify you in advance, either through the app or by email.{'\n'}{'\n'}{'\n'}
             
-            5. Contact Us
-            If you have any questions or concerns about our privacy policy, please contact us at [insert contact email].
+            <Text style={{ fontWeight: 'bold'}}>
+            5. Contact Us{'\n'}{'\n'}
+            </Text>
+            If you have any questions or concerns about our privacy policy, please contact us at <Text style={{color: 'blue'}} onPress={() => Linking.openURL('mailto:arsoluutions@gmail.com')}> ardexg4@gmail.com </Text>.{'\n'}{'\n'}{'\n'}
           </Text>
+          </View>
           </ScrollView>
 
       </View>
@@ -81,10 +98,9 @@ const styles = StyleSheet.create({
       },
 
       text: {
-        fontSize: 18,
+        fontSize: 16,
         color: 'black',
-        textAlign: 'center',
-        paddingTop: '10%',
+        textAlign: 'left',
         alignItems: 'center',
         alignSelf: 'center',
 
@@ -93,7 +109,6 @@ const styles = StyleSheet.create({
       header: {
         fontFamily: 'fax',
         paddingTop: '10%',
-        paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 24,
         fontStyle: 'bold',
@@ -107,7 +122,6 @@ const styles = StyleSheet.create({
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 32,
-        fontStyle: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },
@@ -127,7 +141,14 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 2
 
-    }
+    },
+
+    fieldContainer: {
+
+        marginVertical: 7,
+        marginHorizontal: 15
+
+    },
   });
 
 export default SettingsPrivacyPolicy;

@@ -14,10 +14,6 @@ export default function VerifyEmail () {
     console.log("OTP:", otp);
   };
 
-  // useEffect(() => {
-  //   this.refs.nameref.focus();
-  // }, []);
-
 return (
     <View style={styles.parentContainer}> 
     

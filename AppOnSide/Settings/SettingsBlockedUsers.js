@@ -16,7 +16,7 @@ return (
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
-        <Text style={styles.header}>Change Account Type</Text>
+        <Text style={styles.header}> Blocked Users </Text>
 
         <View style={{ marginTop: 30, marginHorizontal: 20, flexDirection: 'row', alignItems: 'center' }}>
           <Text style={styles.fieldLabel}> Influencer's Account </Text>
