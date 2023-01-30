@@ -2,10 +2,6 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "assets/fonts/fax.ttf",
-      "sha1": "ddfe711ee7b948f4105986d363e00f98b192d52c"
-    },
-    {
       "path": "assets/fonts/Montserrat-Black.ttf",
       "sha1": "fca130f21601346cce37bb8a9526ff01af66d912"
     },
@@ -144,6 +140,10 @@
     {
       "path": "assets/fonts/MontserratAlternates-ThinItalic.ttf",
       "sha1": "22ec6c366daf605e72b568213be3e827832685ae"
+    },
+    {
+      "path": "assets/fonts/fax.ttf",
+      "sha1": "ddfe711ee7b948f4105986d363e00f98b192d52c"
     }
   ]
 }
