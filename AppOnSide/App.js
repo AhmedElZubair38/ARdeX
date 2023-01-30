@@ -20,6 +20,7 @@ import MapsScreen from './Screens/MapsScreen';
 import SettingsChangePhoneNumber from './Settings/SettingsChangePhoneNumber';
 import SettingsChangeAccountType from './Settings/SettingsChangeAccountType';
 import SettingsBlockedUsers from './Settings/SettingsBlockedUsers';
+import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
 
 const Stack = createNativeStackNavigator();
  //hello hii bye
@@ -122,6 +123,11 @@ export default function App() {
         <Stack.Screen 
           name="MapsScreen"
           component={MapsScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="SettingsPrivacyPolicy"
+          component={SettingsPrivacyPolicy}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

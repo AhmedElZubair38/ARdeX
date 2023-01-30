@@ -19,7 +19,15 @@ function SettingsHelp() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3%', paddingRight: -1}} size={30} name={Platform.OS === 'ios' ? 'ios-help' : 'help'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('FAQs')}>
-            <Text style={{ color: 'black', fontSize: 16, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 160, textAlign: 'center' }}>FAQ's </Text>
+            <Text style={{ color: 'black', fontSize: 16, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 170, textAlign: 'center' }}>FAQ's </Text>
+        </TouchableOpacity>
+        <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
+        </View>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
+        <Icon style={{ color: 'black', paddingTop: '3%', paddingRight: -1}} size={30} name={Platform.OS === 'ios' ? 'ios-help' : 'help'}/>
+        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsPrivacyPolicy')}>
+            <Text style={{ color: 'black', fontSize: 16, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 90, textAlign: 'center' }}>Privacy Policy </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
