@@ -8,7 +8,7 @@ const TopBar = () => {
 const navigation = useNavigation();
 
 return (
-  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 70, padding: 15, backgroundColor: '#FF4C68', paddingTop: 20, borderBottomWidth: 2.5}}>
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: '12%', padding: 15, backgroundColor: '#FF4C68', paddingTop: 20, borderBottomWidth: 2.5}}>
 
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image source={require('AppOnSide/Photos/transparent-logo.png')} style={{ width: 105, height: 35, marginBottom: -25}}/>
@@ -16,13 +16,13 @@ return (
 
           <View style={{ flexDirection: 'row', marginBottom: -25, marginRight: -15 }}>
               <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-home' : 'bookmark'}/>
+              <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-home' : 'people'}/>
+              <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'people' : 'people'}/>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => navigation.navigate('SettingsHome')}>
-              <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-home' : 'settings'}/>
+              <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'settings' : 'settings'}/>
               </TouchableOpacity>
           </View>
     </View>

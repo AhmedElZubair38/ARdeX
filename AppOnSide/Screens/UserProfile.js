@@ -47,6 +47,59 @@ const ProfileView = () => {
             <TouchableOpacity style={styles.button} onPress={handleEditPress}>
                 <Text style={styles.buttonText}>Edit Profile</Text>
             </TouchableOpacity>
+            <View style={styles.body}>
+              <View style={styles.bodyContent}>
+                <View style={styles.menuBox}>
+                  <Image
+                    style={styles.icon}
+                    source={{ uri: 'https://www.theweeknd.com/files/2021/10/photo_202110_07_SPOTIFY-BRIANZIFF_THEWEEKND_1063-1.jpeg' }}
+                  />
+                </View>
+
+                <View style={styles.menuBox}>
+                  <Image
+                    style={styles.icon}
+                    source={{ uri: 'https://akns-images.eonline.com/eol_images/Entire_Site/2021330/rs_1200x1200-210430163406-1200-the-weeknd.jpg?fit=around%7C1200:1200&output-quality=90&crop=1200:1200;center,top' }}
+                  />
+                </View>
+
+                <View style={styles.menuBox}>
+                  <Image
+                    style={styles.icon}
+                    source={{ uri: 'https://yt3.googleusercontent.com/QiI-c4cFyRPD0qVwTQooC3dlgJqHA_t6CpEAv818om-mqL9bqNDL4L_qXQVXx_eY76D_7cLD=s900-c-k-c0x00ffffff-no-rj' }}
+                  />
+                </View>
+
+                <View style={styles.menuBox}>
+                  <Image
+                    style={styles.icon}
+                    source={{ uri: 'https://i.pinimg.com/736x/54/30/6f/54306f891255216082f0c3c98477e4c0.jpg' }}
+                  />
+                </View>
+
+                <View style={styles.menuBox}>
+                  <Image
+                    style={styles.icon}
+                    source={{ uri: 'https://assets.fontsinuse.com/static/use-media-items/156/155347/full-2048x2048/61e554d7/weeknd-dawn-fm-alts-jan-7_0001_Layer-1.jpeg' }}
+                  />
+                </View>
+
+                <View style={styles.menuBox}>
+                  <Image
+                    style={styles.icon}
+                    source={{ uri: 'https://m.media-amazon.com/images/I/51fhUO3SN5L.jpg' }}
+                  />
+                </View>
+
+                <View style={styles.menuBox}>
+                  <Image
+                    style={styles.icon}
+                    source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTto2CDxUYo59vPFqKIcMkQAjIdQSlwT5aerQ&usqp=CAU' }}
+                  />
+                </View>
+                
+              </View>
+            </View>
         </ScrollView>
     </View>
   );
@@ -111,6 +164,35 @@ const styles = {
     fontSize: 16,
     color: '#fff',
     textAlign: 'center',
+  },
+  menuBox: {
+    backgroundColor: '#DCDCDC',
+    width: '33.333%',
+    height: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    borderWidth: 3,
+    borderColor: 'black',
+    shadowOffset: {
+      height: 2,
+      width: -2,
+    },
+    elevation: 4,
+  },
+  icon: {
+    width: '100%',
+    height: '100%',
+  },
+  info: {
+    fontSize: 22,
+    color: '#696969',
+  },
+  bodyContent: {
+    paddingTop: 40,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
 };
 
