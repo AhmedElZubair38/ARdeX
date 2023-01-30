@@ -24,6 +24,7 @@ import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
 
 const Stack = createNativeStackNavigator();
 
+
 export default function App() {
 
   useEffect(() => {
