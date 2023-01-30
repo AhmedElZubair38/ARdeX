@@ -23,7 +23,7 @@ import SettingsBlockedUsers from './Settings/SettingsBlockedUsers';
 import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
 
 const Stack = createNativeStackNavigator();
- //hello hii bye
+ // test 45
 
 export default function App() {
 
