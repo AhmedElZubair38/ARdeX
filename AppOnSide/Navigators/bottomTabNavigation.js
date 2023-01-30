@@ -6,30 +6,8 @@ import { Platform } from 'react-native';
 import TopBar from './TopBar';
 import HomeScreen from 'AppOnSide/Screens/HomeScreen';
 import MapsScreen from 'AppOnSide/Screens/MapsScreen';
-
-
-function Home() {
-    return (
-        <View style={{flex: 1}}>
-            <TopBar />
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#03CAFC'}}>
-                <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: '800'}}>Home Screen</Text>
-            </View>
-        </View>
-    );
-};
-
-function Search({ navigation }) {
-    return (
-        <View style={{flex: 1}}>
-            <TopBar />
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#C21483'}}>
-                <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: '800', marginBottom: 10}}>Search Screen</Text>
-                <Button title="Go Back" onPress={() => navigation.goBack()} />
-            </View>
-        </View>
-    );
-};
+import Contact from 'AppOnSide/Screens/Contact';
+import UserProfile from 'AppOnSide/Screens/UserProfile';
 
 function AddPost({ navigation }) {
     return (
@@ -38,30 +16,6 @@ function AddPost({ navigation }) {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F08709'}}>
                 <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: '800', marginBottom: 10}}>Post Screen</Text>
                 <Button title="Go Back" onPress={() => navigation.goBack()} />
-            </View>
-        </View>
-    );
-};
-
-function Map() {
-    return (
-        <View style={{flex: 1}}>
-            <TopBar />
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#CD1700'}}>
-                <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: '800', marginBottom: 10}}>Map Screen</Text>
-                <Button title="Go Back" onPress={() => navigation.goBack()} />
-            </View>
-        </View>
-    );
-};
-
-function UserProfile({ navigation }) {
-    return (
-        <View style={{flex: 1}}>
-            <TopBar />
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#C203FC'}}>
-                <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: '800', marginBottom: 10}}>User Screen</Text>
-                <Button style={{ marginVertical: 20 }} title="Go Back" onPress={() => navigation.goBack()} />
             </View>
         </View>
     );
@@ -99,7 +53,7 @@ function MyTabs() {
             
             
             <Tab.Screen name="Search" 
-            component={Search}
+            component={Contact}
             options={{ 
                 tabBarLabel: "Search",
                 tabBarIcon: ({color, size}) => (
