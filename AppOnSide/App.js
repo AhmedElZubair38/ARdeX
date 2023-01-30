@@ -22,7 +22,7 @@ import SettingsChangeAccountType from './Settings/SettingsChangeAccountType';
 import SettingsBlockedUsers from './Settings/SettingsBlockedUsers';
 
 const Stack = createNativeStackNavigator();
- //hello
+ //hello hii bye
 
 export default function App() {
 
