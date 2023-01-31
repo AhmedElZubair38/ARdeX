@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { View } from "react-native";
 import MapView, {Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import TopBar from "../Navigators/TopBar";
+
 
 const MyMap = () => {
   const [region, setRegion] = useState({
@@ -26,6 +29,8 @@ const MyMap = () => {
   }, []);
 
   return (
+    <View style={{flex: 1}}>
+    <TopBar />
     <MapView
       style={{ flex: 1 }}
       region={region}
@@ -33,6 +38,7 @@ const MyMap = () => {
     >
     <Marker coordinate={region} />
     </MapView>
+    </View>
   );
 };
 
