@@ -87,7 +87,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                             </TouchableOpacity>
                         </View>
                         <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
-                            <Icon5 style={{ fontSize: 29, color: 'grey' }} name={Platform.OS === 'ios' ? 'ios-comment' : 'comment'}/>
+                            <Icon5 style={{ fontSize: 29, color: 'grey' }} name={Platform.OS === 'ios' ? 'comment' : 'comment'}/>
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => setIsFilled2(!isFilled2)}>
