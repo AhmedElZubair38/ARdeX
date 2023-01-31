@@ -13,7 +13,7 @@ export default function Contact({ navigation }) {
         <Text style={styles.text}>Contact is herhhe!</Text>
         <Button title="Go Back" onPress={() => navigation.goBack()} />
       </View> */}
-      <View style={styles.container}>
+      <View style={styles.content}>
       <TouchableOpacity onPress={() => setModalVisible(true)}>
         <Text style={styles.buttonText}>Open Modal</Text>
       </TouchableOpacity>
@@ -62,7 +62,10 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    alignItems: 'center',
+  },
+  content: {
+    flex: 1,
+    alignSelf: 'center',
     justifyContent: 'center',
   },
   buttonText: {
