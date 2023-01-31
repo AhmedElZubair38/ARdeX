@@ -8,18 +8,7 @@ import HomeScreen from 'AppOnSide/Screens/HomeScreen';
 import MapsScreen from 'AppOnSide/Screens/MapsScreen';
 import Contact from 'AppOnSide/Screens/Contact';
 import UserProfile from 'AppOnSide/Screens/UserProfile';
-
-function AddPost({ navigation }) {
-    return (
-        <View style={{flex: 1}}>
-            <TopBar />
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F08709'}}>
-                <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: '800', marginBottom: 10}}>Post Screen</Text>
-                <Button title="Go Back" onPress={() => navigation.goBack()} />
-            </View>
-        </View>
-    );
-};
+import AddPost from '../Screens/AddPost';
 
 const Tab = createBottomTabNavigator();
 
