@@ -21,7 +21,7 @@ const DATA = [
     },
 
     {
-        user_name: 'Kanye East',
+        user_name: 'Kanye West',
         user_image: 'https://cdn.siasat.com/wp-content/uploads/2020/07/Rapper-Kanye-West.jpg',
         feed_image: 'https://i.pinimg.com/236x/c8/7a/26/c87a260395d82f2a1a237d053b95508d.jpg',
         feed_caption: 'Wit the homie!',
@@ -36,16 +36,7 @@ const DATA = [
         feed_caption: 'New album out on all platforms!',
         like_count: '1,234',
         comment_count: '67'
-    },
-
-    {
-        user_name: 'Osama Bin Laden',
-        user_image: 'https://assets3.cbsnewsstatic.com/hub/i/r/2011/05/02/1b56bd40-a643-11e2-a3f0-029118418759/thumbnail/640x480/ff999a48fb3e340293cbea2ce522328d/osama_bin_laden_00433239_000003.jpg',
-        feed_image: 'https://pbs.twimg.com/profile_images/1341928275447169026/lG3IYTif_400x400.jpg',
-        feed_caption: 'Plottin atm.....!!',
-        like_count: '77,803',
-        comment_count: '18'
-    },
+    }
 ]
 
 function Item ({user_name, user_image, feed_image, feed_caption, like_count, comment_count}) {
