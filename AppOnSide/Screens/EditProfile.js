@@ -1,13 +1,21 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import TopBar from '../Navigators/TopBar';
+import { useNavigation } from '@react-navigation/native';
 
+const EditProfile = () => {
 
-const EditProfile = ({navigation}) => {
+  const navigation = useNavigation();
+
   return (
-    <View>
-      <Text>EditProfile</Text>
+    <View style={{flex: 1}}>
+        
     </View>
-  )
-}
+  );
+};
 
-export default EditProfile
+const styles = {
+  
+};
+
+export default EditProfile;
