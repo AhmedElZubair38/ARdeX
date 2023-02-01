@@ -9,9 +9,6 @@ function SettingsBlockedUsers() {
     const [isSwitchOn, setIsSwitchOn] = useState(false);
     const navigation = useNavigation();
 
-    const [isFilled, setIsFilled] = useState(false);
-    const [isFilled2, setIsFilled2] = useState(false);
-
 return (
     <View style={{flex: 1, flexDirection: 'column'}}>
       <View style={{flex: 1, backgroundColor: 'black'}}>
@@ -29,10 +26,26 @@ return (
                         style={styles.userImage}
                         source={{uri: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg'
                         }}/>
-                        <Text style={styles.userName}> khalido </Text>
+                        <Text style={styles.userName}> user 1 </Text>
                     </View>
                     <View style={styles.headerRight}>
-                    <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                    <TouchableOpacity
+                        onPress={() => setIsSwitchOn(!isSwitchOn)}
+                        style={styles.icon}
+                    >
+                        {isSwitchOn ? (
+                            <View style={[styles.icon, {backgroundColor: 'green'}]}>
+                              <View>
+                              <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }}> Unblock </Text>
+                              </View>
+                            </View>
+                            
+                        ) : (
+                            <View style={[styles.icon, {backgroundColor: 'red'}]}>
+                              <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }} >Block</Text>
+                            </View>
+                        )}
+                    </TouchableOpacity>
                     </View >
                 </View>
             </View>
@@ -46,10 +59,23 @@ return (
                         style={styles.userImage}
                         source={{uri: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg'
                         }}/>
-                        <Text style={styles.userName}> zifto </Text>
+                        <Text style={styles.userName}> user 2 </Text>
                     </View>
                     <View style={styles.headerRight}>
-                    <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                    <TouchableOpacity
+                        onPress={() => setIsSwitchOn(!isSwitchOn)}
+                        style={styles.icon}
+                    >
+                        {isSwitchOn ? (
+                            <View style={[styles.icon, {backgroundColor: 'green'}]}>
+                                <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }} >Unblock</Text>
+                            </View>
+                        ) : (
+                          <View style={[styles.icon, {backgroundColor: 'red'}]}>
+                            <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }} >Block</Text>
+                          </View>
+                        )}
+                    </TouchableOpacity>
                     </View >
                 </View>
             </View>
@@ -116,17 +142,16 @@ const styles = StyleSheet.create({
       },
 
       text: {
-        fontSize: 18,
+        fontSize: 54,
         color: 'black',
         textAlign: 'center',
         paddingTop: '10%',
-        
       },
 
       header: {
         fontFamily: 'fax',
         paddingTop: '10%',
-        paddingBottom: '-1%',
+        paddingBottom: '2%',
         paddingLeft: '5%',
         fontSize: 22,
         fontStyle: 'bold',
@@ -237,9 +262,12 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    fontSize: 20,
-    color: 'grey',
-    marginTop: 15
+    marginRight: 5,
+    borderRadius: 60,
+    paddingBottom: 45,
+    width: 120,
+    height: '1%',
+    alignSelf: 'center'
   },
   
   });
