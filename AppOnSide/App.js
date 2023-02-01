@@ -24,7 +24,6 @@ import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
 import EditProfile from './Screens/EditProfile';
 
 const Stack = createNativeStackNavigator();
- // test 47
 
 export default function App() {
 
