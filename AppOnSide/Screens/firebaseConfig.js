@@ -98,6 +98,29 @@
 // // }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Below is working
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -106,6 +129,14 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//     apiKey: "AIzaSyBdkZm9r38FQZ-ZMyS6jTW6K6tylWdSbxk",
+//     authDomain: "ardex-ahmed.firebaseapp.com",
+//     projectId: "ardex-ahmed",
+//     storageBucket: "ardex-ahmed.appspot.com",
+//     messagingSenderId: "915132771847",
+//     appId: "1:915132771847:web:f7277bb1298a15cbda04a2"
+//   };
 const firebaseConfig = {
     apiKey: "AIzaSyDHWWaAhq8pd-iV3FBW1xPrBhP7qM3v5UE",
     authDomain: "try1-a0d4b.firebaseapp.com",
@@ -113,9 +144,7 @@ const firebaseConfig = {
     storageBucket: "try1-a0d4b.appspot.com",
     messagingSenderId: "743305535595",
     appId: "1:743305535595:web:33c27bc5359893f479512e"
-};
-
-
+  };
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
