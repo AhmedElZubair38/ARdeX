@@ -44,7 +44,7 @@ const ProfileView = () => {
                 <Text style={styles.statLabel}>Following</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.button} onPress={handleEditPress}>
+            <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
                 <Text style={styles.buttonText}>Edit Profile</Text>
             </TouchableOpacity>
             <View style={styles.body}>
