@@ -185,7 +185,7 @@ return (
         {/* {error && <Text style={{ color: '#FF4C68', fontSize: 10, alignSelf: 'center', }}>{error}</Text>} */}
             <Text style={styles.fieldLabel}>Name</Text>
             <TextInput
-            onChangeText={text => handleOnchange(text, 'name')}
+            //onChangeText={text => handleOnchange(text, 'name')}
             // onFocus={() => {handleError(null, 'name'); handleNameFocus();}}
             placeholder="Name"
             style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
@@ -257,7 +257,7 @@ return (
         </View>
 
         <TouchableOpacity style={styles.signUpButtonContainer} /*onPress={()=> handleInputChange()}*/  onPress={()=> navigation.navigate('VerifyEmail')}>
-            <Text style={{ color: 'white', fontSize: 23, fontFamily: 'fax', padding: 10, textAlign: 'center' }}> SIGN UP </Text>
+            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> SIGN UP </Text>
         </TouchableOpacity>
 
         <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Signup via </Text>
@@ -331,7 +331,6 @@ const styles = StyleSheet.create({
         color: '#808080',
         marginBottom: 5,
         fontWeight: 'bold',
-        fontFamily: 'Roboto'
     },
 
     fieldInput: {
@@ -340,7 +339,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         fontSize: 10, 
         paddingLeft: 10,
-        fontFamily: 'Roboto',
         borderColor: '#cccccc',
         padding: 0.5,
         fontSize: 16,

@@ -61,7 +61,7 @@ return (
         </View>
 
         <TouchableOpacity style={styles.signUpButtonContainer} onPress={()=> navigation.navigate('BottomTabNavigator')}>
-            <Text style={{ color: 'white', fontSize: 23, fontFamily: 'fax', padding: 10, textAlign: 'center' }}> LOG-IN </Text>
+            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> LOG-IN </Text>
         </TouchableOpacity>
 
         <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Sign-in via </Text>
@@ -135,7 +135,6 @@ const styles = StyleSheet.create({
         color: '#808080',
         marginBottom: 5,
         fontWeight: 'bold',
-        fontFamily: 'Roboto',
     },
 
     fieldInput: {
@@ -144,7 +143,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         fontSize: 10, 
         paddingLeft: 10,
-        fontFamily: 'Roboto',
         borderColor: '#cccccc',
         padding: 0.5,
         fontSize: 16,
