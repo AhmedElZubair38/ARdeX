@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -8,6 +8,9 @@ function SettingsBlockedUsers() {
 
     const [isSwitchOn, setIsSwitchOn] = useState(false);
     const navigation = useNavigation();
+
+    const [isFilled, setIsFilled] = useState(false);
+    const [isFilled2, setIsFilled2] = useState(false);
 
 return (
     <View style={{flex: 1, flexDirection: 'column'}}>
@@ -18,26 +21,43 @@ return (
       <View style={styles.rectangle}>
         <Text style={styles.header}> Blocked Users </Text>
 
-        <View style={{ marginTop: 30, marginHorizontal: 20, flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={styles.fieldLabel}> Influencer's Account </Text>
-          <Switch
-          style={{ marginLeft: 'auto' }} 
-          value={isSwitchOn} 
-          onValueChange={() => setIsSwitchOn(!isSwitchOn)}
-          trackColor={{false: '#767577', true: '#808080'}}
-          thumbColor={isSwitchOn ? '#FF4C68' : '#f4f3f4'}
-          ios_backgroundColor="#3e3e3e"
-          />
-          
+        <View style={styles.container}>
+            <View style={styles.card}>
+                <View style={styles.cardHeader}>
+                    <View style={styles.headerLeft}>
+                        <Image
+                        style={styles.userImage}
+                        source={{uri: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg'
+                        }}/>
+                        <Text style={styles.userName}> khalido </Text>
+                    </View>
+                    <View style={styles.headerRight}>
+                    <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                    </View >
+                </View>
+            </View>
         </View>
 
-        <View style={[styles.fieldContainer, { marginTop: 30 }]}>
-          <Text style={styles.note}>Note: When switching to an Influencer's account, you'll have the privileges of being an influencer. You'll need to have a minimum of 150 followers to be able to change your Account Type.</Text>
+        <View style={styles.container}>
+            <View style={styles.card}>
+                <View style={styles.cardHeader}>
+                    <View style={styles.headerLeft}>
+                        <Image
+                        style={styles.userImage}
+                        source={{uri: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg'
+                        }}/>
+                        <Text style={styles.userName}> zifto </Text>
+                    </View>
+                    <View style={styles.headerRight}>
+                    <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                    </View >
+                </View>
+            </View>
         </View>
 
         <View style={styles.confirmButton}>
           <TouchableOpacity onPress={()=> navigation.goBack()}>
-            <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> Confirm Change</Text>
+            <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> Confirm Changes </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -167,7 +187,6 @@ const styles = StyleSheet.create({
 
     },
     
-    
     fieldInput: {
 
         borderWidth: 1,
@@ -182,6 +201,47 @@ const styles = StyleSheet.create({
         borderRightColor: 'rgba(0, 0, 0, 0.1)',
         borderTopColor: 'rgba(0, 0, 0, 0.1)'
     },
+
+    container: {
+
+      backgroundColor: '#fff'
+  },
+
+  card: {
+      backgroundColor: '#ddd',
+      padding: 10,
+      margin: 10,
+      borderRadius: 10,
+  },
+
+  cardHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+  },
+
+  headerLeft: {
+      flexDirection: 'row',
+  },
+
+  userImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 50/2
+  },
+
+  userName: {
+      fontWeight: 'bold',
+      marginLeft: 10,
+      marginTop: 15,
+      fontSize: 17
+  },
+
+  icon: {
+    fontSize: 20,
+    color: 'grey',
+    marginTop: 15
+  },
+  
   });
 
 export default SettingsBlockedUsers;
