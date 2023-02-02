@@ -1002,7 +1002,7 @@ const styles = StyleSheet.create({
 
   topContainer: {
 
-    flex: 67 / 6
+    flex: 7000 / 6
   },
 
   bottomContainer: {
