@@ -297,15 +297,24 @@ const styles = StyleSheet.create({
 
     fieldLabel: {
 
+<<<<<<< HEAD
         fontSize: 12,
         color: '#808080',
         marginBottom: 5,
         fontWeight: 'bold',
         fontFamily: 'Roboto',
     },
+=======
+    fontSize: 12,
+    color: '#808080',
+    marginBottom: 5,
+    fontWeight: 'bold',
+  },
+>>>>>>> e307cd5 (Sign Up)
 
     fieldInput: {
 
+<<<<<<< HEAD
         borderWidth: 1,
         borderBottomWidth: 2,
         fontSize: 10, 
@@ -318,6 +327,19 @@ const styles = StyleSheet.create({
         borderRightColor: 'rgba(0, 0, 0, 0.1)',
         borderTopColor: 'rgba(0, 0, 0, 0.1)'
     },
+=======
+    borderWidth: 1,
+    borderBottomWidth: 2,
+    fontSize: 10,
+    paddingLeft: 10,
+    borderColor: '#cccccc',
+    padding: 0.5,
+    fontSize: 16,
+    borderLeftColor: 'rgba(0, 0, 0, 0.1)',
+    borderRightColor: 'rgba(0, 0, 0, 0.1)',
+    borderTopColor: 'rgba(0, 0, 0, 0.1)'
+  },
+>>>>>>> e307cd5 (Sign Up)
 
     signUpButtonContainer: {
 
