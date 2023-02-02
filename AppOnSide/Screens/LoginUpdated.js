@@ -509,7 +509,7 @@ const styles = StyleSheet.create({
 
   fieldLabel: {
 
-    fontSize: 12,
+    fontSize: 13,
     color: '#808080',
     marginBottom: 5,
     fontWeight: 'bold',
