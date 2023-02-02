@@ -879,12 +879,6 @@ export default function Register() {
     
     }
 
-    
-
-
-  
-
-
 
   return (
     <View style={styles.parentContainer}>
@@ -968,7 +962,7 @@ export default function Register() {
           </View>
 
           <TouchableOpacity style={styles.signUpButtonContainer} onPress={handleSubmit}>
-            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> SIGN UP </Text>
+            <Text style={{ color: 'white', fontSize: 23, fontFamily: 'fax', padding: 10, textAlign: 'center' }}> SIGN UP </Text>
           </TouchableOpacity>
 
           <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Signup via </Text>
@@ -979,12 +973,6 @@ export default function Register() {
               iconSize={34}
               onPress={() => console.log('Sign up with Google')}
               style={{ width: 60, height: 60, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
-            />
-            <SocialIcon
-              type="facebook"
-              iconSize={34}
-              onPress={() => console.log('Sign up with Facebook')}
-              style={{ width: 60, height: 60, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginTop: 10 }}
             />
           </View>
 
@@ -1021,6 +1009,7 @@ const styles = StyleSheet.create({
 
     flex: 65 / 6,
     justifyContent: 'flex-start',
+    paddingBottom: 20,
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 60,

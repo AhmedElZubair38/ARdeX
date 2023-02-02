@@ -445,7 +445,7 @@ export default function LoginUpdated({ navigation }) {
             // onPress={() => { console.log(username + password); navigation.navigate('StackNavigator') }}
             onPress={handleSubmit}
           >
-            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> LOG-IN </Text>
+            <Text style={{ color: 'white', fontSize: 23, padding: 10, fontFamily: 'fax', textAlign: 'center' }}> LOG-IN </Text>
           </TouchableOpacity>
 
           <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Sign-in via </Text>
@@ -456,12 +456,6 @@ export default function LoginUpdated({ navigation }) {
               iconSize={34}
               onPress={() => console.log('Sign up with Google')}
               style={{ width: 60, height: 60, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
-            />
-            <SocialIcon
-              type="facebook"
-              iconSize={34}
-              onPress={() => console.log('Sign up with Facebook')}
-              style={{ width: 60, height: 60, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginTop: 10 }}
             />
           </View>
 
