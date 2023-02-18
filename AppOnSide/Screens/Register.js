@@ -885,7 +885,7 @@ export default function Register() {
 
       <Image
         source={require('../Photos/transparent-logo.png')}
-        style={{ width: 250, height: 80, alignSelf: 'center', resizeMode: 'stretch', overflow: 'visible', marginTop: 30 }} />
+        style={{ width: '60%', height: '10%', alignSelf: 'center',resizeMode: 'stretch', overflow: 'visible', marginTop: 80 }} />
 
       <View style={styles.topContainer}></View>
       <ScrollView>
@@ -997,7 +997,7 @@ const styles = StyleSheet.create({
   parentContainer: {
 
     flex: 1,
-    backgroundColor: '#FF4C68'
+    backgroundColor: '#FF4C68',
   },
 
   topContainer: {
@@ -1045,7 +1045,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderLeftColor: 'rgba(0, 0, 0, 0.1)',
     borderRightColor: 'rgba(0, 0, 0, 0.1)',
-    borderTopColor: 'rgba(0, 0, 0, 0.1)'
+    borderTopColor: 'rgba(0, 0, 0, 0.1)',
+    height: 30
   },
 
   signUpButtonContainer: {
