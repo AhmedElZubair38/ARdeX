@@ -158,6 +158,10 @@ const styles = {
     borderRadius: 5,
     padding: 10,
     marginHorizontal: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
   },
   buttonText: {
     fontSize: 16,
