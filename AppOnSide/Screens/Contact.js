@@ -1,103 +1,161 @@
 import React, { useState } from 'react';
-import { View, Text, Button, Modal, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, TextInput, FlatList, Image } from 'react-native';
+import { Icon } from 'react-native-elements';
 import TopBar from "../Navigators/TopBar"; // import the TopBar component
 
 export default function Contact({ navigation }) {
 
-  const [modalVisible, setModalVisible] = useState(false);
+  const data = [
+    {
+      id: 1,
+      image: 'https://img.icons8.com/color/70/000000/cottage.png',
+      description: 'user 1',
+    },
+    {
+      id: 2,
+      image: 'https://img.icons8.com/color/70/000000/administrator-male.png',
+      description: 'user 2',
+    },
+    {
+      id: 3,
+      image: 'https://img.icons8.com/color/70/000000/filled-like.png',
+      description: 'user 3',
+    },
+    {
+      id: 4,
+      image: 'https://img.icons8.com/color/70/000000/facebook-like.png',
+      description: 'user 4',
+    },
+    {
+      id: 5,
+      image: 'https://img.icons8.com/color/70/000000/shutdown.png',
+      description: 'user 5',
+    },
+    {
+      id: 6,
+      image: 'https://img.icons8.com/color/70/000000/traffic-jam.png',
+      description: 'user 6',
+    },
+    {
+      id: 7,
+      image: 'https://img.icons8.com/dusk/70/000000/visual-game-boy.png',
+      description: 'user 7',
+    },
+  ]
+
+  const [results, setResults] = useState(data)
+  const [query, setQuery] = useState()
+
+  const showAlert = viewId => {
+    Alert.alert('Alert', 'Button pressed ' + viewId)
+  }
+
   
   return (
     <View style={styles.container}>
       <TopBar />
-      {/* <View style={styles.content}>
-        <Text style={styles.text}>Contact is herhhe!</Text>
-        <Button title="Go Back" onPress={() => navigation.goBack()} />
-      </View> */}
-      <View style={styles.content}>
-      <TouchableOpacity onPress={() => setModalVisible(true)}>
-        <Text style={styles.buttonText}>Open Modal</Text>
-      </TouchableOpacity>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalText}>Some text in the modal</Text>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>Close</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => console.log('Button 2 pressed')} style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>Button 2</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+      <View style={styles.search}>
+        <View style={styles.inputContainer}>
+          <TextInput
+              style={styles.inputs}
+              placeholder="Search..."
+              underlineColorAndroid="transparent"
+              onChangeText={name_address => setQuery({ name_address })}
+          />
+          <TouchableOpacity style={styles.searchButton}>
+            <Icon name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
+          </TouchableOpacity>
         </View>
-      </Modal>
-    </View>
+      </View>
+      <FlatList
+        style={styles.notificationList}
+        enableEmptySections={true}
+        data={results}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.notificationBox}>
+              <Image style={styles.image} source={{ uri: item.image }} />
+              <Text style={styles.description}>{item.description}</Text>
+            </View>
+          )
+        }}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  // },
-  // content: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   backgroundColor: "#C203FC",
-  // },
-  // text: {
-  //   fontSize: 20,
-  //   color: "white",
-  //   fontWeight: "000",
-  //   marginBottom: 10,
-  // },
-
   container: {
     flex: 1,
   },
-  content: {
-    flex: 1,
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    fontSize: 20,
-    color: 'blue',
-  },
-  modalContainer: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  modalContent: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  modalText: {
-    fontSize: 18,
-    marginBottom: 20,
-  },
-  buttonContainer: {
+  inputContainer: {
+    borderBottomColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 30,
+    borderBottomWidth: 1,
+    height: 45,
     flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    margin: 10,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
-  modalButton: {
-    padding: 10,
-    borderRadius: 5,
-    marginHorizontal: 10,
-    backgroundColor: 'lightgray',
+  search: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '87%',
+
   },
-  modalButtonText: {
+  inputs: {    
+    height: 45,
+    margin: 25,
+    borderBottomColor: '#FFFFFF',
+    width: '87%',
+
+  },
+  searchButton: {    
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '13%',
+    alignSelf: 'flex-end',
+    backgroundColor: '#FF4C68',
+    borderRadius: 30,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+  },
+  notificationList: {
+    marginTop: 60,
+    padding: 15,
+  },
+  notificationBox: {
+    padding: 20,
+    marginTop: 5,
+    marginBottom: 5,
+    backgroundColor: '#FFFFFF',
+    flexDirection: 'row',
+    borderRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    borderColor: 'black',
+    borderWidth: 1
+  },
+  description: {
     fontSize: 18,
+    color: '#3498db',
+    marginLeft: 10,
+    alignSelf: 'center',
   },
 });
