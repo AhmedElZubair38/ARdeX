@@ -22,6 +22,7 @@ import SettingsChangeAccountType from './Settings/SettingsChangeAccountType';
 import SettingsBlockedUsers from './Settings/SettingsBlockedUsers';
 import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
 import EditProfile from './Screens/EditProfile';
+import CreateNewScrapbook from './Screens/CreateNewScrapbook';
 
 const Stack = createNativeStackNavigator();
 
@@ -133,6 +134,11 @@ export default function App() {
         <Stack.Screen 
           name="EditProfile"
           component={EditProfile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="CreateNewScrapbook"
+          component={CreateNewScrapbook}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
