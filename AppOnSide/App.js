@@ -23,6 +23,7 @@ import SettingsBlockedUsers from './Settings/SettingsBlockedUsers';
 import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
 import EditProfile from './Screens/ProfileScreens/EditProfile';
 import CreateNewScrapbook from './Screens/AddPostScreens/CreateNewScrapbook';
+import CreateNewScrapbook2 from './Screens/AddPostScreens/CreateNewScrapbook2';
 
 const Stack = createNativeStackNavigator();
 
@@ -139,6 +140,11 @@ export default function App() {
         <Stack.Screen 
           name="CreateNewScrapbook"
           component={CreateNewScrapbook}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="CreateNewScrapbook2"
+          component={CreateNewScrapbook2}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

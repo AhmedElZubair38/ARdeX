@@ -5,18 +5,10 @@ import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-const CreateNewScrapbook = () => {
+const CreateNewScrapbook2 = () => {
 
-    const onClick = () => {
-        handleSubmit();
-        navigation.navigate('CreateNewScrapbook2')
-       }
-
-       handleSubmit = () => {
-        console.log("Submit clicked!");
-      }
-
-    const navigation = useNavigation();
+   
+  const navigation = useNavigation();
   return (
     <View style={{flex: 1}}>
         <TopBar/>
@@ -26,7 +18,7 @@ const CreateNewScrapbook = () => {
             </View>
             <View style={styles.form}>
                 <View style={[{justifyContent:'center'}]}> 
-                    <Text style = {styles.Text}>Scrap Book Name</Text> 
+                    <Text style = {styles.Text}>Name   </Text> 
                 </View>
                 <TextInput style = {[styles.nameInput,{width:'90%'}]} 
                            autoCapitalize = "none"></TextInput>
@@ -45,9 +37,9 @@ const CreateNewScrapbook = () => {
             </View>
             <View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-					<Text style={styles.buttonText}>Cancel</Text>
+					<Text style={styles.buttonText}>previous</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.button} onPress={onClick}>
+					<TouchableOpacity style={styles.button}>
 					<Text style={styles.buttonText}>Next</Text>
 					</TouchableOpacity>
 			</View>
@@ -56,7 +48,7 @@ const CreateNewScrapbook = () => {
   )
 }
 
-export default CreateNewScrapbook
+export default CreateNewScrapbook2
 
 const styles = StyleSheet.create({
     container: {
