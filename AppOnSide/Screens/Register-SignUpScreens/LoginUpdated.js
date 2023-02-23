@@ -347,7 +347,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, ScrollView, Alert } from "react-native";
 import { SocialIcon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import app from "./firebaseConfig";
+import app from "../firebaseConfig";
 import {
   getAuth,
   createUserWithEmailAndPassword,

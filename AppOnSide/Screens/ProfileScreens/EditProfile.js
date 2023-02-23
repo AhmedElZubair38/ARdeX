@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import TopBar from '../Navigators/TopBar';
+import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
-import BottomTabNavigation from '../Navigators/bottomTabNavigation';
+import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
 import { Icon } from 'react-native-elements';
 
 const EditProfile = () => {

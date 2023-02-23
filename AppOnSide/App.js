@@ -5,8 +5,8 @@ import SplashScreen from 'react-native-splash-screen'
 import { TransitionPresets } from '@react-navigation/stack';
 import BottomTabNavigation from './Navigators/bottomTabNavigation';
 import HomeScreen from './Screens/HomeScreen';
-import Register from './Screens/Register';
-import LoginUpdated from './Screens/LoginUpdated';
+import Register from './Screens/Register-SignUpScreens/Register';
+import LoginUpdated from './Screens/Register-SignUpScreens/LoginUpdated';
 import VerifyEmail from './Screens/VerifyEmail';
 import SettingsHome from './Settings/SettingsHome';
 import SettingsGeneral from './Settings/SettingsGeneral';
@@ -21,8 +21,8 @@ import SettingsChangePhoneNumber from './Settings/SettingsChangePhoneNumber';
 import SettingsChangeAccountType from './Settings/SettingsChangeAccountType';
 import SettingsBlockedUsers from './Settings/SettingsBlockedUsers';
 import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
-import EditProfile from './Screens/EditProfile';
-import CreateNewScrapbook from './Screens/CreateNewScrapbook';
+import EditProfile from './Screens/ProfileScreens/EditProfile';
+import CreateNewScrapbook from './Screens/AddPostScreens/CreateNewScrapbook';
 
 const Stack = createNativeStackNavigator();
 

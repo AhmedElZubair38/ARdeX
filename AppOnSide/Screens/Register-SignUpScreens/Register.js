@@ -740,7 +740,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, ScrollView, Alert } from "react-native";
 import { SocialIcon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import { db } from "./firebaseConfig";
+import { db } from "../firebaseConfig";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, getDoc, setDoc, addDoc } from "firebase/firestore";
 import { getDatabase } from "firebase/database";

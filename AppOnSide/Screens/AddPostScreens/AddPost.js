@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
-import TopBar from '../Navigators/TopBar'
+import TopBar from '../../Navigators/TopBar'
 import { useNavigation } from '@react-navigation/native';
 import CreateNewScrapbook from './CreateNewScrapbook';
 

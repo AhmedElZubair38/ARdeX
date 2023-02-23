@@ -8,7 +8,7 @@ const TopBar = () => {
 const navigation = useNavigation();
 
 return (
-  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: '12%', padding: 15, backgroundColor: '#FF4C68', paddingTop: 20, borderBottomWidth: 2.5}}>
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: '12%', padding: 15, backgroundColor: '#FF4C68', paddingTop: 20}}>
 
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image source={require('AppOnSide/Photos/transparent-logo.png')} style={{ width: 105, height: 35, marginBottom: -25}}/>

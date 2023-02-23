@@ -8,7 +8,7 @@ import HomeScreen from 'AppOnSide/Screens/HomeScreen';
 import MapsScreen from 'AppOnSide/Screens/MapsScreen';
 import Contact from 'AppOnSide/Screens/Contact';
 import UserProfile from 'AppOnSide/Screens/UserProfile';
-import AddPost from '../Screens/AddPost';
+import AddPost from '../Screens/AddPostScreens/AddPost';
 
 const Tab = createBottomTabNavigator();
 
