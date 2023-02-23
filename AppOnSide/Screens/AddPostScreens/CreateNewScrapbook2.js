@@ -1,5 +1,6 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import React from 'react'
+import Select from "react-select"
 import TopBar from '../../Navigators/TopBar'
 import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
 import { TextInput } from 'react-native-gesture-handler';
@@ -7,7 +8,12 @@ import { useNavigation } from '@react-navigation/native';
 
 const CreateNewScrapbook2 = () => {
 
-   
+    const options = [
+        { value: 'opinion', label: 'Opinion' },
+        { value: 'fact', label: 'Fact' },
+        { value: 'fiction', label: 'Fiction' },
+    ];
+
   const navigation = useNavigation();
   return (
     <View style={{flex: 1}}>
@@ -18,22 +24,30 @@ const CreateNewScrapbook2 = () => {
             </View>
             <View style={styles.form}>
                 <View style={[{justifyContent:'center'}]}> 
-                    <Text style = {styles.Text}>Name   </Text> 
+                    <Text style = {styles.Text}>Add Location</Text> 
                 </View>
                 <TextInput style = {[styles.nameInput,{width:'90%'}]} 
                            autoCapitalize = "none"></TextInput>
             </View>
             <View style={styles.form}>
                 <View> 
-                    <Text style = {styles.Text}>Caption   </Text> 
+                    <Text style = {styles.Text}>Tag Users</Text> 
                 </View>
                 <TextInput 
-                    style = {[styles.nameInput,{height:100, width:'90%'}]} 
+                    style = {[styles.nameInput,{width:'90%'}]} 
                     multiline
                     autoCapitalize = "none"></TextInput>
+                <View> 
+                    <Text style = {styles.Text}>Select Type of information</Text> 
+                </View>
+                <Select
+                    value={selectedOption}
+                    onChange={this.handleChange}
+                    options={options}
+                />
             </View>
             <View>
-                <Text style = {styles.Text}>Add a Cover Photo</Text>
+                <Text style = {styles.Text}>Add Photos</Text>
             </View>
             <View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
