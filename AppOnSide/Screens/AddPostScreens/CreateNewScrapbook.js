@@ -40,7 +40,7 @@ const CreateNewScrapbook = () => {
 					</TouchableOpacity>
 			</View>
             <View>
-                <Text></Text>
+                <Text>g</Text>
             </View>
         </View>
     </View>

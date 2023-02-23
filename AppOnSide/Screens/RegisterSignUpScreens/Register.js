@@ -884,7 +884,7 @@ export default function Register() {
     <View style={styles.parentContainer}>
 
       <Image
-        source={require('../Photos/transparent-logo.png')}
+        source={require('../../Photos/transparent-logo.png')}
         style={{ width: '60%', height: '10%', alignSelf: 'center',resizeMode: 'stretch', overflow: 'visible', marginTop: 80 }} />
 
       <View style={styles.topContainer}></View>

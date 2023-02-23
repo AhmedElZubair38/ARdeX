@@ -409,7 +409,7 @@ export default function LoginUpdated({ navigation }) {
   return (
     <View style={styles.parentContainer}>
       <Image
-        source={require('../Photos/transparent-logo.png')}
+        source={require('../../Photos/transparent-logo.png')}
         style={{ width: '60%', height: '10%', alignSelf: 'center', resizeMode: 'stretch', overflow: 'visible', marginTop: 130 }} />
 
       <View style={styles.topContainer}></View>
