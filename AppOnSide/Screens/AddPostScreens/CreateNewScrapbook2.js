@@ -1,6 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import React from 'react'
-import Select from "react-select"
 import TopBar from '../../Navigators/TopBar'
 import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
 import { TextInput } from 'react-native-gesture-handler';
@@ -40,11 +39,6 @@ const CreateNewScrapbook2 = () => {
                 <View> 
                     <Text style = {styles.Text}>Select Type of information</Text> 
                 </View>
-                <Select
-                    value={selectedOption}
-                    onChange={this.handleChange}
-                    options={options}
-                />
             </View>
             <View>
                 <Text style = {styles.Text}>Add Photos</Text>

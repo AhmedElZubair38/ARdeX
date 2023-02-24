@@ -43,7 +43,7 @@ const viewProfile = () => {
                 <Text style={styles.statLabel}>Following</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
+            <TouchableOpacity style={styles.button} /*onPress={()=> navigation.navigate('EditProfile')}*/>
                 <Text style={styles.buttonText}>Follow</Text>
             </TouchableOpacity>
             <View style={styles.body}>

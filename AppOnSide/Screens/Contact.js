@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, TextInput, FlatList, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
@@ -50,6 +51,8 @@ export default function Contact({ navigation }) {
     Alert.alert('Alert', 'Button pressed ' + viewId)
   }
 
+  const navigate = useNavigation();
+
   
   return (
     <View style={styles.container}>
@@ -74,8 +77,10 @@ export default function Contact({ navigation }) {
         renderItem={({ item }) => {
           return (
             <View style={styles.notificationBox}>
-              <Image style={styles.image} source={{ uri: item.image }} />
-              <Text style={styles.description}>{item.description}</Text>
+              <TouchableOpacity style={styles.userButton} onPress={() => navigation.navigate('ViewProfile')}>
+                <Image style={styles.image} source={{ uri: item.image }} />
+                <Text style={styles.description}>{item.description}</Text>
+              </TouchableOpacity>
             </View>
           )
         }}
@@ -138,12 +143,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     backgroundColor: '#FFFFFF',
-    flexDirection: 'row',
     borderRadius: 10,
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
+  },
+  userButton: {
+    flexDirection: 'row',
   },
   image: {
     width: 50,
