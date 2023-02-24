@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 
-const viewProfile = () => {
+const ViewProfile = () => {
 
   const navigation = useNavigation();
 
@@ -199,4 +199,4 @@ const styles = {
   },
 };
 
-export default viewProfile;
+export default ViewProfile;
