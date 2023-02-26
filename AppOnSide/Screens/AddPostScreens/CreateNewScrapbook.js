@@ -1,7 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import TopBar from '../../Navigators/TopBar'
-import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 

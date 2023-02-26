@@ -43,6 +43,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
 
     const [isFilled, setIsFilled] = useState(false);
     const [isFilled2, setIsFilled2] = useState(false);
+    const navigation = useNavigation();
 
     
     return (
@@ -78,7 +79,10 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                             </TouchableOpacity>
                         </View>
                         <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
-                            <Icon5 style={{ fontSize: 29, color: 'grey' }} name={Platform.OS === 'ios' ? 'comment' : 'comment'}/>
+                            <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                                <Icon5 style={{ fontSize: 29, color: 'grey' }} name={Platform.OS === 'ios' ? 'comment' : 'comment'}/>
+                            </TouchableOpacity>
+                           
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => setIsFilled2(!isFilled2)}>
