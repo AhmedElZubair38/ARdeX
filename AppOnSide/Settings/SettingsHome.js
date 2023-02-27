@@ -6,29 +6,35 @@ import Icon from 'react-native-vector-icons/Ionicons';
 function SettingsHome() {
 
   const navigation = useNavigation();
+  
 
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
+      <View style = {styles.pageHead}>
+        <TouchableOpacity onPress={()=> navigation.goBack()} >
+          <Icon style={{ color: 'white', paddingTop: 25, paddingLeft: 20}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
+        </TouchableOpacity>
+        <Text style={styles.headerSettings}>Settings</Text>
+      </View> 
 
       <View style={{flex: 1, backgroundColor: 'black'}}>
-        <Text style={styles.headerSettings}> <Icon onPress={()=> navigation.goBack()} style={{ color: 'white', paddingTop: '5%'}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-back'}/> Settings</Text>
       </View>
 
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '10%'}}>
-        <Icon style={{ color: 'black', paddingTop: '3.2%'}} size={26} name={Platform.OS === 'ios' ? 'ios-person' : 'md-lock-closed'}/>
-        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsLoginAndSecurity')}>
-            <Text style={{ color: 'black', fontSize: 18, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Login & Security </Text>
-        </TouchableOpacity>
-        <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
+          <Icon style={{ color: 'black', paddingTop: '3.2%'}} size={26} name={Platform.OS === 'ios' ? 'ios-person' : 'md-lock-closed'}/>
+          <TouchableOpacity  onPress={()=> navigation.navigate('SettingsLoginAndSecurity')}>
+              <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Login & Security </Text>
+          </TouchableOpacity>
+          <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3.5%'}} size={26} name={Platform.OS === 'ios' ? 'ios-key' : 'settings-sharp'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsGeneral')}>
-            <Text style={{ color: 'black', fontSize: 18, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 145, textAlign: 'center' }}> General </Text>
+            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 145, textAlign: 'center' }}> General </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -36,7 +42,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3.5%'}} size={28} name={Platform.OS === 'ios' ? 'ios-key' : 'help-circle'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsHelp')}>
-            <Text style={{ color: 'black', fontSize: 18, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 175, textAlign: 'center' }}> Help </Text>
+            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 175, textAlign: 'center' }}> Help </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -44,7 +50,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3.5%'}} size={26} name={Platform.OS === 'ios' ? 'ios-key' : 'information-circle'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsAbout')}>
-            <Text style={{ color: 'black', fontSize: 18, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 160, textAlign: 'center' }}> About </Text>
+            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 160, textAlign: 'center' }}> About </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -54,7 +60,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
           <Icon style={{ color: 'black', paddingTop: '3.85%'}} size={30} name={Platform.OS === 'ios' ? 'ios-key' : 'log-out'}/>
           <TouchableOpacity  onPress={()=> navigation.navigate('LoginUpdated')}>
-              <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 110, textAlign: 'center' }}> Log Out </Text>
+              <Text style={{ color: 'black', fontSize: 20, padding: 13, paddingLeft: 5, paddingRight: 110, textAlign: 'center' }}> Log Out </Text>
           </TouchableOpacity>
           <Icon style={{ color: 'black', paddingTop: '6%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
           </View>
@@ -102,23 +108,21 @@ const styles = StyleSheet.create({
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '10%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 18,
-        fontStyle: 'bold',
+        fontWeight: 'bold',
         color: '#808080',
         textAlign: 'left'
       },
 
       headerSettings: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 32,
-        fontStyle: 'bold',
+        fontWeight: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },
@@ -138,6 +142,13 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 2
 
+    },
+    pageHead: {
+      backgroundColor: 'black',
+      paddingLeft: 10,
+      paddingTop: 10,
+      flexDirection: 'row',
+      alignItems: 'center'
     }
   });
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Button} from "react-native";
 import TopBar from "../Navigators/TopBar";
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,6 +7,7 @@ import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from 'react-native-vector-icons/AntDesign';
 import Icon5 from 'react-native-vector-icons/Fontisto';
+import Modal from "react-native-modal";
 
 
 const DATA = [
@@ -44,6 +45,11 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
     const [isFilled, setIsFilled] = useState(false);
     const [isFilled2, setIsFilled2] = useState(false);
     const navigation = useNavigation();
+    const [isModalVisible, setModalVisible] = useState(false);
+    const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+    };
+    
 
     
     return (
@@ -59,7 +65,25 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                         <Text style={styles.userName}> {user_name} </Text>
                     </View>
                     <View style={styles.headerRight}>
-                    <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                        <TouchableOpacity onPress={toggleModal}>
+                            <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                            <Modal
+                                animationType={'slide'}
+                                transparent={false}
+                                visible={isModalVisible}
+                                onRequestClose={() => {
+                                    console.log('Modal has been closed.');
+                                }}>
+                                {/*All views of Modal*/}
+                                {/*Animation can be slide, slide, none*/}
+                                <View style={styles.modal}>
+                                    <Text style={styles.text}>Modal is open!</Text>
+                                    <TouchableOpacity onPress={() => toggleModal()}>
+                                        <Text>Close</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </Modal>
+                        </TouchableOpacity>
                     </View >
                 </View>
                 <Image
@@ -104,9 +128,11 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
 }
 
 
+
 export default function HomeScreen() {
 
     const navigation = useNavigation();
+    
 
     return (
 
@@ -187,5 +213,19 @@ const styles = StyleSheet.create({
 
     footerLeft: {
         flexDirection: 'row',
+    },
+    modal: {
+        flex : 1,
+
+        backgroundColor: 'grey',
+        alignItems: 'center',
+        height: '20%',
+        padding: 100,
+    },
+    modalText: {
+        fontSize: 30,
+        backgroundColor: '#5A5A5A',
+        width: '80%',
+
     }
 });

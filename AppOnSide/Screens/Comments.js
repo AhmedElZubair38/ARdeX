@@ -98,12 +98,17 @@ const Comments = () => {
                     const Notification = item.item
                     return(
                         <View style={styles.comments}>
-                            <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
-                                <Image style={styles.image} source={{ uri: Notification.image }} />
-                            </TouchableOpacity>
+                            
                             <View style = {styles.content}>
                                 <View style={styles.commentHeader}>
-                                    <Text style= {styles.username}>{Notification.name}</Text>
+                                    <View style={styles.user}>
+                                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
+                                            <Image style={styles.image} source={{ uri: Notification.image }} />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
+                                            <Text style= {styles.username}>{Notification.name}</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                     <Text style= {styles.time}>{Notification.timeHr}:{Notification.timeMin}</Text>
                                 </View>
                                 <Text rkType="primary3 mediumLine">{Notification.comment}</Text>
@@ -133,8 +138,8 @@ const styles = StyleSheet.create({
     headerText : {
         fontSize: 20,
         fontWeight : 'bold',
-        alignSelf : 'center',
-        padding: 10
+        padding: 10,
+        alignSelf: 'center'
     },
     separator: {
         height: .5,
@@ -142,7 +147,7 @@ const styles = StyleSheet.create({
     },
     comments : {
         flexDirection: 'row',
-        paddingLeft: 19,
+        paddingLeft: 10,
         paddingRight: 16,
         paddingVertical: 12,
         alignItems: 'flex-start',
@@ -153,16 +158,20 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     image: {
-        height : 50,
-        width : 50,
+        height : 20,
+        width : 20,
         borderRadius: 50,
-        marginLeft : 15
     },
     username: {
-        fontSize: 20
+        fontSize: 20,
+        paddingLeft: 10
     },
     content: {
         flex : 1,
         marginLeft: 20
+    },
+    user:{
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 })
