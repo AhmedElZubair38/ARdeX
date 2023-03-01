@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'flex-start',
     borderRadius: 10,
-    backgroundColor: 'grey'
+    backgroundColor: '#ddd'
   },
   image: { 
     height: 100,

@@ -28,6 +28,7 @@ import ViewProfile from './Screens/ProfileScreens/ViewProfile';
 import Comments from './Screens/Comments';
 import ViewFollowers from './Screens/ProfileScreens/ViewFollowers';
 import ViewFollowing from './Screens/ProfileScreens/ViewFollowing';
+import Collections from './Screens/Collections';
 
 const Stack = createNativeStackNavigator();
 
@@ -169,6 +170,11 @@ export default function App() {
         <Stack.Screen 
           name="ViewFollowing"
           component={ViewFollowing}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="Collections"
+          component={Collections}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
