@@ -43,10 +43,6 @@ const ProfileView = () => {
         <TopBar/>
         <View style={styles.container}>
             <View style={styles.headerContainer}>
-                <Image
-                style={styles.coverPhoto}
-                source={{uri : profileData.coverPic}}
-                />
                 <View style={styles.profileContainer}>
                 <Image
                     style={styles.profilePhoto}
@@ -112,13 +108,9 @@ const styles = StyleSheet.create({
   headerContainer: {
     alignItems: 'center',
   },
-  coverPhoto: {
-    width: '100%',
-    height: 200,
-  },
   profileContainer: {
     alignItems: 'center',
-    marginTop: -50,
+    marginTop: 20
   },
   profilePhoto: {
     width: 100,
@@ -179,8 +171,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'flex-start',
     borderRadius: 10,
-    borderWidth : 1,
-    borderColor: 'black',
     backgroundColor: 'grey'
   },
   image: { 

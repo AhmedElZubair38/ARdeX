@@ -29,15 +29,6 @@ const EditProfile = () => {
 		<View style={{flex: 1}}>
 			<TopBar/>
 			<View style={styles.container}>
-				<View style={styles.headerContainer}>
-					<Image
-					style={styles.coverPhoto}
-					source={{uri : coverPic}}
-					/>
-					<View style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:10,right:15,borderRadius:50}]}>
-							<Icon size={32} style={styles.icon123} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
-					</View>
-				</View>
 				<View>
 				
 					<View style={styles.profileContainer}>
@@ -93,15 +84,11 @@ const EditProfile = () => {
 		alignItems: 'center',
 		backgroundColor: 'red'
 	},
-	coverPhoto: {
-		width: '100%',
-		height: 200,
-	},
 	profileContainer: {
 		alignSelf:'center',
-		marginTop: -50,
 		width:100,
-		height:100
+		height:100,
+		marginTop: 20,
 	},
 	profilePhoto: {
 		width: 100,
