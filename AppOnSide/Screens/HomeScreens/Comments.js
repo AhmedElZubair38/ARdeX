@@ -13,8 +13,8 @@ const Comments = () => {
         name: 'Frank Odalthh',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-        timeHr: 13,
-        timeMin: 23,
+        day: 13,
+        month: 23,
       },
       {
         id: 2,
@@ -22,8 +22,8 @@ const Comments = () => {
         name: 'John DoeLink',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-        timeHr: 13,
-        timeMin: 23,
+        day: 13,
+        month: 23,
       },
       {
         id: 3,
@@ -31,8 +31,8 @@ const Comments = () => {
         name: 'March SoulLaComa',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          timeHr: 13,
-          timeMin: 23,
+        day: 13,
+        month: 23,
       },
       {
         id: 4,
@@ -40,8 +40,8 @@ const Comments = () => {
         name: 'Finn DoRemiFaso',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          timeHr: 13,
-          timeMin: 23,
+          day: 13,
+          month: 23,
       },
       {
         id: 5,
@@ -49,8 +49,8 @@ const Comments = () => {
         name: 'Maria More More',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          timeHr: 13,
-          timeMin: 23,
+          day: 13,
+          month: 23,
       },
       {
         id: 6,
@@ -58,8 +58,8 @@ const Comments = () => {
         name: 'Clark June Boom!',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          timeHr: 13,
-          timeMin: 23,
+          day: 13,
+          month: 23,
       },
       {
         id: 7,
@@ -67,8 +67,8 @@ const Comments = () => {
         name: 'The googler',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          timeHr: 13,
-          timeMin: 23,
+          day: 13,
+          month: 23,
       },
   ]
 
@@ -109,10 +109,11 @@ const Comments = () => {
                                             <Text style= {styles.username}>{Notification.name}</Text>
                                         </TouchableOpacity>
                                     </View>
-                                    <Text style= {styles.time}>{Notification.timeHr}:{Notification.timeMin}</Text>
+                                    <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
                                 </View>
                                 <Text rkType="primary3 mediumLine">{Notification.comment}</Text>
                             </View>
+                            <Text style= {styles.date}>{Notification.day}/{Notification.month}</Text>
                         </View>
                     )
                 }}
@@ -146,11 +147,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#CCCCCC',
     },
     comments : {
-        flexDirection: 'row',
         paddingLeft: 10,
         paddingRight: 16,
         paddingVertical: 12,
         alignItems: 'flex-start',
+        paddingBottom: 25
     },
     commentHeader: {
         justifyContent: 'space-between',
@@ -170,8 +171,13 @@ const styles = StyleSheet.create({
         flex : 1,
         marginLeft: 20
     },
-    user:{
+    user: {
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    date: {
+        position: 'absolute',
+        bottom: 5,
+        right: 20,
     }
 })
