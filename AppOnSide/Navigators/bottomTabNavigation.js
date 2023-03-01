@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Platform } from 'react-native';
 import TopBar from './TopBar';
-import HomeScreen from 'AppOnSide/Screens/HomeScreen';
+import HomeScreen from 'AppOnSide/Screens/HomeScreens/HomeScreen';
 import MapsScreen from 'AppOnSide/Screens/MapsScreen';
 import Contact from 'AppOnSide/Screens/Contact';
 import UserProfile from 'AppOnSide/Screens/ProfileScreens/UserProfile';

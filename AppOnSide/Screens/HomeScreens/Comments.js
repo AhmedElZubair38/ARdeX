@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React, {useState} from 'react'
-import TopBar from '../Navigators/TopBar'
+import TopBar from '../../Navigators/TopBar'
 import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
