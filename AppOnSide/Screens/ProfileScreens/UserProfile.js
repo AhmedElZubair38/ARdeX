@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,9 +17,26 @@ const ProfileView = () => {
     following: 2,
   }
 
-  const scrapbooks = {
-
-  }
+  const scrapbooks = [
+    {
+      id: 1,
+      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+      scrapName: 'A',
+      scrapCaption: 'A',
+    },
+    {
+      id: 2,
+      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+      scrapName: 'B',
+      scrapCaption: 'A',
+    },
+    {
+      id: 3,
+      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+      scrapName: 'C',
+      scrapCaption: 'A',
+    },
+  ]
 
   return (
     <View style={{flex: 1}}>
@@ -58,13 +75,36 @@ const ProfileView = () => {
             <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
                 <Text style={styles.buttonText}>Edit Profile</Text>
             </TouchableOpacity>
-
+            <FlatList
+                style = {styles.comment}
+                data = {scrapbooks}
+                extraData = {this.state}
+                keyExtractor={item => { return item.id }}
+                renderItem={item => {
+                    const Notification = item.item
+                    return(
+                      <View style={styles.box}>
+                        <TouchableOpacity>
+                            <View  style={styles.scrapbook}>
+                              <View>
+                                <Image style={styles.image} source={{ uri: Notification.scrapCover }} />
+                              </View>
+                              <View style={styles.content}>
+                                <Text style={styles.scrapbookName}>{Notification.scrapName}</Text>
+                                <Text rkType="primary3 mediumLine">{Notification.scrapCaption}</Text>
+                              </View>
+                            </View>
+                        </TouchableOpacity>
+                      </View>
+                    )
+                }}
+            />
         </View>
     </View>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -122,41 +162,41 @@ const styles = {
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 2,
+    marginBottom: 10,
   },
   buttonText: {
     fontSize: 16,
     color: '#fff',
     textAlign: 'center',
   },
-  menuBox: {
-    backgroundColor: '#DCDCDC',
-    width: '33.333%',
-    height: 150,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: 'black',
-    shadowOpacity: 0.2,
-    borderWidth: 3,
-    borderColor: 'black',
-    shadowOffset: {
-      height: 2,
-      width: -2,
-    },
-    elevation: 4,
+  box: {
+    margin: 10
   },
-  icon: {
-    width: '100%',
-    height: '100%',
-  },
-  info: {
-    fontSize: 22,
-    color: '#696969',
-  },
-  bodyContent: {
-    paddingTop: 40,
+  scrapbook: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    paddingLeft: 10,
+    paddingRight: 16,
+    paddingVertical: 12,
+    alignItems: 'flex-start',
+    borderRadius: 10,
+    borderWidth : 1,
+    borderColor: 'black',
+    backgroundColor: 'grey'
   },
-};
+  image: { 
+    height: 100,
+    width : 100,
+    borderRadius: 10
+  },
+  content: {
+    marginLeft: 20,
+    marginTop: 10,
+  },
+  scrapbookName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  }
+});
 
 export default ProfileView;
