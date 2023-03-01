@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, TextInput, FlatList, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
-import TopBar from "../Navigators/TopBar"; // import the TopBar component
+import TopBar from "../../Navigators/TopBar"; // import the TopBar component
 
-export default function Contact({ navigation }) {
+export default function ViewFollowers({ navigation }) {
 
   const data = [
     {
@@ -61,7 +61,7 @@ export default function Contact({ navigation }) {
         <View style={styles.inputContainer}>
           <TextInput
               style={styles.inputs}
-              placeholder="Search..."
+              placeholder="Search Followers..."
               underlineColorAndroid="transparent"
               onChangeText={name_address => setQuery({ name_address })}
           />

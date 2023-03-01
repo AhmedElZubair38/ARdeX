@@ -60,11 +60,15 @@ const ProfileView = () => {
                 <Text style={styles.statLabel}>Posts</Text>
                 </View>
                 <View style={styles.statContainer}>
-                <Text style={styles.statCount}>{profileData.followers}</Text>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers')}>
+                        <Text style={styles.statCount}>{profileData.followers}</Text>
+                    </TouchableOpacity>
                 <Text style={styles.statLabel}>Followers</Text>
                 </View>
                 <View style={styles.statContainer}>
-                <Text style={styles.statCount}>{profileData.following}</Text>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing')}>
+                        <Text style={styles.statCount}>{profileData.following}</Text>
+                    </TouchableOpacity>
                 <Text style={styles.statLabel}>Following</Text>
                 </View>
             </View>

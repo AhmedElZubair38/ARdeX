@@ -26,6 +26,8 @@ import CreateNewScrapbook from './Screens/AddPostScreens/CreateNewScrapbook';
 import CreateNewScrapbook2 from './Screens/AddPostScreens/CreateNewScrapbook2';
 import ViewProfile from './Screens/ProfileScreens/ViewProfile';
 import Comments from './Screens/Comments';
+import ViewFollowers from './Screens/ProfileScreens/ViewFollowers';
+import ViewFollowing from './Screens/ProfileScreens/ViewFollowing';
 
 const Stack = createNativeStackNavigator();
 
@@ -157,6 +159,16 @@ export default function App() {
         <Stack.Screen 
           name="Comments"
           component={Comments}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="ViewFollowers"
+          component={ViewFollowers}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="ViewFollowing"
+          component={ViewFollowing}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
