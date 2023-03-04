@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 
 
+
 export default function LoginUpdated({ navigation }) {
 
   // Initialize state variables for each text input field's border color
@@ -68,13 +69,11 @@ export default function LoginUpdated({ navigation }) {
         style={{ width: '60%', height: '10%', alignSelf: 'center', resizeMode: 'stretch', overflow: 'visible', marginTop: 130 }} />
 
       <View style={styles.topContainer}></View>
-      <ScrollView>
         <View style={styles.bottomContainer}>
-          <View style={[styles.fieldContainer, { marginTop: 30 }]}>
+          <View style={[styles.fieldContainer, { marginTop: 50 }]}>
             <Text style={styles.fieldLabel}>Email</Text>
             <TextInput
-              placeholder="Email"
-              style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+              style={[styles.fieldInput]}
               borderBottomColor={nameBorderColor}
               onFocus={handleNameFocus}
               onBlur={handleNameBlur}
@@ -83,10 +82,9 @@ export default function LoginUpdated({ navigation }) {
             />
           </View>
           <View style={styles.fieldContainer}>
-            <Text style={styles.fieldLabel}>Password</Text>
+            <Text style={[styles.fieldContainer, { marginTop: 20 }]}>Password</Text>
             <TextInput
-              placeholder="Password"
-              style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+              style={[styles.fieldInput]}
               borderBottomColor={passwordBorderColor}
               onFocus={handlePasswordFocus}
               onBlur={handlePasswordBlur}
@@ -100,7 +98,7 @@ export default function LoginUpdated({ navigation }) {
             // onPress={() => { console.log(username + password); navigation.navigate('StackNavigator') }}
             onPress={handleSubmit}
           >
-            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> LOG-IN </Text>
+            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> Sign In </Text>
           </TouchableOpacity>
 
           <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Sign-in via </Text>
@@ -110,7 +108,7 @@ export default function LoginUpdated({ navigation }) {
               type="google"
               iconSize={34}
               onPress={() => console.log('Sign up with Google')}
-              style={{ width: 60, height: 60, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
+              style={{ width: 60, height: 60, shadowColor: 'grey', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
             />
           </View>
 
@@ -122,7 +120,6 @@ export default function LoginUpdated({ navigation }) {
             </Text>
           </View>
         </View>
-      </ScrollView>
     </View>
 
   );
@@ -145,7 +142,7 @@ const styles = StyleSheet.create({
 
   bottomContainer: {
 
-    flex: 65 / 6,
+    flex: 6000,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
@@ -171,18 +168,12 @@ const styles = StyleSheet.create({
   },
 
   fieldInput: {
-
-    borderWidth: 1,
     borderBottomWidth: 2,
-    fontSize: 10,
+    fontSize: 20,
     paddingLeft: 10,
-    borderColor: '#cccccc',
     padding: 0.5,
     fontSize: 16,
-    borderLeftColor: 'rgba(0, 0, 0, 0.1)',
-    borderRightColor: 'rgba(0, 0, 0, 0.1)',
-    borderTopColor: 'rgba(0, 0, 0, 0.1)',
-    height: 30,
+    height: 40,
   },
 
   signUpButtonContainer: {
@@ -194,7 +185,7 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 50,
     alignSelf: 'center',
-    shadowColor: 'black',
+    shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 2,

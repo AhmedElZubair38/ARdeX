@@ -62,6 +62,7 @@ export default function Contact({ navigation }) {
           <TextInput
               style={styles.inputs}
               placeholder="Search..."
+              placeholderTextColor="grey" 
               underlineColorAndroid="transparent"
               onChangeText={name_address => setQuery({ name_address })}
           />
@@ -118,9 +119,8 @@ const styles = StyleSheet.create({
   inputs: {    
     height: 45,
     margin: 25,
-    borderBottomColor: '#FFFFFF',
     width: '87%',
-
+    color: 'black'
   },
   searchButton: {    
     height: 45,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '13%',
     alignSelf: 'flex-end',
-    backgroundColor: '#FF4C68',
+    backgroundColor: 'white',
     borderRadius: 30,
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },

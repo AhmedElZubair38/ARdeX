@@ -159,7 +159,7 @@ export default function Register() {
               // onChangeText={text => handleOnchange(text, 'name')}
               // onFocus={() => {handleError(null, 'name'); handleNameFocus();}}
               placeholder="Name"
-              style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+              style={[styles.fieldInput]}
               borderBottomColor={nameBorderColor}
               onFocus={handleNameFocus}
               onBlur={handleNameBlur}
@@ -171,7 +171,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}>Email ID</Text>
             <TextInput
               placeholder="Email ID"
-              style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+              style={[styles.fieldInput]}
               borderBottomColor={emailBorderColor}
               onFocus={handleEmailFocus}
               onBlur={handleEmailBlur}
@@ -186,7 +186,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}>Username</Text>
             <TextInput
               placeholder="Username"
-              style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+              style={[styles.fieldInput]}
               borderBottomColor={usernameBorderColor}
               onFocus={handleUsernameFocus}
               onBlur={handleUsernameBlur}
@@ -199,7 +199,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}>Password</Text>
             <TextInput
               placeholder="Password"
-              style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+              style={[styles.fieldInput]}
               borderBottomColor={passwordBorderColor}
               onFocus={handlePasswordFocus}
               onBlur={handlePasswordBlur}
@@ -213,7 +213,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}> Confirm Password</Text>
             <TextInput
               placeholder="Confirm Password"
-              style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+              style={[styles.fieldInput]}
               borderBottomColor={confPasswordBorderColor}
               onFocus={handleconfPasswordFocus}
               onBlur={handleconfPasswordBlur}
@@ -224,7 +224,7 @@ export default function Register() {
           </View>
 
           <TouchableOpacity style={styles.signUpButtonContainer} onPress={handleSubmit}>
-            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> SIGN UP </Text>
+            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> Sign Up </Text>
           </TouchableOpacity>
 
           <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Signup via </Text>
@@ -234,7 +234,7 @@ export default function Register() {
               type="google"
               iconSize={34}
               onPress={() => console.log('Sign up with Google')}
-              style={{ width: 60, height: 60, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
+              style={{ width: 60, height: 60, shadowColor: 'grey', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
             />
           </View>
 
@@ -297,7 +297,6 @@ const styles = StyleSheet.create({
 
   fieldInput: {
 
-    borderWidth: 1,
     borderBottomWidth: 2,
     fontSize: 10,
     paddingLeft: 10,
@@ -319,7 +318,7 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 50,
     alignSelf: 'center',
-    shadowColor: 'black',
+    shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 2,

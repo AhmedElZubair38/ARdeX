@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginHorizontal: 20,
-    shadowColor: 'black',
+    shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 2,
@@ -175,7 +175,12 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'flex-start',
     borderRadius: 10,
-    backgroundColor: '#ddd'
+    backgroundColor: '#F5F5F5',
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+    marginBottom: 10,
   },
   image: { 
     height: 100,
