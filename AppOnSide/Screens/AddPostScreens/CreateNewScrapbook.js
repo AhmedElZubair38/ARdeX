@@ -39,8 +39,24 @@ const CreateNewScrapbook = () => {
                     multiline
                     autoCapitalize = "none"></TextInput>
             </View>
-            <View>
-                <Text style = {styles.Text}>Add a Cover Photo</Text>
+            <View style={styles.form}>
+                <View style={[{justifyContent:'center'}]}> 
+                    <Text style = {styles.Text}>Add Location</Text> 
+                </View>
+                <TextInput style = {[styles.nameInput,{width:'90%'}]} 
+                           autoCapitalize = "none"></TextInput>
+            </View>
+            <View style={styles.form}>
+                <View> 
+                    <Text style = {styles.Text}>Tag Users</Text> 
+                </View>
+                <TextInput 
+                    style = {[styles.nameInput,{width:'90%'}]} 
+                    multiline
+                    autoCapitalize = "none"></TextInput>
+                <View> 
+                    <Text style = {styles.Text}>Select Type of information</Text> 
+                </View>
             </View>
             <View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
