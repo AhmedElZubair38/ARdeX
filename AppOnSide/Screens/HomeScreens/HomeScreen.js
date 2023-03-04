@@ -65,7 +65,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                         <Text style={styles.userName}> {user_name} </Text>
                     </View>
                     <View style={styles.headerRight}>
-                        <TouchableOpacity onPress={toggleModal}>
+                        <TouchableOpacity style={{paddingRight: 10 }} onPress={toggleModal}>
                             <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
                             <Modal
                                 animationType={'slide'}
@@ -97,14 +97,14 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                             <TouchableOpacity onPress={() => setIsFilled(!isFilled)}>
                                 <Icon4
                                     name={isFilled ? 'heart' : 'hearto'}
-                                    size={30}
+                                    size={24}
                                     color={isFilled ? 'red' : 'grey'}
                                 />
                             </TouchableOpacity>
                         </View>
                         <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
-                                <Icon5 style={{ fontSize: 29, color: 'grey' }} name={Platform.OS === 'ios' ? 'comment' : 'comment'}/>
+                                <Icon5 style={{ fontSize: 24, color: 'grey' }} name={Platform.OS === 'ios' ? 'comment' : 'comment'}/>
                             </TouchableOpacity>
                            
                         </View>
@@ -112,15 +112,15 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                     <TouchableOpacity onPress={() => setIsFilled2(!isFilled2)}>
                                 <Icon2
                                     name={isFilled2 ? 'bookmark' : 'bookmark-o'}
-                                    size={31}
+                                    size={24}
                                     style={{ paddingHorizontal: 13 }}
                                     color={isFilled2 ? 'black' : 'grey'}
                                 />
                             </TouchableOpacity>
                     {/* <Icon3 style={{ fontSize: 29, color: 'grey', paddingHorizontal: 10 }} name={Platform.OS === 'ios' ? 'ios-heart' : 'bookmark'}/> */}
                 </View>
+                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {like_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {feed_caption} </Text>
-                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {like_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {comment_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
             </View>
         </View>
