@@ -29,6 +29,7 @@ import Comments from './Screens/HomeScreens/Comments';
 import ViewFollowers from './Screens/ProfileScreens/ViewFollowers';
 import ViewFollowing from './Screens/ProfileScreens/ViewFollowing';
 import Collections from './Screens/Collections';
+import ScrapBookView from './Screens/ScrapBookView';
 import Groups from './Screens/Groups'
 
 const Stack = createNativeStackNavigator();
@@ -181,6 +182,11 @@ export default function App() {
         <Stack.Screen 
           name="Groups"
           component={Groups}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="ScrapBookView"
+          component={ScrapBookView}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

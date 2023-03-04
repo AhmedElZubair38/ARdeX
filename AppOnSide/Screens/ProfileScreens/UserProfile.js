@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';//uhuh
 
 const ProfileView = () => {
 
@@ -84,7 +84,7 @@ const ProfileView = () => {
                     const Notification = item.item
                     return(
                       <View style={styles.box}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=> navigation.navigate('ScrapBookView')} >
                             <View  style={styles.scrapbook}>
                               <View>
                                 <Image style={styles.image} source={{ uri: Notification.scrapCover }} />
