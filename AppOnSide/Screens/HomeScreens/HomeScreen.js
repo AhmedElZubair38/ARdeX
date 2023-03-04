@@ -114,11 +114,14 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                     <View style={styles.modalContent}>
                         <Text style={styles.modalText}>Some text in the modal</Text>
                         <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={() => console.log('Report Post Button pressed')} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}> Report Post</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => console.log('Report User Button pressed')} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Report User</Text>
+                            </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>Close</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => console.log('Button 2 pressed')} style={styles.modalButton}>
-                                <Text style={styles.modalButtonText}>Button 2</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -217,7 +220,6 @@ const styles = StyleSheet.create({
     },
     modal: {
         flex : 1,
-
         backgroundColor: 'grey',
         alignItems: 'center',
         height: '20%',
@@ -230,8 +232,8 @@ const styles = StyleSheet.create({
     modalButton: {
         padding: 10,
         borderRadius: 5,
-        margin: 10,
-        backgroundColor: 'lightgray',
+        margin: 5,
+        backgroundColor: 'white',
         alignItems: 'center',
     },
     modalButtonText: {
@@ -239,16 +241,19 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: 'column',
+        width: '110%'
     },
     modalContent: {
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 10,
         alignItems: 'center',
+        backgroundColor: '#F5F5F5',
+        width: '100%'
     },
     modalContainer: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
     },
 });

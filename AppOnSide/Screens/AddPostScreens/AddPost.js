@@ -63,10 +63,10 @@ const AddPost = () => {
                 data={results}
                 renderItem={({ item }) => {
                 return (
-                    <View style={styles.notificationBox}>
+                    <TouchableOpacity style={styles.notificationBox} onPress={() => navigation.navigate('ScrapBookView')}>
                     <Image style={styles.image} source={{ uri: item.image }} />
                     <Text style={styles.description}>{item.scrapbookName}</Text>
-                    </View>
+                    </TouchableOpacity>
                 )
                 }}
                 />
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         flexDirection: 'row',
         borderRadius: 10,
-        shadowColor: 'black',
+        shadowColor: 'grey',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 2,
@@ -112,8 +112,6 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 100,
-        borderColor: 'black',
-        borderWidth: 1
       },
       description: {
         fontSize: 18,
@@ -128,7 +126,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
         alignItems: 'center',
-        shadowColor: 'black',
+        shadowColor: 'grey',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,
         shadowRadius: 2,
