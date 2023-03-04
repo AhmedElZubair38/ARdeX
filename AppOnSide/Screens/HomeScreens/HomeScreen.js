@@ -45,10 +45,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
     const [isFilled, setIsFilled] = useState(false);
     const [isFilled2, setIsFilled2] = useState(false);
     const navigation = useNavigation();
-    const [isModalVisible, setModalVisible] = useState(false);
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
+    const [modalVisible, setModalVisible] = useState(false);
     
 
     
@@ -65,24 +62,8 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                         <Text style={styles.userName}> {user_name} </Text>
                     </View>
                     <View style={styles.headerRight}>
-                        <TouchableOpacity style={{paddingRight: 10 }} onPress={toggleModal}>
+                        <TouchableOpacity style={{paddingRight: 10 }} onPress={()=> setModalVisible(true)}>
                             <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
-                            <Modal
-                                animationType={'slide'}
-                                transparent={false}
-                                visible={isModalVisible}
-                                onRequestClose={() => {
-                                    console.log('Modal has been closed.');
-                                }}>
-                                {/*All views of Modal*/}
-                                {/*Animation can be slide, slide, none*/}
-                                <View style={styles.modal}>
-                                    <Text style={styles.text}>Modal is open!</Text>
-                                    <TouchableOpacity onPress={() => toggleModal()}>
-                                        <Text>Close</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </Modal>
                         </TouchableOpacity>
                     </View >
                 </View>
@@ -123,6 +104,26 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {feed_caption} </Text>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {comment_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
             </View>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalText}>Some text in the modal</Text>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Close</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => console.log('Button 2 pressed')} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Button 2</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
         </View>
     )
 }
@@ -223,9 +224,31 @@ const styles = StyleSheet.create({
         padding: 100,
     },
     modalText: {
-        fontSize: 30,
-        backgroundColor: '#5A5A5A',
-        width: '80%',
-
-    }
+        fontSize: 18,
+        marginBottom: 20,
+    },
+    modalButton: {
+        padding: 10,
+        borderRadius: 5,
+        margin: 10,
+        backgroundColor: 'lightgray',
+        alignItems: 'center',
+    },
+    modalButtonText: {
+        fontSize: 18,
+    },
+    buttonContainer: {
+        flexDirection: 'column',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    modalContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
 });
