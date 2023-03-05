@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Modal from "react-native-modal";
 
 const ViewProfile = () => {
 
@@ -38,6 +40,8 @@ const ViewProfile = () => {
     },
   ]
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={{flex: 1}}>
         <TopBar/>
@@ -68,9 +72,14 @@ const ViewProfile = () => {
                 <Text style={styles.statLabel}>Following</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
-                <Text style={styles.buttonText}>Follow</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonField}>
+              <TouchableOpacity style={styles.button}>
+                  <Text style={styles.buttonText}>Follow</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button2} onPress={()=> setModalVisible(true)}>
+                  <Icon style={styles.buttonText} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+              </TouchableOpacity>
+            </View>
             <FlatList
                 style = {styles.comment}
                 data = {scrapbooks}
@@ -96,6 +105,26 @@ const ViewProfile = () => {
                 }}
             />
         </View>
+        <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalText}>Some text in the modal</Text>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={() => console.log('Report User Button pressed')} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Report User</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
     </View>
   );
 };
@@ -123,7 +152,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   bioContainer: {
-    padding: 15,
+    paddingTop: 15,
+    paddingHorizontal:25,
   },
   bioText: {
     fontSize: 16,
@@ -145,16 +175,32 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#999',
   },
+  buttonField:{
+    flexDirection: 'row'
+  },
   button: {
     backgroundColor: '#FF4C68',
-    borderRadius: 5,
+    borderRadius: 10,
     padding: 10,
-    marginHorizontal: 20,
-    shadowColor: 'black',
+    marginLeft: 15,
+    shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 2,
     marginBottom: 10,
+    width: '80%'
+  },
+  button2: {
+    backgroundColor: '#FF4C68',
+    borderRadius: 10,
+    padding: 10,
+    marginLeft: 5,
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+    marginBottom: 10,
+    width: '10%'
   },
   buttonText: {
     fontSize: 16,
@@ -171,7 +217,11 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'flex-start',
     borderRadius: 10,
-    backgroundColor: 'grey'
+    backgroundColor: '#F5F5F5',
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
   },
   image: { 
     height: 100,
@@ -186,7 +236,45 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
-  }
+  },
+  modal: {
+    flex : 1,
+    backgroundColor: 'grey',
+    alignItems: 'center',
+    height: '20%',
+    padding: 100,
+},
+modalText: {
+    fontSize: 18,
+    marginBottom: 20,
+},
+modalButton: {
+    padding: 10,
+    borderRadius: 5,
+    margin: 5,
+    backgroundColor: 'white',
+    alignItems: 'center',
+},
+modalButtonText: {
+    fontSize: 18,
+},
+buttonContainer: {
+    flexDirection: 'column',
+    width: '110%'
+},
+modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    backgroundColor: '#F5F5F5',
+    width: '100%'
+},
+modalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+},
 });
 
 export default ViewProfile;

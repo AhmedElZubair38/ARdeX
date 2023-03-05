@@ -57,9 +57,11 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                     <View style={styles.headerLeft}>
                         <Image
                         style={styles.userImage}
-                        source={{uri: user_image
-                        }}/>
-                        <Text style={styles.userName}> {user_name} </Text>
+                        source={{uri: user_image}}
+                        />
+                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
+                            <Text style={styles.userName}> {user_name} </Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.headerRight}>
                         <TouchableOpacity style={{paddingRight: 10 }} onPress={()=> setModalVisible(true)}>
