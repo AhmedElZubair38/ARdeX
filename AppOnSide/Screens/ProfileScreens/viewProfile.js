@@ -73,7 +73,7 @@ const ViewProfile = () => {
                 </View>
             </View>
             <View style={styles.buttonField}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={() => console.log('Follow Button Pressed')}>
                   <Text style={styles.buttonText}>Follow</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button2} onPress={()=> setModalVisible(true)}>
@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    marginBottom: 15
   },
   headerContainer: {
     alignItems: 'center',
