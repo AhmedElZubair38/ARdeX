@@ -14,7 +14,12 @@
 // export const app = initializeApp(firebaseConfig);
 // export const db = getFirestore(app);
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs;
+
+import {LogBox} from 'react-native';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
