@@ -9,10 +9,10 @@ const ScrapBookView = () => {
 
   return (
     <View style={styles.container}>
-        <TopBar/>
-      <Text style={styles.title}>posty post</Text>
-      <Text style={styles.author}>By user 1</Text>
-      <Text style={styles.body}>im the body body</Text>
+      <TopBar/>
+      <View style={styles.container}>
+        
+      </View>
     </View>
   );
 };
@@ -20,7 +20,6 @@ const ScrapBookView = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#fff',
   },
   title: {
