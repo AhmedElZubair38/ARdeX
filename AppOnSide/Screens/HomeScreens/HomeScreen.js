@@ -109,9 +109,9 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={modalVisible}
+                isVisible={modalVisible}
                 onRequestClose={() => setModalVisible(false)}
-                backdropOpacity={0.4}
+                backdropOpacity={0.5}
             >
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>

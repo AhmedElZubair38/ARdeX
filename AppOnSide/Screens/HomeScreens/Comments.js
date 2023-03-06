@@ -4,6 +4,7 @@ import TopBar from '../../Navigators/TopBar'
 import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import Modal from "react-native-modal";
 
 const Comments = () => {
   const com = [
@@ -76,6 +77,8 @@ const Comments = () => {
 
   const navigation = useNavigation()
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={{flex : 1}}>
         <TopBar/>
@@ -109,7 +112,9 @@ const Comments = () => {
                                             <Text style= {styles.username}>{Notification.name}</Text>
                                         </TouchableOpacity>
                                     </View>
-                                    <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                                    <TouchableOpacity onPress={()=> setModalVisible(true)}>
+                                        <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                                    </TouchableOpacity>
                                 </View>
                                 <Text rkType="primary3 mediumLine">{Notification.comment}</Text>
                             </View>
@@ -119,6 +124,26 @@ const Comments = () => {
                 }}
             />
         </View>
+        <Modal
+                animationType="slide"
+                transparent={true}
+                isVisible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+                backdropOpacity={0.5}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={() => console.log('Report Comment Button pressed')} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}> Report Comment</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
     </View>
   )
 }
@@ -179,5 +204,43 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 5,
         right: 20,
-    }
+    },
+    modal: {
+        flex : 1,
+        backgroundColor: 'grey',
+        alignItems: 'center',
+        height: '20%',
+        padding: 100,
+    },
+    modalText: {
+        fontSize: 18,
+        marginBottom: 20,
+    },
+    modalButton: {
+        padding: 10,
+        borderRadius: 5,
+        margin: 5,
+        backgroundColor: 'white',
+        alignItems: 'center',
+    },
+    modalButtonText: {
+        fontSize: 18,
+    },
+    buttonContainer: {
+        flexDirection: 'column',
+        width: '110%'
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        backgroundColor: '#F5F5F5',
+        width: '100%'
+    },
+    modalContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 })
