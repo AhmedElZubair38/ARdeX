@@ -46,6 +46,9 @@ const ViewProfile = () => {
     <View style={{flex: 1}}>
         <TopBar/>
         <View style={styles.container}>
+          <TouchableOpacity onPress={()=> navigation.goBack()} style={styles.backButton}>
+            <Icon style={{color: 'black'}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
+          </TouchableOpacity>
             <View style={styles.headerContainer}>
                 <View style={styles.profileContainer}>
                 <Image
@@ -61,14 +64,18 @@ const ViewProfile = () => {
             <View style={styles.statsContainer}>
                 <View style={styles.statContainer}>
                 <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
-                <Text style={styles.statLabel}>Posts</Text>
+                <Text style={styles.statLabel}>ScrapBooks</Text>
                 </View>
                 <View style={styles.statContainer}>
-                <Text style={styles.statCount}>{profileData.followers}</Text>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers')}>
+                        <Text style={styles.statCount}>{profileData.followers}</Text>
+                    </TouchableOpacity>
                 <Text style={styles.statLabel}>Followers</Text>
                 </View>
                 <View style={styles.statContainer}>
-                <Text style={styles.statCount}>{profileData.following}</Text>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing')}>
+                        <Text style={styles.statCount}>{profileData.following}</Text>
+                    </TouchableOpacity>
                 <Text style={styles.statLabel}>Following</Text>
                 </View>
             </View>
@@ -110,13 +117,16 @@ const ViewProfile = () => {
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => setModalVisible(false)}
+                backdropOpacity={0.4}
             >
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
-                        <Text style={styles.modalText}>Some text in the modal</Text>
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity onPress={() => console.log('Report User Button pressed')} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>Report User</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => console.log('Block User Button pressed')} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Block User</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>Close</Text>
@@ -140,7 +150,7 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     alignItems: 'center',
-    marginTop: 20
+    marginTop: -20
   },
   profilePhoto: {
     width: 100,
@@ -276,6 +286,10 @@ modalContainer: {
     alignItems: 'center',
     justifyContent: 'center',
 },
+backButton: {
+    paddingTop: 20,
+    paddingLeft: 10
+}
 });
 
 export default ViewProfile;

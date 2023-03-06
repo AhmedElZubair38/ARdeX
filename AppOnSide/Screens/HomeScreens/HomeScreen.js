@@ -111,10 +111,10 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => setModalVisible(false)}
+                backdropOpacity={0.4}
             >
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
-                        <Text style={styles.modalText}>Some text in the modal</Text>
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity onPress={() => console.log('Report Post Button pressed')} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}> Report Post</Text>
