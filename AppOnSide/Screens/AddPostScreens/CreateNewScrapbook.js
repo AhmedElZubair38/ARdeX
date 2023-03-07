@@ -37,7 +37,8 @@ const CreateNewScrapbook = () => {
                 <TextInput 
                     style = {[styles.nameInput,{height:100, width:'90%'}]} 
                     multiline
-                    autoCapitalize = "none"></TextInput>
+                    autoCapitalize = "none">
+                </TextInput>
             </View>
             <View style={styles.formOption}>
                 <TouchableOpacity style={styles.infoButton}>
@@ -46,6 +47,17 @@ const CreateNewScrapbook = () => {
                 <TouchableOpacity style={styles.infoButton}>
                     <Text style = {styles.Text}>Set Location</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.form}>
+                <Text style = {styles.Text}>Select The type of information</Text>
+                <View style={styles.infoFormOption}>
+                    <TouchableOpacity style={styles.infoButton}>
+                        <Text style = {styles.Text}>Opinion</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.infoButton}>
+                        <Text style = {styles.Text}>Fiction</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             <View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
@@ -84,6 +96,14 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         justifyContent: 'space-between',
         width: '80%',
+        marginHorizontal: '10%',
+        marginBottom: 10
+    },
+    infoFormOption: {
+        flexDirection: 'row',
+        paddingVertical: 10,
+        justifyContent: 'space-between',
+        width: '90%',
         marginHorizontal: '10%',
         marginBottom: 10
     },
