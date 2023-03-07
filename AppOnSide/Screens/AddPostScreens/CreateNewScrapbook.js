@@ -39,24 +39,13 @@ const CreateNewScrapbook = () => {
                     multiline
                     autoCapitalize = "none"></TextInput>
             </View>
-            <View style={styles.form}>
-                <View style={[{justifyContent:'center'}]}> 
-                    <Text style = {styles.Text}>Add Location</Text> 
-                </View>
-                <TextInput style = {[styles.nameInput,{width:'90%'}]} 
-                           autoCapitalize = "none"></TextInput>
-            </View>
-            <View style={styles.form}>
-                <View> 
-                    <Text style = {styles.Text}>Tag Users</Text> 
-                </View>
-                <TextInput 
-                    style = {[styles.nameInput,{width:'90%'}]} 
-                    multiline
-                    autoCapitalize = "none"></TextInput>
-                <View> 
-                    <Text style = {styles.Text}>Select Type of information</Text> 
-                </View>
+            <View style={styles.formOption}>
+                <TouchableOpacity style={styles.infoButton}>
+                    <Text style = {styles.Text}>Tag Users</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.infoButton}>
+                    <Text style = {styles.Text}>Set Location</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
@@ -89,6 +78,23 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: '90%',
         paddingVertical: 10
+    },
+    formOption: {
+        flexDirection: 'row',
+        paddingVertical: 10,
+        justifyContent: 'space-between',
+        width: '80%',
+        marginHorizontal: '10%',
+        marginBottom: 10
+    },
+    infoButton: {
+        backgroundColor: '#DDDDDD',
+        borderRadius: 5,
+        alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.4, 
+        shadowRadius: 2,
     },
     nameInput: {
         borderWidth: 1,

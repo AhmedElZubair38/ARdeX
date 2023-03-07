@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native'
 import React, {useState} from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { FlatList } from 'react-native-gesture-handler'
@@ -79,6 +79,12 @@ const Comments = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [query, setComment] = useState()
+
+  const showAlert = viewId => {
+    Alert.alert('Alert', 'Button pressed ' + viewId)
+  }
+
   return (
     <View style={{flex : 1}}>
         <TopBar/>
@@ -123,6 +129,21 @@ const Comments = () => {
                     )
                 }}
             />
+        </View>
+        <View style={styles.search}>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.inputs}
+                    placeholder="Upload a comment..."
+                    placeholderTextColor="grey" 
+                    underlineColorAndroid="transparent"
+                    onChangeText={name_address => setComment({ name_address })}
+                    
+                />
+                <TouchableOpacity style={styles.searchButton}>
+                        <Icon name={Platform.OS === 'ios' ? 'send' : 'send'}></Icon>
+                </TouchableOpacity>
+            </View>
         </View>
         <Modal
                 animationType="slide"
@@ -184,8 +205,8 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     image: {
-        height : 20,
-        width : 20,
+        height : 30,
+        width : 30,
         borderRadius: 50,
     },
     username: {
@@ -197,6 +218,7 @@ const styles = StyleSheet.create({
         marginLeft: 20
     },
     user: {
+        marginLeft: -5,
         flexDirection: 'row',
         alignItems: 'center'
     },
@@ -243,4 +265,43 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    inputContainer: {
+        borderBottomColor: '#F5FCFF',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 30,
+        borderBottomWidth: 1,
+        height: 45,
+        flexDirection: 'row',
+        alignItems: 'center',
+        flex: 1,
+        margin: 10,
+        shadowColor: 'grey',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+      },
+      search: {
+        flexDirection: 'row',
+        width: '87%',
+        marginBottom: 10,
+      },
+      inputs: {    
+        height: 45,
+        margin: 25,
+        width: '87%',
+        color: 'black'
+      },
+      searchButton: {    
+        height: 45,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '13%',
+        alignSelf: 'flex-end',
+        backgroundColor: 'white',
+        borderRadius: 30,
+        shadowColor: 'grey',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+      },
 })

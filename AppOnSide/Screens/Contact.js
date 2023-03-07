@@ -65,6 +65,9 @@ export default function Contact({ navigation }) {
               placeholderTextColor="grey" 
               underlineColorAndroid="transparent"
               onChangeText={name_address => setQuery({ name_address })}
+              ItemSeparatorComponent={() => {
+                return <View style={styles.separator} />
+              }}
           />
           <TouchableOpacity style={styles.searchButton}>
             <Icon name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
@@ -93,7 +96,6 @@ export default function Contact({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ddd',
   },
   inputContainer: {
     borderBottomColor: '#F5FCFF',
@@ -154,8 +156,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: 100,
   },
   description: {
@@ -163,5 +165,9 @@ const styles = StyleSheet.create({
     color: '#3498db',
     marginLeft: 10,
     alignSelf: 'center',
+  },
+  separator: {
+    height: .5,
+    backgroundColor: '#CCCCCC',
   },
 });

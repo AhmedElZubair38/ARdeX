@@ -7,8 +7,8 @@ import TopBar from "../Navigators/TopBar";
 
 const MyMap = () => {
   const [region, setRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
+    latitude: 25.10156,
+    longitude: 55.16204,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
@@ -35,6 +35,7 @@ const MyMap = () => {
       style={{ flex: 1 }}
       region={region}
       showsUserLocation={true}
+      showsMyLocationButton={true}
     >
     <Marker coordinate={region} />
     </MapView>
