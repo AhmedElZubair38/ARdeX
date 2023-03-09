@@ -18,27 +18,6 @@ const ProfileView = () => {
     following: 2,
   }
 
-  const scrapbooks = [
-    {
-      id: 1,
-      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'A',
-      scrapCaption: 'A',
-    },
-    {
-      id: 2,
-      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'B',
-      scrapCaption: 'A',
-    },
-    {
-      id: 3,
-      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'C',
-      scrapCaption: 'A',
-    },
-  ]
-
   return (
     <View style={{flex: 1}}>
         <TopBar/>
