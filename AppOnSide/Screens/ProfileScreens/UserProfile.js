@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
-import { useNavigation } from '@react-navigation/native';//uhuh
+import { useNavigation } from '@react-navigation/native';
+import ProfileNavigator from '../../Navigators/ProfileNavigator';
 
 const ProfileView = () => {
 
@@ -75,30 +76,7 @@ const ProfileView = () => {
             <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
                 <Text style={styles.buttonText}>Edit Profile</Text>
             </TouchableOpacity>
-            <FlatList
-                style = {styles.comment}
-                data = {scrapbooks}
-                extraData = {this.state}
-                keyExtractor={item => { return item.id }}
-                renderItem={item => {
-                    const Notification = item.item
-                    return(
-                      <View style={styles.box}>
-                        <TouchableOpacity onPress={()=> navigation.navigate('ScrapBookView')} >
-                            <View  style={styles.scrapbook}>
-                              <View>
-                                <Image style={styles.image} source={{ uri: Notification.scrapCover }} />
-                              </View>
-                              <View style={styles.content}>
-                                <Text style={styles.scrapbookName}>{Notification.scrapName}</Text>
-                                <Text rkType="primary3 mediumLine">{Notification.scrapCaption}</Text>
-                              </View>
-                            </View>
-                        </TouchableOpacity>
-                      </View>
-                    )
-                }}
-            />
+            <ProfileNavigator/>
         </View>
     </View>
   );

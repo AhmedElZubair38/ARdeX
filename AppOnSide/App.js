@@ -30,7 +30,9 @@ import ViewFollowers from './Screens/ProfileScreens/ViewFollowers';
 import ViewFollowing from './Screens/ProfileScreens/ViewFollowing';
 import Collections from './Screens/Collections';
 import ScrapBookView from './Screens/ScrapBookView';
-import Groups from './Screens/Groups'
+import Groups from './Screens/Groups';
+import ProfileNavigator from './Navigators/ProfileNavigator';
+import ScrapbooksList from './Screens/ProfileScreens/ScrapbooksList';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +64,11 @@ export default function App() {
         <Stack.Screen 
           name="BottomTabNavigator"
           component={BottomTabNavigation}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="ProfileNavigator"
+          component={ProfileNavigator}
           options={{headerShown: false}}
         />
         <Stack.Screen 
@@ -187,6 +194,11 @@ export default function App() {
         <Stack.Screen 
           name="ScrapBookView"
           component={ScrapBookView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="ScrapbooksList"
+          component={ScrapbooksList}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
