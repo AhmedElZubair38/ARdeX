@@ -4,8 +4,6 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Platform } from 'react-native';
 import ScrapbooksList from '../Screens/ProfileScreens/ScrapbooksList';
-import PostsList from '../Screens/ProfileScreens/PostsList';
-
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -15,7 +13,7 @@ function MyTabs() {
         
         <Tab.Navigator 
         
-        initalRouteName='PostsList' 
+        initalRouteName='ScrapbooksList' 
         
         screenOptions={{
             headerShown: false, 
@@ -28,12 +26,6 @@ function MyTabs() {
             tabBarStyle: {height: 50}
             }}   
         >
-
-            <Tab.Screen name="PostsList" 
-            component={PostsList}
-            options={{ 
-                tabBarLabel: "Posts"
-                }}/>
 
             <Tab.Screen name="ScrapbooksList"
             component={ScrapbooksList}

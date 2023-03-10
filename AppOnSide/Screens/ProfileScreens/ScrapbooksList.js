@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
 const ScrapbooksList = () => {
+    const navigation = useNavigation();
 
     const posts = [
         {
@@ -29,17 +31,21 @@ const ScrapbooksList = () => {
         <FlatList
             data={posts}
             renderItem={({item}) => (
-                <View style={styles.card}>
-                    <View style={styles.cardHeader}>
-                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                            <Image source={{uri: item.image}} style={styles.profileImage}/>
-                            <View style={{marginLeft: 10}}>
-                                <Text style={styles.name}>{item.user}</Text>
-                                <Text style={styles.time}>{item.datetime}</Text>
+                <View>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ScrapBookView')}>
+                        <View style={styles.card}>
+                            <View style={styles.cardHeader}>
+                                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                    <Image source={{uri: item.image}} style={styles.profileImage}/>
+                                    <View style={{marginLeft: 10}}>
+                                        <Text style={styles.name}>{item.user}</Text>
+                                        <Text style={styles.time}>{item.datetime}</Text>
+                                    </View>
+                                </View>
                             </View>
+                            <Image source={{uri: item.image}} style={styles.postImage}/>
                         </View>
-                    </View>
-                    <Image source={{uri: item.image}} style={styles.postImage}/>
+                    </TouchableOpacity>
                 </View>
             )}
             />
@@ -59,6 +65,10 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 10,
         borderRadius: 10,
+        shadowColor: 'grey',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.9,
+        shadowRadius: 2,
     },
     cardHeader: {
         flexDirection: 'row',

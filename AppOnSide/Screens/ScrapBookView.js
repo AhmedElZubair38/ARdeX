@@ -11,7 +11,7 @@ const ScrapBookView = () => {
     <View style={styles.container}>
       <TopBar/>
       <View style={styles.container}>
-        
+
       </View>
     </View>
   );

@@ -24,21 +24,15 @@ const ProfileView = () => {
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <View style={styles.profileContainer}>
-                <Image
-                    style={styles.profilePhoto}
-                    source={{uri : profileData.profilePic}}
-                />
-                <Text style={styles.nameText}>{profileData.name}</Text>
+                  <Image
+                      style={styles.profilePhoto}
+                      source={{uri : profileData.profilePic}}
+                  />
                 </View>
-            </View>
-            <View style={styles.bioContainer}>
-                <Text style={styles.bioText} rkType="primary3 mediumLine">{profileData.bio}</Text>
-            </View>
-            <View style={styles.statsContainer}>
-                <View style={styles.statContainer}>
-                <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
-                <Text style={styles.statLabel}>Posts</Text>
-                </View>
+                  <View style={styles.statContainer}>
+                    <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
+                    <Text style={styles.statLabel}>Posts</Text>
+                  </View>
                 <View style={styles.statContainer}>
                     <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers')}>
                         <Text style={styles.statCount}>{profileData.followers}</Text>
@@ -51,6 +45,10 @@ const ProfileView = () => {
                     </TouchableOpacity>
                 <Text style={styles.statLabel}>Following</Text>
                 </View>
+            </View>
+            <View style={styles.bioContainer}>
+                <Text style={styles.nameText}>{profileData.name}</Text>
+                <Text style={styles.bioText} rkType="primary3 mediumLine">{profileData.bio}</Text>
             </View>
             <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
                 <Text style={styles.buttonText}>Edit Profile</Text>
@@ -68,6 +66,8 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     alignItems: 'center',
+    flexDirection: 'row',
+    marginHorizontal: 10
   },
   profileContainer: {
     alignItems: 'center',
@@ -89,14 +89,11 @@ const styles = StyleSheet.create({
   bioText: {
     fontSize: 16,
   },
-  statsContainer: {
-    flexDirection: 'row',
-    marginTop: 20,
-    marginBottom: 20,
-  },
   statContainer: {
+    justifyContent : 'space-between',
     alignItems: 'center',
     flex: 1,
+    paddingTop:30
   },
   statCount: {
     fontSize: 20,
