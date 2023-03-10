@@ -117,10 +117,10 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={() => console.log('Report Post Button pressed')} style={styles.modalButton}>
-                                <Text style={styles.modalButtonText}> Report Post</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => console.log('Report User Button pressed')} style={styles.modalButton}>
+                        <TouchableOpacity onPress={() => console.log('Report User Button pressed')} style={styles.modalButton}>
+                            <Text style={styles.modalButtonText}> Report Post</Text>
+                        </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {console.log('Report Post Button pressed'); navigation.navigate('ReportUserHomeScreen');}} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>Report User</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>

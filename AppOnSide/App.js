@@ -33,6 +33,7 @@ import ScrapBookView from './Screens/ScrapBookView';
 import Groups from './Screens/Groups';
 import ProfileNavigator from './Navigators/ProfileNavigator';
 import ScrapbooksList from './Screens/ProfileScreens/ScrapbooksList';
+import ReportUserHomeScreen from './Screens/HomeScreens/ReportUserHomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -199,6 +200,11 @@ export default function App() {
         <Stack.Screen 
           name="ScrapbooksList"
           component={ScrapbooksList}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name="ReportUserHomeScreen"
+          component={ReportUserHomeScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
