@@ -9,7 +9,7 @@ const profileData = {
   profilePic: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
 }
 
-function ReportUserHomeScreen() {
+function ReportScrapBookHomeScreen() {
 
   const navigation = useNavigation();
 
@@ -36,30 +36,23 @@ function ReportUserHomeScreen() {
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
-        <Text style={styles.header}>Report User</Text>
-
-        <View style={styles.profileBox}>
-              <TouchableOpacity style={styles.userButton} onPress={() => navigation.navigate('ViewProfile')}>
-                <Image style={styles.image} source={{ uri: profileData.profilePic }} />
-                <Text style={styles.description}>{profileData.handle}</Text>
-              </TouchableOpacity>
-        </View>
+        <Text style={styles.header}>Report Scrap Book</Text>
 
         <View>
-                <Text style={styles.text}>How is {profileData.name} bothering you?</Text>
+                <Text style={styles.text}>Why are you reporting {profileData.name}'s Scrap Book?</Text>
         </View>
         
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 30, paddingLeft: 10}}>
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button1') ? 'green' : '#FF4C68' }]}>
           <TouchableOpacity onPress={()=> toggleButton('button1')}>
-            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'fax'}}> Bullying </Text>
+            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'fax'}}> Spam </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button2') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button2')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Impersonation </Text>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Nudity </Text>
           </TouchableOpacity>
         </View>
           
@@ -70,13 +63,13 @@ function ReportUserHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button3') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button3')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Spam </Text>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Hate Speech </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button4') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button4')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Fraud </Text>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Violence </Text>
           </TouchableOpacity>
         </View>
           
@@ -87,13 +80,45 @@ function ReportUserHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button5') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button5')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Under-Age </Text>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Illegal Goods </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button6') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button6')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Black-mailing </Text>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Harrassment </Text>
+          </TouchableOpacity>
+        </View>
+          
+        </View>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 10, paddingLeft: 10}}>
+
+        <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button7') ? 'green' : '#FF4C68' }]}>
+        <TouchableOpacity onPress={()=> toggleButton('button7')}>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Scam or Fraud </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={[styles.meow2, { backgroundColor: isButtonSelected('button8') ? 'green' : '#FF4C68' }]}>
+        <TouchableOpacity onPress={()=> toggleButton('button8')}>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Suicide or Self-Injury </Text>
+          </TouchableOpacity>
+        </View>
+          
+        </View>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 10, paddingLeft: 10}}>
+
+        <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button9') ? 'green' : '#FF4C68' }]}>
+        <TouchableOpacity onPress={()=> toggleButton('button9')}>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> False Information </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={[styles.meow2, { backgroundColor: isButtonSelected('button10') ? 'green' : '#FF4C68' }]}>
+        <TouchableOpacity onPress={()=> toggleButton('button10')}>
+            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Other </Text>
           </TouchableOpacity>
         </View>
           
@@ -126,7 +151,7 @@ const styles = StyleSheet.create({
 
     rectangle: {
       width: 320,
-      height: 530,
+      height: 545,
       borderRadius: 35,
       borderWidth: 2,
       borderColor: 'black',
@@ -273,4 +298,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default ReportUserHomeScreen;
+export default ReportScrapBookHomeScreen;
