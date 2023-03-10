@@ -39,17 +39,17 @@ const MyMap = () => {
   return (
     <View style={{flex: 1}}>
     <TopBar />
-    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 10, paddingLeft: 10}}>
+    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10, paddingHorizontal: 10, backgroundColor: '#FF4C68'}}>
 
-        <View style={styles.meow2}>
-            {latitude && <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> My Latitude: {latitude} </Text>}
+        <View style={[styles.meow2, {marginLeft: 10}]}>
+            {latitude && <Text style={{ color: 'black', fontSize: 11, fontFamily: 'fax'}}> My Latitude: {latitude} </Text>}
         </View>
 
-        <View style={styles.meow2}>
-            {longitude && <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> My Longitude: {latitude} </Text>}
+        <View style={[styles.meow2, {marginLeft: 10, marginRight: 10}]}>
+            {longitude && <Text style={{ color: 'black', fontSize: 11, fontFamily: 'fax'}}> My Longitude: {latitude} </Text>}
         </View>
           
-        </View>
+    </View>
     <MapView
       style={{ flex: 1 }}
       region={region}
@@ -65,12 +65,12 @@ const MyMap = () => {
 const styles = StyleSheet.create({
 
   meow2: {
-    width: 135,
-    height: 50,
+    width: 180,
+    height: 45,
     borderRadius: 35,
     borderWidth: 2,
     borderColor: 'black',
-    backgroundColor: '#FF4C68',
+    backgroundColor: '#ddd',
     alignSelf: 'center',
     absolute: 'absolute',
     alignItems: 'center',
