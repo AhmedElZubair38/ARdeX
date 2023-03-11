@@ -1,6 +1,11 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState} from 'react'
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Icon2 from 'react-native-vector-icons/FontAwesome';
+import Icon3 from 'react-native-vector-icons/Feather';
+import Icon4 from 'react-native-vector-icons/AntDesign';
+import Icon5 from 'react-native-vector-icons/Fontisto';
 
 const ScrapbooksList = () => {
     const navigation = useNavigation();
@@ -11,20 +16,29 @@ const ScrapbooksList = () => {
           user: "nj2002",
           image: 'https://bootdey.com/img/Content/avatar/avatar1.png',
           datetime: "2023-2-28 12:00:00",
+          name: "Scrap1",
+          caption: "Test caption",
         },
         {
           id: 2,
           user: "nj2002",
           image: 'https://bootdey.com/img/Content/avatar/avatar1.png',
           datetime: "2023-2-28 12:00:00",
+          name: "Scrap2",
+          caption: "Test caption",
         },
         {
           id: 3,
           user: "nj2002",
           image: 'https://bootdey.com/img/Content/avatar/avatar1.png',
           datetime: "2023-2-28 12:00:00",
+          name: "Scrap2",
+          caption: "Test caption",
         },
-      ]
+    ]
+
+    const [isFilled, setIsFilled] = useState(false);
+    const [isFilled2, setIsFilled2] = useState(false);
 
   return (
     <View style={{flex : 1}}>
@@ -44,6 +58,27 @@ const ScrapbooksList = () => {
                                 </View>
                             </View>
                             <Image source={{uri: item.image}} style={styles.postImage}/>
+                            <View style={styles.cardFooter}>
+                    <View style={styles.footerLeft}>
+                        <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
+                            {/* <Icon style={{ fontSize: 30, color: 'red' }} name={Platform.OS === 'ios' ? 'ios-heart' : 'heart'}/> */}
+                            <TouchableOpacity onPress={() => setIsFilled(!isFilled)}>
+                                <Icon4
+                                    name={isFilled ? 'heart' : 'hearto'}
+                                    size={24}
+                                    color={isFilled ? 'red' : 'grey'}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                                <Icon5 style={{ fontSize: 24, color: 'grey' }} name={Platform.OS === 'ios' ? 'comment' : 'comment'}/>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+                            <Text style={styles.scrapName}>{item.name}</Text>
+                            <Text style={styles.scrapCaption}>{item.caption}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -127,6 +162,23 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'center',
         color: '#808080',
+    },
+    scrapName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        padding: 10,
+    },
+    scrapCaption:{
+        fontSize: 14,
+        paddingHorizontal: 10,
+    },
+    cardFooter: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    footerLeft: {
+        flexDirection: 'row',
+        paddingTop: 10,
     },
 
 })

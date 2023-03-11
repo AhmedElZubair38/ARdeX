@@ -8,7 +8,6 @@ import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from 'react-native-vector-icons/AntDesign';
 import Icon5 from 'react-native-vector-icons/Fontisto';
 import Modal from "react-native-modal";
-import { SwiperFlatList } from 'react-native-swiper-flatlist';
 
 
 const DATA = [
