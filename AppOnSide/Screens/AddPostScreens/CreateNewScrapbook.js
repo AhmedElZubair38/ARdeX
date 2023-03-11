@@ -1,10 +1,26 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const CreateNewScrapbook = () => {
+
+    const [selectedButtons, setSelectedButtons] = useState([]);
+
+    const toggleButton = (button) => {
+        const buttons = [...selectedButtons];
+        const index = buttons.indexOf(button);
+        if (index > -1) {
+        buttons.splice(index, 1);
+        } else {
+        buttons.push(button);
+        }
+        setSelectedButtons(buttons);
+    };
+
+    const isButtonSelected = (button) => selectedButtons.indexOf(button) > -1;
 
     const onClick = () => {
         handleSubmit();
@@ -21,18 +37,18 @@ const CreateNewScrapbook = () => {
         <TopBar/>
         <View style={styles.container}>
             <View>
-                <Text style={styles.HeaderText}>Create New Scrapbook</Text>
+                <Text style={styles.header2}>Create New Scrapbook</Text>
             </View>
-            <View style={styles.form}>
-                <View style={[{justifyContent:'center'}]}> 
-                    <Text style = {styles.Text}>Scrap Book Name</Text> 
+            <View style={styles.form}> 
+                <View style={{ justifyContent:'center' }}> 
+                    <Text style = {styles.Text}>Scrap Book Name</Text>
                 </View>
                 <TextInput style = {[styles.nameInput,{width:'90%'}]} 
                            autoCapitalize = "none"></TextInput>
             </View>
             <View style={styles.form}>
                 <View> 
-                    <Text style = {styles.Text}>Caption   </Text> 
+                    <Text style = {styles.Text}>Caption</Text> 
                 </View>
                 <TextInput 
                     style = {[styles.nameInput,{height:100, width:'90%'}]} 
@@ -40,25 +56,36 @@ const CreateNewScrapbook = () => {
                     autoCapitalize = "none">
                 </TextInput>
             </View>
-            <View style={styles.formOption}>
-                <TouchableOpacity style={styles.infoButton}>
-                    <Text style = {styles.Text}>Tag Users</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.infoButton}>
-                    <Text style = {styles.Text}>Set Location</Text>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+            <View style={[styles.meow2, { margin: 10 }]}>
+                <TouchableOpacity onPress={()=> console.log("tag user!")}>
+                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> tag users </Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.form}>
-                <Text style = {styles.Text}>Select The type of information</Text>
-                <View style={styles.infoFormOption}>
-                    <TouchableOpacity style={styles.infoButton}>
-                        <Text style = {styles.Text}>Opinion</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.infoButton}>
-                        <Text style = {styles.Text}>Fiction</Text>
-                    </TouchableOpacity>
-                </View>
+            <View style={[styles.meow2, { backgroundColor: isButtonSelected('button2') ? 'green' : '#FF4C68' }]}>
+                <TouchableOpacity onPress={()=> toggleButton('button2')}>
+                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Show Location? </Text>
+                </TouchableOpacity>
             </View>
+        </View>
+
+        <Text style={styles.header}>How do you want to upload your photos?</Text>
+                
+        <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+            <View style={[styles.meow2, { margin: 10}]}>
+                <TouchableOpacity onPress={()=> console.log("camera!")}>
+                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Camera </Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.meow2}>
+                <TouchableOpacity onPress={()=> console.log("gallery!")}>
+                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Gallery </Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+            
+
             <View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
 					<Text style={styles.buttonText}>Cancel</Text>
@@ -89,7 +116,7 @@ const styles = StyleSheet.create({
     form: {
         flexDirection: 'column',
         width: '90%',
-        paddingVertical: 10
+        paddingVertical: 10,
     },
     formOption: {
         flexDirection: 'row',
@@ -119,7 +146,7 @@ const styles = StyleSheet.create({
     nameInput: {
         borderWidth: 1,
         borderRadius: 10,
-        height: 30,
+        height: 45,
         paddingHorizontal: 10,
         marginHorizontal: '10%'
     },
@@ -128,12 +155,13 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         padding: 5,
+        fontWeight: 'bold',
         marginHorizontal: '10%'
     },
     button: {
-		marginTop: 20,
+		marginTop: 15,
 		backgroundColor: '#FF4C68',
-		borderRadius: 5,
+		borderRadius: 15,
 		paddingVertical: 10,
 		paddingHorizontal: 20,
 		alignItems: 'center',
@@ -144,7 +172,8 @@ const styles = StyleSheet.create({
 	},
 	buttonText: {
 		color: '#fff',
-		fontSize: 18,
+		fontSize: 20,
+        fontWeight: 'bold',
 	},
     buttons: {
 		width: '80%',
@@ -152,4 +181,44 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		bottom: '6%'
 	},
+    meow2: {
+        width: 145,
+        height: 50,
+        borderRadius: 15,
+        borderColor: 'black',
+        backgroundColor: '#FF4C68',
+        alignSelf: 'center',
+        absolute: 'absolute',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        textAlignVertical: 'center',
+      },
+
+      header: {
+        paddingTop: '2%',
+        paddingBottom: '2%',
+        paddingHorizontal: '5%',
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#808080',
+        textAlign: 'center',
+        
+      },
+      header2: {
+        paddingTop: '5%',
+        paddingBottom: '4%',
+        paddingHorizontal: '5%',
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: '#808080',
+        textAlign: 'center',
+        
+      },
+      text: {
+        fontSize: 14,
+        fontWeight : 'bold',
+        paddingTop: '1%',
+        paddingBottom: '2%',
+      },
 })

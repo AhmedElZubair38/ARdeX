@@ -8,20 +8,26 @@ const Collections = () => {
     {
       id: 1,
       scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'A',
-      scrapCaption: 'A',
+      scrapName: 'Family Trips',
+      saveDetails: 'Saved from @naveen_senpai89',
     },
     {
       id: 2,
       scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'B',
-      scrapCaption: 'A',
+      scrapName: 'Family Farm',
+      saveDetails: 'Saved from @naveen_senpai29',
     },
     {
       id: 3,
       scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'C',
-      scrapCaption: 'A',
+      scrapName: 'Family Fantasy',
+      saveDetails: 'Saved from @naveen_senpai73',
+    },
+    {
+      id: 4,
+      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+      scrapName: 'Family Holidays',
+      saveDetails: 'Saved from @naveen_senpai45',
     },
   ]
 
@@ -30,6 +36,7 @@ const Collections = () => {
       <TopBar/>
       <View>
           <Text style={styles.heading}>Collections</Text>
+          <Text style={styles.heading2}>Here is where you will find all your scrapbooks you like!</Text>
       </View>
       <FlatList
                 style = {styles.comment}
@@ -47,7 +54,7 @@ const Collections = () => {
                               </View>
                               <View style={styles.content}>
                                 <Text style={styles.scrapbookName}>{Notification.scrapName}</Text>
-                                <Text rkType="primary3 mediumLine">{Notification.scrapCaption}</Text>
+                                <Text style={styles.save} rkType="primary3 mediumLine">{Notification.saveDetails}</Text>
                               </View>
                             </View>
                         </TouchableOpacity>
@@ -68,8 +75,16 @@ const styles = StyleSheet.create({
   heading: {
     fontWeight: 'bold',
     alignSelf: 'center',
-    paddingTop: 10,
-    fontSize: 20
+    paddingTop: 15,
+    fontSize: 25
+  },
+  heading2: {
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    textAlign: 'justify',
+    paddingHorizontal: 25,
+    paddingVertical: 15,
+    fontSize: 16
   },
   box: {
     margin: 10
@@ -96,5 +111,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
-  }
+  },
+  save: {
+    alignSelf: 'center',
+    textAlign: 'justify',
+    fontSize: 14
+  },
 })

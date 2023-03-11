@@ -12,7 +12,6 @@ import {
 } from "firebase/auth";
 
 
-
 export default function LoginUpdated({ navigation }) {
 
   // Initialize state variables for each text input field's border color
@@ -82,7 +81,7 @@ export default function LoginUpdated({ navigation }) {
             />
           </View>
           <View style={styles.fieldContainer}>
-            <Text style={[styles.fieldContainer, { marginTop: 20 }]}>Password</Text>
+            <Text style={[styles.fieldLabel, { marginTop: 20 }]}>Password</Text>
             <TextInput
               style={[styles.fieldInput]}
               borderBottomColor={passwordBorderColor}
@@ -160,10 +159,8 @@ const styles = StyleSheet.create({
   },
 
   fieldLabel: {
-
-    fontSize: 13,
+    fontSize: 16,
     color: '#808080',
-    marginBottom: 5,
     fontWeight: 'bold',
   },
 

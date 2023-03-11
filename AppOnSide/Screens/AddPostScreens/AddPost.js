@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity } from 'react
 import React, {useState} from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { useNavigation } from '@react-navigation/native';
-import CreateNewScrapbook from './CreateNewScrapbook';
 
 const AddPost = () => {
     const navigation = useNavigation();
@@ -31,18 +30,18 @@ const AddPost = () => {
         {
             scrapbookId: 5,
             image: 'https://img.icons8.com/color/70/000000/cottage.png',
-            scrapbookName: 'Scrap 1',
+            scrapbookName: 'Scrap 5',
         },
         {
             scrapbookId: 6,
             image: 'https://img.icons8.com/color/70/000000/cottage.png',
-            scrapbookName: 'Scrap 1',
+            scrapbookName: 'Scrap 6',
         },
         {
             scrapbookId: 7,
             image: 'https://img.icons8.com/color/70/000000/cottage.png',
-            scrapbookName: 'Scrap 1',
-          },
+            scrapbookName: 'Scrap 7',
+        },
     ]
 
     const [results, setResults] = useState(data)
@@ -55,7 +54,7 @@ const AddPost = () => {
         <View style={styles.container}>
             <TopBar/>
             <View style={styles.content}>
-                <Text style={styles.headerText}>Select scrapbook</Text>
+                <Text style={styles.heading}>Edit Scrapbook</Text>
             </View>
                 <FlatList
                 style={styles.notificationList}
@@ -71,9 +70,10 @@ const AddPost = () => {
                 }}
                 />
             <View>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateNewScrapbook')}>
-                    <Text style={styles.buttonText}>Create New Scrapbook</Text>
-                </TouchableOpacity>
+            <Text style={styles.heading2}> OR </Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateNewScrapbook')}>
+                <Text style={styles.buttonText}>Create New Scrapbook</Text>
+            </TouchableOpacity>
             </View>
         </View>
     )
@@ -82,6 +82,23 @@ const AddPost = () => {
 export default AddPost
 
 const styles = StyleSheet.create({
+
+    heading: {
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        paddingTop: 10,
+        paddingBottom: -1,
+        fontSize: 25
+      },
+      heading2: {
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        textAlign: 'justify',
+        paddingHorizontal: 25,
+        paddingTop: 10,
+        paddingBottom: 5,
+        fontSize: 19
+      },
     container: {
         flex : 1,
     },
@@ -120,18 +137,17 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
       },
       button: {
-        margin: 10,
+        marginBottom: 15,
+        marginHorizontal: 35,
         backgroundColor: '#FF4C68',
-        borderRadius: 5,
+        borderRadius: 8,
         paddingVertical: 10,
-        paddingHorizontal: 20,
+        paddingBottom: 10,
         alignItems: 'center',
         shadowColor: 'grey',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,
         shadowRadius: 2,
-        width: '98%',
-        alignSelf: 'center',
       },
       buttonText: {
         color: '#fff',

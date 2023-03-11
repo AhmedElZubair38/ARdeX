@@ -21,13 +21,13 @@ function MyTabs() {
         initalRouteName='Home' 
         
         screenOptions={{
-            headerShown: false, 
+            headerShown: false,
             tabBarShowLabel: false, 
             tabBarActiveTintColor: '#000000',
             tabBarInactiveTintColor: '#FFFFFF',
             tabBarActiveBackgroundColor: '#FF4C68',
             tabBarInactiveBackgroundColor: '#FF4C68',
-            tabBarStyle: {paddingBottom: 0, height: '8%', borderTopColor: 'black'}
+            tabBarStyle: {paddingBottom: 0, height: '8%', borderTopColor: 'black', paddingTop: -1}
             }}   
         >
 

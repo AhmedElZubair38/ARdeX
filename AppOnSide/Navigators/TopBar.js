@@ -18,9 +18,9 @@ return (
               <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Groups')}>
+              {/* <TouchableOpacity onPress={() => navigation.navigate('Groups')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'people' : 'people'}/>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <TouchableOpacity onPress={() => navigation.navigate('SettingsHome')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'settings' : 'settings'}/>
               </TouchableOpacity>
