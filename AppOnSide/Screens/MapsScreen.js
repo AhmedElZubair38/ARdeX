@@ -3,9 +3,12 @@ import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import MapView, {Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import TopBar from "../Navigators/TopBar";
+import { useNavigation } from '@react-navigation/native';
 
 
 const MyMap = () => {
+
+  const navigation = useNavigation();
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
@@ -15,6 +18,10 @@ const MyMap = () => {
     longitude: 55.16204,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
+  });
+  const [Scrap1, setScrap1] = useState({
+    latitude: 25.12365,
+    longitude: 55.17615,
   });
 
   useEffect(() => {
@@ -39,7 +46,7 @@ const MyMap = () => {
   return (
     <View style={{flex: 1}}>
     <TopBar />
-    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10, paddingHorizontal: 10, backgroundColor: '#FF4C68'}}>
+    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10, paddingHorizontal: 10}}>
 
         <View style={[styles.meow2, {marginLeft: 10}]}>
             {latitude && <Text style={{ color: 'black', fontSize: 11, fontFamily: 'fax'}}> My Latitude: {latitude} </Text>}
@@ -56,7 +63,7 @@ const MyMap = () => {
       showsUserLocation={true}
       showsMyLocationButton={true}
     >
-    <Marker coordinate={region} />
+      <Marker coordinate={Scrap1} onPress={()=> navigation.navigate('ScrapBookView')}/>
     </MapView>
     </View>
   );
