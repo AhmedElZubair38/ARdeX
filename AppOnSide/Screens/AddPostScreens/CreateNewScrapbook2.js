@@ -87,7 +87,7 @@ const CreateNewScrapbook2 = ({ route }) => {
                     <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                         <Text style={styles.buttonText}>previous</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HomeScreen")}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                         <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
@@ -100,7 +100,7 @@ export default CreateNewScrapbook2
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1,  
         paddingTop: 10
     },
     HeaderText: {
