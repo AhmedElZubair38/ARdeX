@@ -1,37 +1,120 @@
-import { StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import React from 'react'
+// import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Image} from 'react-native'
+// import React, {useState, useRef} from 'react'
+// import TopBar from '../../Navigators/TopBar'
+// import { useNavigation } from '@react-navigation/native';
+// import {Carousel, Pagination} from 'react-native-reanimated-carousel';
+
+
+// const CreateNewScrapbook2 = ({ route }) => {
+    
+//     const { selectedImages } = route.params;
+
+//     const navigation = useNavigation();
+
+//     const carouselRef = useRef(null);
+//     const [activeIndex, setActiveIndex] = useState(0);
+
+//     const handlePageChange = (index) => {
+//         setActiveIndex(index);
+//     };
+
+//     const handleNextButton = () => {
+//         if (activeIndex < selectedImages.length - 1) {
+//             carouselRef.current.snapToNext();
+//         }
+//     };
+
+//   return (
+//     <View style={{flex: 1}}>
+//         <TopBar/>
+//         <View style={styles.container}>
+//             <View> 
+//                 <Text style={styles.HeaderText}>Preview Your Scrapbook Posts</Text>
+//             </View>
+
+//             <ScrollView contentContainerStyle={styles.container2}>
+//                 {selectedImages.map((image) => (
+//                     <Image key={image} source={{ uri: image }} style={styles.image} />
+//                 ))}
+//             </ScrollView>
+
+
+//             <View style={styles.buttons}>
+// 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+// 					<Text style={styles.buttonText}>previous</Text>
+// 					</TouchableOpacity>
+// 					<TouchableOpacity style={styles.button}>
+// 					<Text style={styles.buttonText}>Next</Text>
+// 					</TouchableOpacity>
+// 			</View>
+//         </View>
+//     </View>
+//   )
+// }
+
+// export default CreateNewScrapbook2
+
+import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'react-native'
+import React, { useState, useRef } from 'react'
 import TopBar from '../../Navigators/TopBar'
-import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
-import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import Carousel from 'react-native-reanimated-carousel';
 
-const CreateNewScrapbook2 = () => {
 
-    const options = [
-        { value: 'opinion', label: 'Opinion' },
-        { value: 'fact', label: 'Fact' },
-        { value: 'fiction', label: 'Fiction' },
-    ];
+const CreateNewScrapbook2 = ({ route }) => {
 
-  const navigation = useNavigation();
-  return (
-    <View style={{flex: 1}}>
-        <TopBar/>
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.HeaderText}>Create New Scrapbook</Text>
+    const width = Dimensions.get('window').width;
+
+    const { selectedImages } = route.params;
+
+    const navigation = useNavigation();
+    const carouselRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const handlePageChange = (index) => {
+        setActiveIndex(index);
+    };
+
+    const handleNextButton = () => {
+        if (activeIndex < selectedImages.length - 1) {
+            carouselRef.current.snapToNext();
+        }
+    };
+
+    carouselRef.current.
+
+    return (
+        <View style={{ flex: 1 }}>
+            <TopBar />
+            <View style={styles.container}>
+                <View>
+                    <Text style={styles.HeaderText}>Preview Your Scrapbook Posts</Text>
+                </View>
+
+                <View style={styles.carouselContainer}>
+                    <Carousel
+                        width={width}
+                        height={width / 2}
+                        ref={carouselRef}
+                        data={selectedImages}
+                        renderItem={({ item }) => (
+                            <Image source={{ uri: item }} style={styles.image} />
+                        )}
+                        onSnapToItem={handlePageChange}
+                    />
+                </View>
+
+                <View style={styles.buttons}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+                        <Text style={styles.buttonText}>previous</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={handleNextButton}>
+                        <Text style={styles.buttonText}>Next</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.buttons}>
-					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-					<Text style={styles.buttonText}>previous</Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button}>
-					<Text style={styles.buttonText}>Next</Text>
-					</TouchableOpacity>
-			</View>
         </View>
-    </View>
-  )
+    )
 }
 
 export default CreateNewScrapbook2
@@ -89,4 +172,31 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		bottom: '6%'
 	},
+    container2: {
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 20,
+      },
+    image: {
+    width: 300,
+    height: 300,
+    marginVertical: 10,
+    },
+    carouselContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      paginationContainer: {
+        paddingVertical: 10,
+        backgroundColor: 'transparent',
+      },
+      paginationDot: {
+        width: 8,
+        height: 8,
+        borderRadius: 4,
+        marginHorizontal: 8,
+        backgroundColor: 'rgba(255, 255, 255, 0.92)',
+      },
 })

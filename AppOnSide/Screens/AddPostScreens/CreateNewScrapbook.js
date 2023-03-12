@@ -3,10 +3,14 @@ import React, { useState } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import ImagePicker from 'react-native-image-crop-picker';
 
-const CreateNewScrapbook = () => {
+const CreateNewScrapbook = ({route}) => {
+
+    console.log(route)
 
     const [selectedButtons, setSelectedButtons] = useState([]);
+    const [selectedImages, setSelectedImages] = useState([]);
 
     const toggleButton = (button) => {
         const buttons = [...selectedButtons];
@@ -23,14 +27,35 @@ const CreateNewScrapbook = () => {
 
     const onClick = () => {
         handleSubmit();
-        navigation.navigate('CreateNewScrapbook2')
+        navigation.navigate('CreateNewScrapbook2', { selectedImages })
        }
 
        handleSubmit = () => {
         console.log("Submit clicked!");
       }
 
+    const selectImagesFromGallery = async () => {
+        try {
+          const images = await ImagePicker.openPicker({
+            multiple: true,
+            mediaType: 'photo',
+            maxFiles: 3,
+          });
+          const selectedImagesPaths = images.map((image) => image.path);
+          setSelectedImages(selectedImagesPaths);
+
+          // send the images to the file that is currently open
+          const { sendImages } = route.params;
+          if (sendImages) {
+            sendImages(selectedImagesPaths);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
     const navigation = useNavigation();
+
   return (
     <View style={{flex: 1}}>
         <TopBar/>
@@ -78,7 +103,7 @@ const CreateNewScrapbook = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.meow2}>
-                <TouchableOpacity onPress={()=> console.log("gallery!")}>
+                <TouchableOpacity onPress={selectImagesFromGallery}>
                     <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Gallery </Text>
                 </TouchableOpacity>
             </View>
