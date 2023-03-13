@@ -26,7 +26,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '10%'}}>
           <Icon style={{ color: 'black', paddingTop: '3.2%'}} size={26} name={Platform.OS === 'ios' ? 'ios-person' : 'md-lock-closed'}/>
           <TouchableOpacity  onPress={()=> navigation.navigate('SettingsLoginAndSecurity')}>
-              <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Login & Security </Text>
+              <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 80, textAlign: 'center', fontWeight: 'bold' }}> Login & Security </Text>
           </TouchableOpacity>
           <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -34,7 +34,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3.5%'}} size={26} name={Platform.OS === 'ios' ? 'ios-key' : 'settings-sharp'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsGeneral')}>
-            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 145, textAlign: 'center' }}> General </Text>
+            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 150, textAlign: 'center', fontWeight: 'bold' }}> General </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -42,7 +42,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3.5%'}} size={28} name={Platform.OS === 'ios' ? 'ios-key' : 'help-circle'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsHelp')}>
-            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 175, textAlign: 'center' }}> Help </Text>
+            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 173, textAlign: 'center', fontWeight: 'bold' }}> Help </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -50,7 +50,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3.5%'}} size={26} name={Platform.OS === 'ios' ? 'ios-key' : 'information-circle'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsAbout')}>
-            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 160, textAlign: 'center' }}> About </Text>
+            <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, paddingRight: 163, textAlign: 'center', fontWeight: 'bold' }}> About </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -60,7 +60,7 @@ function SettingsHome() {
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
           <Icon style={{ color: 'black', paddingTop: '3.85%'}} size={30} name={Platform.OS === 'ios' ? 'ios-key' : 'log-out'}/>
           <TouchableOpacity  onPress={()=> navigation.navigate('LoginUpdated')}>
-              <Text style={{ color: 'black', fontSize: 20, padding: 13, paddingLeft: 5, paddingRight: 110, textAlign: 'center' }}> Log Out </Text>
+              <Text style={{ color: 'black', fontSize: 20, padding: 13, paddingLeft: 5, paddingRight: 110, textAlign: 'center', fontWeight: 'bold' }}> Log Out </Text>
           </TouchableOpacity>
           <Icon style={{ color: 'black', paddingTop: '6%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
           </View>
