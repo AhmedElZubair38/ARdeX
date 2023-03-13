@@ -75,7 +75,7 @@ const CreateNewScrapbook2 = ({ route }) => {
                     <Text style={styles.HeaderText}>Preview Your Scrapbook Posts</Text>
                 </View>
 
-                <View>
+                <View style={styles.scrollViewContainer}>
                 <ScrollView contentContainerStyle={styles.container2}>
                     {selectedImages.map((image) => (
                         <Image key={image} source={{ uri: image }} style={styles.image} />
@@ -83,11 +83,11 @@ const CreateNewScrapbook2 = ({ route }) => {
                 </ScrollView>
                 </View>
 
-                <View style={styles.buttons}>
+                <View style={styles.buttonsContainer}>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                         <Text style={styles.buttonText}>previous</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HomeScreen")}>
                         <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 25,
         alignSelf: 'center',
-        paddingTop: '2%',
+        paddingTop: '3%',
         marginBottom: 10
     },
     form: {
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
 		width: '80%',
 		marginHorizontal: '10%',
 		position: 'absolute',
-		bottom: '6%'
+		bottom: '6%',
 	},
     container2: {
         flexGrow: 2,
@@ -177,5 +177,20 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginHorizontal: 8,
     backgroundColor: 'rgba(255, 255, 255, 0.92)',
+    },
+    buttonsContainer: {
+		width: '100%',
+		position: 'absolute',
+		bottom: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal:60,
+        paddingBottom: 20,
+	},
+    scrollViewContainer: {
+        position: 'absolute',
+        top: 60,
+        bottom: 80,
+        width: '100%',
     },
 })
