@@ -35,13 +35,6 @@ const handlesecondnewpassBlur = () => {
   setsecondnewpassBorderColor('#000000');
 };
 
-  // // Event handlers for focusing and blurring the password text input field
-  // const handlePasswordFocus = () => {
-  //   setPasswordBorderColor('#00cc00');
-  // };
-  // const handlePasswordBlur = () => {
-  //   setPasswordBorderColor('#000000');
-  // };
 
   const navigation = useNavigation();
 
@@ -94,7 +87,7 @@ const handlesecondnewpassBlur = () => {
 
         <View style={styles.confirmButton}>
             <TouchableOpacity onPress={()=> navigation.goBack()}>
-                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> Confirm Change</Text>
+                <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold'}}> Confirm Change</Text>
             </TouchableOpacity>
         </View>
       </View>
@@ -162,23 +155,22 @@ const styles = StyleSheet.create({
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '10%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 24,
         fontStyle: 'bold',
         color: '#808080',
-        textAlign: 'left'
+        textAlign: 'left',
+        fontWeight: 'bold',
       },
 
       headerSettings: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
-        fontSize: 32,
-        fontStyle: 'bold',
+        fontSize: 34,
+        fontWeight: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },

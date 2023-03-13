@@ -86,14 +86,14 @@ function SettingsChangePhoneNumber() {
 
         <View style={styles.confirmButton}>
             <TouchableOpacity onPress={()=> navigation.goBack()}>
-                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> Confirm Change</Text>
+                <Text style={{ color: 'black', fontSize: 21, fontWeight: 'bold'}}> Confirm Change</Text>
             </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.backButton}>
       <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 23, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
       
@@ -154,23 +154,21 @@ const styles = StyleSheet.create({
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 24,
-        fontStyle: 'bold',
+        fontWeight: 'bold',
         color: '#808080',
         textAlign: 'left'
       },
 
       headerSettings: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
-        fontSize: 32,
-        fontStyle: 'bold',
+        fontSize: 34,
+        fontWeight: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },
