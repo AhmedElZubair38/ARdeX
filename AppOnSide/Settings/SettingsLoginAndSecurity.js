@@ -19,7 +19,7 @@ function SettingsLoginAndSecurity() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={18} name={Platform.OS === 'ios' ? 'ios-person' : 'person'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangeUsername')}>
-            <Text style={{ color: 'black', fontSize: 16, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Change Username </Text>
+            <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Change Username </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -27,7 +27,7 @@ function SettingsLoginAndSecurity() {
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-key' : 'md-key'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangePassword')}>
-            <Text style={{ color: 'black', fontSize: 16, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Change Password </Text>
+            <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Change Password </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -43,7 +43,7 @@ function SettingsLoginAndSecurity() {
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={19} name={Platform.OS === 'ios' ? 'ios-contacts' : 'call'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangePhoneNumber')}>
-            <Text style={{ color: 'black', fontSize: 16, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 15, textAlign: 'center' }}> Change Phone Number </Text>
+            <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 20, textAlign: 'center' }}> Change Phone Number </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -51,7 +51,7 @@ function SettingsLoginAndSecurity() {
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '4%', paddingLeft: '-1%'}} size={22} name={Platform.OS === 'ios' ? 'ios-people-sharp' : 'md-people-sharp'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangeAccountType')}>
-            <Text style={{ color: 'black', fontSize: 16, fontFamily: 'fax', padding: 13, paddingLeft: 5, paddingRight: 23, textAlign: 'center' }}> Change Account Type </Text>
+            <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 25, textAlign: 'center' }}> Change Account Type </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
@@ -60,7 +60,7 @@ function SettingsLoginAndSecurity() {
       <View style={styles.meow}> 
       <TouchableOpacity onPress={()=> navigation.goBack()}>
         
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 23, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
     </View>
@@ -106,23 +106,21 @@ const styles = StyleSheet.create({
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '10%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
-        fontSize: 18,
-        fontStyle: 'bold',
+        fontSize: 22,
+        fontWeight: 'bold',
         color: '#808080',
         textAlign: 'left'
       },
 
       headerSettings: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 32,
-        fontStyle: 'bold',
+        fontWeight: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },
