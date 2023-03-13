@@ -92,6 +92,15 @@ const CreateNewScrapbook = ({route}) => {
                     </TouchableOpacity>
                 </View>
             </View>
+            <Text style={styles.header}>How do you want to upload your photos?</Text>
+
+            <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+            <View style={styles.meow2}>
+                <TouchableOpacity onPress={selectImagesFromGallery}>
+                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Upload Your image's </Text>
+                </TouchableOpacity>
+            </View>
+            </View>
             <View style={styles.buttons}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                     <Text style={styles.buttonText}>Cancel</Text>
