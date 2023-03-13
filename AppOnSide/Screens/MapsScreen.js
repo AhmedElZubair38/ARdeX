@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
 import MapView, {Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import TopBar from "../Navigators/TopBar";
@@ -22,6 +22,7 @@ const MyMap = () => {
   const [Scrap1, setScrap1] = useState({
     latitude: 25.12365,
     longitude: 55.17615,
+    image: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
   });
 
   useEffect(() => {
@@ -46,24 +47,28 @@ const MyMap = () => {
   return (
     <View style={{flex: 1}}>
     <TopBar />
-    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10, paddingHorizontal: 10}}>
-
-        <View style={[styles.meow2, {marginLeft: 10}]}>
-            {latitude && <Text style={{ color: 'black', fontSize: 11, fontFamily: 'fax'}}> My Latitude: {latitude} </Text>}
-        </View>
-
-        <View style={[styles.meow2, {marginLeft: 10, marginRight: 10}]}>
-            {longitude && <Text style={{ color: 'black', fontSize: 11, fontFamily: 'fax'}}> My Longitude: {latitude} </Text>}
-        </View>
-          
-    </View>
+    
     <MapView
       style={{ flex: 1 }}
       region={region}
       showsUserLocation={true}
       showsMyLocationButton={true}
     >
-      <Marker coordinate={Scrap1} onPress={()=> navigation.navigate('ScrapBookView')}/>
+      <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10, paddingHorizontal: 10}}>
+
+        <View style={[styles.meow2, {marginLeft: 10}]}>
+            {latitude && <Text style={{ color: 'black', fontSize: 11}}> My Latitude: {latitude} </Text>}
+        </View>
+
+        <View style={[styles.meow2, {marginLeft: 10, marginRight: 10}]}>
+            {longitude && <Text style={{ color: 'black', fontSize: 11}}> My Longitude: {longitude} </Text>}
+        </View>
+          
+      </View>
+      <Marker coordinate={Scrap1} onPress={()=> navigation.navigate('ScrapBookView')}>
+        <Image source={{uri: Scrap1.image}} style={{width: 50, height: 50, borderRadius: 25}} />
+      </Marker>
+
     </MapView>
     </View>
   );
