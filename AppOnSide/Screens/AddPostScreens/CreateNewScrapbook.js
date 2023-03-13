@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import ImagePicker from 'react-native-image-crop-picker';
 
 const CreateNewScrapbook = ({route}) => {
 
@@ -69,7 +68,7 @@ const CreateNewScrapbook = ({route}) => {
                     <Text style = {styles.Text}>Scrap Book Name</Text>
                 </View>
                 <TextInput style = {[styles.nameInput,{width:'90%'}]} 
-                           autoCapitalize = "none"></TextInput>
+                    autoCapitalize = "none"/>
             </View>
             <View style={styles.form}>
                 <View> 
@@ -81,44 +80,26 @@ const CreateNewScrapbook = ({route}) => {
                     autoCapitalize = "none">
                 </TextInput>
             </View>
-
-        <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-            <View style={[styles.meow2, { margin: 10 }]}>
-                <TouchableOpacity onPress={()=> console.log("tag user!")}>
-                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> tag users </Text>
-                </TouchableOpacity>
+            <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+                <View style={[styles.meow2, { margin: 10 }]}>
+                    <TouchableOpacity onPress={()=> console.log("tag user!")}>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> tag users </Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={[styles.meow2, { backgroundColor: isButtonSelected('button2') ? 'green' : '#FF4C68' }]}>
+                    <TouchableOpacity onPress={()=> toggleButton('button2')}>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Show Location? </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={[styles.meow2, { backgroundColor: isButtonSelected('button2') ? 'green' : '#FF4C68' }]}>
-                <TouchableOpacity onPress={()=> toggleButton('button2')}>
-                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Show Location? </Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-
-        <Text style={styles.header}>How do you want to upload your photos?</Text>
-                
-        <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-            <View style={[styles.meow2, { margin: 10}]}>
-                <TouchableOpacity onPress={()=> console.log("camera!")}>
-                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Camera </Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.meow2}>
-                <TouchableOpacity onPress={selectImagesFromGallery}>
-                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Gallery </Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-            
-
             <View style={styles.buttons}>
-					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-					<Text style={styles.buttonText}>Cancel</Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.button} onPress={onClick}>
-					<Text style={styles.buttonText}>Next</Text>
-					</TouchableOpacity>
-			</View>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+                    <Text style={styles.buttonText}>Cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={onClick}>
+                    <Text style={styles.buttonText}>Next</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     </View>
     </KeyboardAvoidingView>
@@ -164,9 +145,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#DDDDDD',
         borderRadius: 5,
         alignItems: 'center',
-        shadowColor: 'black',
+        shadowColor: 'grey',
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.4, 
+        shadowOpacity: 0.6, 
         shadowRadius: 2,
     },
     nameInput: {
@@ -191,9 +172,9 @@ const styles = StyleSheet.create({
 		paddingVertical: 10,
 		paddingHorizontal: 20,
 		alignItems: 'center',
-		shadowColor: 'black',
+		shadowColor: 'grey',
 		shadowOffset: { width: 0, height: 2 },
-		shadowOpacity: 0.9,
+		shadowOpacity: 0.6,
 		shadowRadius: 2,
 	},
 	buttonText: {
@@ -219,6 +200,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
         textAlignVertical: 'center',
+        shadowColor: 'grey',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.4, 
+        shadowRadius: 2,
       },
 
       header: {
