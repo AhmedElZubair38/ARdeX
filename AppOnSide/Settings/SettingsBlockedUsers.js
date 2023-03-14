@@ -3,13 +3,30 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-
 function SettingsBlockedUsers() {
+  
+  const [buttonText, setButtonText] = useState("Unblock");
+  const [buttonText2, setButtonText2] = useState("Unblock");
 
-    const [isSwitchOn, setIsSwitchOn] = useState(false);
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-return (
+  const handlePress = () => {
+    if (buttonText === "Unblock") {
+      setButtonText("Block");
+    } else {
+      setButtonText("Unblock");
+    }
+  }
+
+  const handlePress2 = () => { 
+    if (buttonText2 === "Unblock") {
+      setButtonText2("Block");
+    } else {
+      setButtonText2("Unblock");
+    }
+  }
+
+  return (
     <View style={{flex: 1, flexDirection: 'column'}}>
       <View style={{flex: 1, backgroundColor: 'black'}}>
         <Text style={styles.headerSettings}>Settings</Text>
@@ -17,80 +34,60 @@ return (
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
         <Text style={styles.header}> Blocked Users </Text>
-
         <View style={styles.container}>
-            <View style={styles.card}>
-                <View style={styles.cardHeader}>
-                    <View style={styles.headerLeft}>
-                        <Image
-                        style={styles.userImage}
-                        source={{uri: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg'
-                        }}/>
-                        <Text style={styles.userName}> user 1 </Text>
-                    </View>
-                    <View style={styles.headerRight}>
-                    <TouchableOpacity
-                        onPress={() => setIsSwitchOn(!isSwitchOn)}
-                        style={styles.icon}
-                    >
-                        {isSwitchOn ? (
-                            <View style={[styles.icon, {backgroundColor: 'green'}]}>
-                              <View>
-                              <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }}> Unblock </Text>
-                              </View>
-                            </View>
-                            
-                        ) : (
-                            <View style={[styles.icon, {backgroundColor: 'red'}]}>
-                              <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }} >Block</Text>
-                            </View>
-                        )}
-                    </TouchableOpacity>
-                    </View >
-                </View>
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <View style={styles.headerLeft}>
+                <Image
+                  style={styles.userImage}
+                  source={{
+                    uri:
+                      'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+                  }}
+                />
+                <Text style={styles.userName}>hussein</Text>
+              </View>
+              <View style={styles.headerRight}>
+              <TouchableOpacity onPress={handlePress}>
+                <Text>{buttonText}</Text>
+              </TouchableOpacity>
+              </View>
             </View>
+          </View>
         </View>
 
         <View style={styles.container}>
-            <View style={styles.card}>
-                <View style={styles.cardHeader}>
-                    <View style={styles.headerLeft}>
-                        <Image
-                        style={styles.userImage}
-                        source={{uri: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg'
-                        }}/>
-                        <Text style={styles.userName}> user 2 </Text>
-                    </View>
-                    <View style={styles.headerRight}>
-                    <TouchableOpacity
-                        onPress={() => setIsSwitchOn(!isSwitchOn)}
-                        style={styles.icon}
-                    >
-                        {isSwitchOn ? (
-                            <View style={[styles.icon, {backgroundColor: 'green'}]}>
-                                <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }} >Unblock</Text>
-                            </View>
-                        ) : (
-                          <View style={[styles.icon, {backgroundColor: 'red'}]}>
-                            <Text style={{ color: 'white', fontSize: 16, fontFamily: 'fax' }} >Block</Text>
-                          </View>
-                        )}
-                    </TouchableOpacity>
-                    </View >
-                </View>
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <View style={styles.headerLeft}>
+                <Image
+                  style={styles.userImage}
+                  source={{
+                    uri:
+                      'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+                  }}
+                />
+                <Text style={styles.userName}>Naveen_Randi</Text>
+              </View>
+              <View style={styles.headerRight}>
+              <TouchableOpacity onPress={handlePress2}>
+                <Text>{buttonText}</Text>
+              </TouchableOpacity>
+              </View>
             </View>
+          </View>
         </View>
 
         <View style={styles.confirmButton}>
           <TouchableOpacity onPress={()=> navigation.goBack()}>
-            <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> Confirm Changes </Text>
+            <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}> Confirm Changes </Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.backButton}>
         <TouchableOpacity onPress={()=> navigation.goBack()}>
-          <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -149,23 +146,21 @@ const styles = StyleSheet.create({
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '10%',
         paddingBottom: '2%',
         paddingLeft: '5%',
         fontSize: 22,
-        fontStyle: 'bold',
+        fontWeight: 'bold',
         color: '#808080',
         textAlign: 'left'
       },
 
       headerSettings: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
-        fontSize: 32,
-        fontStyle: 'bold',
+        fontSize: 34,
+        fontWeight: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },

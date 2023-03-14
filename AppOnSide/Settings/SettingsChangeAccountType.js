@@ -37,14 +37,14 @@ return (
 
         <View style={styles.confirmButton}>
           <TouchableOpacity onPress={()=> navigation.goBack()}>
-            <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> Confirm Change</Text>
+            <Text style={{ color: 'black', fontSize: 21, fontWeight: 'bold'}}> Confirm Change</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.backButton}>
         <TouchableOpacity onPress={()=> navigation.goBack()}>
-          <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -104,23 +104,21 @@ const styles = StyleSheet.create({
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '10%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
-        fontSize: 22,
-        fontStyle: 'bold',
+        fontSize: 24,
+        fontWeight: 'bold',
         color: '#808080',
         textAlign: 'left'
       },
 
       headerSettings: {
-        fontFamily: 'fax',
+        fontWeight: 'bold',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
-        fontSize: 32,
-        fontStyle: 'bold',
+        fontSize: 34,
         color: '#FFFFFF',
         textAlign: 'left'
       },

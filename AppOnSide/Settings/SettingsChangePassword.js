@@ -94,7 +94,7 @@ const handlesecondnewpassBlur = () => {
 
       <View style={styles.backButton}>
       <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
       

@@ -17,6 +17,72 @@ const FAQs = [
       answer: "The minimum requirement for your device to run this app is iOS 11.0 or Android 5.0 and above."}
 ];
 
+class FAQScreen extends Component {
+
+  state = {
+    activeQuestionIndex: null,
+    showModal: false,
+    }
+
+    handlePress = (index) => {
+      this.setState({ activeQuestionIndex: index });
+  }
+  
+  handleArrowPress = (index) => {
+      if(this.state.activeQuestionIndex === index){
+          this.setState({ activeQuestionIndex: null });
+      } else {
+          this.setState({ activeQuestionIndex: index });
+      }
+  }
+
+  render() {
+    
+    return (
+      <View style={{flex: 1, flexDirection: 'column'}}>
+
+      <View style={{flex: 1, backgroundColor: 'black'}}>
+        <Text style={styles.headerSettings}> FAQ's </Text>
+      </View>
+
+      <View style={{flex: 1, backgroundColor: 'white'}}/>
+      <View style={styles.rectangle}>
+
+      <View style={styles.container}>
+        <ScrollView>
+          {FAQs.map((faq, index) => (
+            <View key={index} style={styles.faqContainer}>
+              <TouchableOpacity onPress={() => this.handleArrowPress(index)}>
+                <View style={styles.questionContainer}>
+                  <Text style={styles.questionText}>{faq.question}</Text>
+                  <Icon 
+                    name={this.state.activeQuestionIndex === index ? "ios-arrow-down" : "ios-arrow-forward"} 
+                    size={20} 
+                    color={this.state.activeQuestionIndex === index ? "#808080" : "white"} 
+                    style={styles.arrowIcon}
+                  />
+                </View>
+              </TouchableOpacity>
+              {this.state.activeQuestionIndex === index && (
+                <View style={styles.answerContainer}>
+                  <Text style={styles.answerText}>{faq.answer}</Text>
+                </View>
+              )}
+            </View>
+          ))}
+        </ScrollView>
+        </View>
+      </View>
+      <View style={styles.backButton}>
+      <TouchableOpacity onPress={()=> this.props.navigation.goBack()}>
+        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+      </TouchableOpacity>
+      </View>
+    </View>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
   container: {
   flex: 1,
@@ -30,7 +96,8 @@ const styles = StyleSheet.create({
   },
   questionText: {
   fontSize: 18,
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  color: 'black',
   },
   answerText: {
   fontSize: 16,
@@ -131,98 +198,5 @@ const styles = StyleSheet.create({
 
   }});
 
-class FAQScreen extends Component {
-
-  state = {
-    activeQuestionIndex: null,
-    showModal: false,
-    }
-
-    handlePress = (index) => {
-      this.setState({ activeQuestionIndex: index });
-  }
-  
-  handleArrowPress = (index) => {
-      if(this.state.activeQuestionIndex === index){
-          this.setState({ activeQuestionIndex: null });
-      } else {
-          this.setState({ activeQuestionIndex: index });
-      }
-  }
-
-  render() {
-    
-    return (
-      <View style={{flex: 1, flexDirection: 'column'}}>
-
-      <View style={{flex: 1, backgroundColor: 'black'}}>
-        <Text style={styles.headerSettings}> FAQ's </Text>
-      </View>
-
-      <View style={{flex: 1, backgroundColor: 'white'}}/>
-      <View style={styles.rectangle}>
-
-      <View style={styles.container}>
-        <ScrollView>
-          {FAQs.map((faq, index) => (
-            <View key={index} style={styles.faqContainer}>
-              <TouchableOpacity onPress={() => this.handleArrowPress(index)}>
-                <View style={styles.questionContainer}>
-                  <Text style={styles.questionText}>{faq.question}</Text>
-                  <Icon 
-                    name={this.state.activeQuestionIndex === index ? "ios-arrow-down" : "ios-arrow-forward"} 
-                    size={20} 
-                    color={this.state.activeQuestionIndex === index ? "#808080" : "white"} 
-                    style={styles.arrowIcon}
-                  />
-                </View>
-              </TouchableOpacity>
-              {this.state.activeQuestionIndex === index && (
-                <View style={styles.answerContainer}>
-                  <Text style={styles.answerText}>{faq.answer}</Text>
-                </View>
-              )}
-            </View>
-          ))}
-        </ScrollView>
-        </View>
-      </View>
-      <View style={styles.backButton}>
-      <TouchableOpacity onPress={()=> this.props.navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-      </TouchableOpacity>
-      </View>
-    </View>
-    );
-  }
-}
-
   
 export default FAQScreen;
-
-
-
-{/* <View style={styles.container}>
-        <ScrollView>
-          {FAQs.map((faq, index) => (
-            <View key={index} style={styles.faqContainer}>
-              <TouchableOpacity onPress={() => this.handleArrowPress(index)}>
-                <View style={styles.questionContainer}>
-                  <Text style={styles.questionText}>{faq.question}</Text>
-                  <Icon 
-                    name={this.state.activeQuestionIndex === index ? "ios-arrow-down" : "ios-arrow-forward"} 
-                    size={20} 
-                    color={this.state.activeQuestionIndex === index ? "#808080" : "white"} 
-                    style={styles.arrowIcon}
-                  />
-                </View>
-              </TouchableOpacity>
-              {this.state.activeQuestionIndex === index && (
-                <View style={styles.answerContainer}>
-                  <Text style={styles.answerText}>{faq.answer}</Text>
-                </View>
-              )}
-            </View>
-          ))}
-        </ScrollView>
-      </View> */}
