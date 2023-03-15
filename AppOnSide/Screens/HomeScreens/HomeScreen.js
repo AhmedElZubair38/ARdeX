@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Button} from "react-native";
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Button, ScrollView, Dimensions} from "react-native";
 import TopBar from "../../Navigators/TopBar";
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -10,12 +10,22 @@ import Icon5 from 'react-native-vector-icons/Fontisto';
 import Modal from "react-native-modal";
 
 
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
+
+
 const DATA = [
 
     {
         user_name: 'Naveen Jain',
         user_image: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
-        feed_image: 'https://wadsworthanimalhospital.com/wp-content/uploads/2022/12/WP-Blog-Image-2022-9-1024x894.png',
+        feed_image: [
+            'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+            'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
+            'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
+            'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
+            'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
+        ],
         feed_caption: 'Taking the dog out!',
         like_count: '203',
         comment_count: '16'
@@ -24,7 +34,13 @@ const DATA = [
     {
         user_name: 'Kanye West',
         user_image: 'https://cdn.siasat.com/wp-content/uploads/2020/07/Rapper-Kanye-West.jpg',
-        feed_image: 'https://i.pinimg.com/236x/c8/7a/26/c87a260395d82f2a1a237d053b95508d.jpg',
+        feed_image: [
+            'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+            'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
+            'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
+            'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
+            'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
+        ],
         feed_caption: 'Wit the homie!',
         like_count: '1,982,234',
         comment_count: '6,773'
@@ -33,7 +49,13 @@ const DATA = [
     {
         user_name: 'The Weeknd',
         user_image: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
-        feed_image: 'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
+        feed_image: [
+            'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+            'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
+            'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
+            'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
+            'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
+        ],
         feed_caption: 'New album out on all platforms!',
         like_count: '1,234',
         comment_count: '67'
@@ -46,6 +68,16 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
     const [isFilled2, setIsFilled2] = useState(false);
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
+
+    const [imageActive, setimageActive] = useState(0);
+    onchange = (nativeEvent) => {
+      if(nativeEvent){
+        const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
+        if(slide != imageActive){
+          setimageActive(slide);
+        }
+      }
+    }
     
 
     
@@ -69,10 +101,39 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                         </TouchableOpacity>
                     </View >
                 </View>
+                <View style={styles.page}>
+           <ScrollView
+            onScroll={({nativeEvent}) => onchange(nativeEvent)}
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+            horizontal
+            style={styles.wrap}
+          >
+            {
+              feed_image.map((e, index)=>
                 <Image
-                style={styles.feedImage}
-                source={{uri: feed_image
-                }}/>
+                  key={e}
+                  resizeMode='stretch'
+                  style={styles.wrap}
+                  source={{uri: e}}
+                />
+              ) 
+            }
+
+          </ScrollView>
+
+          <View style={styles.wrapDot}>
+            {
+              feed_image.map((e, index) =>
+                <Text
+                  key={e}
+                  style={imageActive == index ? styles.dotActive : styles.dot}>
+                    ●
+                </Text>
+              )
+            }
+          </View>
+        </View>
                 <View style={styles.cardFooter}>
                     <View style={styles.footerLeft}>
                         <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
@@ -80,7 +141,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                             <TouchableOpacity onPress={() => setIsFilled(!isFilled)}>
                                 <Icon4
                                     name={isFilled ? 'heart' : 'hearto'}
-                                    size={24}
+                                    size={26}
                                     color={isFilled ? 'red' : 'grey'}
                                 />
                             </TouchableOpacity>
@@ -95,7 +156,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                     <TouchableOpacity onPress={() => setIsFilled2(!isFilled2)}>
                                 <Icon2
                                     name={isFilled2 ? 'bookmark' : 'bookmark-o'}
-                                    size={24}
+                                    size={26}
                                     style={{ paddingHorizontal: 13 }}
                                     color={isFilled2 ? 'black' : 'grey'}
                                 />
@@ -258,4 +319,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    wrap: {
+        width: WIDTH * 0.9,
+        alignSelf: 'center',
+        height: 300,
+        borderRadius: 10,
+        marginVertical: 10
+    },
+    wrapDot: {
+        position: 'absolute',
+        bottom: 20,
+        flexDirection: 'row',
+        alignSelf: 'center'
+
+    },
+    dotActive: {
+        margin: 3,
+        color: 'white',
+        fontSize: 10
+      },
+      dot: {
+        margin: 3,
+        color: 'black',
+        fontSize: 10
+      }
 });
