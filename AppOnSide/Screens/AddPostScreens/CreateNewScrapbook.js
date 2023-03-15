@@ -1,16 +1,22 @@
-import { StyleSheet, Text, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, KeyboardAvoidingView, Switch } from 'react-native'
 import React, { useState } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import ImagePicker from 'react-native-image-crop-picker';
+var ImagePicker = require('react-native-image-crop-picker');
 
 const CreateNewScrapbook = ({route}) => {
 
     console.log(route)
+    
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
     const [selectedButtons, setSelectedButtons] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
+
+    const [isFiction, setIsFiction] = useState(false);
+    const toggleSwitch2 = () => setIsFiction(previousState => !previousState);
 
     const toggleButton = (button) => {
         const buttons = [...selectedButtons];
@@ -81,26 +87,45 @@ const CreateNewScrapbook = ({route}) => {
                     autoCapitalize = "none">
                 </TextInput>
             </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: '5.5%', marginRight: '12%', marginVertical: 10}}>
+                <View>
+                    <Text style = {styles.Text}>Show Location</Text> 
+                </View>
+                <Switch
+                        trackColor={{ false: '#767577', true: '#34C759' }}
+                        thumbColor={isEnabled ? 'white' : 'white'}
+                        
+                        onValueChange={toggleSwitch}
+                        value={isEnabled}
+                    />
+            </View>
+            <View style={{marginTop: 10, marginBottom: 10}}>
+                <Text style={styles.Text}>Is the information:</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Text style={styles.Text}>Fiction</Text>
+                        <Switch
+                        trackColor={{ false: "#767577", true: "#767577" }}
+                        thumbColor={isFiction ? "#f4f3f4" : "#f4f3f4"}
+                        onValueChange={toggleSwitch2}
+                        value={isFiction}
+                        />
+                    <Text style={styles.Text}>Opinion</Text>
+                </View>
+            </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
                 <View style={[styles.meow2, { margin: 10 }]}>
                     <TouchableOpacity onPress={()=> console.log("tag user!")}>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> tag users </Text>
                     </TouchableOpacity>
                 </View>
-                <View style={[styles.meow2, { backgroundColor: isButtonSelected('button2') ? 'green' : '#FF4C68' }]}>
-                    <TouchableOpacity onPress={()=> toggleButton('button2')}>
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Show Location? </Text>
-                    </TouchableOpacity>
-                </View>
             </View>
-            <Text style={styles.header}>How do you want to upload your photos?</Text>
 
             <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-            <View style={styles.meow2}>
-                <TouchableOpacity onPress={selectImagesFromGallery}>
-                    <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Upload Your image's </Text>
-                </TouchableOpacity>
-            </View>
+                <View style={styles.meow2}>
+                    <TouchableOpacity onPress={selectImagesFromGallery}>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Upload Your image's </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             <View style={styles.buttons}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
