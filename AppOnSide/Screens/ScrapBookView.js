@@ -1,14 +1,18 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, ScrollView, FlatList } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, View, Text, Image, ScrollView, FlatList, StatusBar, Dimensions } from 'react-native';
 import TopBar from '../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
+
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
 
 const ScrapBookView = () => {
 
     const navigation = useNavigation();
     const ScrapBookData = {
         scrapName: 'Scrapbook Title',
-        userId: 'The Weeknd',
+        userId: 12,
+        user_name: 'The Weeknd',
         scrapId: 1,
         scrapDate: '2020-12-12',
         scrapBody: 'This is the body of the scrapbook',
@@ -24,60 +28,75 @@ const ScrapBookView = () => {
         comments: 2,
     }
 
-  return (
-    <View style={styles.container}>
-      <TopBar/>
-      <ScrollView style={styles.container}>
-        <Text style={styles.title}>{ScrapBookData.scrapName}</Text>
-        <Text style={styles.author}>{ScrapBookData.userId}</Text>
-        <Text style={styles.body}>{ScrapBookData.scrapBody}</Text>
-        <Text style={styles.body}>{ScrapBookData.scrapDate}</Text>
-        <Text style={styles.body}>Likes: {ScrapBookData.likes}</Text>
-        <Text style={styles.body}>Comments: {ScrapBookData.comments}</Text>
-        <View style={styles.images}>
-          <FlatList
-            data={ScrapBookData.images}
-            renderItem={({item}) => (
-              <Image
-                style={styles.image}
-                source={{uri: item}}
-              />
-            )}
-            keyExtractor={item => item}
-            numColumns={2}
-          />
+    const [imageActive, setimageActive] = useState(0);
+    onchange = (nativeEvent) => {
+      if(nativeEvent){
+        const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
+        if(slide != imageActive){
+          setimageActive(slide);
+        }
+      }
+    }
+    
+    return (
+      <View style={{flex : 1}}>
+        <TopBar/>
+        <View style={styles.page}>
+          <ScrollView
+            onScroll={({nativeEvent}) => onchange(nativeEvent)}
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+            horizontal
+            style={styles.wrap}
+          >
+            {
+              ScrapBookData.images.map((e, index)=>
+                <Image
+                  key={e}
+                  resizeMode='stretch'
+                  style={styles.wrap}
+                  source={{uri: e}}
+                />
+              ) 
+            }
+
+          </ScrollView>
+
+          <View style={styles.wrapDot}>
+            {
+              ScrapBookData.images.map((e, index) =>
+                <Text
+                  key={e}
+                  style={imageActive == index ? styles.dotActive : styles.dot}>
+                    ●
+                </Text>
+              )
+            }
+          </View>
         </View>
-      </ScrollView>
-    </View>
-  );
+      </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  wrap: {
+    width: WIDTH,
+    height: HEIGHT * 0.4
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  author: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-  body: {
-    fontSize: 16,
-  },
-  image: {
-    width: '49%',
-    margin: '.5%',
-    aspectRatio: 16/9,
-    borderRadius: 10,
-  },
-  images: {
+  wrapDot: {
+    position: 'absolute',
+    bottom: 0,
     flexDirection: 'row',
+    alignSelf: 'center'
 
+  },
+  dotActive: {
+    margin: 3,
+    color: 'black'
+  },
+  dot: {
+    margin: 3,
+    color: 'white'
   }
 });
 
