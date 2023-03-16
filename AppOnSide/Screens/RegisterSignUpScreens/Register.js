@@ -7,7 +7,8 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, getDoc, setDoc, addDoc } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import insertUser2 from "../appConnection/register.js";
+// const queries = require("../appConnection/register.js")
 export default function Register() {
 
   // Initialize state variables for each text input field's border color
@@ -100,6 +101,7 @@ export default function Register() {
         } else if (name === '') {
           alert("Name cannot be null")
         } else {
+          
           createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Signed in
@@ -111,24 +113,25 @@ export default function Register() {
               //   username: username,
               //   name: name
               // })
-              setDoc(doc(db, "user", username), {
-                email: email,
-                username: username,
-                name: name
-              })
-                .then((data) => {
-                  alert("Data Added" + data);
-                })
-                .catch((err) => {
-                  alert(err.message);
-                });
+              // setDoc(doc(db, "user", username), {
+              //   email: email,
+              //   username: username,
+              //   name: name
+              // })
+                // .then((data) => {
+                //   alert("Data Added" + data);
+                // })
+                // .catch((err) => {
+                //   alert(err.message);
+                // });
+              insertUser2(name,email, username);
               navigation.navigate('LoginUpdated')
               // ...
             })
             .catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
-              alert(errorMessage);
+              alert(errorMessage+errorCode);
               // console.log(error);
               // console.log(errorCode);
               // console.log(errorMessage);
