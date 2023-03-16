@@ -22,9 +22,8 @@ const DATA = [
         feed_image: [
             'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
-            'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
-            'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
-            'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
+            'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8='
+            
         ],
         feed_caption: 'Taking the dog out!',
         like_count: '203',
@@ -35,7 +34,6 @@ const DATA = [
         user_name: 'Kanye West',
         user_image: 'https://cdn.siasat.com/wp-content/uploads/2020/07/Rapper-Kanye-West.jpg',
         feed_image: [
-            'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
             'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
@@ -137,7 +135,6 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                 <View style={styles.cardFooter}>
                     <View style={styles.footerLeft}>
                         <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
-                            {/* <Icon style={{ fontSize: 30, color: 'red' }} name={Platform.OS === 'ios' ? 'ios-heart' : 'heart'}/> */}
                             <TouchableOpacity onPress={() => setIsFilled(!isFilled)}>
                                 <Icon4
                                     name={isFilled ? 'heart' : 'hearto'}
@@ -161,7 +158,6 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                                     color={isFilled2 ? 'black' : 'grey'}
                                 />
                             </TouchableOpacity>
-                    {/* <Icon3 style={{ fontSize: 29, color: 'grey', paddingHorizontal: 10 }} name={Platform.OS === 'ios' ? 'ios-heart' : 'bookmark'}/> */}
                 </View>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {like_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {feed_caption} </Text>

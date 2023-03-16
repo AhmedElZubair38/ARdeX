@@ -36,8 +36,8 @@ const EditProfile = () => {
 							style={styles.profilePhoto}
 							source={{uri : profilePic}}
 						/>
-						<View style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:0,right:10,fontSize:20,borderRadius:50}]}>
-							<Icon size={24} style={styles.icon123} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
+						<View style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:-60,right:10,fontSize:20,borderRadius:50}]}>
+							<Icon size={35} style={styles.icon123} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
 						</View>
 					
 					</View>
@@ -46,7 +46,7 @@ const EditProfile = () => {
 					
 				<View style={styles.form}>
 				<View>
-					<Text style={styles.label}>Name</Text>
+					<Text style={[styles.label, {marginTop: 30}]}>Name</Text>
 					<TextInput
 					style={styles.input}
 					placeholder="Enter Name"
@@ -88,12 +88,13 @@ const EditProfile = () => {
 		alignSelf:'center',
 		width:100,
 		height:100,
-		marginTop: 20,
+		marginTop: 40,
 	},
 	profilePhoto: {
-		width: 100,
-		height: 100,
-		borderRadius: 50,
+		width: 150,
+		height: 150,
+		borderRadius: 80,
+		alignSelf:'center',
 	},
 	changeAvatarButton: {
 		margin: 10,
@@ -117,7 +118,9 @@ const EditProfile = () => {
 	},
 	buttonText: {
 		color: '#fff',
-		fontSize: 18,
+		fontSize: 20,
+		fontWeight: 'bold',
+
 	},
 	form: {
 		width: '80%',
@@ -125,7 +128,10 @@ const EditProfile = () => {
 		marginTop: '5%'
 	},
 	label: {
-		marginTop: 20,
+		marginTop: 30,
+		fontFamily: 'Roboto',
+		fontSize: 22,
+		fontWeight: 'bold',
 	},
 	input: {
 		marginTop: 5,
@@ -133,7 +139,7 @@ const EditProfile = () => {
 		borderWidth: 1,
 		borderRadius: 5,
 		padding: 10,
-		fontSize: 18,
+		fontSize: 16,
 		shadowColor: 'black',
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.3,

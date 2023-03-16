@@ -86,9 +86,8 @@ const styles = StyleSheet.create({
     heading: {
         fontWeight: 'bold',
         alignSelf: 'center',
-        paddingTop: 10,
-        paddingBottom: -1,
-        fontSize: 25
+        paddingTop: 7,
+        fontSize: 30
       },
       heading2: {
         fontWeight: 'bold',
@@ -151,6 +150,7 @@ const styles = StyleSheet.create({
       },
       buttonText: {
         color: '#fff',
-        fontSize: 18,
+        fontSize: 20,
+        fontWeight: 'bold',
       },
 })

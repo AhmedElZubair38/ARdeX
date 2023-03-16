@@ -55,6 +55,7 @@ const ProfileView = () => {
             </TouchableOpacity>
             <ProfileNavigator/>
         </View>
+        
     </View>
   );
 };

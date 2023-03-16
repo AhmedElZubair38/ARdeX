@@ -30,7 +30,7 @@ function MyTabs() {
             <Tab.Screen name="ScrapbooksList"
             component={ScrapbooksList}
             options={{ 
-                tabBarLabel: "Scrapbooks"
+                tabBarLabel: "penisballs"
                }}/>
 
         </Tab.Navigator>

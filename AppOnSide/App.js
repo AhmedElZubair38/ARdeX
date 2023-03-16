@@ -23,7 +23,7 @@ import SettingsBlockedUsers from './Settings/SettingsBlockedUsers';
 import SettingsPrivacyPolicy from './Settings/SettingsPrivacyPolicy';
 import EditProfile from './Screens/ProfileScreens/EditProfile';
 import CreateNewScrapbook from './Screens/AddPostScreens/CreateNewScrapbook';
-import CreateNewScrapbook2 from './Screens/AddPostScreens/CreateNewScrapbook2';
+import PreviewScrapbookPosts from './Screens/AddPostScreens/PreviewScrapbookPosts';
 import ViewProfile from './Screens/ProfileScreens/ViewProfile';
 import Comments from './Screens/HomeScreens/Comments';
 import ViewFollowers from './Screens/ProfileScreens/ViewFollowers';
@@ -159,8 +159,8 @@ export default function App() {
           options={{headerShown: false}}
         />
         <Stack.Screen 
-          name="CreateNewScrapbook2"
-          component={CreateNewScrapbook2}
+          name="PreviewScrapbookPosts"
+          component={PreviewScrapbookPosts}
           options={{headerShown: false}}
         />
         <Stack.Screen 
