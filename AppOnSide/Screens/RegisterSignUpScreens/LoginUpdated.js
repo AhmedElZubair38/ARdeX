@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword
 } from "firebase/auth";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function LoginUpdated({ navigation }) {
