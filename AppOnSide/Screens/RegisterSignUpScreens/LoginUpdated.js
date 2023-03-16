@@ -34,9 +34,9 @@ export default function LoginUpdated({ navigation }) {
     setPasswordBorderColor('#000000');
   };
 
-  const [username, setUsername] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  // const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("abcd@email.com");
+  const [password, setPassword] = React.useState("qwerty@123");
 
 
   function handleSubmit() {
