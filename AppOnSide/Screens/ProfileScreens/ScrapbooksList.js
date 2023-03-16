@@ -175,7 +175,6 @@ export default function ScrapbooksList() {
         data={posts}
         renderItem={({ item }) => (
             <Item
-            user_name={item.user_name}
             user_image={item.user_image}
             feed_image={item.feed_image}
             feed_caption={item.feed_caption}
@@ -184,7 +183,7 @@ export default function ScrapbooksList() {
             key={item.user_name}
             />
         )}
-        keyExtractor={item => item.user_name}/>
+        />
         
     </View>
     )

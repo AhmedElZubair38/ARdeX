@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, KeyboardAvoidingView, Switch, ScrollView } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Switch, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { TextInput } from 'react-native-gesture-handler';
