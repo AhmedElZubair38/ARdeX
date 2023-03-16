@@ -6,7 +6,7 @@ import { db } from "../firebaseConfig";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, getDoc, setDoc, addDoc } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Register() {
 
