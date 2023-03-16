@@ -86,7 +86,7 @@ const CreateNewScrapbook = ({route}) => {
                     autoCapitalize = "none">
                 </TextInput>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: '5.5%', marginRight: '12%', marginVertical: 10}}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: '5.5%', marginRight: '12%', marginVertical: 15}}>
                 <View>
                     <Text style = {styles.Text}>Show Location</Text> 
                 </View>
@@ -98,7 +98,7 @@ const CreateNewScrapbook = ({route}) => {
                         value={isEnabled}
                     />
             </View>
-            <View style={{marginTop: 10, marginBottom: 10}}>
+            <View style={{marginTop: 10, marginBottom: 25}}>
                 <Text style={styles.Text}>Is the information:</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Text style={styles.Text}>Fiction</Text>
@@ -111,21 +111,15 @@ const CreateNewScrapbook = ({route}) => {
                     <Text style={styles.Text}>Opinion</Text>
                 </View>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-                <View style={[styles.meow2, { margin: 10 }]}>
-                    <TouchableOpacity onPress={()=> console.log("tag user!")}>
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> tag users </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
 
             <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
                 <View style={styles.meow2}>
                     <TouchableOpacity onPress={selectImagesFromGallery}>
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Upload Your image's </Text>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Upload Images </Text>
                     </TouchableOpacity>
                 </View>
             </View>
+
             <View style={styles.buttons}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                     <Text style={styles.buttonText}>Cancel</Text>
@@ -220,7 +214,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: '10%',
 	},
     meow2: {
-        width: 145,
+        width: 155,
         height: 50,
         borderRadius: 15,
         borderColor: 'black',
@@ -235,6 +229,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.4, 
         shadowRadius: 2,
+        marginVertical: 10
       },
 
       header: {
