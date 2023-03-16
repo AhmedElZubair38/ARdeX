@@ -33,7 +33,7 @@ const CreateNewScrapbook = ({route}) => {
 
     const onClick = () => {
         handleSubmit();
-        navigation.navigate('CreateNewScrapbook2', { selectedImages })
+        navigation.navigate('PreviewScrapbookPosts', { selectedImages })
        }
 
        handleSubmit = () => {
@@ -45,7 +45,6 @@ const CreateNewScrapbook = ({route}) => {
           const images = await ImagePicker.openPicker({
             multiple: true,
             mediaType: 'photo',
-            maxFiles: 3,
           });
           const selectedImagesPaths = images.map((image) => image.path);
           setSelectedImages(selectedImagesPaths);
@@ -73,7 +72,7 @@ const CreateNewScrapbook = ({route}) => {
                 <View style={{ justifyContent:'center' }}> 
                     <Text style = {styles.Text}>Scrap Book Name</Text>
                 </View>
-                <TextInput style = {[styles.nameInput,{width:'90%'}]} 
+                <TextInput style = {[styles.nameInput, {width:'90%'}]} 
                     autoCapitalize = "none"/>
             </View>
             <View style={styles.form}>

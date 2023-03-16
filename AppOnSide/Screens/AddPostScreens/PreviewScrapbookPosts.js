@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import Carousel from 'react-native-reanimated-carousel';
 
 
-const CreateNewScrapbook2 = ({ route }) => {
+const PreviewScrapbookPosts = ({ route }) => {
 
     const { selectedImages } = route.params;
 
@@ -40,7 +40,7 @@ const CreateNewScrapbook2 = ({ route }) => {
     )
 }
 
-export default CreateNewScrapbook2
+export default PreviewScrapbookPosts
 
 const styles = StyleSheet.create({
     container: {
