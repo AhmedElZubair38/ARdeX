@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, KeyboardAvoidingView, Switch } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, KeyboardAvoidingView, Switch, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { TextInput } from 'react-native-gesture-handler';
@@ -63,10 +63,9 @@ const CreateNewScrapbook = ({route}) => {
     const navigation = useNavigation();
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
     <View style={{flex: 1}}>
         <TopBar/>
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.header2}>Create New Scrapbook</Text>
             </View>
@@ -135,10 +134,9 @@ const CreateNewScrapbook = ({route}) => {
                     <Text style={styles.buttonText}>Next</Text>
                 </TouchableOpacity>
             </View>
-        </View>
-    </View>
-    </KeyboardAvoidingView>
-  )
+        </ScrollView>
+    </View>  
+    )
 }
 
 export default CreateNewScrapbook
@@ -220,8 +218,6 @@ const styles = StyleSheet.create({
     buttons: {
 		width: '80%',
 		marginHorizontal: '10%',
-		position: 'absolute',
-		bottom: '6%'
 	},
     meow2: {
         width: 145,
