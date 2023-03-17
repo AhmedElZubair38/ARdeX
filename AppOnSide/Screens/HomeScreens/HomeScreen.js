@@ -105,6 +105,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
             pagingEnabled
             horizontal
             style={styles.wrap}
+            scrollEventThrottle={1}
           >
             {
               feed_image.map((e, index)=>
