@@ -24,5 +24,27 @@ const insertUser2 = async (name,email,username) => {
 }
 
 
-export default insertUser2;
-// module.exports = {insertUser2}
+const checkUsername = async (username) => {
+    const response = await fetch('http://10.0.2.2:3000/api/checkUsername/' + username , {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            }
+            });
+            const data = await response.json();
+            // console.log(data)
+            // console.log(data)
+            // console.log(typeof(data))
+            // console.log(Object.keys(data).length)
+            if (Object.keys(data).length ===0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+// export default insertUser2;
+module.exports = {insertUser2, checkUsername}

@@ -7,8 +7,9 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, getDoc, setDoc, addDoc } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import insertUser2 from "../appConnection/register.js";
-// const queries = require("../appConnection/register.js")
+import { async } from "@firebase/util";
+// import insertUser2 from "../appConnection/register.js";
+const queries = require("../appConnection/register.js")
 export default function Register() {
 
   // Initialize state variables for each text input field's border color
@@ -72,24 +73,24 @@ export default function Register() {
 
 
   //Getting the states from the Input Fields 
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [name, setName] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [username, setUsername] = React.useState("asdfgh1");
+  const [password, setPassword] = React.useState("qwerty");
+  const [email, setEmail] = React.useState("asdfghh@e.com");
+  const [name, setName] = React.useState("Raj");
+  const [confirmPassword, setConfirmPassword] = React.useState("qwerty");
 
   const collectionRef = collection(db, "userProfile");
   const auth = getAuth();
   const database = getDatabase();
   const userProfileRef = collection(db, "userProfile");
-  function handleSubmit() {
+  async function handleSubmit() {
 
-    console.log(name + email + username + password + confirmPassword);
+    // console.log(name + email + username + password + confirmPassword);
 
     //Checking if username already exists in the databas
 
         // doc.data() will be undefined in this case
-        console.log("Username not in use!");
+        // console.log("Username not in use!");
         //Main cheking stuff for firebase
 
         if (password !== confirmPassword) {
@@ -101,13 +102,24 @@ export default function Register() {
         } else if (name === '') {
           alert("Name cannot be null")
         } else {
-          
+          const usernameCheck = await queries.checkUsername(username)
+          console.log(usernameCheck)
+          // console.log(typeof(usernameCheck))
+          // if (usernameCheck === "Username not in use!"){
+          //   alert(usernameCheck)
+            
+          // } else{
+          //   alert("Username already in use!!")
+          // }
+          if (usernameCheck===false){
+            alert("Username Already in use")
+          } else {
           createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Signed in
-              console.log(userCredential);
+              // console.log(userCredential);
               const user = userCredential.user;
-              console.log(user);
+              // console.log(user);
               // addDoc(collectionRef, {
               //   email: email,
               //   username: username,
@@ -124,7 +136,7 @@ export default function Register() {
                 // .catch((err) => {
                 //   alert(err.message);
                 // });
-              insertUser2(name,email, username);
+              queries.insertUser2(name,email, username);
               navigation.navigate('LoginUpdated')
               // ...
             })
@@ -139,8 +151,9 @@ export default function Register() {
               // ..
             });
         }
+      }
       
-        console.log("hi")
+        // console.log("hi")
     
     }
 
@@ -162,6 +175,7 @@ export default function Register() {
               // onChangeText={text => handleOnchange(text, 'name')}
               // onFocus={() => {handleError(null, 'name'); handleNameFocus();}}
               placeholder="Name"
+              value= {name}
               style={[styles.fieldInput]}
               borderBottomColor={nameBorderColor}
               onFocus={handleNameFocus}
@@ -174,6 +188,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}>Email ID</Text>
             <TextInput
               placeholder="Email ID"
+              value= {email}
               style={[styles.fieldInput]}
               borderBottomColor={emailBorderColor}
               onFocus={handleEmailFocus}
@@ -189,6 +204,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}>Username</Text>
             <TextInput
               placeholder="Username"
+              value= {username}
               style={[styles.fieldInput]}
               borderBottomColor={usernameBorderColor}
               onFocus={handleUsernameFocus}
@@ -202,6 +218,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}>Password</Text>
             <TextInput
               placeholder="Password"
+              value= {password}
               style={[styles.fieldInput]}
               borderBottomColor={passwordBorderColor}
               onFocus={handlePasswordFocus}
@@ -216,6 +233,7 @@ export default function Register() {
             <Text style={styles.fieldLabel}> Confirm Password</Text>
             <TextInput
               placeholder="Confirm Password"
+              value={confirmPassword}
               style={[styles.fieldInput]}
               borderBottomColor={confPasswordBorderColor}
               onFocus={handleconfPasswordFocus}

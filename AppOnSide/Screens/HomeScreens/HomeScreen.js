@@ -191,11 +191,11 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
 
 
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
 
     const navigation = useNavigation();
     
-
+    console.log(props);
     return (
 
         <View style={{flex: 1}}>

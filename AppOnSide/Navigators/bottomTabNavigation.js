@@ -12,8 +12,8 @@ import AddPost from '../Screens/AddPostScreens/AddPost';
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
-
+function MyTabs(props) {
+    console.log("props in bottomTabNavigation: ", props);
     return (
         
         <Tab.Navigator 
@@ -38,7 +38,10 @@ function MyTabs() {
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'ios-home' : 'home'} color={color} size={size} />
 
-                )}}/>
+                )}}
+
+                    initialParams={{loggedUserId: props.loggedUserId}}
+                />
             
             
             <Tab.Screen name="Search" 

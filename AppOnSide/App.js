@@ -38,8 +38,8 @@ import ReportScrapBookHomeScreen from './Screens/HomeScreens/ReportScrapBookHome
 
 const Stack = createNativeStackNavigator();
 //Hi hello world
-export default function App() {
-
+export default function App(props) {
+  console.log(props);
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
