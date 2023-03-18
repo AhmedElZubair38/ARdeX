@@ -1,16 +1,81 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from "react-native-modal";
 import ProfileNavigator from '../../Navigators/ProfileNavigator';
+import queries from "../appConnection/profile.js"
 
-const ViewProfile = () => {
+const ViewProfile = (props) => {
 
+  console.log("ViewProfile.js")
+  clickedUserId = props.route.params.clickedUserId
+  mainUserId = props.route.params.mainUserId
+  console.log("Clicked:" + clickedUserId)
+  console.log("Main:" + mainUserId)
+  
   const navigation = useNavigation();
 
-  const profileData = {
+  if (clickedUserId === mainUserId){
+    navigation.navigate('UserProfile',{ userId: clickedUserId, mainUserId: props.route.params.mainUserId })
+  }
+
+  
+  const [profileData, setProfileData] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [follow,setFollow] = useState(false);
+
+  const getData = async (clickedUserId) => {
+    const temp = await queries.getProfileStuff(clickedUserId)
+    // console.log(data)
+    const followers = await queries.getFollowersCount(clickedUserId)
+    // console.log(followers)
+    const following = await queries.getFollowingCount(clickedUserId)
+    // console.log(following)
+    const scrapbooks = await queries.getScrapbooksCount(clickedUserId)
+    // console.log(scrapbooks)
+    let bio = temp.bio
+    // console.log(bio.length)
+    if (bio!==null && bio.length > 50){
+    bio = bio.substring(0, 50) + '...';}
+    // Hey Everyone, I am Raj Jagasia. Nice to meet you.
+    let data = {...temp, bio, followers, following, scrapbooks}
+    // console.log(data)
+    return data
+  }
+
+  const checkFollower = async (clickedUserId,mainUserId) => {
+    console.log("checkFollower fundtion")
+    return await queries.checkFollower(clickedUserId, mainUserId)
+  }
+
+  let check = false;
+    
+  
+  useEffect(() => {
+    console.log("useEffect1")
+    getData(clickedUserId).then((data) => {
+      setProfileData(data);
+    });
+
+    console.log("useEffect")
+    checkFollower(clickedUserId, mainUserId).then((data) => {
+      check = data
+      if (data === true){
+        setFollow("Following")
+      }
+      else{
+        setFollow("Follow")
+      }
+    });
+  }, [clickedUserId, mainUserId]);
+
+  if (!follow) {
+    return null; // or a loading indicator
+  }
+
+  const profileData1 = {
     name: 'The Weeknd',
     bio: 'POP ftw',
     profilePic: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
@@ -20,7 +85,9 @@ const ViewProfile = () => {
     following: 2,
   }
 
-  const [modalVisible, setModalVisible] = useState(false);
+  const f1 = false;
+
+  
 
   return (
     <View style={{flex: 1}}>
@@ -33,7 +100,7 @@ const ViewProfile = () => {
                 <View style={styles.profileContainer}>
                   <Image
                       style={styles.profilePhoto}
-                      source={{uri : profileData.profilePic}}
+                      source={{uri : profileData.profileImage}}
                   />
                 </View>
                   <View style={styles.statContainer}>
@@ -41,13 +108,13 @@ const ViewProfile = () => {
                     <Text style={styles.statLabel}>Posts</Text>
                   </View>
                 <View style={styles.statContainer}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers')}>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers',{ userId: clickedUserId, mainUserId: props.route.params.mainUserId })}>
                         <Text style={styles.statCount}>{profileData.followers}</Text>
                     </TouchableOpacity>
                 <Text style={styles.statLabel}>Followers</Text>
                 </View>
                 <View style={styles.statContainer}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing')}>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing',{ userId: clickedUserId, mainUserId: props.route.params.mainUserId })}>
                         <Text style={styles.statCount}>{profileData.following}</Text>
                     </TouchableOpacity>
                 <Text style={styles.statLabel}>Following</Text>
@@ -59,7 +126,7 @@ const ViewProfile = () => {
             </View>
             <View style={styles.buttonField}>
               <TouchableOpacity style={styles.button} onPress={() => console.log('Follow Button Pressed')}>
-                  <Text style={styles.buttonText}>Follow</Text>
+                  <Text style={f1 === true ? styles.buttonTextBlack : styles.buttonText}>{follow}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button2} onPress={()=> setModalVisible(true)}>
                   <Icon style={styles.buttonText} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
@@ -243,11 +310,17 @@ modalContainer: {
     alignItems: 'center',
     justifyContent: 'center',
 },
+buttonTextBlack: {
+  fontSize: 16,
+  color: 'black',
+  textAlign: 'center',
+},
 backButton: {
     paddingVertical: 10,
     paddingLeft: 10
 
 }
+
 });
 
 export default ViewProfile;

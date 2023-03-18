@@ -202,7 +202,7 @@ export default function ViewFollowers(props) {
         renderItem={({ item }) => {
           return (
             <View style={styles.notificationBox}>
-              <TouchableOpacity style={styles.userButton} onPress={() => navigate.navigate('ViewProfile')}>
+              <TouchableOpacity style={styles.userButton} onPress={() => navigate.navigate('ViewProfile',{ clickedUserId: item.userId, userId: userId, mainUserId: props.route.params.mainUserId })}>
                 <Image style={styles.image} source={{ uri: item.profileImage }} />
                 <View style={{ flexDirection: 'column' }}>
                     <Text style={styles.description}>{item.username}</Text>

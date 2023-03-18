@@ -10,9 +10,11 @@ const queries = require("../appConnection/profile.js")
 
 const ProfileView = (props) => {
 
-  console.log("ProfileView")
+  console.log("UserProfile.js")
   const userId = props.route.params.userId
   console.log("userid:" + userId)
+  // console.log(props)
+  // console.log("Main:" + props.route.params.mainUserId)
 
   const [profileData, setProfileData] = useState(null);
 
@@ -77,13 +79,13 @@ const ProfileView = (props) => {
                     <Text style={styles.statLabel}>ScrapBooks</Text>
                   </View>
                 <View style={styles.statContainer}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers',{ userId: userId })}>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers',{ userId: userId, mainUserId: props.route.params.mainUserId })}>
                         <Text style={styles.statCount}>{profileData.followers}</Text>
                     </TouchableOpacity>
                 <Text style={styles.statLabel}>Followers</Text>
                 </View>
                 <View style={styles.statContainer}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing',{ userId: userId })}>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing',{ userId: userId, mainUserId: props.route.params.mainUserId })}>
                         <Text style={styles.statCount}>{profileData.following}</Text>
                     </TouchableOpacity>
                 <Text style={styles.statLabel}>Following</Text>

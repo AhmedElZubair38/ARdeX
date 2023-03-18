@@ -54,7 +54,7 @@ export default function LoginUpdated({ navigation }) {
         // console.log(user);
         const userId = await queries.getUserIdFromEmail(email);
         console.log(userId);
-        navigation.navigate('BottomTabNavigator', { userId: userId });
+        navigation.navigate('BottomTabNavigator', { userId: userId, mainUserId: userId });
 
       })
       .catch((error) => {
