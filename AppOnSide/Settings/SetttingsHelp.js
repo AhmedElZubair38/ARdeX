@@ -18,15 +18,15 @@ function SettingsHelp() {
         <Text style={styles.header}>Help</Text>
         
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
-        <Icon2 style={{ color: 'black', paddingTop: '4%', paddingRight: 3}} size={27} name={Platform.OS === 'ios' ? 'ios-help' : 'frequently-asked-questions'}/>
+        <Icon2 style={{ color: 'black', paddingTop: '4%', paddingRight: 3}} size={27} name={Platform.OS === 'ios' ? 'frequently-asked-questions' : 'frequently-asked-questions'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('FAQs')}>
             <Text style={{ color: 'black', fontSize: 18, padding: 13, fontWeight: 'bold', paddingLeft: 5, paddingRight: 170, textAlign: 'center' }}>FAQ's </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
-        <Icon3 style={{ color: 'black', paddingTop: '4%', paddingRight: 2}} size={27} name={Platform.OS === 'ios' ? 'ios-help' : 'policy'}/>
+        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '4%'}}>
+        <Icon3 style={{ color: 'black', paddingTop: '4%', paddingRight: 3}} size={27} name={Platform.OS === 'ios' ? 'policy' : 'policy'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsPrivacyPolicy')}>
             <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, fontWeight: 'bold', paddingRight: 100, textAlign: 'center' }}>Privacy Policy </Text>
         </TouchableOpacity>
@@ -37,7 +37,7 @@ function SettingsHelp() {
 
       <View style={styles.meow}>
       <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
       
@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
         paddingTop: '10%',
         fontWeight: 'bold',
         paddingBottom: '-1%',
-        paddingLeft: '5%',
-        fontSize: 22,
+        paddingLeft: '7%',
+        fontSize: 26,
         fontStyle: 'bold',
         color: '#808080',
         textAlign: 'left'
