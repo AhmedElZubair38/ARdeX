@@ -194,7 +194,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
 export default function HomeScreen(props) {
 
     const navigation = useNavigation();
-    console.log("hi")
+    console.log("HomeScreen")
     
     console.log(props.route.params.userId);
     return (
