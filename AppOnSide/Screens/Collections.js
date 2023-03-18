@@ -92,12 +92,11 @@ const Collections = () => {
               )
             }}
           />
-       
-        <View > 
-          <TouchableOpacity style={styles.meow} onPress={()=> navigation.goBack()}>
+                 
+          {/* <TouchableOpacity style={styles.meow} onPress={()=> navigation.goBack()}> */}
             <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-          </TouchableOpacity>
-        </View>
+          {/* </TouchableOpacity> */}
+        
 
     </View>
 

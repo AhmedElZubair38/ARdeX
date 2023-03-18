@@ -171,12 +171,11 @@ const styles = StyleSheet.create({
     },
 
     headerSettings: {
-      fontFamily: 'fax',
-      paddingTop: '7%',
+      paddingTop: '8%',
       paddingBottom: '-1%',
       paddingLeft: '5%',
-      fontSize: 32,
-      fontStyle: 'bold',
+      fontSize: 34,
+      fontWeight: 'bold',
       color: '#FFFFFF',
       textAlign: 'left'
     },
