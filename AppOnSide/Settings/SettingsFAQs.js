@@ -42,13 +42,18 @@ class FAQScreen extends Component {
       <View style={{flex: 1, flexDirection: 'column'}}>
 
       <View style={{flex: 1, backgroundColor: 'black'}}>
-        <Text style={styles.headerSettings}> FAQ's </Text>
+        <Text style={styles.headerSettings}>Settings</Text>
       </View>
 
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
 
       <View style={styles.container}>
+
+      <View >
+        <Text style={styles.header}> FAQ's </Text>
+      </View>
+
         <ScrollView>
           {FAQs.map((faq, index) => (
             <View key={index} style={styles.faqContainer}>
@@ -75,7 +80,7 @@ class FAQScreen extends Component {
       </View>
       <View style={styles.backButton}>
       <TouchableOpacity onPress={()=> this.props.navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
     </View>
@@ -138,7 +143,7 @@ const styles = StyleSheet.create({
   },
 
   backButton: {
-      width: 320,
+      width: 220,
       height: 70,
       borderRadius: 35,
       borderWidth: 2,
@@ -160,12 +165,11 @@ const styles = StyleSheet.create({
     },
 
     header: {
-      fontFamily: 'fax',
-      paddingTop: '10%',
-      paddingBottom: '-1%',
+      paddingTop: '2%',
+      paddingBottom: '6%',
       paddingLeft: '5%',
-      fontSize: 18,
-      fontStyle: 'bold',
+      fontSize: 26,
+      fontWeight: 'bold',
       color: '#808080',
       textAlign: 'left'
     },
