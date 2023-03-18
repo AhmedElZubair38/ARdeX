@@ -1,18 +1,61 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import ProfileNavigator from '../../Navigators/ProfileNavigator';
 
-const ProfileView = () => {
 
+const queries = require("../appConnection/profile.js")
+
+
+const ProfileView = (props) => {
+
+  console.log("ProfileView")
+  const userId = props.route.params.userId
+  console.log("userid:" + userId)
+
+  const [profileData, setProfileData] = useState(null);
+
+  const getData = async (userId) => {
+    const temp = await queries.getProfileStuff(userId)
+    // console.log(data)
+    const followers = await queries.getFollowersCount(userId)
+    // console.log(followers)
+    const following = await queries.getFollowingCount(userId)
+    // console.log(following)
+    const scrapbooks = await queries.getScrapbooksCount(userId)
+    // console.log(scrapbooks)
+    let bio = temp.bio
+    // console.log(bio.length)
+    if (bio!==null && bio.length > 50){
+    bio = bio.substring(0, 50) + '...';}
+    // Hey Everyone, I am Raj Jagasia. Nice to meet you.
+    let data = {...temp, bio, followers, following, scrapbooks}
+    console.log(data)
+    return data
+  }
+  
+  useEffect(() => {
+    getData(userId).then((data) => {
+      setProfileData(data);
+    });
+  }, [userId]);
+
+  // datas = getData(userId)
+  // useEffect(() => {
+  //   getData(userId)}, [])
+  // console.log(datas)
+
+  
   const navigation = useNavigation();
+  if (!profileData) {
+    return null; // or a loading indicator
+  }
 
-  const profileData = {
+  const profileData1 = {
     name: 'The Weeknd',
     bio: 'POP ftw',
-    profilePic: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
-    coverPic: 'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
+    profileImage: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
     scrapbooks: 5,
     followers: 2,
     following: 2,
@@ -26,21 +69,21 @@ const ProfileView = () => {
                 <View style={styles.profileContainer}>
                   <Image
                       style={styles.profilePhoto}
-                      source={{uri : profileData.profilePic}}
+                      source={{uri : profileData.profileImage}}
                   />
                 </View>
                   <View style={styles.statContainer}>
                     <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
-                    <Text style={styles.statLabel}>Posts</Text>
+                    <Text style={styles.statLabel}>ScrapBooks</Text>
                   </View>
                 <View style={styles.statContainer}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers')}>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers',{ userId: userId })}>
                         <Text style={styles.statCount}>{profileData.followers}</Text>
                     </TouchableOpacity>
                 <Text style={styles.statLabel}>Followers</Text>
                 </View>
                 <View style={styles.statContainer}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing')}>
+                    <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowing',{ userId: userId })}>
                         <Text style={styles.statCount}>{profileData.following}</Text>
                     </TouchableOpacity>
                 <Text style={styles.statLabel}>Following</Text>

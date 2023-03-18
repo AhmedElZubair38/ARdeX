@@ -12,8 +12,8 @@ import AddPost from '../Screens/AddPostScreens/AddPost';
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs(props) {
-    console.log("props in bottomTabNavigation: ", props);
+export default function BottomTabNavigation({route}) {
+
     return (
         
         <Tab.Navigator 
@@ -37,13 +37,12 @@ function MyTabs(props) {
                 tabBarLabel: "Home",
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'ios-home' : 'home'} color={color} size={size} />
-
                 )}}
+                    initialParams={{userId: route.params.userId}}
+                />            
 
-                    initialParams={{loggedUserId: props.loggedUserId}}
-                />
-            
-            
+            {/* {console.log(route.params.userId)} */}
+
             <Tab.Screen name="Search" 
             component={Contact}
             options={{ 
@@ -51,7 +50,9 @@ function MyTabs(props) {
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'ios-search' : 'search'} color={color} size={size} />
 
-                )}}/>
+                )}}
+                initialParams={{userId: route.params.userId}}
+                />
 
             
              <Tab.Screen name="AddPost"
@@ -61,7 +62,9 @@ function MyTabs(props) {
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'ios-add-circle' : 'add-circle'} color={color} size={size} />
 
-                )}}/>
+                )}}
+                initialParams={{userId: route.params.userId}}
+                />
 
             
             <Tab.Screen name="Map" 
@@ -71,7 +74,9 @@ function MyTabs(props) {
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'ios-map-sharp' : 'map-sharp'} color={color} size={size} />
 
-                )}}/>
+                )}}
+                initialParams={{userId: route.params.userId}}
+                />
 
 
             <Tab.Screen name="UserProfile" 
@@ -81,18 +86,14 @@ function MyTabs(props) {
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'person' : 'person'} color={color} size={size} />
 
-                )}}/>
+                )}}
+                initialParams={{userId: route.params.userId}}
+                />
 
 
         </Tab.Navigator>
         
 
     );
-};
 
-export default function BottomTabNavigation() {
-    return (
-
-        <MyTabs/>
-    );
 };

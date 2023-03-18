@@ -11,6 +11,7 @@ import {
   signInWithEmailAndPassword
 } from "firebase/auth";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+const queries = require("../appConnection/register.js")
 
 
 export default function LoginUpdated({ navigation }) {
@@ -36,9 +37,9 @@ export default function LoginUpdated({ navigation }) {
   };
 
   // const [username, setUsername] = React.useState("");
-  const [email, setEmail] = React.useState("abcd@email.com");
-  const [password, setPassword] = React.useState("qwerty@123");
-
+  const [email, setEmail] = React.useState("raj@jagasia.com");
+  const [password, setPassword] = React.useState("rajjagasia");
+//New user email --> a1@e.com and password --> qwerty
 
   function handleSubmit() {
     console.log('submitted')
@@ -46,13 +47,14 @@ export default function LoginUpdated({ navigation }) {
     console.log("Password : " + password);
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-
-        console.log(userCredential);
-        const user = userCredential.user;
-        console.log(user);
-        const userId = 1;
-        navigation.navigate('BottomTabNavigator', { loggedUserId: userId });
+      .then(async (userCredential) => {
+        console.log("User logged in(LoginUpdated.js)");
+        // console.log(userCredential);
+        // const user = userCredential.user;
+        // console.log(user);
+        const userId = await queries.getUserIdFromEmail(email);
+        console.log(userId);
+        navigation.navigate('BottomTabNavigator', { userId: userId });
 
       })
       .catch((error) => {
