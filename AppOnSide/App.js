@@ -38,7 +38,7 @@ import ReportScrapBookHomeScreen from './Screens/HomeScreens/ReportScrapBookHome
 import CollectionsView from './Screens/CollectionsView';
 
 const Stack = createNativeStackNavigator();
-//Hi hello world
+
 export default function App(props) {
   console.log(props);
   useEffect(() => {

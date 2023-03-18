@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
+import React, {useState}from 'react'
 import TopBar from '../Navigators/TopBar'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 
 const Collections = () => {
@@ -13,68 +14,93 @@ const Collections = () => {
       id: 1,
       scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
       scrapName: 'Family Trips',
+      scrapMaker: 'The Weeknd',
       date: '22/12/2020',
     },
     {
       id: 2,
       scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
       scrapName: 'Family Farm',
+      scrapMaker: 'The Weeknd',
       date: '22/12/2020',
     },
     {
       id: 3,
       scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
       scrapName: 'Family Fantasy',
+      scrapMaker: 'The Weeknd',
       date: '22/12/2020',
     },
     {
       id: 4,
       scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
       scrapName: 'Family Holidays',
+      scrapMaker: 'The Weeknd',
       date: '22/12/2020',
     },
+    {
+      id: 5,
+      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+      scrapName: 'Family Farm',
+      scrapMaker: 'The Weeknd',
+      date: '22/12/2020',
+    },
+    {
+      id: 6,
+      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+      scrapName: 'Family Fantasy',
+      scrapMaker: 'The Weeknd',
+      date: '22/12/2020',
+    },
+    {
+      id: 7,
+      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+      scrapName: 'Family Holidays',
+      scrapMaker: 'The Weeknd',
+      date: '22/12/2020',
+    },
+    
   ]
+
+  const [results, setResults] = useState(scrapbooks)
 
   return (
     <View style={styles.page}>
+      
       <TopBar/>
-      <View style={styles.box}>
-          <View>
-            <View style={styles.head}>
-              <TouchableOpacity onPress={()=> navigation.goBack()} style={styles.backButton}>
-                <Icon style={{color: 'black'}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
-              </TouchableOpacity>
-              <Text style={styles.heading}>Collections</Text>
-            </View>
-              
-              <Text style={styles.heading2}>Here is where you will find all your scrapbooks you like!</Text>
-          </View>
+      
+          <Text style={styles.heading}>Collections</Text>
+      
+          <Text style={styles.heading2}>Here is where you can find all the scrapbooks you've saved!</Text>
+
           <FlatList
-                    style = {styles.comment}
-                    data = {scrapbooks}
-                    extraData = {this.state}
-                    keyExtractor={item => { return item.id }}
-                    renderItem={item => {
-                        const Notification = item.item
-                        return(
-                          <View style={styles.box}>
-                            <TouchableOpacity onPress={()=> navigation.navigate('CollectionsView')}>
-                                <View  style={styles.scrapbook}>
-                                  <View>
-                                    <Image style={styles.image} source={{ uri: Notification.scrapCover }} />
-                                  </View>
-                                  <View style={styles.content}>
-                                    <Text style={styles.scrapbookName}>{Notification.scrapName}</Text>
-                                    <Text style={styles.save} rkType="primary3 mediumLine">{Notification.date}</Text>
-                                  </View>
-                                </View>
-                            </TouchableOpacity>
-                          </View>
-                        )
-                    }}
-                />
+          style={styles.box}
+          enableEmptySections={true}
+          data={results}
+          renderItem={({ item }) => {
+              return(
+                <View>
+                <TouchableOpacity style={styles.box} onPress={()=> navigation.navigate('CollectionsView')}>
+                    <View  style={styles.scrapbook}>
+                      <View style={styles.content}>
+                        <Text style={styles.scrapbookName}>{item.scrapName}</Text>
+                        <Text style={styles.scrapbookMaker}>by {item.scrapMaker} on {item.date}</Text>
+                      </View>
+                    </View>
+                </TouchableOpacity>
+                </View>
+              )
+            }}
+          />
+       
+        <View style={styles.meow}> 
+          <TouchableOpacity onPress={()=> navigation.goBack()}>
+            <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+          </TouchableOpacity>
+        </View>
+
     </View>
-    </View>
+
   )
 }
 
@@ -83,6 +109,19 @@ export default Collections
 const styles = StyleSheet.create({
   page: {
     flex: 1,
+  },
+  meow: {
+    width: 220,
+    height: 70,
+    borderRadius: 35,
+    borderWidth: 2,
+    borderColor: 'black',
+    backgroundColor: '#FF4C68',
+    alignSelf: 'center',
+    position: 'absolute',
+    top: '85%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   head: {
     flexDirection: 'row',
@@ -94,14 +133,14 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontWeight: 'bold',
-    alignSelf: 'center',
+    textAlign: 'center',
     paddingTop: 15,
-    fontSize: 25
+    fontSize: 30
   },
   heading2: {
     fontWeight: 'bold',
     alignSelf: 'center',
-    textAlign: 'justify',
+    textAlign: 'center',
     paddingHorizontal: 25,
     paddingVertical: 15,
     fontSize: 16
@@ -116,7 +155,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'flex-start',
     borderRadius: 10,
-    backgroundColor: '#ddd'
+    backgroundColor: '#ddd',
+    paddingTop: 5,
   },
   image: { 
     height: 100,
@@ -124,6 +164,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   content: {
+    
     marginLeft: 20,
     marginTop: 10,
   },
@@ -131,6 +172,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
+  },
+  scrapbookMaker: {
+    fontSize: 14,
   },
   save: {
     fontSize: 14
