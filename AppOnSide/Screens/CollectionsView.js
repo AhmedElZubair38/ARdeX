@@ -1,25 +1,28 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Dimensions, ScrollView, Modal } from 'react-native'
-import React, { useState} from 'react'
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Button, ScrollView, Dimensions} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from 'react-native-vector-icons/AntDesign';
 import Icon5 from 'react-native-vector-icons/Fontisto';
+import Modal from "react-native-modal";
+import TopBar from '../Navigators/TopBar';
+
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-const posts = [
+
+const DATA = [
 
     {
-        user_name: 'The Weeknd',
-        user_image: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+        user_name: 'Naveen Jain',
+        user_image: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
         feed_image: [
             'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
-            'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8='
-            
+            'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8='           
         ],
         feed_caption: 'Taking the dog out!',
         like_count: '203',
@@ -27,8 +30,8 @@ const posts = [
     },
 
     {
-        user_name: 'The Weeknd',
-        user_image: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+        user_name: 'Kanye West',
+        user_image: 'https://cdn.siasat.com/wp-content/uploads/2020/07/Rapper-Kanye-West.jpg',
         feed_image: [
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
@@ -72,6 +75,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
         }
       }
     }
+    
 
     
     return (
@@ -79,6 +83,20 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
         <View style={styles.container}>
             <View style={styles.card}>
                 <View style={styles.cardHeader}>
+                    <View style={styles.headerLeft}>
+                        <Image
+                        style={styles.userImage}
+                        source={{uri: user_image}}
+                        />
+                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
+                            <Text style={styles.userName}> {user_name} </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.headerRight}>
+                        <TouchableOpacity style={{paddingRight: 10 }} onPress={()=> setModalVisible(true)}>
+                            <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                        </TouchableOpacity>
+                    </View >
                 </View>
                 <View style={styles.page}>
            <ScrollView
@@ -144,33 +162,64 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {feed_caption} </Text>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {comment_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
             </View>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                isVisible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+                backdropOpacity={0.5}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <View style={styles.buttonContainer}>
+                        <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ReportScrapBookHomeScreen');}} style={styles.modalButton}>
+                            <Text style={styles.modalButtonText}> Report Scrap Book</Text>
+                        </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ReportUserHomeScreen');}} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Report User</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
         </View>
     )
 }
 
-export default function ScrapbooksList() {
+
+
+export default function HomeScreen(props) {
 
     const navigation = useNavigation();
     
-
+    console.log(props);
     return (
 
-        
-    <View style={styles.container}>
-    <FlatList
-        data={posts}
-        renderItem={({ item }) => (
-            <Item
-            user_image={item.user_image}
-            feed_image={item.feed_image}
-            feed_caption={item.feed_caption}
-            like_count={item.like_count}
-            comment_count={item.comment_count}
-            key={item.user_name}
+    <View style={{flex: 1}}>
+        <TopBar />
+        <View style={styles.container}>
+            <View>
+                <Text style={styles.heading}>Collections Name</Text>
+            </View>
+            <FlatList
+                data={DATA}
+                renderItem={({ item }) => (
+                    <Item
+                    user_name={item.user_name}
+                    user_image={item.user_image}
+                    feed_image={item.feed_image}
+                    feed_caption={item.feed_caption}
+                    like_count={item.like_count}
+                    comment_count={item.comment_count}
+                    key={item.user_name}
+                    />
+                )}
+                keyExtractor={item => item.user_name}
             />
-        )}
-        />
-        
+        </View>
     </View>
     )
 }
@@ -181,7 +230,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ddd'
     },
-
+    heading: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#000',
+        marginTop: 20,
+        marginLeft: 10,
+        textAlign: 'center',
+        margin: 10,
+    },
     card: {
         backgroundColor: '#fff',
         padding: 10,
@@ -287,10 +344,10 @@ const styles = StyleSheet.create({
         margin: 3,
         color: 'white',
         fontSize: 10
-      },
-      dot: {
+    },
+    dot: {
         margin: 3,
         color: 'black',
         fontSize: 10
-      }
+    }
 });

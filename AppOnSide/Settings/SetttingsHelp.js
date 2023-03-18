@@ -1,7 +1,8 @@
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon3 from 'react-native-vector-icons/MaterialIcons';
 
 function SettingsHelp() {
 
@@ -17,7 +18,7 @@ function SettingsHelp() {
         <Text style={styles.header}>Help</Text>
         
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
-        <Icon style={{ color: 'black', paddingTop: '3%', paddingRight: -1}} size={30} name={Platform.OS === 'ios' ? 'ios-help' : 'help'}/>
+        <Icon2 style={{ color: 'black', paddingTop: '4%', paddingRight: 3}} size={27} name={Platform.OS === 'ios' ? 'ios-help' : 'frequently-asked-questions'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('FAQs')}>
             <Text style={{ color: 'black', fontSize: 18, padding: 13, fontWeight: 'bold', paddingLeft: 5, paddingRight: 170, textAlign: 'center' }}>FAQ's </Text>
         </TouchableOpacity>
@@ -25,7 +26,7 @@ function SettingsHelp() {
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
-        <Icon style={{ color: 'black', paddingTop: '3%', paddingRight: -1}} size={30} name={Platform.OS === 'ios' ? 'ios-help' : 'help'}/>
+        <Icon3 style={{ color: 'black', paddingTop: '4%', paddingRight: 2}} size={27} name={Platform.OS === 'ios' ? 'ios-help' : 'policy'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsPrivacyPolicy')}>
             <Text style={{ color: 'black', fontSize: 18, padding: 13, paddingLeft: 5, fontWeight: 'bold', paddingRight: 100, textAlign: 'center' }}>Privacy Policy </Text>
         </TouchableOpacity>
@@ -36,7 +37,7 @@ function SettingsHelp() {
 
       <View style={styles.meow}>
       <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
       

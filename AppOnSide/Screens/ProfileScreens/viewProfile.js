@@ -4,6 +4,7 @@ import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from "react-native-modal";
+import ProfileNavigator from '../../Navigators/ProfileNavigator';
 
 const ViewProfile = () => {
 
@@ -19,27 +20,6 @@ const ViewProfile = () => {
     following: 2,
   }
 
-  const scrapbooks = [
-    {
-      id: 1,
-      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'A',
-      scrapCaption: 'A',
-    },
-    {
-      id: 2,
-      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'B',
-      scrapCaption: 'A',
-    },
-    {
-      id: 3,
-      scrapCover: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-      scrapName: 'C',
-      scrapCaption: 'A',
-    },
-  ]
-
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -49,23 +29,17 @@ const ViewProfile = () => {
           <TouchableOpacity onPress={()=> navigation.goBack()} style={styles.backButton}>
             <Icon style={{color: 'black'}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
           </TouchableOpacity>
-            <View style={styles.headerContainer}>
+          <View style={styles.headerContainer}>
                 <View style={styles.profileContainer}>
-                <Image
-                    style={styles.profilePhoto}
-                    source={{uri : profileData.profilePic}}
-                />
-                <Text style={styles.nameText}>{profileData.name}</Text>
+                  <Image
+                      style={styles.profilePhoto}
+                      source={{uri : profileData.profilePic}}
+                  />
                 </View>
-            </View>
-            <View style={styles.bioContainer}>
-                <Text style={styles.bioText} rkType="primary3 mediumLine">{profileData.bio}</Text>
-            </View>
-            <View style={styles.statsContainer}>
-                <View style={styles.statContainer}>
-                <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
-                <Text style={styles.statLabel}>ScrapBooks</Text>
-                </View>
+                  <View style={styles.statContainer}>
+                    <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
+                    <Text style={styles.statLabel}>Posts</Text>
+                  </View>
                 <View style={styles.statContainer}>
                     <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers')}>
                         <Text style={styles.statCount}>{profileData.followers}</Text>
@@ -79,6 +53,10 @@ const ViewProfile = () => {
                 <Text style={styles.statLabel}>Following</Text>
                 </View>
             </View>
+            <View style={styles.bioContainer}>
+                <Text style={styles.nameText}>{profileData.name}</Text>
+                <Text style={styles.bioText} rkType="primary3 mediumLine">{profileData.bio}</Text>
+            </View>
             <View style={styles.buttonField}>
               <TouchableOpacity style={styles.button} onPress={() => console.log('Follow Button Pressed')}>
                   <Text style={styles.buttonText}>Follow</Text>
@@ -87,30 +65,7 @@ const ViewProfile = () => {
                   <Icon style={styles.buttonText} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
               </TouchableOpacity>
             </View>
-            <FlatList
-                style = {styles.comment}
-                data = {scrapbooks}
-                extraData = {this.state}
-                keyExtractor={item => { return item.id }}
-                renderItem={item => {
-                    const Notification = item.item
-                    return(
-                      <View style={styles.box}>
-                        <TouchableOpacity>
-                            <View  style={styles.scrapbook}>
-                              <View>
-                                <Image style={styles.image} source={{ uri: Notification.scrapCover }} />
-                              </View>
-                              <View style={styles.content}>
-                                <Text style={styles.scrapbookName}>{Notification.scrapName}</Text>
-                                <Text rkType="primary3 mediumLine">{Notification.scrapCaption}</Text>
-                              </View>
-                            </View>
-                        </TouchableOpacity>
-                      </View>
-                    )
-                }}
-            />
+            <ProfileNavigator/>
         </View>
         <Modal
                 animationType="slide"
@@ -147,6 +102,9 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     alignItems: 'center',
+    flexDirection: 'row',
+    marginHorizontal: 10,
+    marginTop: 20,
   },
   profileContainer: {
     alignItems: 'center',
@@ -163,8 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   bioContainer: {
-    paddingTop: 15,
-    paddingHorizontal:25,
+    padding: 15,
   },
   bioText: {
     fontSize: 16,
@@ -287,8 +244,9 @@ modalContainer: {
     justifyContent: 'center',
 },
 backButton: {
-    paddingTop: 20,
+    paddingVertical: 10,
     paddingLeft: 10
+
 }
 });
 
