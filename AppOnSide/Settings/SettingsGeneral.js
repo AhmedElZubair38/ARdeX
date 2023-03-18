@@ -17,28 +17,28 @@ function SettingsGeneral() {
         <Text style={styles.header}>General</Text>
         
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
-        <Icon style={{ color: 'black', paddingTop: '5%', paddingRight: -1}} size={18} name={Platform.OS === 'ios' ? 'ios-person' : 'person-remove'}/>
+        <Icon style={{ color: 'black', paddingTop: '5%', paddingRight: -1}} size={20} name={Platform.OS === 'ios' ? 'ios-person' : 'person-remove'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('SettingsBlockedUsers')}>
-            <Text style={{ color: 'black', fontSize: 19, padding: 13, fontWeight: 'bold', paddingLeft: 5, paddingRight: 96, textAlign: 'center' }}> Blocked Users</Text>
+            <Text style={{ color: 'black', fontSize: 20, padding: 13, fontWeight: 'bold', paddingLeft: 5, paddingRight: 99, textAlign: 'center' }}> Blocked Users</Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-        <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-key' : 'power'}/>
+        <Icon style={{ color: 'black', paddingTop: '5%'}} size={21.5} name={Platform.OS === 'ios' ? 'ios-key' : 'md-trash-sharp'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('LoginUpdated')}>
-            <Text style={{ color: 'black', fontSize: 19, fontWeight: 'bold', padding: 13, paddingLeft: 1.5, paddingRight: 60, textAlign: 'center' }}> Delete My Account</Text>
+            <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', padding: 13, paddingLeft: 1.5, paddingRight: 60, textAlign: 'center' }}> Delete My Account</Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
 
-        <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+        {/* <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '4%'}} size={20} name={Platform.OS === 'ios' ? 'ios-contacts' : 'location-sharp'}/>
         <TouchableOpacity  onPress={()=> navigation.navigate('LoginUpdated')}>
             <Text style={{ color: 'black', fontSize: 19, fontWeight: 'bold', padding: 13, paddingLeft: 3, paddingRight: 110, textAlign: 'center' }}> Permissions </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
-        </View>
+        </View> */}
 
       </View>
 
