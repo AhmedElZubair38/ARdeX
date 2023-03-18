@@ -74,7 +74,7 @@ const Collections = () => {
           <Text style={styles.heading2}>Here is where you can find all the scrapbooks you've saved!</Text>
 
           <FlatList
-          style={styles.box}
+          styles={{paddingBottom: 12}}
           enableEmptySections={true}
           data={results}
           renderItem={({ item }) => {
@@ -93,8 +93,8 @@ const Collections = () => {
             }}
           />
        
-        <View style={styles.meow}> 
-          <TouchableOpacity onPress={()=> navigation.goBack()}>
+        <View > 
+          <TouchableOpacity style={styles.meow} onPress={()=> navigation.goBack()}>
             <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
           </TouchableOpacity>
         </View>
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     backgroundColor: '#FF4C68',
     alignSelf: 'center',
-    position: 'absolute',
+    
     top: '85%',
     alignItems: 'center',
     justifyContent: 'center'
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   box: {
-    margin: 10
+    margin: 12,
   },
   scrapbook: {
     flexDirection: 'row',
