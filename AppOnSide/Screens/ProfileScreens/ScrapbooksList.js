@@ -79,20 +79,6 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
         <View style={styles.container}>
             <View style={styles.card}>
                 <View style={styles.cardHeader}>
-                    {/* <View style={styles.headerLeft}>
-                        <Image
-                        style={styles.userImage}
-                        source={{uri: user_image}}
-                        />
-                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
-                            <Text style={styles.userName}> {user_name} </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.headerRight}>
-                        <TouchableOpacity style={{paddingRight: 10 }} onPress={()=> setModalVisible(true)}>
-                            <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
-                        </TouchableOpacity>
-                    </View > */}
                 </View>
                 <View style={styles.page}>
            <ScrollView
