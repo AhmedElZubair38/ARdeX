@@ -4,8 +4,9 @@ import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import ProfileNavigator from '../../Navigators/ProfileNavigator';
 
-const ProfileView = () => {
-
+const ProfileView = (props) => {
+  console.log("hifdsfa")
+  console.log(props.route.params.userId)
   const navigation = useNavigation();
 
   const profileData = {

@@ -52,7 +52,7 @@ export default function LoginUpdated({ navigation }) {
         const user = userCredential.user;
         console.log(user);
         const userId = 1;
-        navigation.navigate('BottomTabNavigator', { loggedUserId: userId });
+        navigation.navigate('BottomTabNavigator', { userId:1 });
 
       })
       .catch((error) => {

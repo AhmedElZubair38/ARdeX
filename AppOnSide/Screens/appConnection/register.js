@@ -36,13 +36,30 @@ const checkUsername = async (username) => {
             // console.log(data)
             // console.log(data)
             // console.log(typeof(data))
-            // console.log(Object.keys(data).length)
+            // console.log(data)
+            // console.log(Object.keys(data))
+            // const x = Object.values(data)
+            // const y = Object.values(x[0])
+            // const z = Object.values(y)[0]
+            // console.log("userId")
+            // console.log("qqqqqqqqqqqqqqqqqqqqqqqqq")
+            console.log(Object.values(data[0])[0])
+            // console.log(Object.values(x))
+
+
+            // console.log(typeof(x))
+            // // console.log(z.length)
+            // // console.log(typeof(z[0]))
+            // console.log(z)
+
             if (Object.keys(data).length ===0){
                 return true;
             } else {
-                return false;
+                return Object.values(data[0])[0];
             }
         }
+
+
 
 
 
