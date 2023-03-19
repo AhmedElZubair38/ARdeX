@@ -204,7 +204,7 @@ export default function ViewFollowing(props) {
               <TouchableOpacity style={styles.userButton} onPress={() => navigate.navigate('ViewProfile',{ clickedUserId: item.userId, userId: userId, mainUserId: props.route.params.mainUserId })}>
                 <Image style={styles.image} source={{ uri: item.profileImage }} />
                 <View style={{ flexDirection: 'column' }}>
-                    <Text style={styles.description}>{item.username}</Text>
+                    <Text style={styles.description}>@{item.username}</Text>
                     <Text style={styles.name}>{item.name}</Text>
                 </View>
               </TouchableOpacity>
