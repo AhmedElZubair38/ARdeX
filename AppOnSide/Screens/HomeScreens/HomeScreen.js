@@ -65,7 +65,7 @@ const HEIGHT = Dimensions.get('window').height;
 //     }
 // ]
 
-function Item ({username, scrapName, profileImage, imageName, caption, likes, comments}) {
+function Item ({username, scrapName, profileImage, imageName, caption, likes, comments, name, userId, mainUserId, scrapId}) {
 
     const [isFilled, setIsFilled] = useState(false);
     const [isFilled2, setIsFilled2] = useState(false);
@@ -89,12 +89,13 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
             <View style={styles.card}>
                 <View style={styles.cardHeader}>
                     <View style={styles.headerLeft}>
-                        <Image
-                        style={styles.userImage}
-                        source={{uri: profileImage}}
-                        />
-                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
-                            <Text style={styles.userName}>@{username} </Text>
+                        <Image style={styles.image} source={{uri: profileImage}} />
+                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile',{ clickedUserId: userId, userId: userId, mainUserId: mainUserId })}>
+                            <View style={{ flexDirection: 'column' }}>
+                                <Text style={styles.userName}>@{username}</Text>
+                                <Text style={styles.name}>{name}</Text>
+                            </View>
+                            {/* <Text style={styles.userName}>@{username} </Text> */}
                         </TouchableOpacity>
                     </View>
                     <View style={styles.headerRight}>
@@ -254,6 +255,10 @@ export default function HomeScreen(props) {
                     likes={item.likes}
                     comments={item.comments}
                     key={item.username}
+                    userId={item.userId}
+                    name={item.name}
+                    mainUserId={props.route.params.mainUserId}
+                    scrapId={item.scrapId}
                     />
                 )}
                 keyExtractor={item => item.username}/>
@@ -303,6 +308,14 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 50/2
     },
+    image: {
+        width: 50,
+        height: 50,
+        borderRadius: 100,
+        borderColor: 'black',
+        borderWidth: 1,
+        marginTop: 12
+      },
 
     userName: {
         fontWeight: 'bold',
@@ -354,6 +367,13 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         borderColor: 'black',
     },
+    name: {
+        fontSize: 14,
+        color: '#888',
+        marginLeft: 10,
+        marginTop: 5,
+        alignSelf: 'center',
+      },
     modalButtonText: {
         fontSize: 18,
         fontWeight: 'bold',
