@@ -27,7 +27,7 @@ export default function BottomTabNavigation({route}) {
             tabBarInactiveTintColor: '#FFFFFF',
             tabBarActiveBackgroundColor: '#FF4C68',
             tabBarInactiveBackgroundColor: '#FF4C68',
-            tabBarStyle: {paddingBottom: 0, height: '8%', borderTopColor: 'black', paddingTop: -1}
+            tabBarStyle: {paddingBottom: 0, height: '8%', borderTopColor: 'black', borderTopWidth: 1}
             }}   
         >
 

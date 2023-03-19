@@ -8,7 +8,7 @@ const TopBar = () => {
 const navigation = useNavigation();
 
 return (
-  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 90, padding: 15, backgroundColor: '#FF4C68', paddingTop: 20}}>
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 90, padding: 15, borderBottomWidth: 1, backgroundColor: '#FF4C68', paddingTop: 20}}>
 
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image source={require('AppOnSide/Photos/transparent-logo.png')} style={{ width: 105, height: 35, marginBottom: -25}}/>
@@ -18,9 +18,6 @@ return (
               <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
               </TouchableOpacity>
-              {/* <TouchableOpacity onPress={() => navigation.navigate('Groups')}>
-              <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'people' : 'people'}/>
-              </TouchableOpacity> */}
               <TouchableOpacity onPress={() => navigation.navigate('SettingsHome')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'settings' : 'settings'}/>
               </TouchableOpacity>

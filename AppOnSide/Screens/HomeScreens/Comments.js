@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         marginVertical: 10,
         marginHorizontal: 10,
-        borderWidth: 2,
+        borderWidth: 1.5,
         borderColor: 'black',
     },
     
@@ -248,13 +248,19 @@ const styles = StyleSheet.create({
     },
     modalButton: {
         padding: 10,
+        width: '80%',
+        alignSelf: 'center',
         borderRadius: 5,
         margin: 5,
-        backgroundColor: 'white',
+        backgroundColor: '#ddd',
         alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 15,
+        borderColor: 'black',
     },
     modalButtonText: {
         fontSize: 18,
+        fontWeight: 'bold',
     },
     buttonContainer: {
         flexDirection: 'column',
@@ -263,15 +269,18 @@ const styles = StyleSheet.create({
     modalContent: {
         backgroundColor: 'white',
         padding: 20,
-        borderRadius: 10,
+        borderRadius: 15,
         alignItems: 'center',
         backgroundColor: '#F5F5F5',
-        width: '100%'
+        width: '100%',
+        borderWidth: 2,
+        borderColor: 'black',
     },
     modalContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
     inputContainer: {
         borderBottomColor: '#F5FCFF',

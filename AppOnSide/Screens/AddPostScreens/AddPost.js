@@ -123,6 +123,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 2,
+        borderWidth: 1,
+        borderColor: 'black',
       },
       image: {
         width: 40,
@@ -131,15 +133,15 @@ const styles = StyleSheet.create({
       },
       description: {
         fontSize: 18,
+        fontWeight: 'bold',
         color: '#3498db',
-        marginLeft: 10,
-        alignSelf: 'center',
+        margin: 10,
       },
       button: {
         marginBottom: 15,
         marginHorizontal: 35,
         backgroundColor: '#FF4C68',
-        borderRadius: 8,
+        borderRadius: 25,
         paddingVertical: 10,
         paddingBottom: 10,
         alignItems: 'center',
@@ -147,6 +149,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,
         shadowRadius: 2,
+        borderWidth: 1.5,
+        borderColor: 'black',
       },
       buttonText: {
         color: '#fff',

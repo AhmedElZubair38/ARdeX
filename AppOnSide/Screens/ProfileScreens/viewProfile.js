@@ -10,8 +10,8 @@ import queries from "../appConnection/profile.js"
 const ViewProfile = (props) => {
 
   console.log("ViewProfile.js")
-  clickedUserId = props.route.params.clickedUserId
-  mainUserId = props.route.params.mainUserId
+  const clickedUserId = props.route.params.clickedUserId
+  const mainUserId = props.route.params.mainUserId
   console.log("Clicked:" + clickedUserId)
   console.log("Main:" + mainUserId)
   
