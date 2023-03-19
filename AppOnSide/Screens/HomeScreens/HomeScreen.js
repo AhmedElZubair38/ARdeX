@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: 'black',
-        backgroundColor: '#ddd',
+        backgroundColor: '#FFBCCD',
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 10,
         marginTop: 15,
-        fontSize: 17
+        fontSize: 18
     },
 
     icon: {
