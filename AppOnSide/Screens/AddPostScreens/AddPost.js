@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         padding: 15,
       },
       notificationBox: {
-        padding: 15,
+        padding: 10,
         marginTop: 5,
         marginBottom: 5,
         backgroundColor: '#FFFFFF',

@@ -86,7 +86,7 @@ export default function Contact(props) {
           }}
         />
       ) : (
-        <Text>No results found.</Text>
+        <Text style={styles.note}>No results found.</Text>
       )}
     </View>
   );
@@ -96,6 +96,14 @@ export default function Contact(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  note: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#FF4C68',
+    marginBottom: 5,
+    fontWeight: 'bold',
+    marginBottom: '60%',
   },
   inputContainer: {
     backgroundColor: '#FFFFFF',

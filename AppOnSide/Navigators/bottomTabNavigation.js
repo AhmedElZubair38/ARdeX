@@ -18,7 +18,7 @@ export default function BottomTabNavigation({route}) {
         
         <Tab.Navigator 
         
-        initalRouteName='Home' 
+        initalRouteName='Home'
         
         screenOptions={{
             headerShown: false,
@@ -27,8 +27,10 @@ export default function BottomTabNavigation({route}) {
             tabBarInactiveTintColor: '#FFFFFF',
             tabBarActiveBackgroundColor: '#FF4C68',
             tabBarInactiveBackgroundColor: '#FF4C68',
-            tabBarStyle: {paddingBottom: 0, height: '8%', borderTopColor: 'black', borderTopWidth: 1}
-            }}   
+            keyboardHidesTabBar: true,
+            tabBarStyle: {paddingBottom: 0, height: '8%', borderTopColor: 'black', borderTopWidth: 1},
+            }}
+            
         >
 
             <Tab.Screen name="Home"
