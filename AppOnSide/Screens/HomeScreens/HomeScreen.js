@@ -1,68 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Button, ScrollView, Dimensions} from "react-native";
 import TopBar from "../../Navigators/TopBar";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from 'react-native-vector-icons/AntDesign';
 import Icon5 from 'react-native-vector-icons/Fontisto';
 import Modal from "react-native-modal";
+import { ActivityIndicator } from 'react-native';
+
+import queries from "../appConnection/home.js"
 
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 
-const DATA = [
+const DATA1 = [
 
     {
-        user_name: 'Naveen Jain',
-        user_image: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
-        feed_image: [
+        username: 'Naveen Jain',
+        profileImage: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
+        imageName: [
             'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8='           
         ],
-        scrap_name: 'Concert Week!',
-        feed_caption: 'Taking the dog out!',
-        like_count: '203',
-        comment_count: '16'
+        scrapName: 'Concert Week!',
+        caption: 'Taking the dog out!',
+        likes: '203',
+        comments: '16'
     },
 
     {
-        user_name: 'Kanye West',
-        user_image: 'https://cdn.siasat.com/wp-content/uploads/2020/07/Rapper-Kanye-West.jpg',
-        feed_image: [
+        username: 'Kanye West',
+        profileImage: 'https://cdn.siasat.com/wp-content/uploads/2020/07/Rapper-Kanye-West.jpg',
+        imageName: [
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
             'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
             'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
         ],
-        scrap_name: 'Concert Week 2!',
-        feed_caption: 'Wit the homie!',
-        like_count: '1,982,234',
-        comment_count: '6,773'
+        scrapName: 'Concert Week 2!',
+        caption: 'Wit the homie!',
+        likes: '1,982,234',
+        comments: '6,773'
     },
 
     {
-        user_name: 'The Weeknd',
-        user_image: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
-        feed_image: [
+        username: 'The Weeknd',
+        profileImage: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+        imageName: [
             'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
             'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
             'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
         ],
-        scrap_name: 'Concert Week 3!',
-        feed_caption: 'New album out on all platforms!',
-        like_count: '1,234',
-        comment_count: '67'
+        scrapName: 'Concert Week 3!',
+        caption: 'New album out on all platforms!',
+        likes: '1,234',
+        comments: '67'
     }
 ]
 
-function Item ({user_name, scrap_name, user_image, feed_image, feed_caption, like_count, comment_count}) {
+function Item ({username, scrapName, profileImage, imageName, caption, likes, comments}) {
 
     const [isFilled, setIsFilled] = useState(false);
     const [isFilled2, setIsFilled2] = useState(false);
@@ -88,10 +91,10 @@ function Item ({user_name, scrap_name, user_image, feed_image, feed_caption, lik
                     <View style={styles.headerLeft}>
                         <Image
                         style={styles.userImage}
-                        source={{uri: user_image}}
+                        source={{uri: profileImage}}
                         />
                         <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
-                            <Text style={styles.userName}> {user_name} </Text>
+                            <Text style={styles.userName}> {username} </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.headerRight}>
@@ -101,7 +104,7 @@ function Item ({user_name, scrap_name, user_image, feed_image, feed_caption, lik
                     </View >
                 </View>
                 <View style={styles.backButton}>
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black'}}> {scrap_name} </Text>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black'}}> {scrapName} </Text>
                 </View>
                 <View style={styles.page}>
            <ScrollView
@@ -113,7 +116,7 @@ function Item ({user_name, scrap_name, user_image, feed_image, feed_caption, lik
             scrollEventThrottle={1}
           >
             {
-              feed_image.map((e, index)=>
+              imageName.map((e, index)=>
                 <Image
                   key={e}
                   resizeMode='stretch'
@@ -127,7 +130,7 @@ function Item ({user_name, scrap_name, user_image, feed_image, feed_caption, lik
 
           <View style={styles.wrapDot}>
             {
-              feed_image.map((e, index) =>
+              imageName.map((e, index) =>
                 <Text
                   key={e}
                   style={imageActive == index ? styles.dotActive : styles.dot}>
@@ -165,11 +168,11 @@ function Item ({user_name, scrap_name, user_image, feed_image, feed_caption, lik
                             </TouchableOpacity>
                 </View>
                 <TouchableOpacity onPress={() => navigation.navigate('Likes')}>
-                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {like_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
+                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {likes} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 </TouchableOpacity>
-                <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {feed_caption} </Text>
+                <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {caption} </Text>
                 <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
-                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {comment_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
+                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {comments} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
                 </TouchableOpacity>
             </View>
             <Modal
@@ -209,6 +212,31 @@ export default function HomeScreen(props) {
     console.log("HomeScreen")
     
     console.log(props.route.params.userId);
+
+    const [DATA, setDATA] = useState(null);
+
+    const getData = async () => {
+        const response = await queries.getHomeFeed();
+        console.log(response);
+        return response;
+    }
+    const isFocused = useIsFocused();
+    
+    useEffect(() => {
+        if (isFocused) {
+        getData().then((data) => {
+          setDATA(data);
+        });}
+      }, [isFocused]); 
+
+      if (!DATA) {
+        return <ActivityIndicator size="large" color="#0000ff" />;
+      }
+        
+
+
+
+
     return (
 
         <View style={{flex: 1}}>
@@ -218,17 +246,17 @@ export default function HomeScreen(props) {
                 data={DATA}
                 renderItem={({ item }) => (
                     <Item
-                    user_name={item.user_name}
-                    user_image={item.user_image}
-                    feed_image={item.feed_image}
-                    feed_caption={item.feed_caption}
-                    scrap_name={item.scrap_name}
-                    like_count={item.like_count}
-                    comment_count={item.comment_count}
-                    key={item.user_name}
+                    username={item.username}
+                    profileImage={item.profileImage}
+                    imageName={item.imageName}
+                    caption={item.caption}
+                    scrapName={item.scrapName}
+                    likes={item.likes}
+                    comments={item.comments}
+                    key={item.username}
                     />
                 )}
-                keyExtractor={item => item.user_name}/>
+                keyExtractor={item => item.username}/>
         </View>
     </View>
     )
