@@ -24,6 +24,7 @@ const DATA = [
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8='           
         ],
+        scrap_name: 'Concert Week!',
         feed_caption: 'Taking the dog out!',
         like_count: '203',
         comment_count: '16'
@@ -38,6 +39,7 @@ const DATA = [
             'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
             'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
         ],
+        scrap_name: 'Concert Week 2!',
         feed_caption: 'Wit the homie!',
         like_count: '1,982,234',
         comment_count: '6,773'
@@ -53,13 +55,14 @@ const DATA = [
             'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
             'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
         ],
+        scrap_name: 'Concert Week 3!',
         feed_caption: 'New album out on all platforms!',
         like_count: '1,234',
         comment_count: '67'
     }
 ]
 
-function Item ({user_name, user_image, feed_image, feed_caption, like_count, comment_count}) {
+function Item ({user_name, scrap_name, user_image, feed_image, feed_caption, like_count, comment_count}) {
 
     const [isFilled, setIsFilled] = useState(false);
     const [isFilled2, setIsFilled2] = useState(false);
@@ -75,7 +78,6 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
         }
       }
     }
-    
 
     
     return (
@@ -97,6 +99,9 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                             <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
                         </TouchableOpacity>
                     </View >
+                </View>
+                <View style={styles.backButton}>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black'}}> {scrap_name} </Text>
                 </View>
                 <View style={styles.page}>
            <ScrollView
@@ -198,7 +203,6 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
 }
 
 
-
 export default function HomeScreen(props) {
 
     const navigation = useNavigation();
@@ -218,6 +222,7 @@ export default function HomeScreen(props) {
                     user_image={item.user_image}
                     feed_image={item.feed_image}
                     feed_caption={item.feed_caption}
+                    scrap_name={item.scrap_name}
                     like_count={item.like_count}
                     comment_count={item.comment_count}
                     key={item.user_name}
@@ -235,6 +240,19 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ddd'
     },
+
+    backButton: {
+        width: 350,
+        height: 50,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: 'black',
+        backgroundColor: '#ddd',
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 13.5,
+      },
 
     card: {
         backgroundColor: '#fff',

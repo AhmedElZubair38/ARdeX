@@ -91,7 +91,6 @@ export default function Likes(props) {
         <Text style={styles.note}>No results found.</Text>
       )}
       </View>
-      <Text style={styles.heading2}> OR </Text>
       <View style={styles.backButton}>
         <TouchableOpacity onPress={()=> navigation.goBack()}>
           <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
