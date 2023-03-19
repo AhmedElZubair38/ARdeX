@@ -100,7 +100,7 @@ export default function LoginUpdated({ navigation }) {
           <TouchableOpacity style={styles.signUpButtonContainer}
             onPress={handleSubmit}
           >
-            <Text style={{ color: 'white', fontSize: 22, padding: 7, textAlign: 'center', fontWeight: 'bold' }}> Sign In </Text>
+            <Text style={{ color: 'white', fontSize: 22, padding: '4.5%', textAlign: 'center', fontWeight: 'bold' }}> Sign In </Text>
           </TouchableOpacity>
 
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
