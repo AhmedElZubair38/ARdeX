@@ -153,7 +153,10 @@ import queries from "./appConnection/search.js"
 //   );
 // }
 
-export default function Contact({ navigation }) {
+export default function Contact(props) {
+  console.log("Contact")
+  console.log(props.route.params)
+  navigation = useNavigation();
   const [userData, setUserData] = useState([]);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
@@ -217,7 +220,7 @@ export default function Contact({ navigation }) {
               <View style={styles.notificationBox}>
                 <TouchableOpacity
                   style={styles.userButton}
-                  onPress={() => navigation.navigate('ViewProfile')}
+                  onPress={() => navigation.navigate('ViewProfile',{ clickedUserId: item.userId, userId: props.route.params.userId, mainUserId: props.route.params.mainUserId })}
                 >
                   <Image style={styles.image} source={{ uri: item.profileImage }} />
                   <View style={{ flexDirection: 'column' }}>

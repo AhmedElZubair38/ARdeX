@@ -124,7 +124,23 @@ const getScrapbooksCount = async (userId) => {
             return data
  }
 
+ const checkFollower = async (userId,followerId) => {
+    console.log("checkFollower")
+    console.log(userId)
+    console.log(followerId)
+    const response = await fetch(starting + 'api/getScrapbookbyuserId/' + userId +"/"+followerId , {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            }
+            });
+            const data = await response.json();
+            console.log(data)
+            return data.length !== 0
+ }
 
 
 
-module.exports = {getProfileStuff, getFollowers, getFollowing, getFollowersCount, getFollowingCount, getScrapbooksCount, getScrapbooks}
+
+module.exports = {getProfileStuff, getFollowers, getFollowing, getFollowersCount, getFollowingCount, getScrapbooksCount, getScrapbooks, checkFollower}

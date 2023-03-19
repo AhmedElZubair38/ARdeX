@@ -38,10 +38,10 @@ export default function BottomTabNavigation({route}) {
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'ios-home' : 'home'} color={color} size={size} />
                 )}}
-                    initialParams={{userId: route.params.userId}}
+                    initialParams={{userId: route.params.userId, mainUserId: route.params.mainUserId}}
                 />            
 
-            {/* {console.log(route.params.userId)} */}
+            {console.log(route)}
 
             <Tab.Screen name="Search" 
             component={Contact}
@@ -51,7 +51,8 @@ export default function BottomTabNavigation({route}) {
                     <Icon name={Platform.OS === 'ios' ? 'ios-search' : 'search'} color={color} size={size} />
 
                 )}}
-                initialParams={{userId: route.params.userId}}
+                initialParams={{userId: route.params.userId, mainUserId: route.params.mainUserId}}
+
                 />
 
             
@@ -63,7 +64,8 @@ export default function BottomTabNavigation({route}) {
                     <Icon name={Platform.OS === 'ios' ? 'ios-add-circle' : 'add-circle'} color={color} size={size} />
 
                 )}}
-                initialParams={{userId: route.params.userId}}
+                initialParams={{userId: route.params.userId, mainUserId: route.params.mainUserId}}
+
                 />
 
             
@@ -75,7 +77,8 @@ export default function BottomTabNavigation({route}) {
                     <Icon name={Platform.OS === 'ios' ? 'ios-map-sharp' : 'map-sharp'} color={color} size={size} />
 
                 )}}
-                initialParams={{userId: route.params.userId}}
+                initialParams={{userId: route.params.userId, mainUserId: route.params.mainUserId}}
+
                 />
 
 
@@ -87,7 +90,8 @@ export default function BottomTabNavigation({route}) {
                     <Icon name={Platform.OS === 'ios' ? 'person' : 'person'} color={color} size={size} />
 
                 )}}
-                initialParams={{userId: route.params.userId}}
+                initialParams={{userId: route.params.userId, mainUserId: route.params.mainUserId}}
+
                 />
 
 
