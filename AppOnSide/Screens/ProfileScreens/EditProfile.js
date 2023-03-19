@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Image, ScrollView, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
@@ -36,8 +36,10 @@ const EditProfile = () => {
 							style={styles.profilePhoto}
 							source={{uri : profilePic}}
 						/>
-						<View style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:-60,right:10,fontSize:20,borderRadius:50}]}>
-							<Icon size={35} style={styles.icon123} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
+						<View>
+							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:0,right:-20,borderRadius:50}]} onPress={()=> console.log("abc")}>
+								<Icon size={35} style={styles.icon123} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
+							</TouchableOpacity>
 						</View>
 					
 					</View>
