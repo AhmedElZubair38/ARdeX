@@ -26,7 +26,7 @@ function SettingsGeneral() {
 
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={21.5} name={Platform.OS === 'ios' ? 'ios-key' : 'md-trash-sharp'}/>
-        <TouchableOpacity  onPress={()=> navigation.navigate('LoginUpdated')}>
+        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsDeleteAccount')}>
             <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', padding: 13, paddingLeft: 1.5, paddingRight: 60, textAlign: 'center' }}> Delete My Account</Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>

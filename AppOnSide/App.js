@@ -36,6 +36,7 @@ import ScrapbooksList from './Screens/ProfileScreens/ScrapbooksList';
 import ReportUserHomeScreen from './Screens/HomeScreens/ReportUserHomeScreen';
 import ReportScrapBookHomeScreen from './Screens/HomeScreens/ReportScrapBookHomeScreen';
 import CollectionsView from './Screens/CollectionsView';
+import SettingsDeleteAccount from './Settings/SettingsDeleteAccount';
 
 const Stack = createNativeStackNavigator();
 
@@ -147,6 +148,11 @@ export default function App(props) {
         <Stack.Screen 
           name="SettingsPrivacyPolicy"
           component={SettingsPrivacyPolicy}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="SettingsDeleteAccount"
+          component={SettingsDeleteAccount}
           options={{headerShown: false}}
         />
         <Stack.Screen 
