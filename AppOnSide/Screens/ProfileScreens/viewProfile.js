@@ -6,12 +6,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from "react-native-modal";
 import ProfileNavigator from '../../Navigators/ProfileNavigator';
 import queries from "../appConnection/profile.js"
+import { ActivityIndicator } from 'react-native';
+
 
 const ViewProfile = (props) => {
 
   console.log("ViewProfile.js")
-  const clickedUserId = props.route.params.clickedUserId
-  const mainUserId = props.route.params.mainUserId
+  clickedUserId = props.route.params.clickedUserId
+  mainUserId = props.route.params.mainUserId
   console.log("Clicked:" + clickedUserId)
   console.log("Main:" + mainUserId)
   
@@ -27,6 +29,7 @@ const ViewProfile = (props) => {
   const [follow,setFollow] = useState(false);
 
   const getData = async (clickedUserId) => {
+    console.log("1")
     const temp = await queries.getProfileStuff(clickedUserId)
     // console.log(data)
     const followers = await queries.getFollowersCount(clickedUserId)
@@ -50,20 +53,22 @@ const ViewProfile = (props) => {
     return await queries.checkFollower(clickedUserId, mainUserId)
   }
 
-  let check = false;
+  let check = false
     
   
   useEffect(() => {
-    console.log("useEffect1")
+    console.log("Line 60")
     getData(clickedUserId).then((data) => {
       setProfileData(data);
     });
+    console.log("Line 62")
 
-    console.log("useEffect")
     checkFollower(clickedUserId, mainUserId).then((data) => {
-      check = data
+      
+      console.log("Line 66")
       if (data === true){
         setFollow("Following")
+        check = true
       }
       else{
         setFollow("Follow")
@@ -71,9 +76,15 @@ const ViewProfile = (props) => {
     });
   }, [clickedUserId, mainUserId]);
 
-  if (!follow) {
-    return null; // or a loading indicator
+  // if (!profileData) {
+  //   return null; // or a loading indicator
+  // }
+  if (!profileData) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
   }
+  // if (!profileData) {
+  //   return <ActivityIndicator size="large" color="#0000ff" />;
+  // }
 
   const profileData1 = {
     name: 'The Weeknd',
@@ -125,8 +136,8 @@ const ViewProfile = (props) => {
                 <Text style={styles.bioText} rkType="primary3 mediumLine">{profileData.bio}</Text>
             </View>
             <View style={styles.buttonField}>
-              <TouchableOpacity style={styles.button} onPress={() => console.log('Follow Button Pressed')}>
-                  <Text style={f1 === true ? styles.buttonTextBlack : styles.buttonText}>{follow}</Text>
+              <TouchableOpacity style={follow === "Follow"? styles.button: styles.buttonFollowing } onPress={() => console.log('Follow Button Pressed')}>
+                  <Text style={check === true ? styles.buttonTextBlack : styles.buttonText}>{follow}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button2} onPress={()=> setModalVisible(true)}>
                   <Icon style={styles.buttonText} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
@@ -225,6 +236,20 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '80%'
   },
+
+  buttonFollowing: {
+    backgroundColor: 'grey',
+    borderRadius: 10,
+    padding: 10,
+    marginLeft: 15,
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+    marginBottom: 10,
+    width: '80%'
+  },
+
   button2: {
     backgroundColor: '#FF4C68',
     borderRadius: 10,
