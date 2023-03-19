@@ -73,28 +73,30 @@ const Collections = () => {
   
       <Text style={styles.heading2}>Here is where you can find all the scrapbooks you've saved!</Text>
 
-      <FlatList
-      enableEmptySections={true}
-      data={results}
-      renderItem={({ item }) => {
-          return(
-            <View>
-            <TouchableOpacity style={styles.box} onPress={()=> navigation.navigate('CollectionsView')}>
-                <View  style={styles.scrapbook}>
-                  <View style={styles.content}>
-                    <Text style={styles.scrapbookName}>{item.scrapName}</Text>
-                    <Text style={styles.scrapbookMaker}>by {item.scrapMaker} on {item.date}</Text>
+      <View>
+        <FlatList
+        enableEmptySections={true}
+        data={results}
+        renderItem={({ item }) => {
+            return(
+              <View>
+              <TouchableOpacity style={styles.box} onPress={()=> navigation.navigate('CollectionsView')}>
+                  <View  style={styles.scrapbook}>
+                    <View style={styles.content}>
+                      <Text style={styles.scrapbookName}>{item.scrapName}</Text>
+                      <Text style={styles.scrapbookMaker}>by {item.scrapMaker} on {item.date}</Text>
+                    </View>
                   </View>
-                </View>
-            </TouchableOpacity>
-            </View>
-          )
-        }}
-      />
+              </TouchableOpacity>
+              </View>
+            )
+          }}
+        />
+      </View>
 
       <View style={styles.backButton}>
         <TouchableOpacity onPress={()=> navigation.goBack()}>
-          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
         </TouchableOpacity>
       </View>
         
@@ -131,8 +133,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     backgroundColor: '#FF4C68',
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: '3%',
     alignItems: 'center',
     justifyContent: 'center',
   
