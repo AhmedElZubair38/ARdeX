@@ -120,15 +120,16 @@ const getScrapbooksCount = async (userId) => {
             }
             });
             const data = await response.json();
-            // console.log(data)
+            console.log(data)
             return data
  }
 
  const checkFollower = async (userId,followerId) => {
-    console.log("checkFollower")
-    console.log(userId)
-    console.log(followerId)
-    const response = await fetch(starting + 'api/getScrapbookbyuserId/' + userId +"/"+followerId , {
+    // console.log("checkFollower")
+    // console.log(userId)
+    // console.log(followerId)
+    // console.log(starting + 'api/getScrapbookbyuserId/' + userId +"/"+followerId)
+    const response = await fetch(starting + 'api/checkFollower/' + userId +"/"+followerId , {
         method: 'GET',
         headers: {
             Accept: 'application/json',
