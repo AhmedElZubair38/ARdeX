@@ -175,6 +175,9 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <View style={styles.buttonContainer}>
+                        <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ScrapBookView');}} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>View Scrap Book Separately</Text>
+                            </TouchableOpacity>
                         <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ReportScrapBookHomeScreen');}} style={styles.modalButton}>
                             <Text style={styles.modalButtonText}> Report Scrap Book</Text>
                         </TouchableOpacity>
@@ -314,7 +317,7 @@ const styles = StyleSheet.create({
     modalContent: {
         backgroundColor: 'white',
         padding: 20,
-        borderRadius: 15,
+        borderRadius: 20,
         alignItems: 'center',
         backgroundColor: '#F5F5F5',
         width: '100%',

@@ -42,6 +42,11 @@ const AddPost = () => {
             image: 'https://img.icons8.com/color/70/000000/cottage.png',
             scrapbookName: 'Scrap 7',
         },
+        {
+            scrapbookId: 8,
+            image: 'https://img.icons8.com/color/70/000000/cottage.png',
+            scrapbookName: 'Scrap 8',
+        },
     ]
 
     const [results, setResults] = useState(data)
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'center',
         paddingTop: 7,
-        fontSize: 30
+        fontSize: 28
       },
       heading2: {
         fontWeight: 'bold',
@@ -113,7 +118,7 @@ const styles = StyleSheet.create({
         padding: 15,
       },
       notificationBox: {
-        padding: 20,
+        padding: 15,
         marginTop: 5,
         marginBottom: 5,
         backgroundColor: '#FFFFFF',
