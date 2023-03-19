@@ -59,7 +59,7 @@ export default function Likes(props) {
             }}
           />
           <TouchableOpacity style={styles.searchButton}>
-            <Icon name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
+            <Icon size={18} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
           </TouchableOpacity>
         </View>
       </View>
@@ -148,24 +148,23 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     width: '87%',
-    
-
+    paddingRight: 15,
   },
   inputs: {    
     height: 45,
-    margin: 25,
+    margin: 23,
     width: '87%',
     color: 'black',
     
   },
   searchButton: {
-    width: 45,
-    height: 45,  
+    width: 50,
+    height: 50,  
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'flex-end',
     backgroundColor: 'white',
-    borderRadius: 25,
+    borderRadius: 30,
     shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,

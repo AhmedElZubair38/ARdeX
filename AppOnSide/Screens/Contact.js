@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   inputs: {    
     height: 45,
-    margin: 25,
+    margin: 23,
     width: '87%',
     color: 'black',
     
