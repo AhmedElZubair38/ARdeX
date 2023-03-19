@@ -98,28 +98,16 @@ export default function LoginUpdated({ navigation }) {
           </View>
 
           <TouchableOpacity style={styles.signUpButtonContainer}
-            // onPress={() => { console.log(username + password); navigation.navigate('StackNavigator') }}
             onPress={handleSubmit}
           >
-            <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> Sign In </Text>
+            <Text style={{ color: 'white', fontSize: 22, padding: 7, textAlign: 'center', fontWeight: 'bold' }}> Sign In </Text>
           </TouchableOpacity>
 
-          <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Sign-in via </Text>
-
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <SocialIcon
-              type="google"
-              iconSize={34}
-              onPress={() => console.log('Sign up with Google')}
-              style={{ width: 60, height: 60, shadowColor: 'grey', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
-            />
-          </View>
-
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 16, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20, marginBottom: 30 }}> Don't have an account yet? </Text>
+            <Text style={{ fontSize: 17, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 30, marginBottom: 30 }}> Don't have an account yet? </Text>
             <Text
               onPress={() => navigation.navigate('Register')}
-              style={{ fontSize: 16, fontStyle: 'italic', color: '#FF4C68', textAlign: 'center', marginTop: 20, marginBottom: 30 }}> Sign up.
+              style={{ fontSize: 17, fontStyle: 'italic', color: '#FF4C68', textAlign: 'center', marginTop: 30, marginBottom: 30 }}> Sign up.
             </Text>
           </View>
         </View>
@@ -145,13 +133,15 @@ const styles = StyleSheet.create({
 
   bottomContainer: {
 
-    flex: 6000,
+    flex: 4000,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
     overflow: 'visible',
+    borderWidth: 2,
+    borderColor: 'black',
   },
 
   fieldContainer: {
@@ -163,7 +153,7 @@ const styles = StyleSheet.create({
   },
 
   fieldLabel: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#808080',
     fontWeight: 'bold',
   },
@@ -181,10 +171,12 @@ const styles = StyleSheet.create({
 
     backgroundColor: '#FF4C68',
     borderRadius: 30,
-    marginTop: 20,
+    borderWidth: 2,
+    borderColor: 'black',
+    marginTop: 30,
     marginBottom: 10,
-    width: '80%',
-    height: 50,
+    width: '47%',
+    height: '12.5%',
     alignSelf: 'center',
     shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },

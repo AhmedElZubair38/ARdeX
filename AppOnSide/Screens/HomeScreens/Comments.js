@@ -90,13 +90,14 @@ const Comments = () => {
         <TopBar/>
         <View style = {styles.container}>
             <View style = {styles.head}>
-                <TouchableOpacity onPress={ () => navigation.goBack()}>
-                    <Icon name={Platform.OS === 'ios' ? 'ios-chevron-back' : 'chevron-back'} size = {20}/>
+                <TouchableOpacity style={styles.headerText} onPress={ () => navigation.goBack()}>
+                    <Icon name={Platform.OS === 'ios' ? 'ios-chevron-back' : 'chevron-back'} size = {22}/>
                 </TouchableOpacity>
-                <Text style = {styles.headerText}>Comments</Text>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Text style={styles.headerText}>Comments</Text>
+                </TouchableOpacity>
             </View>
             <FlatList
-                style = {styles.comment}
                 data = {comments}
                 extraData = {this.state}
                 ItemSeparatorComponent={() => {
@@ -107,7 +108,6 @@ const Comments = () => {
                     const Notification = item.item
                     return(
                         <View style={styles.comments}>
-                            
                             <View style = {styles.content}>
                                 <View style={styles.commentHeader}>
                                     <View style={styles.user}>
@@ -119,10 +119,10 @@ const Comments = () => {
                                         </TouchableOpacity>
                                     </View>
                                     <TouchableOpacity onPress={()=> setModalVisible(true)}>
-                                        <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                                        <Icon style={{fontSize: 18}} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
                                     </TouchableOpacity>
                                 </View>
-                                <Text rkType="primary3 mediumLine">{Notification.comment}</Text>
+                                <Text>{Notification.comment}</Text>
                             </View>
                             <Text style= {styles.date}>{Notification.day}/{Notification.month}</Text>
                         </View>
@@ -155,7 +155,7 @@ const Comments = () => {
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={() => console.log('Report Comment Button pressed')} style={styles.modalButton}>
+                            <TouchableOpacity onPress={() => navigation.navigate('ReportCommentHomeScreen')} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}> Report Comment</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
@@ -183,22 +183,30 @@ const styles = StyleSheet.create({
         marginLeft: 20
     },
     headerText : {
-        fontSize: 20,
+        fontSize: 21,
         fontWeight : 'bold',
-        padding: 10,
-        alignSelf: 'center'
-    },
+        alignSelf: 'center',
+        paddingBottom: '2%',
+        paddingTop: '6%',
+       },
     separator: {
         height: .5,
         backgroundColor: '#CCCCCC',
     },
     comments : {
-        paddingLeft: 10,
-        paddingRight: 16,
-        paddingVertical: 12,
+        flexDirection: 'row',
+        paddingRight: 15,
+        paddingVertical: 35,
         alignItems: 'flex-start',
-        paddingBottom: 25
+        borderRadius: 20,
+        backgroundColor: '#ddd',
+        paddingTop: 10,
+        marginVertical: 10,
+        marginHorizontal: 10,
+        borderWidth: 2,
+        borderColor: 'black',
     },
+    
     commentHeader: {
         justifyContent: 'space-between',
         flexDirection: 'row',
@@ -224,8 +232,8 @@ const styles = StyleSheet.create({
     },
     date: {
         position: 'absolute',
-        bottom: 5,
-        right: 20,
+        bottom: 10,
+        right: 15,
     },
     modal: {
         flex : 1,
@@ -269,7 +277,6 @@ const styles = StyleSheet.create({
         borderBottomColor: '#F5FCFF',
         backgroundColor: '#FFFFFF',
         borderRadius: 30,
-        borderBottomWidth: 1,
         height: 45,
         flexDirection: 'row',
         alignItems: 'center',
@@ -279,6 +286,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 2,
+        
       },
       search: {
         flexDirection: 'row',
@@ -289,7 +297,7 @@ const styles = StyleSheet.create({
         height: 45,
         margin: 25,
         width: '87%',
-        color: 'black'
+        color: 'black',
       },
       searchButton: {    
         height: 45,

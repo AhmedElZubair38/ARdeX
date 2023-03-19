@@ -161,7 +161,9 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                 </View>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {like_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {feed_caption} </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {comment_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
+                </TouchableOpacity>
             </View>
             <Modal
                 animationType="slide"

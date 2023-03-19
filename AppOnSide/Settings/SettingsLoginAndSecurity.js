@@ -52,7 +52,7 @@ function SettingsLoginAndSecurity() {
       <View style={styles.meow}> 
       <TouchableOpacity onPress={()=> navigation.goBack()}>
         
-        <Text style={{ color: 'black', fontSize: 23, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
     </View>

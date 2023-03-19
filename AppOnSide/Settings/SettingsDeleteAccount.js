@@ -18,26 +18,13 @@ return (
       <View style={styles.rectangle}>
         <Text style={styles.header}>Delete Account</Text>
 
-        <View style={{ marginTop: 30, marginHorizontal: 20, flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={styles.fieldLabel}> Influencer's Account </Text>
-          <Switch
-          style={{ marginLeft: 'auto' }} 
-          value={isSwitchOn} 
-          onValueChange={() => setIsSwitchOn(!isSwitchOn)}
-          trackColor={{false: '#767577', true: '#808080'}}
-          thumbColor={isSwitchOn ? '#FF4C68' : '#f4f3f4'}
-          ios_backgroundColor="#3e3e3e"
-          />
-          
-        </View>
-
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
-          <Text style={styles.note}>Note: When switching to an Influencer's account, you'll have the privileges of being an influencer. You'll need to have a minimum of 150 followers to be able to change your Account Type.</Text>
+          <Text style={styles.note}>Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted</Text>
         </View>
 
         <View style={styles.confirmButton}>
-          <TouchableOpacity onPress={()=> navigation.goBack()}>
-            <Text style={{ color: 'black', fontSize: 21, fontWeight: 'bold'}}> Confirm Change</Text>
+          <TouchableOpacity onPress={()=> navigation.navigate('LoginUpdated')}>
+            <Text style={{ color: 'black', fontSize: 21, fontWeight: 'bold'}}> Confirm Deletion</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -152,11 +139,11 @@ const styles = StyleSheet.create({
 
     note: {
 
-        fontSize: 14,
+        fontSize: 16,
+        textAlign: 'center',
         color: 'red',
         marginBottom: 5,
         fontWeight: 'bold',
-        fontFamily: 'Roboto'
     },
 
     fieldContainer: {

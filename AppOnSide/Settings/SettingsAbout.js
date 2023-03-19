@@ -17,19 +17,19 @@ function SettingsAbout() {
         <Text style={styles.header}>About</Text>
         
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-        ARdeX.
-      </Text>
-      <Text>Version 1.0.0</Text>
-      <Text>Copyright © 2022 AR Solutions</Text>
-      <Text>All rights reserved.</Text>
-    </View>
+          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+            ARdeX.
+          </Text>
+          <Text>Version 1.0.0</Text>
+          <Text>Copyright © 2022 AR Solutions</Text>
+          <Text>All rights reserved.</Text>
+        </View>
 
       </View>
 
       <View style={styles.backButton}>
       <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
       
