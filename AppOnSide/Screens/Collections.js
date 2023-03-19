@@ -68,38 +68,40 @@ const Collections = () => {
     <View style={styles.page}>
       
       <TopBar/>
-      
-      <Text style={styles.heading}>Collections</Text>
-  
-      <Text style={styles.heading2}>Here is where you can find all the scrapbooks you've saved!</Text>
 
       <View>
-        <FlatList
-        enableEmptySections={true}
-        data={results}
-        renderItem={({ item }) => {
-            return(
-              <View>
-              <TouchableOpacity style={styles.box} onPress={()=> navigation.navigate('CollectionsView')}>
-                  <View  style={styles.scrapbook}>
-                    <View style={styles.content}>
-                      <Text style={styles.scrapbookName}>{item.scrapName}</Text>
-                      <Text style={styles.scrapbookMaker}>by {item.scrapMaker} on {item.date}</Text>
-                    </View>
-                  </View>
-              </TouchableOpacity>
-              </View>
-            )
-          }}
-        />
-      </View>
+      
+        <Text style={styles.heading}>Collections</Text>
+    
+        <Text style={styles.heading2}>Here is where you can find all the scrapbooks you've saved!</Text>
 
-      <View style={styles.backButton}>
-        <TouchableOpacity onPress={()=> navigation.goBack()}>
-          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-        </TouchableOpacity>
+      
+          <FlatList
+          enableEmptySections={true}
+          data={results}
+          renderItem={({ item }) => {
+              return(
+                <View>
+                <TouchableOpacity style={styles.box} onPress={()=> navigation.navigate('CollectionsView')}>
+                    <View  style={styles.scrapbook}>
+                      <View style={styles.content}>
+                        <Text style={styles.scrapbookName}>{item.scrapName}</Text>
+                        <Text style={styles.scrapbookMaker}>by {item.scrapMaker} on {item.date}</Text>
+                      </View>
+                    </View>
+                </TouchableOpacity>
+                </View>
+              )
+            }}
+          />
+
+
+        <View style={styles.backButton}>
+          <TouchableOpacity onPress={()=> navigation.goBack()}>
+            <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-        
 
     </View>
 
