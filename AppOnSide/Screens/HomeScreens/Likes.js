@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect} from 'react';
 import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, TextInput, FlatList, Image } from 'react-native';
-import { Icon } from 'react-native-elements';
-import TopBar from "../Navigators/TopBar"; // import the TopBar component
+import Icon from 'react-native-vector-icons/Ionicons';
+import TopBar from '../../Navigators/TopBar'
 
-import queries from "./appConnection/search.js"
+import queries from "../appConnection/search.js"
 
 export default function Likes(props) {
   console.log("Contact")
@@ -49,7 +49,7 @@ export default function Likes(props) {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.inputs}
-            placeholder="Search by Name or Username..."
+            placeholder="Search Likes by Name or Username..."
             value={query}
             placeholderTextColor="grey"
             underlineColorAndroid="transparent"
@@ -63,6 +63,8 @@ export default function Likes(props) {
           </TouchableOpacity>
         </View>
       </View>
+      
+      <View>
       {results.length > 0 ? (
         <FlatList
           style={styles.notificationList}
@@ -88,10 +90,13 @@ export default function Likes(props) {
       ) : (
         <Text style={styles.note}>No results found.</Text>
       )}
-
-            <View>
-                
-            </View>
+      </View>
+      <Text style={styles.heading2}> OR </Text>
+      <View style={styles.backButton}>
+        <TouchableOpacity onPress={()=> navigation.goBack()}>
+          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        </TouchableOpacity>
+      </View>
 
     </View>
   );
@@ -101,6 +106,19 @@ export default function Likes(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  backButton: {
+    width: 220,
+    height: 70,
+    borderRadius: 35,
+    borderWidth: 2,
+    borderColor: 'black',
+    backgroundColor: '#FF4C68',
+    alignSelf: 'center',
+    position: 'absolute',
+    top: '87%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   note: {
     fontSize: 18,
@@ -157,11 +175,12 @@ const styles = StyleSheet.create({
   },
   notificationList: {
     marginTop: 70,
+    marginBottom: 210,
     padding: 15,
     
   },
   notificationBox: {
-    padding: 20,
+    padding: '4.5%',
     marginTop: 5,
     marginBottom: 5,
     backgroundColor: '#FFFFFF',

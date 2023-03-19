@@ -38,6 +38,7 @@ import ReportScrapBookHomeScreen from './Screens/HomeScreens/ReportScrapBookHome
 import CollectionsView from './Screens/CollectionsView';
 import SettingsDeleteAccount from './Settings/SettingsDeleteAccount';
 import ReportCommentHomeScreen from './Screens/HomeScreens/ReportCommentHomeScreen';
+import Likes from './Screens/HomeScreens/Likes';
 
 const Stack = createNativeStackNavigator();
 
@@ -229,6 +230,11 @@ export default function App(props) {
         <Stack.Screen
           name="ReportCommentHomeScreen"
           component={ReportCommentHomeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Likes"
+          component={Likes}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

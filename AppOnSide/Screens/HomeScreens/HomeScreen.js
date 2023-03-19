@@ -159,7 +159,7 @@ function Item ({user_name, user_image, feed_image, feed_caption, like_count, com
                                 />
                             </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Likes')}>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {like_count} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 </TouchableOpacity>
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {feed_caption} </Text>
