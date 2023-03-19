@@ -116,7 +116,7 @@
 // export default MyMap;
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import MapView, { Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import TopBar from "../Navigators/TopBar";
@@ -225,4 +225,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MyMap;
+export default MyMap;
