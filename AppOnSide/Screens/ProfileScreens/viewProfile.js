@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect  } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from "react-native-modal";
 import ProfileNavigator from '../../Navigators/ProfileNavigator';
@@ -96,7 +96,21 @@ const ViewProfile = (props) => {
     following: 2,
   }
 
-  const f1 = false;
+  const handleFollowClick = async () => {
+    console.log("Follow Button Pressed")
+    if (follow === "Follow"){
+      await queries.insertFollower(clickedUserId, mainUserId)
+      setFollow("Following")
+      alert("You are now following " + profileData.name + "")
+    }
+    else{
+      await queries.deleteFollower(clickedUserId, mainUserId)
+      setFollow("Follow")
+      alert("You are no longer following " + profileData.name + "")
+    }
+  }
+
+
 
   
 
@@ -136,7 +150,7 @@ const ViewProfile = (props) => {
                 <Text style={styles.bioText} rkType="primary3 mediumLine">{profileData.bio}</Text>
             </View>
             <View style={styles.buttonField}>
-              <TouchableOpacity style={follow === "Follow"? styles.button: styles.buttonFollowing } onPress={() => console.log('Follow Button Pressed')}>
+              <TouchableOpacity style={follow === "Follow"? styles.button: styles.buttonFollowing } onPress={handleFollowClick}>
                   <Text style={check === true ? styles.buttonTextBlack : styles.buttonText}>{follow}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button2} onPress={()=> setModalVisible(true)}>

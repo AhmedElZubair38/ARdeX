@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import TopBar from '../../Navigators/TopBar';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect, useIsFocused  } from '@react-navigation/native';
 import ProfileNavigator from '../../Navigators/ProfileNavigator';
 
 
@@ -9,6 +9,9 @@ const queries = require("../appConnection/profile.js")
 
 
 const ProfileView = (props) => {
+
+
+  const isFocused = useIsFocused();
 
   console.log("UserProfile.js")
   const userId = props.route.params.userId
@@ -38,10 +41,24 @@ const ProfileView = (props) => {
   }
   
   useEffect(() => {
+    if (isFocused) {
     getData(userId).then((data) => {
       setProfileData(data);
-    });
-  }, [userId]);
+    });}
+  }, [userId, isFocused]);
+
+  // useFocusEffect(() => {
+  //   getData(userId).then((data) => {
+  //     setProfileData(data);
+  //   });
+  // }, [userId]);
+
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     fetchData();
+  //   }, [])
+  // );
+
 
   // datas = getData(userId)
   // useEffect(() => {

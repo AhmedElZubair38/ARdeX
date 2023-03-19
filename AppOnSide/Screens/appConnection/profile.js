@@ -142,6 +142,47 @@ const getScrapbooksCount = async (userId) => {
  }
 
 
+ const insertFollower = async (userId,followerId) => {
+    const response = await fetch(starting + 'api/insertFollower/' , {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                followerId: followerId,
+            })
+            });
+            const data = await response.json();
+            console.log(data)
+            return data
+    }
 
 
-module.exports = {getProfileStuff, getFollowers, getFollowing, getFollowersCount, getFollowingCount, getScrapbooksCount, getScrapbooks, checkFollower}
+const deleteFollower = async (userId,followerId) => {
+    const response = await fetch(starting + 'api/deleteFollower/' , {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                followerId: followerId,
+            })
+            });
+            const data = await response.json();
+            console.log(data)
+            return data
+    }
+
+
+
+
+
+
+module.exports = {getProfileStuff, getFollowers, getFollowing, getFollowersCount, getFollowingCount, getScrapbooksCount, getScrapbooks, checkFollower,
+insertFollower, deleteFollower
+
+}
