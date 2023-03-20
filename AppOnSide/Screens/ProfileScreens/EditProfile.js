@@ -2,13 +2,8 @@ import React, {useState} from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
-<<<<<<< HEAD
 import Icon from 'react-native-vector-icons/Entypo';
 import ImagePicker from 'react-native-image-crop-picker';
-=======
-import { Icon } from 'react-native-elements';
-var ImagePicker = require('react-native-image-crop-picker');
->>>>>>> 2a9d48255436abe78ff6d105fa5efd9ca878978d
 
 
 const EditProfile = ({ route }) => {
@@ -19,6 +14,7 @@ const EditProfile = ({ route }) => {
 		name: 'The Weeknd',
 		bio: 'POP ftw',
 		profilePic: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+		coverPic: 'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
 	}
 
   const [name, setName] = useState(profile.name);
@@ -159,6 +155,7 @@ const EditProfile = ({ route }) => {
 	},
 	label: {
 		marginTop: 30,
+		fontFamily: 'Roboto',
 		fontSize: 22,
 		fontWeight: 'bold',
 	},
