@@ -13,7 +13,7 @@ export default function ViewFollowers(props) {
   console.log("userid:" + userId)
 
   const [followerData, setFollowerData] = useState(null);
-  const [results, setResults] = useState(null)
+  const [results, setResults] = useState([])
   const [query, setQuery] = useState("")
 
   const getData = async (userId) => {
@@ -55,6 +55,7 @@ export default function ViewFollowers(props) {
             placeholder="Search Followers..."
             value={query}
             placeholderTextColor="grey"
+            onChangeText={(text) => searchFilterFunction(text)}
             underlineColorAndroid="transparent"
             ItemSeparatorComponent={() => {
               return <View style={styles.separator} />;
@@ -67,6 +68,7 @@ export default function ViewFollowers(props) {
       </View>
 
       <View style={{flex: 100}}>
+      {results.length > 0 ? (
       <FlatList
         style={styles.notificationList}
         data={results}
@@ -84,6 +86,9 @@ export default function ViewFollowers(props) {
           )
         }}
       />
+      ) : (
+        <Text style={styles.note}>No results found.</Text>
+      )}
       </View>
       
     </View>
@@ -95,6 +100,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ddd',
+  },
+  note: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#FF4C68',
+    marginBottom: 5,
+    fontWeight: 'bold',
+    top : '30%',
   },
   inputContainer: {
     backgroundColor: '#FFFFFF',
