@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     color: '#FF4C68',
     marginBottom: 5,
     fontWeight: 'bold',
-    marginBottom: '60%',
+    top : '30%',
   },
   inputContainer: {
     backgroundColor: '#FFFFFF',
