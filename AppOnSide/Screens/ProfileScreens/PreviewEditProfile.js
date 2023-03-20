@@ -2,12 +2,11 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'rea
 import React, { useState, useRef } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { useNavigation } from '@react-navigation/native';
-// import Carousel from 'react-native-reanimated-carousel';
 
 
-const PreviewScrapbookPosts = ({ route }) => {
+const PreviewEditProfile = ({ route }) => {
 
-    const { selectedImages } = route.params;
+    const { image } = route.params;
 
     const navigation = useNavigation();
 
@@ -16,16 +15,12 @@ const PreviewScrapbookPosts = ({ route }) => {
             <TopBar />
             <View style={styles.container}>
                 <View>
-                    <Text style={styles.HeaderText}>Preview Your Scrapbook Posts</Text>
+                    <Text style={styles.HeaderText}>Preview Your Profile Changes</Text>
                 </View>
 
-                <View style={styles.scrollViewContainer}>
-                <ScrollView contentContainerStyle={styles.container2}>
-                    {selectedImages.map((image) => (
-                        <Image key={image} source={{ uri: image }} style={styles.image} />
-                    ))}
-                </ScrollView>
-                </View>
+
+                <Image source={ image } style={styles.image} /> 
+               
 
                 <View style={styles.buttonsContainer}>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
@@ -40,7 +35,7 @@ const PreviewScrapbookPosts = ({ route }) => {
     )
 }
 
-export default PreviewScrapbookPosts
+export default PreviewEditProfile
 
 const styles = StyleSheet.create({
     container: {
@@ -51,7 +46,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 25,
         alignSelf: 'center',
-        paddingTop: '3%',
+        paddingTop: '20%',
         marginBottom: 10
     },
     form: {
@@ -104,7 +99,7 @@ const styles = StyleSheet.create({
     image: {
         width: 300,
         height: 300,
-        marginVertical: 10,
+//        marginVertical: 10,
     },
     carouselContainer: {
         flex: 1,
@@ -129,7 +124,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal:60,
-        paddingBottom: 20,
+        paddingBottom: 100,
 	},
     scrollViewContainer: {
         position: 'absolute',
