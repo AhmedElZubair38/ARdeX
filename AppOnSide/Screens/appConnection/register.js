@@ -3,7 +3,7 @@
 
 // Example fundtion to get data from database
 const insertUser2 = async (name,email,username) => {
-    const response = await fetch('http://192.168.0.170:3000/api/insertUser2' , {
+    const response = await fetch('http://192.168.0.111:3000/api/insertUser2' , {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -25,7 +25,7 @@ const insertUser2 = async (name,email,username) => {
 
 
 const checkUsername = async (username) => {
-    const response = await fetch('http://192.168.0.170:3000/api/checkUsername/' + username , {
+    const response = await fetch('http://192.168.0.111:3000/api/checkUsername/' + username , {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -60,7 +60,7 @@ const checkUsername = async (username) => {
         }
 
         const getUserIdFromEmail = async (email) => {
-            const response = await fetch('http://192.168.0.170:3000/api/getUserIdFromEmail/' + email , {
+            const response = await fetch('http://192.168.0.111:3000/api/getUserIdFromEmail/' + email , {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
