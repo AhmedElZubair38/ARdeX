@@ -52,8 +52,8 @@ const Tab = createMaterialTopTabNavigator();
 
 
 export default function ProfileNavigator(props) {
-    console.log("MyTabs")
-    console.log(props)
+    // console.log("MyTabs")
+    // console.log(props)
     return (
         
         <Tab.Navigator 

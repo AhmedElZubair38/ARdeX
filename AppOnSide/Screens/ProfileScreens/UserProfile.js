@@ -15,9 +15,9 @@ const ProfileView = (props) => {
 
   const isFocused = useIsFocused();
 
-  console.log("UserProfile.js")
+  // console.log("UserProfile.js")
   const userId = props.route.params.userId
-  console.log("userid:" + userId)
+  // console.log("userid:" + userId)
   // console.log(props)
   // console.log("Main:" + props.route.params.mainUserId)
 
@@ -96,7 +96,7 @@ const ProfileView = (props) => {
                 <Text style={styles.nameText}>{profileData.name}</Text>
                 <Text style={styles.bioText} rkType="primary3 mediumLine">{profileData.bio}</Text>
             </View>
-            <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
+            <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile',{ userId: userId, mainUserId: props.route.params.mainUserId, name: profileData.name, bio: profileData.bio, profileImage: profileData.profileImage })}>
                 <Text style={styles.buttonText}>Edit Profile</Text>
             </TouchableOpacity>
             <ProfileNavigator
