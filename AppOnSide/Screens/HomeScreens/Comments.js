@@ -273,10 +273,9 @@ const styles = StyleSheet.create({
         
     },
     inputContainer: {
-        borderBottomColor: '#F5FCFF',
         backgroundColor: '#FFFFFF',
         borderRadius: 30,
-        height: 45,
+        height: 55,
         flexDirection: 'row',
         alignItems: 'center',
         flex: 1,
@@ -285,12 +284,15 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 2,
+        borderWidth: 1.5,
+        right: 2,
         
       },
       search: {
         flexDirection: 'row',
         width: '87%',
         marginBottom: 10,
+        
       },
       inputs: {    
         height: 45,
@@ -299,16 +301,18 @@ const styles = StyleSheet.create({
         color: 'black',
       },
       searchButton: {    
-        height: 45,
+        height: 49,
+        width: 49,
+        bottom: 1.5,
         justifyContent: 'center',
         alignItems: 'center',
-        width: '13%',
         alignSelf: 'flex-end',
         backgroundColor: 'white',
-        borderRadius: 30,
+        borderRadius: 55,
         shadowColor: 'grey',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 2,
+        borderWidth: 1.5,
       },
 })
