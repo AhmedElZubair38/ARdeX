@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
 import React, {useState}from 'react'
-import TopBar from '../Navigators/TopBar'
+import TopBar2 from '../Navigators/TopBar2'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -68,7 +68,7 @@ const Collections = () => {
   return (
     <View style={styles.page}>
       
-      <TopBar/>
+      <TopBar2/>
 
       <View>
       
@@ -95,13 +95,6 @@ const Collections = () => {
               )
             }}
           />
-
-
-        <View style={styles.backButton}>
-          <TouchableOpacity onPress={()=> navigation.goBack()}>
-            <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-          </TouchableOpacity>
-        </View>
       </View>
 
     </View>

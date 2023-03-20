@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, TextInput, FlatList, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
-import TopBar from "../../Navigators/TopBar"; // import the TopBar component
+import TopBar2 from "../../Navigators/TopBar2"; // import the TopBar component
 
 import queries from "../appConnection/profile.js"
 
@@ -181,7 +181,7 @@ export default function ViewFollowing(props) {
 
   return (
     <View style={styles.container}>
-      <TopBar />
+      <TopBar2/>
       <View style={styles.search}>
         <View style={styles.inputContainer}>
           <TextInput
