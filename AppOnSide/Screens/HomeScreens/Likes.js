@@ -50,7 +50,7 @@ export default function Likes(props) {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.inputs}
-            placeholder="Search Likes by Name or Username..."
+            placeholder="Search Likes..."
             value={query}
             placeholderTextColor="grey"
             underlineColorAndroid="transparent"
