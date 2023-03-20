@@ -106,9 +106,9 @@ const Comments = (props) => {
                                             <Text style= {styles.username}>@{Notification.username}</Text>
                                         </TouchableOpacity>
                                     </View>
-                                    <TouchableOpacity onPress={()=> setModalVisible(true)}>
+                                    {/* <TouchableOpacity onPress={()=> setModalVisible(true)}>
                                         <Icon style={{fontSize: 18}} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
-                                    </TouchableOpacity>
+                                    </TouchableOpacity> */}
                                 </View>
                                 <Text>{Notification.comment}</Text>
                             </View>
@@ -134,7 +134,7 @@ const Comments = (props) => {
                 </TouchableOpacity>
             </View>
         </View>
-        <Modal
+        {/* <Modal
                 animationType="slide"
                 transparent={true}
                 isVisible={modalVisible}
@@ -144,16 +144,13 @@ const Comments = (props) => {
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={() => navigation.navigate('ReportCommentHomeScreen')} style={styles.modalButton}>
-                                <Text style={styles.modalButtonText}> Report Comment</Text>
-                            </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>Close</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
-            </Modal>
+            </Modal> */}
     </View>
   )
 }
