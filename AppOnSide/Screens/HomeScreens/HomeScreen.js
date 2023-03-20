@@ -13,6 +13,8 @@ import queries from "../appConnection/home.js"
 //HI
 const WIDTH = Dimensions.get('window').width;
 
+// const data23 = {username: username, scrapName: scrapName, profileImage: profileImage, imageName: imageName, caption: caption, like: like, comments: comments, name: name, userId: userId, mainUserId: mainUserId, scrapId: scrapId}
+
 function Item ({username, scrapName, profileImage, imageName, caption, like, comments, name, userId, mainUserId, scrapId}) {
 
     const [isFilled, setIsFilled] = useState(null);
@@ -174,7 +176,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, like, com
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
                         <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ScrapBookView');}} style={styles.modalButton}>
+                        <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ScrapBookView',{username: username, scrapName: scrapName, profileImage: profileImage, imageName: imageName, caption: caption, like: like, comments: comments, name: name, userId: userId, mainUserId: mainUserId, scrapId: scrapId});}} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>View Scrap Book Separately</Text>
                             </TouchableOpacity>
                         <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ReportScrapBookHomeScreen');}} style={styles.modalButton}>
