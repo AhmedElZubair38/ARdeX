@@ -99,7 +99,11 @@ const ProfileView = (props) => {
             <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('EditProfile')}>
                 <Text style={styles.buttonText}>Edit Profile</Text>
             </TouchableOpacity>
-            <ProfileNavigator/>
+            <ProfileNavigator
+              initialParams={{userId: userId, mainUserId: userId}}
+              userId = {userId}
+              mainUserId = {userId}
+            />
         </View>
         
     </View>
