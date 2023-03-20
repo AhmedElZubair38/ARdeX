@@ -155,7 +155,6 @@ const EditProfile = ({ route }) => {
 	},
 	label: {
 		marginTop: 30,
-		fontFamily: 'Roboto',
 		fontSize: 22,
 		fontWeight: 'bold',
 	},
