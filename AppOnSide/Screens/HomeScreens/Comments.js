@@ -1,85 +1,143 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import Modal from "react-native-modal";
 
-const Comments = () => {
-  const com = [
+
+import queries from "../appConnection/home.js"
+
+const Comments = (props) => {
+
+    scrapId = props.route.params.scrapId
+    const [comments, setComments] = useState(com)
+
+    const navigation = useNavigation()
+  
+    const [modalVisible, setModalVisible] = useState(false);
+  
+    const [query, setComment] = useState()
+    const isFocused = useIsFocused()
+
+
+console.log(props.route.params.scrapId)
+    const[com, setData] = useState(null)
+
+    const getData = async (scrapId) => {
+        const data = await queries.getCommentsByID(scrapId)
+        return data
+      };
+    
+
+    //   useEffect(() => {
+    //     if (isFocused) {
+    //     getData(scrapId).then((data) => {
+    //         setData(data);
+    //         console.log("GOT THE DATA")
+    //         console.log(data)
+    //     });}
+    //   }, [scrapId, isFocused]);
+
+    useEffect(() => {
+        getData(scrapId).then((data) => {
+            setData(data);
+            console.log("GOT THE DATA")
+            console.log(data)
+            setComments(data)
+        });
+      }, [scrapId]);
+
+      if (!com) {
+        return null; // or a loading indicator
+      }
+
+
+
+
+    // const hi = queries.getCommentsByID(1)
+  const com1 = [
     {
-        id: 1,
-        image: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-        name: 'Frank Odalthh',
+        commentId: 1,
+        profileImage: 'https://bootdey.com/img/Content/avatar/avatar1.png',
+        username: 'Frank Odalthh',
+        comment:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
+        
+        day: 13,
+        month: 23,
+        timeUploaded: "2023-03-04 00:00:00"
+      },
+      {
+        commentId: 5,
+        profileImage: 'https://bootdey.com/img/Content/avatar/avatar6.png',
+        username: 'John DoeLink',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
         day: 13,
         month: 23,
+        timeUploaded: "2023-03-04 00:00:00"
+
       },
       {
-        id: 2,
-        image: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-        name: 'John DoeLink',
+        commentId: 6,
+        profileImage: 'https://bootdey.com/img/Content/avatar/avatar7.png',
+        username: 'March SoulLaComa',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
         day: 13,
         month: 23,
+        timeUploaded: "2023-03-04 00:00:00"
+
       },
       {
-        id: 3,
-        image: 'https://bootdey.com/img/Content/avatar/avatar7.png',
-        name: 'March SoulLaComa',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-        day: 13,
-        month: 23,
-      },
-      {
-        id: 4,
-        image: 'https://bootdey.com/img/Content/avatar/avatar2.png',
-        name: 'Finn DoRemiFaso',
+        commentId: 9,
+        profileImage: 'https://bootdey.com/img/Content/avatar/avatar2.png',
+        username: 'Finn DoRemiFaso',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
           day: 13,
           month: 23,
+        timeUploaded: "2023-03-04 00:00:00"
+
       },
       {
-        id: 5,
-        image: 'https://bootdey.com/img/Content/avatar/avatar3.png',
-        name: 'Maria More More',
+        commentId: 11,
+        profileImage: 'https://bootdey.com/img/Content/avatar/avatar3.png',
+        username: 'Maria More More',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
           day: 13,
           month: 23,
+        timeUploaded: "2023-03-04 00:00:00"
+
       },
       {
-        id: 6,
-        image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
-        name: 'Clark June Boom!',
+        commentId: 12,
+        profileImage: 'https://bootdey.com/img/Content/avatar/avatar4.png',
+        username: 'Clark June Boom!',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
           day: 13,
           month: 23,
+        timeUploaded: "2023-03-04 00:00:00"
+
       },
       {
-        id: 7,
-        image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
-        name: 'The googler',
+        commentId: 15,
+        profileImage: 'https://bootdey.com/img/Content/avatar/avatar5.png',
+        username: 'The googler',
         comment:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
           day: 13,
           month: 23,
+        timeUploaded: '2023-03-04 00:00:00'
+
       },
   ]
 
-  const [comments, setComments] = useState(com)
 
-  const navigation = useNavigation()
-
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const [query, setComment] = useState()
 
   const showAlert = viewId => {
     Alert.alert('Alert', 'Button pressed ' + viewId)
@@ -103,7 +161,7 @@ const Comments = () => {
                 ItemSeparatorComponent={() => {
                     return <View style={styles.separator} />
                 }}
-                keyExtractor={item => { return item.id }}
+                keyExtractor={item => { return item.commentId }}
                 renderItem={item => {
                     const Notification = item.item
                     return(
@@ -112,10 +170,10 @@ const Comments = () => {
                                 <View style={styles.commentHeader}>
                                     <View style={styles.user}>
                                         <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
-                                            <Image style={styles.image} source={{ uri: Notification.image }} />
+                                            <Image style={styles.image} source={{ uri: Notification.profileImage }} />
                                         </TouchableOpacity>
                                         <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
-                                            <Text style= {styles.username}>{Notification.name}</Text>
+                                            <Text style= {styles.username}>@{Notification.username}</Text>
                                         </TouchableOpacity>
                                     </View>
                                     <TouchableOpacity onPress={()=> setModalVisible(true)}>
@@ -124,7 +182,7 @@ const Comments = () => {
                                 </View>
                                 <Text>{Notification.comment}</Text>
                             </View>
-                            <Text style= {styles.date}>{Notification.day}/{Notification.month}</Text>
+                            <Text style= {styles.date}>{Notification.timeUploaded}</Text>
                         </View>
                     )
                 }}
@@ -213,13 +271,14 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     image: {
-        height : 30,
-        width : 30,
-        borderRadius: 50,
+        height : 25,
+        width : 25,
+        borderRadius: 100,
     },
     username: {
         fontSize: 20,
-        paddingLeft: 10
+        paddingLeft: 10,
+        marginBottom: 5,
     },
     content: {
         flex : 1,

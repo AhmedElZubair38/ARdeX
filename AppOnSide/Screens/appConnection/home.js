@@ -129,7 +129,24 @@ const getUsersLikedScrapbooks = async (scrapId) => {
             return data
         }
 
+        
 
 
+const getCommentsByID = async (scrapId) => {
+    console.log("getCommentsByID")
+    console.log("Scrapbook ID: " + scrapId)
+    const response = await fetch(starting + 'sbapi/getCommentsByID/' + scrapId, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            }
+            });
+            const data = await response.json();
+            console.log(data)
+            return data
+        }
 
-module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks}
+
+module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks , getCommentsByID
+}
