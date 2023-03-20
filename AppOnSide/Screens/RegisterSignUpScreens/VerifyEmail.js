@@ -110,7 +110,7 @@ return (
 
 
       <TouchableOpacity style={styles.signUpButtonContainer} onPress={()=> navigation.navigate('LoginUpdated')}>
-          <Text style={{ color: 'white', fontSize: 23, fontFamily: 'fax', padding: 10, textAlign: 'center' }}> NEXT </Text>
+          <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> NEXT </Text>
       </TouchableOpacity>
 
 
@@ -170,7 +170,6 @@ const styles = StyleSheet.create({
         color: '#808080',
         marginBottom: 5,
         fontWeight: 'bold',
-        fontFamily: 'Roboto'
     },
 
     fieldInput: {
@@ -179,7 +178,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         fontSize: 10, 
         paddingLeft: 10,
-        fontFamily: 'Roboto',
         borderColor: '#cccccc',
         padding: 0.5,
         fontSize: 16,

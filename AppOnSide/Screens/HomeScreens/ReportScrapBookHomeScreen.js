@@ -46,13 +46,13 @@ function ReportScrapBookHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button1') ? 'green' : '#FF4C68' }]}>
           <TouchableOpacity onPress={()=> toggleButton('button1')}>
-            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'fax'}}> Spam </Text>
+            <Text style={{ color: 'black', fontSize: 13}}> Spam </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button2') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button2')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Nudity </Text>
+            <Text style={{ color: 'black', fontSize: 12}}>  Nudity </Text>
           </TouchableOpacity>
         </View>
           
@@ -63,13 +63,13 @@ function ReportScrapBookHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button3') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button3')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Hate Speech </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Hate Speech </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button4') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button4')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Violence </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Violence </Text>
           </TouchableOpacity>
         </View>
           
@@ -80,13 +80,13 @@ function ReportScrapBookHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button5') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button5')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Illegal Goods </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Illegal Goods </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button6') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button6')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Harrassment </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Harrassment </Text>
           </TouchableOpacity>
         </View>
           
@@ -96,13 +96,13 @@ function ReportScrapBookHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button7') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button7')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Scam or Fraud </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Scam or Fraud </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button8') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button8')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Suicide or Self-Injury </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Suicide or Self-Injury </Text>
           </TouchableOpacity>
         </View>
           
@@ -112,13 +112,13 @@ function ReportScrapBookHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button9') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button9')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> False Information </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> False Information </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button10') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button10')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Other </Text>
+            <Text style={{ color: 'black', fontSize: 12}}>  Other </Text>
           </TouchableOpacity>
         </View>
           
@@ -129,7 +129,7 @@ function ReportScrapBookHomeScreen() {
 
         <View style={styles.meow3}> 
           <TouchableOpacity onPress={()=> navigation.goBack()}>
-            <Text style={{ color: 'white', fontSize: 18, fontFamily: 'fax'}}> Report </Text>
+            <Text style={{ color: 'white', fontSize: 18}}> Report </Text>
           </TouchableOpacity>
         </View>
           
@@ -139,7 +139,7 @@ function ReportScrapBookHomeScreen() {
 
       <View style={styles.meow}> 
       <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 20}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
 
@@ -212,11 +212,9 @@ const styles = StyleSheet.create({
         color: 'black',
         textAlign: 'center',
         paddingTop: '10%',
-        fontFamily: 'fax'
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '10%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
@@ -227,7 +225,6 @@ const styles = StyleSheet.create({
       },
 
       headerSettings: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',

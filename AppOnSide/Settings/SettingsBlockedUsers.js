@@ -188,7 +188,6 @@ const styles = StyleSheet.create({
         color: '#808080',
         marginBottom: 5,
         fontWeight: 'bold',
-        fontFamily: 'Roboto',
         paddingRight: '10%',
     },
 
@@ -198,7 +197,6 @@ const styles = StyleSheet.create({
         color: 'red',
         marginBottom: 5,
         fontWeight: 'bold',
-        fontFamily: 'Roboto'
     },
 
     fieldContainer: {
@@ -213,7 +211,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         fontSize: 10, 
         paddingLeft: 10,
-        fontFamily: 'Roboto',
         borderColor: '#cccccc',
         padding: 0.5,
         fontSize: 16,

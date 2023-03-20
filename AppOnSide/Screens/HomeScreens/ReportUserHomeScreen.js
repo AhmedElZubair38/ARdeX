@@ -53,13 +53,13 @@ function ReportUserHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button1') ? 'green' : '#FF4C68' }]}>
           <TouchableOpacity onPress={()=> toggleButton('button1')}>
-            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'fax'}}> Bullying </Text>
+            <Text style={{ color: 'black', fontSize: 13}}> Bullying </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button2') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button2')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Impersonation </Text>
+            <Text style={{ color: 'black', fontSize: 12}}>  Impersonation </Text>
           </TouchableOpacity>
         </View>
           
@@ -70,13 +70,13 @@ function ReportUserHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button3') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button3')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Spam </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Spam </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button4') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button4')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Fraud </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Fraud </Text>
           </TouchableOpacity>
         </View>
           
@@ -87,13 +87,13 @@ function ReportUserHomeScreen() {
 
         <View style={[styles.meow2, { marginRight: 10, backgroundColor: isButtonSelected('button5') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button5')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}> Under-Age </Text>
+            <Text style={{ color: 'black', fontSize: 12}}> Under-Age </Text>
           </TouchableOpacity>
         </View>
 
         <View style={[styles.meow2, { backgroundColor: isButtonSelected('button6') ? 'green' : '#FF4C68' }]}>
         <TouchableOpacity onPress={()=> toggleButton('button6')}>
-            <Text style={{ color: 'black', fontSize: 12, fontFamily: 'fax'}}>  Black-mailing </Text>
+            <Text style={{ color: 'black', fontSize: 12}}>  Black-mailing </Text>
           </TouchableOpacity>
         </View>
           
@@ -104,7 +104,7 @@ function ReportUserHomeScreen() {
 
         <View style={styles.meow3}> 
           <TouchableOpacity onPress={()=> navigation.goBack()}>
-            <Text style={{ color: 'white', fontSize: 18, fontFamily: 'fax'}}> Report </Text>
+            <Text style={{ color: 'white', fontSize: 18}}> Report </Text>
           </TouchableOpacity>
         </View>
           
@@ -114,7 +114,7 @@ function ReportUserHomeScreen() {
 
       <View style={styles.meow}> 
       <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'fax'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+        <Text style={{ color: 'black', fontSize: 20}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
       </TouchableOpacity>
       </View>
 
@@ -187,11 +187,9 @@ const styles = StyleSheet.create({
         color: 'black',
         textAlign: 'center',
         paddingTop: '10%',
-        fontFamily: 'fax'
       },
 
       header: {
-        fontFamily: 'fax',
         paddingTop: '10%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
@@ -202,7 +200,6 @@ const styles = StyleSheet.create({
       },
 
       headerSettings: {
-        fontFamily: 'fax',
         paddingTop: '7%',
         paddingBottom: '-1%',
         paddingLeft: '5%',
