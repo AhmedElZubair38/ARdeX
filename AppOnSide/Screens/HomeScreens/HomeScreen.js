@@ -19,7 +19,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, like, com
     const [isFilled2, setIsFilled2] = useState(false);
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
-    console.log("Likew : "+like)
+    // console.log("Likew : "+like)
     const[likes,setLikes] = useState(like);
 
     const [imageActive, setimageActive] = useState(0);
