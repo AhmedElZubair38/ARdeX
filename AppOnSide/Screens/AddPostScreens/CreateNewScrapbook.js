@@ -45,6 +45,7 @@ const CreateNewScrapbook = ({route}) => {
             mediaType: 'photo',
           });
           const selectedImagesPaths = images.map((image) => image.path);
+          console.log('received image', selectedImagesPaths);
           setSelectedImages(selectedImagesPaths);
 
           // send the images to the file that is currently open

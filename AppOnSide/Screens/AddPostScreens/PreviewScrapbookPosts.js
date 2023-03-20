@@ -2,7 +2,6 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'rea
 import React, { useState, useRef } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { useNavigation } from '@react-navigation/native';
-// import Carousel from 'react-native-reanimated-carousel';
 
 
 const PreviewScrapbookPosts = ({ route }) => {
