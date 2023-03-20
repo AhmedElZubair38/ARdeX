@@ -12,17 +12,18 @@ import queries from "../appConnection/home.js"
 const Comments = (props) => {
 
     scrapId = props.route.params.scrapId
+    mainUserId = props.route.params.mainUserId
     const [comments, setComments] = useState(com)
 
     const navigation = useNavigation()
   
     const [modalVisible, setModalVisible] = useState(false);
   
-    const [query, setComment] = useState()
+    const [query, setComment] = useState("")
     const isFocused = useIsFocused()
 
 
-console.log(props.route.params.scrapId)
+// console.log(props.route.params.scrapId)
     const[com, setData] = useState(null)
 
     const getData = async (scrapId) => {
@@ -43,8 +44,6 @@ console.log(props.route.params.scrapId)
     useEffect(() => {
         getData(scrapId).then((data) => {
             setData(data);
-            console.log("GOT THE DATA")
-            console.log(data)
             setComments(data)
         });
       }, [scrapId]);
@@ -53,89 +52,20 @@ console.log(props.route.params.scrapId)
         return null; // or a loading indicator
       }
 
-
-
-
-    // const hi = queries.getCommentsByID(1)
-  const com1 = [
-    {
-        commentId: 1,
-        profileImage: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-        username: 'Frank Odalthh',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
+      const handleButtonPress = async () => {
+        console.log("Button Pressed")
+        console.log(query.name_address)
+        setComment("")
+        queries.insertScrapbookComment(scrapId,mainUserId, query.name_address)
         
-        day: 13,
-        month: 23,
-        timeUploaded: "2023-03-04 00:00:00"
-      },
-      {
-        commentId: 5,
-        profileImage: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-        username: 'John DoeLink',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-        day: 13,
-        month: 23,
-        timeUploaded: "2023-03-04 00:00:00"
+        getData(scrapId).then((data) => {
+            setComments(data)
+            setData(data);
+            
+        });
+        
+        }
 
-      },
-      {
-        commentId: 6,
-        profileImage: 'https://bootdey.com/img/Content/avatar/avatar7.png',
-        username: 'March SoulLaComa',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-        day: 13,
-        month: 23,
-        timeUploaded: "2023-03-04 00:00:00"
-
-      },
-      {
-        commentId: 9,
-        profileImage: 'https://bootdey.com/img/Content/avatar/avatar2.png',
-        username: 'Finn DoRemiFaso',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          day: 13,
-          month: 23,
-        timeUploaded: "2023-03-04 00:00:00"
-
-      },
-      {
-        commentId: 11,
-        profileImage: 'https://bootdey.com/img/Content/avatar/avatar3.png',
-        username: 'Maria More More',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          day: 13,
-          month: 23,
-        timeUploaded: "2023-03-04 00:00:00"
-
-      },
-      {
-        commentId: 12,
-        profileImage: 'https://bootdey.com/img/Content/avatar/avatar4.png',
-        username: 'Clark June Boom!',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          day: 13,
-          month: 23,
-        timeUploaded: "2023-03-04 00:00:00"
-
-      },
-      {
-        commentId: 15,
-        profileImage: 'https://bootdey.com/img/Content/avatar/avatar5.png',
-        username: 'The googler',
-        comment:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.',
-          day: 13,
-          month: 23,
-        timeUploaded: '2023-03-04 00:00:00'
-
-      },
-  ]
 
 
 
@@ -169,10 +99,10 @@ console.log(props.route.params.scrapId)
                             <View style = {styles.content}>
                                 <View style={styles.commentHeader}>
                                     <View style={styles.user}>
-                                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
+                                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile',{clickedUserId: Notification.userId, userId: mainUserId, mainUserId: mainUserId })}>
                                             <Image style={styles.image} source={{ uri: Notification.profileImage }} />
                                         </TouchableOpacity>
-                                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
+                                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile',{ clickedUserId: Notification.userId, userId: mainUserId, mainUserId: mainUserId })}>
                                             <Text style= {styles.username}>@{Notification.username}</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -196,9 +126,10 @@ console.log(props.route.params.scrapId)
                     placeholderTextColor="grey" 
                     underlineColorAndroid="transparent"
                     onChangeText={name_address => setComment({ name_address })}
+                    value={query.name_address}
                     
                 />
-                <TouchableOpacity style={styles.searchButton}>
+                <TouchableOpacity style={styles.searchButton} onPress={handleButtonPress}>
                         <Icon name={Platform.OS === 'ios' ? 'send' : 'send'}></Icon>
                 </TouchableOpacity>
             </View>
