@@ -70,6 +70,17 @@ function Item ({username, scrapName, profileImage, imageName, caption, like, com
         return null;
     }
 
+    const handleReportUser = async () => {
+        setModalVisible(false)
+        alert("User Reported \n Thank you for your feedback!\n We will look into this matter.")
+        await queries.insertReportUser(mainUserId, userId);
+    }
+
+    const handleReportScrap = async () => {
+        setModalVisible(false)
+        alert("Scrapbook Reported \n Thank you for your feedback!\n We will look into this matter.")
+        await queries.insertReportScrapbook(mainUserId, scrapId);
+    }
 
 
     
@@ -179,10 +190,10 @@ function Item ({username, scrapName, profileImage, imageName, caption, like, com
                         <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ScrapBookView',{username: username, scrapName: scrapName, profileImage: profileImage, imageName: imageName, caption: caption, like: like, comments: comments, name: name, userId: userId, mainUserId: mainUserId, scrapId: scrapId});}} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>View Scrap Book Separately</Text>
                             </TouchableOpacity>
-                        <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ReportScrapBookHomeScreen');}} style={styles.modalButton}>
+                        <TouchableOpacity onPress={handleReportScrap} style={styles.modalButton}>
                             <Text style={styles.modalButtonText}> Report Scrap Book</Text>
                         </TouchableOpacity>
-                            <TouchableOpacity onPress={() => {setModalVisible(false); navigation.navigate('ReportUserHomeScreen');}} style={styles.modalButton}>
+                            <TouchableOpacity onPress={handleReportUser} style={styles.modalButton}>
                                 <Text style={styles.modalButtonText}>Report User</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>

@@ -1,5 +1,4 @@
-
-const starting = "http://192.168.0.111:3000/"
+const starting = "http://192.168.0.170:3000/"
 
 const getHomeFeed = async () => {
     const response = await fetch(starting + 'api/getHomeFeed/', {
@@ -193,8 +192,55 @@ const deleteScrapbookComment = async (commentId) => {
             }
 }
 
+const insertReportUser = async (userId, reportedUserId) => {
+    // console.log("insertReportUser")
+    console.log("User ID: " + userId)
+    console.log("Reported User ID: " + reportedUserId)
+    const response = await fetch(starting + 'api/insertReportUser/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                ReportedUserId: reportedUserId,
+                reportReason: "spam"
+            })
+            });
+            const data = await response.json();
+            console.log(data)
+            if (data) {
+                return true;
+            } else {
+                return false;
+            }
+}
+
+
+const insertReportScrapbook = async (userId, scrapId) => {
+    // console.log("insertReportScrapbook")
+    const response = await fetch(starting + 'sbapi/insertReportScrapbook/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                scrapId: scrapId,
+                reportReason: "spam"
+            })
+            });
+            const data = await response.json();
+            if (data) {
+                return true;
+            } else {
+                return false;
+            }
+}
 
 
 
-module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks , getCommentsByID , insertScrapbookComment, deleteScrapbookComment
+module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks , getCommentsByID , insertScrapbookComment, deleteScrapbookComment, insertReportUser, insertReportScrapbook
 }
