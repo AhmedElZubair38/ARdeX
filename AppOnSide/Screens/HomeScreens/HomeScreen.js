@@ -10,7 +10,7 @@ import Modal from "react-native-modal";
 import { ActivityIndicator } from 'react-native';
 
 import queries from "../appConnection/home.js"
-
+//HI
 const WIDTH = Dimensions.get('window').width;
 
 function Item ({username, scrapName, profileImage, imageName, caption, like, comments, name, userId, mainUserId, scrapId}) {
