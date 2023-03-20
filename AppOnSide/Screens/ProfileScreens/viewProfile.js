@@ -76,15 +76,10 @@ const ViewProfile = (props) => {
     });
   }, [clickedUserId, mainUserId]);
 
-  // if (!profileData) {
-  //   return null; // or a loading indicator
-  // }
+
   if (!profileData) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return <ActivityIndicator color='#FF4C68' size={120} style={styles.indicator} />;
   }
-  // if (!profileData) {
-  //   return <ActivityIndicator size="large" color="#0000ff" />;
-  // }
 
   const profileData1 = {
     name: 'The Weeknd',
@@ -116,7 +111,7 @@ const ViewProfile = (props) => {
 
   return (
     <View style={{flex: 1}}>
-        <TopBar/>
+        <TopBar position={absolute}/>
         <View style={styles.container}>
           <TouchableOpacity onPress={()=> navigation.goBack()} style={styles.backButton}>
             <Icon style={{color: 'black'}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
@@ -192,6 +187,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginBottom: 15
   },
+  indicator: {
+    flex: 1
+},
+
   headerContainer: {
     alignItems: 'center',
     flexDirection: 'row',

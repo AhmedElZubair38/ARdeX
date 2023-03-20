@@ -3,6 +3,8 @@ import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} 
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation, useFocusEffect, useIsFocused  } from '@react-navigation/native';
 import ProfileNavigator from '../../Navigators/ProfileNavigator';
+import { ActivityIndicator } from 'react-native';
+
 
 
 const queries = require("../appConnection/profile.js")
@@ -39,7 +41,7 @@ const ProfileView = (props) => {
     console.log(data)
     return data
   }
-  
+
   useEffect(() => {
     if (isFocused) {
     getData(userId).then((data) => {
@@ -47,28 +49,10 @@ const ProfileView = (props) => {
     });}
   }, [userId, isFocused]);
 
-  // useFocusEffect(() => {
-  //   getData(userId).then((data) => {
-  //     setProfileData(data);
-  //   });
-  // }, [userId]);
-
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     fetchData();
-  //   }, [])
-  // );
-
-
-  // datas = getData(userId)
-  // useEffect(() => {
-  //   getData(userId)}, [])
-  // console.log(datas)
-
-  
   const navigation = useNavigation();
+
   if (!profileData) {
-    return null; // or a loading indicator
+    return <ActivityIndicator color='#FF4C68' size={120} style={styles.indicator} />;
   }
 
   const profileData1 = {
@@ -127,6 +111,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  indicator: {
+    flex: 1
+},
   headerContainer: {
     alignItems: 'center',
     flexDirection: 'row',

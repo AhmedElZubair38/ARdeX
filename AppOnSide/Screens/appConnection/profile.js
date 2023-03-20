@@ -1,6 +1,6 @@
 
 
-const starting = "http://10.0.2.2:3000/"
+const starting = "http://192.168.0.111:3000/"
 
 console.log("profile.js")
 const getProfileStuff = async (userId) => {
