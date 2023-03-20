@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
@@ -22,26 +22,71 @@ const EditProfile = ({ route }) => {
   const [profilePic, setProfilePic] = useState(profile.profilePic);
 
   const [image, setImage] = useState('');
+  const [previousImageDimensions, setPreviousImageDimensions] = useState({});
+
+//   const onClick = () => {
+// 	console.log('Submit clicked!');
+//     navigation.navigate('PreviewEditProfile', { image });
+//   };
+
+//   const selectImagesFromGallery = async () => {
+
+//       ImagePicker.openPicker({
+//         multiple: false,
+//         mediaType: 'photo',
+// 		cropping: true,
+//       })
+// 	  .then((image) => {
+// 		console.log('received image', image);
+// 		setImage({
+// 			uri: image.path
+// 		})
+// 	  })
+//   };
+
+useEffect(() => {
+    Image.getSize(
+      profilePic,
+      (width, height) => {
+        setPreviousImageDimensions({
+          width,
+          height,
+          x: (150 - width) / 2,
+          y: (150 - height) / 2,
+        });
+      },
+      (error) => console.error(error)
+    );
+  }, [profilePic]);
 
   const onClick = () => {
-	console.log('Submit clicked!');
+    console.log('Submit clicked!');
     navigation.navigate('PreviewEditProfile', { image });
   };
 
   const selectImagesFromGallery = async () => {
-
-      ImagePicker.openPicker({
-        multiple: false,
-        mediaType: 'photo',
-		cropping: true,
-      })
-	  .then((image) => {
-		console.log('received image', image);
-		setImage({
-			uri: image.path
-		})
-	  })
+    ImagePicker.openPicker({
+      multiple: false,
+      mediaType: 'photo',
+      cropping: true,
+    }).then((newImage) => {
+      console.log('received image', newImage);
+      Image.getSize(
+        newImage.path,
+        (width, height) => {
+          setImage({ uri: newImage.path });
+          setPreviousImageDimensions({
+            width,
+            height,
+            x: (150 - width) / 2,
+            y: (150 - height) / 2,
+          });
+        },
+        (error) => console.error(error)
+      );
+    });
   };
+
 
   return (
 		<View style={{flex: 1}}>
@@ -55,7 +100,7 @@ const EditProfile = ({ route }) => {
 							source={{uri : profilePic}}
 						/>
 						<View>
-							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute', width: 50, height: 50, bottom: '-10%', right: '-20%', borderRadius:50}]} onPress={selectImagesFromGallery}>
+							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute', width: 50, height: 50, alignSelf: 'center', marginTop: 10, borderRadius: 30}]} onPress={selectImagesFromGallery}>
 								<Icon size={26} style={styles.icon123} name={Platform.OS === 'ios' ? 'edit' : 'edit'}></Icon>
 							</TouchableOpacity>
 						</View>
@@ -66,7 +111,7 @@ const EditProfile = ({ route }) => {
 					
 				<View style={styles.form}>
 				<View>
-					<Text style={[styles.label, {marginTop: 35}]}>Name</Text>
+					<Text style={[styles.label, {paddingTop: 40}]}>Name</Text>
 					<TextInput
 					style={styles.input}
 					placeholder="Enter Name"
@@ -83,12 +128,18 @@ const EditProfile = ({ route }) => {
 				</View>
 				</View>
 
+
+				<Image
+					style={styles.profilePhoto2}
+					source={{uri: image.uri}}
+				/>
+
 				<View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-					<Text style={styles.buttonText}>Cancel Changes</Text>
+					<Text style={styles.buttonText}>Cancel</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.button} onPress={onClick}>
-					<Text style={styles.buttonText}>Next</Text>
+					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+					<Text style={styles.buttonText}>Confirm Changes</Text>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -117,6 +168,14 @@ const EditProfile = ({ route }) => {
 		borderRadius: 80,
 		alignSelf:'center',
 	},
+	profilePhoto2: {
+		width: 150,
+		height: 150,
+		borderRadius: 80,
+		alignSelf:'center',
+		bottom: '73%',
+		position: 'absolute',
+	},
 	changeAvatarButton: {
 		margin: 10,
 	},
@@ -129,7 +188,7 @@ const EditProfile = ({ route }) => {
 		backgroundColor: '#FF4C68',
 		borderRadius: 20,
 		padding: 10,
-		margin: 20,
+		margin: 15,
 		shadowColor: 'grey',
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.9,
@@ -137,13 +196,13 @@ const EditProfile = ({ route }) => {
 		alignSelf: 'center',
 		marginBottom: 10,
 		height:'33%',
-		width: '100%',
+		width: '90%',
 		borderWidth: 1.5,
 		borderColor: 'black',
 		alignItems: 'center',
 	  },
 	buttonText: {
-		color: '#fff',
+		color: 'black',
 		fontSize: 20,
 		fontWeight: 'bold',
 
@@ -155,18 +214,18 @@ const EditProfile = ({ route }) => {
 		
 	},
 	label: {
-		marginTop: 30,
-		fontSize: 20,
+		marginVertical: 10,
+		fontSize: 16,
 		fontWeight: 'bold',
 		
 	},
 	input: {
-		marginTop: 5,
 		borderColor: '#ccc',
 		borderWidth: 1,
 		borderRadius: 15,
 		padding: 10,
 		fontSize: 16,
+		marginBottom: 10,
 		shadowColor: 'black',
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.3,
@@ -175,8 +234,8 @@ const EditProfile = ({ route }) => {
 		borderColor: 'black',
 	},
 	buttons: {
-		width: '80%',
-		marginHorizontal: '10%',
+		width: '70%',
+		alignSelf: 'center',
 		position: 'absolute',
 		bottom: '6%'
 	},
