@@ -225,17 +225,14 @@ export default function HomeScreen(props) {
     
     useEffect(() => {
         if (isFocused) {
-        getData().then((data) => {
-          setDATA(data);
+        getData().then((DATA) => {
+          setDATA(DATA);
         });}
-      }, [isFocused]); 
+      }, [isFocused]);
 
       if (!DATA) {
         return <ActivityIndicator size="large" color="#0000ff" />;
       }
-        
-
-
 
 
     return (

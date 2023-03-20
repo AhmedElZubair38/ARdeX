@@ -39,6 +39,7 @@ import CollectionsView from './Screens/CollectionsView';
 import SettingsDeleteAccount from './Settings/SettingsDeleteAccount';
 import ReportCommentHomeScreen from './Screens/HomeScreens/ReportCommentHomeScreen';
 import Likes from './Screens/HomeScreens/Likes';
+import PreviewEditProfile from './Screens/ProfileScreens/PreviewEditProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -235,6 +236,11 @@ export default function App(props) {
         <Stack.Screen
           name="Likes"
           component={Likes}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PreviewEditProfile"
+          component={PreviewEditProfile}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

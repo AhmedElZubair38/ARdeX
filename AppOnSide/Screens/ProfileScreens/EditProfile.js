@@ -1,29 +1,53 @@
 import React, {useState} from 'react';
-import { View, Text, Image, ScrollView, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
-import BottomTabNavigation from '../../Navigators/bottomTabNavigation';
 import { Icon } from 'react-native-elements';
+import ImagePicker from 'react-native-image-crop-picker';
+import { SensorType } from 'react-native-reanimated';
+//const ImagePicker = require('react-native-image-crop-picker');
+// import * as ImagePicker from 'expo-image-picker';
 
-const EditProfile = () => {
 
-  const profile = {
-    name: 'The Weeknd',
-    bio: 'POP ftw',
-    profilePic: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
-    coverPic: 'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
-  }
+const EditProfile = ({ route }) => {
+
+	const navigation = useNavigation();
+
+	console.log(route)
+
+	const profile = {
+		name: 'The Weeknd',
+		bio: 'POP ftw',
+		profilePic: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+		coverPic: 'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
+	}
 
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
   const [profilePic, setProfilePic] = useState(profile.profilePic);
-  const [coverPic, setCoverPic] = useState(profile.coverPic);
 
-  const handleSubmit = () => {
+  const [image, setImage] = useState('');
 
-  }
+  const onClick = () => {
+	console.log('Submit clicked!');
+    navigation.navigate('PreviewEditProfile', { image });
+  };
 
-  const navigation = useNavigation();
+  const selectImagesFromGallery = async () => {
+
+      ImagePicker.openPicker({
+        multiple: false,
+        mediaType: 'photo',
+		cropping: true,
+      })
+	  .then((image) => {
+		console.log('received image', image);
+		setImage({
+			uri: image.path
+		})
+	  })
+  };
+
 
   return (
 		<View style={{flex: 1}}>
@@ -37,7 +61,7 @@ const EditProfile = () => {
 							source={{uri : profilePic}}
 						/>
 						<View>
-							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:0,right:-20,borderRadius:50}]} onPress={()=> console.log("abc")}>
+							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:0,right:-20,borderRadius:50}]} onPress={selectImagesFromGallery}>
 								<Icon size={35} style={styles.icon123} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
 							</TouchableOpacity>
 						</View>
@@ -64,12 +88,18 @@ const EditProfile = () => {
 					/>
 				</View>
 				</View>
+
+				<Image
+					style={styles.profilePhoto}
+					source={{uri: image.uri}}
+				/>
+
 				<View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
 					<Text style={styles.buttonText}>Cancel Changes</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.button} onPress={() => handleSubmit({name, bio, coverPic, profilePic})}>
-					<Text style={styles.buttonText}>Submit</Text>
+					<TouchableOpacity style={styles.button} onPress={onClick}>
+					<Text style={styles.buttonText}>Next</Text>
 					</TouchableOpacity>
 				</View>
 			</View>

@@ -29,8 +29,6 @@ const CreateNewScrapbook = ({route}) => {
         setSelectedButtons(buttons);
     };
 
-    const isButtonSelected = (button) => selectedButtons.indexOf(button) > -1;
-
     const onClick = () => {
         handleSubmit();
         navigation.navigate('PreviewScrapbookPosts', { selectedImages })
