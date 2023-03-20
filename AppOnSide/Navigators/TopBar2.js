@@ -11,7 +11,7 @@ return (
   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 90, padding: 15, borderBottomWidth: 1, backgroundColor: '#FF4C68', paddingTop: 20}}>
 
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon style={styles.icon2} name={Platform.OS === 'ios' ? 'chevron-back-outline' : 'home'}/>
+            <Icon style={styles.icon2} name={Platform.OS === 'ios' ? 'chevron-back-outline' : 'chevron-back-outline'}/>
           </TouchableOpacity>
 
           <View style={{ flexDirection: 'row', marginBottom: -25, marginRight: -15 }}>

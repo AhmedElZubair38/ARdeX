@@ -186,9 +186,13 @@ export default function ViewFollowing(props) {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.inputs}
-            placeholder="Search Followers by Name or Username..."
-            onChangeText={(text) => searchFilterFunction(text)}
+            placeholder="Search Followings..."
             value={query}
+            placeholderTextColor="grey"
+            underlineColorAndroid="transparent"
+            ItemSeparatorComponent={() => {
+              return <View style={styles.separator} />;
+            }}
           />
           <TouchableOpacity style={styles.searchButton}>
             <Icon name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
@@ -223,45 +227,51 @@ const styles = StyleSheet.create({
     backgroundColor: '#ddd',
   },
   inputContainer: {
-    borderBottomColor: '#F5FCFF',
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
-    borderBottomWidth: 1,
-    height: 45,
+    height: 50,
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
-    margin: 10,
-    shadowColor: 'black',
+    marginVertical: 15,
+    marginHorizontal: 25,
+    shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
+    borderWidth: 1.5,
+    
+    
   },
   search: {
     flex: 1,
     flexDirection: 'row',
     width: '87%',
+    paddingTop: 10,
+    paddingBottom: 20,
 
   },
   inputs: {    
-    height: 45,
-    margin: 25,
-    borderBottomColor: '#FFFFFF',
+    height: 40,
+    margin: 23,
     width: '87%',
-
+    color: 'black',
+    
   },
-  searchButton: {    
-    height: 45,
+  searchButton: {
+    width: 45,
+    height: 45,  
     justifyContent: 'center',
     alignItems: 'center',
-    width: '13%',
     alignSelf: 'flex-end',
-    backgroundColor: '#FF4C68',
-    borderRadius: 30,
-    shadowColor: 'black',
+    backgroundColor: 'white',
+    borderRadius: 25,
+    shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
-    shadowRadius: 2, 
+    shadowRadius: 2,
+    borderWidth: 1.5,
+
   },
   notificationList: {
     marginTop: 60,
