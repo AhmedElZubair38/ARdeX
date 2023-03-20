@@ -11,58 +11,7 @@ import { ActivityIndicator } from 'react-native';
 
 import queries from "../appConnection/home.js"
 
-
 const WIDTH = Dimensions.get('window').width;
-const HEIGHT = Dimensions.get('window').height;
-
-
-// const DATA1 = [
-
-//     {
-//         username: 'Naveen Jain',
-//         profileImage: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
-//         imageName: [
-//             'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
-//             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
-//             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8='           
-//         ],
-//         scrapName: 'Concert Week!',
-//         caption: 'Taking the dog out!',
-//         likes: '203',
-//         comments: '16'
-//     },
-
-//     {
-//         username: 'Kanye West',
-//         profileImage: 'https://cdn.siasat.com/wp-content/uploads/2020/07/Rapper-Kanye-West.jpg',
-//         imageName: [
-//             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
-//             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
-//             'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
-//             'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
-//         ],
-//         scrapName: 'Concert Week 2!',
-//         caption: 'Wit the homie!',
-//         likes: '1,982,234',
-//         comments: '6,773'
-//     },
-
-//     {
-//         username: 'The Weeknd',
-//         profileImage: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
-//         imageName: [
-//             'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
-//             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
-//             'https://media.istockphoto.com/id/1333035210/photo/sunset-view-of-the-dubai-marina-and-jbr-area-and-the-famous-ferris-wheel-and-golden-sand.jpg?s=612x612&w=0&k=20&c=ONRt8hlovwg0m8f6Q3OG5Spavaer2JCaAioUE-XM_r8=',
-//             'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
-//             'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg'
-//         ],
-//         scrapName: 'Concert Week 3!',
-//         caption: 'New album out on all platforms!',
-//         likes: '1,234',
-//         comments: '67'
-//     }
-// ]
 
 function Item ({username, scrapName, profileImage, imageName, caption, likes, comments, name, userId, mainUserId, scrapId}) {
 
@@ -266,7 +215,7 @@ export default function HomeScreen(props) {
       }, [isFocused]);
 
       if (!DATA) {
-        return <ActivityIndicator size="large" color="#0000ff" />;
+        return <ActivityIndicator color='#FF4C68' size={120} style={styles.indicator} />;
       }
 
 
@@ -304,6 +253,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ddd'
+    },
+
+    indicator: {
+        flex: 1
     },
 
     backButton: {
