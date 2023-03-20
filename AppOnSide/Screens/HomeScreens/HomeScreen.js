@@ -67,7 +67,7 @@ const HEIGHT = Dimensions.get('window').height;
 
 function Item ({username, scrapName, profileImage, imageName, caption, likes, comments, name, userId, mainUserId, scrapId}) {
 
-    const [isFilled, setIsFilled] = useState(false);
+    const [isFilled, setIsFilled] = useState(null);
     const [isFilled2, setIsFilled2] = useState(false);
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
@@ -81,6 +81,42 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
         }
       }
     }
+    console.log("MainUserId : "+ mainUserId )
+    console.log("ScrapID : "+ scrapId )
+
+    const checkLike = async (scrapId, mainUserId) => {
+        return await queries.isScrapbookLikedByUser(scrapId, mainUserId);
+    }
+
+    const handleLikeClick = async () => {
+        console.log("handleLikeClick")
+        console.log("ScrapID : "+ scrapId )
+        console.log("MainUserId : "+ mainUserId )
+        if(isFilled){
+            setIsFilled(false);
+            await queries.deleteScrapbookLike(scrapId, mainUserId);
+        } else {
+            setIsFilled(true);
+            await queries.addScrapbookLike(scrapId, mainUserId);
+        }
+    }
+
+
+    useEffect(() => {
+        checkLike(scrapId, mainUserId).then((res) => {
+            if(res){
+                setIsFilled(true);
+            } else {
+                setIsFilled(false);
+            }
+        })
+    }, [scrapId, mainUserId])
+
+    if(isFilled == null){
+        return null;
+    }
+
+
 
     
     return (
@@ -90,7 +126,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
                 <View style={styles.cardHeader}>
                     <View style={styles.headerLeft}>
                         <Image style={styles.image} source={{uri: profileImage}} />
-                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile',{ clickedUserId: userId, userId: userId, mainUserId: mainUserId })}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile',{ clickedUserId: userId, userId: mainUserId, mainUserId: mainUserId })}>
                             <View style={{ flexDirection: 'column' }}>
                                 <Text style={styles.userName}>@{username}</Text>
                                 <Text style={styles.name}>{name}</Text>
@@ -144,7 +180,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
                 <View style={styles.cardFooter}>
                     <View style={styles.footerLeft}>
                         <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
-                            <TouchableOpacity onPress={() => setIsFilled(!isFilled)}>
+                            <TouchableOpacity onPress={handleLikeClick}>
                                 <Icon4
                                     name={isFilled ? 'heart' : 'hearto'}
                                     size={26}
@@ -168,7 +204,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
                                 />
                             </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Likes')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Likes',{ userId: mainUserId, mainUserId: mainUserId, scrapId: scrapId })}>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {likes} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 </TouchableOpacity>
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {caption} </Text>
@@ -218,7 +254,7 @@ export default function HomeScreen(props) {
 
     const getData = async () => {
         const response = await queries.getHomeFeed();
-        console.log(response);
+        // console.log(response);
         return response;
     }
     const isFocused = useIsFocused();

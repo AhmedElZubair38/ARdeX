@@ -4,25 +4,26 @@ import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, TextInput, Fla
 import Icon from 'react-native-vector-icons/Ionicons';
 import TopBar from '../../Navigators/TopBar'
 
-import queries from "../appConnection/search.js"
+import queries from "../appConnection/home.js"
 
 export default function Likes(props) {
-  console.log("Contact")
+  scrapId = props.route.params.scrapId
+  console.log("Likes")
   console.log(props.route.params)
   const navigation = useNavigation();
   const [userData, setUserData] = useState([]);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
-  const getData = async () => {
-    const data = await queries.getAllUsers();
+  const getData = async (scrapId) => {
+    const data = await queries.getUsersLikedScrapbooks(scrapId)
     setUserData(data);
     setResults(data);
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    getData(scrapId);
+  }, [scrapId]);
 
   const handleChange = (text) => {
     setQuery(text);
