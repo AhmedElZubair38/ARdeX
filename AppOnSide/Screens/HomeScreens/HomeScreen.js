@@ -13,12 +13,14 @@ import queries from "../appConnection/home.js"
 
 const WIDTH = Dimensions.get('window').width;
 
-function Item ({username, scrapName, profileImage, imageName, caption, likes, comments, name, userId, mainUserId, scrapId}) {
+function Item ({username, scrapName, profileImage, imageName, caption, like, comments, name, userId, mainUserId, scrapId}) {
 
     const [isFilled, setIsFilled] = useState(null);
     const [isFilled2, setIsFilled2] = useState(false);
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
+    console.log("Likew : "+like)
+    const[likes,setLikes] = useState(like);
 
     const [imageActive, setimageActive] = useState(0);
     onchange = (nativeEvent) => {
@@ -29,22 +31,24 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
         }
       }
     }
-    console.log("MainUserId : "+ mainUserId )
-    console.log("ScrapID : "+ scrapId )
+    // console.log("MainUserId : "+ mainUserId )
+    // console.log("ScrapID : "+ scrapId )
 
     const checkLike = async (scrapId, mainUserId) => {
         return await queries.isScrapbookLikedByUser(scrapId, mainUserId);
     }
 
     const handleLikeClick = async () => {
-        console.log("handleLikeClick")
-        console.log("ScrapID : "+ scrapId )
-        console.log("MainUserId : "+ mainUserId )
+        // console.log("handleLikeClick")
+        // console.log("ScrapID : "+ scrapId )
+        // console.log("MainUserId : "+ mainUserId )
         if(isFilled){
             setIsFilled(false);
+            setLikes(likes-1)
             await queries.deleteScrapbookLike(scrapId, mainUserId);
         } else {
             setIsFilled(true);
+            setLikes(likes+1)
             await queries.addScrapbookLike(scrapId, mainUserId);
         }
     }
@@ -137,7 +141,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
                             </TouchableOpacity>
                         </View>
                         <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Comments',{ userId: mainUserId, mainUserId: mainUserId, scrapId: scrapId })}>
                                 <Icon5 style={{ fontSize: 24, color: 'grey' }} name={Platform.OS === 'ios' ? 'comment' : 'comment'}/>
                             </TouchableOpacity>
                            
@@ -156,7 +160,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, likes, co
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {likes} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                 </TouchableOpacity>
                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {caption} </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Comments',{ userId: mainUserId, mainUserId: mainUserId, scrapId: scrapId })}>
                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {comments} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
                 </TouchableOpacity>
             </View>
@@ -233,7 +237,7 @@ export default function HomeScreen(props) {
                     imageName={item.imageName}
                     caption={item.caption}
                     scrapName={item.scrapName}
-                    likes={item.likes}
+                    like={item.likes}
                     comments={item.comments}
                     key={item.username}
                     userId={item.userId}
