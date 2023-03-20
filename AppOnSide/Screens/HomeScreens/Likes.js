@@ -65,7 +65,6 @@ export default function Likes(props) {
         </View>
       </View>
       
-      <View>
       {results.length > 0 ? (
         <FlatList
           style={styles.notificationList}
@@ -91,7 +90,7 @@ export default function Likes(props) {
       ) : (
         <Text style={styles.note}>No results found.</Text>
       )}
-      </View>
+      
       <View style={styles.backButton}>
         <TouchableOpacity onPress={()=> navigation.goBack()}>
           <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
@@ -174,7 +173,6 @@ const styles = StyleSheet.create({
   },
   notificationList: {
     padding: 15,
-    marginBottom: 'absolute',
   },
   notificationBox: {
     padding: '4.5%',

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
-import TopBar from '../../Navigators/TopBar';
+import TopBar2 from '../../Navigators/TopBar2';
 import { useNavigation, useFocusEffect  } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from "react-native-modal";
@@ -108,7 +108,7 @@ const ViewProfile = (props) => {
 
   return (
     <View style={{flex: 1}}>
-        <TopBar/>
+        <TopBar2/>
         <View style={styles.container}>
           <View style={styles.headerContainer}>
                 <View style={styles.profileContainer}>

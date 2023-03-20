@@ -7,7 +7,7 @@ import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from 'react-native-vector-icons/AntDesign';
 import Icon5 from 'react-native-vector-icons/Fontisto';
 import Modal from "react-native-modal";
-import TopBar from '../Navigators/TopBar';
+import TopBar2 from '../Navigators/TopBar2';
 
 
 const WIDTH = Dimensions.get('window').width;
@@ -199,7 +199,7 @@ export default function HomeScreen(props) {
     return (
 
     <View style={{flex: 1}}>
-        <TopBar />
+        <TopBar2/>
         <View style={styles.container}>
             <View>
                 <Text style={styles.heading}>Collections Name</Text>
