@@ -199,6 +199,8 @@ export default function ViewFollowing(props) {
           </TouchableOpacity>
         </View>
       </View>
+
+      <View style={{flex: 100}}>
       <FlatList
         style={styles.notificationList}
         data={results}
@@ -216,6 +218,9 @@ export default function ViewFollowing(props) {
           )
         }}
       />
+      </View>
+
+
     </View>
   );
 }

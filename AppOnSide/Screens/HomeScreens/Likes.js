@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect} from 'react';
 import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, TextInput, FlatList, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import TopBar from '../../Navigators/TopBar'
+import TopBar2 from '../../Navigators/TopBar2'
 
 import queries from "../appConnection/home.js"
 
@@ -45,12 +45,12 @@ export default function Likes(props) {
 
   return (
     <View style={styles.container}>
-      <TopBar />
+      <TopBar2/>
       <View style={styles.search}>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.inputs}
-            placeholder="Search Likes by Name or Username..."
+            placeholder="Search Likes..."
             value={query}
             placeholderTextColor="grey"
             underlineColorAndroid="transparent"
@@ -65,6 +65,7 @@ export default function Likes(props) {
         </View>
       </View>
       
+      <View style={{flex: 8}}>
       {results.length > 0 ? (
         <FlatList
           style={styles.notificationList}
@@ -90,11 +91,6 @@ export default function Likes(props) {
       ) : (
         <Text style={styles.note}>No results found.</Text>
       )}
-      
-      <View style={styles.backButton}>
-        <TouchableOpacity onPress={()=> navigation.goBack()}>
-          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-        </TouchableOpacity>
       </View>
 
     </View>
