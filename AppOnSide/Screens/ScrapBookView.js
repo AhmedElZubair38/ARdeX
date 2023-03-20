@@ -22,6 +22,7 @@ const ScrapBookView = (props) => {
     scrapId = props.route.params.scrapId
     mainUserId = props.route.params.mainUserId
     scrapUserId = props.route.params.userId
+    userId = props.route.params.mainUserId
 
     console.log(props.route.params)
     const navigation = useNavigation();

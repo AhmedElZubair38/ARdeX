@@ -146,7 +146,11 @@ const ViewProfile = (props) => {
                   <Icon style={styles.buttonText2} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
               </TouchableOpacity>
             </View>
-            <ProfileNavigator/>
+            <ProfileNavigator
+              initialParams={{userId: clickedUserId, mainUserId: mainUserId}}
+              userId = {clickedUserId}
+              mainUserId = {mainUserId}
+            />
             <View style={styles.backButton}>
               <TouchableOpacity onPress={()=> navigation.goBack()}>
                 <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
