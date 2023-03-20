@@ -19,7 +19,7 @@ const PreviewEditProfile = ({ route }) => {
                 </View>
 
 
-                <Image source={ image } style={styles.image} /> 
+                <Image source={ image } style={styles.image} />
                
 
                 <View style={styles.buttonsContainer}>

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
-import { Icon } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Entypo';
 import ImagePicker from 'react-native-image-crop-picker';
 
 
@@ -55,8 +55,8 @@ const EditProfile = ({ route }) => {
 							source={{uri : profilePic}}
 						/>
 						<View>
-							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute',bottom:0,right:-20,borderRadius:50}]} onPress={selectImagesFromGallery}>
-								<Icon size={35} style={styles.icon123} name={Platform.OS === 'ios' ? 'search' : 'search'}></Icon>
+							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute', width: 50, height: 50, bottom: '-10%', right: '-20%', borderRadius:50}]} onPress={selectImagesFromGallery}>
+								<Icon size={26} style={styles.icon123} name={Platform.OS === 'ios' ? 'edit' : 'edit'}></Icon>
 							</TouchableOpacity>
 						</View>
 					
@@ -66,7 +66,7 @@ const EditProfile = ({ route }) => {
 					
 				<View style={styles.form}>
 				<View>
-					<Text style={[styles.label, {marginTop: 30}]}>Name</Text>
+					<Text style={[styles.label, {marginTop: 35}]}>Name</Text>
 					<TextInput
 					style={styles.input}
 					placeholder="Enter Name"
@@ -178,8 +178,10 @@ const EditProfile = ({ route }) => {
 		bottom: '6%'
 	},
 	icon123: {
-		color:'white',
-	}
+		color:'black',
+		paddingLeft: '27%',
+		paddingTop: '25%',
+		}
 	});
 
 	export default EditProfile;
