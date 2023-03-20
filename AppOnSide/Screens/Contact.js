@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
-    height: 55,
+    height: 50,
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
@@ -124,12 +124,12 @@ const styles = StyleSheet.create({
   search: {
     flex: 1,
     flexDirection: 'row',
-    width: '87%',
-    
+    width: '93%',
+    marginLeft: '-3%',
 
   },
   inputs: {    
-    height: 45,
+    height: 40,
     margin: 23,
     width: '87%',
     color: 'black',

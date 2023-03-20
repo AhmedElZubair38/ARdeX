@@ -40,6 +40,7 @@ import SettingsDeleteAccount from './Settings/SettingsDeleteAccount';
 import ReportCommentHomeScreen from './Screens/HomeScreens/ReportCommentHomeScreen';
 import Likes from './Screens/HomeScreens/Likes';
 import PreviewEditProfile from './Screens/ProfileScreens/PreviewEditProfile';
+import TopBar2 from './Navigators/TopBar2';
 
 const Stack = createNativeStackNavigator();
 
@@ -241,6 +242,11 @@ export default function App(props) {
         <Stack.Screen
           name="PreviewEditProfile"
           component={PreviewEditProfile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="TopBar2"
+          component={TopBar2}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
