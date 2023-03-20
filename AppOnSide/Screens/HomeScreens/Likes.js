@@ -65,6 +65,7 @@ export default function Likes(props) {
         </View>
       </View>
       
+      <View style={{flex: 8}}>
       {results.length > 0 ? (
         <FlatList
           style={styles.notificationList}
@@ -90,6 +91,8 @@ export default function Likes(props) {
       ) : (
         <Text style={styles.note}>No results found.</Text>
       )}
+      </View>
+
       
       <View style={styles.backButton}>
         <TouchableOpacity onPress={()=> navigation.goBack()}>

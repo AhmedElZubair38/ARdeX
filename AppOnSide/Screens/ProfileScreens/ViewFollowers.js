@@ -65,6 +65,8 @@ export default function ViewFollowers(props) {
           </TouchableOpacity>
         </View>
       </View>
+
+      <View style={{flex: 100}}>
       <FlatList
         style={styles.notificationList}
         data={results}
@@ -82,6 +84,8 @@ export default function ViewFollowers(props) {
           )
         }}
       />
+      </View>
+      
     </View>
   );
 }
