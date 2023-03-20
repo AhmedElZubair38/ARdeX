@@ -3,7 +3,7 @@ import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'reac
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
-import ImagePicker from 'react-native-image-crop-picker';
+var ImagePicker = require('react-native-image-crop-picker');
 import { SensorType } from 'react-native-reanimated';
 //const ImagePicker = require('react-native-image-crop-picker');
 // import * as ImagePicker from 'expo-image-picker';
