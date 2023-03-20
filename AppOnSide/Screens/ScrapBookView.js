@@ -8,23 +8,17 @@ import Icon3 from 'react-native-vector-icons/Feather';
 import Icon4 from 'react-native-vector-icons/AntDesign';
 import Icon5 from 'react-native-vector-icons/Fontisto';
 import Modal from "react-native-modal";
-
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
-
 const ScrapBookView = () => {
-
     const navigation = useNavigation();
-
-    const ScrapBookData = {
-        feed_caption: 'Sippin!',
-        userId: 12,
-        scrap_name: 'Concert Week!',
-        user_name: 'The Weeknd',
-        name: 'Abel Tesfaye',
-        user_image: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
-        scrapId: 1,
-        scrapDate: '2020-12-12',
+     const ScrapBookData = {
+         feed_caption: 'Sippin!',
+         userId: 12,
+         user_name: 'The Weeknd',
+         user_image: 'https://cdn.dribbble.com/users/112330/screenshots/16392696/media/2e10c7e8323ee72576c6dbfcb72e12fe.png?compress=1&resize=400x300',
+         scrapId: 1,
+         scrapDate: '2020-12-12',
         images: [
             'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
             'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
@@ -35,12 +29,9 @@ const ScrapBookView = () => {
         likes: 210,
         comments: 23,
     }
-
     const [isFilled, setIsFilled] = useState(false);
     const [isFilled2, setIsFilled2] = useState(false);
-
     const [modalVisible, setModalVisible] = useState(false);
-
     const [imageActive, setimageActive] = useState(0);
     onchange = (nativeEvent) => {
       if(nativeEvent){
@@ -55,29 +46,26 @@ const ScrapBookView = () => {
         <View style={{flex: 1}}>
         <TopBar />
         <View style={styles.container}>
-            <View style={styles.card}>
-                <View style={styles.cardHeader}>
-                    <View style={styles.headerLeft}>
-                        <Image style={styles.userImage} source={{uri: ScrapBookData.user_image}} />
-                        <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
-                            <View style={{ flexDirection: 'column' }}>
-                                <Text style={styles.userName}>@{ ScrapBookData.user_name}</Text>
-                                <Text style={styles.name}>{ScrapBookData.name}</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.headerRight}>
+             <View style={styles.card}>
+                 <View style={styles.cardHeader}>
+                     <View style={styles.headerLeft}>
+                         <Image
+                         style={styles.userImage}
+                         source={{uri: ScrapBookData.user_image}}
+                         />
+                         <TouchableOpacity onPress={() => navigation.navigate('ViewProfile')}>
+                             <Text style={styles.userName}> { ScrapBookData.user_name} </Text>
+                         </TouchableOpacity>
+                     </View>
+                     <View style={styles.headerRight}>
                         <TouchableOpacity style={{paddingRight: 10 }} onPress={()=> setModalVisible(true)}>
                             <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
-                        </TouchableOpacity>
-                    </View >
-                </View>
-                <View style={styles.backButton2}>
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black'}}> {ScrapBookData.scrap_name} </Text>
-                </View>
-                <View style={styles.page}>
-           <ScrollView
-            onScroll={({nativeEvent}) => onchange(nativeEvent)}
+                         </TouchableOpacity>
+                     </View >
+                 </View>
+                 <View style={styles.page}>
+            <ScrollView
+             onScroll={({nativeEvent}) => onchange(nativeEvent)}
             showsHorizontalScrollIndicator={false}
             pagingEnabled
             horizontal
@@ -94,9 +82,7 @@ const ScrapBookView = () => {
                 />
               ) 
             }
-
           </ScrollView>
-
           <View style={styles.wrapDot}>
             {
               ScrapBookData.images.map((e, index) =>
@@ -133,18 +119,16 @@ const ScrapBookView = () => {
                                     size={26}
                                     style={{ paddingHorizontal: 13 }}
                                     color={isFilled2 ? 'black' : 'grey'}
-                                />
-                            </TouchableOpacity>
-                </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Likes')}>
-                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> {ScrapBookData.likes} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
-                </TouchableOpacity>
-                <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> {ScrapBookData.feed_caption} </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
-                <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {ScrapBookData.comments} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
-                </TouchableOpacity>
-            </View>
-            <Modal
+                                 />
+                             </TouchableOpacity>
+                 </View>
+                 <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> { ScrapBookData.likes} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
+                 <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> { ScrapBookData.feed_caption} </Text>
+                 <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                    <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16}}> {ScrapBookData.comments} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Comments </Text> </Text>
+                 </TouchableOpacity>
+             </View>
+             <Modal
                 animationType="slide"
                 transparent={true}
                 isVisible={modalVisible}
@@ -179,94 +163,70 @@ const ScrapBookView = () => {
     </View>
     );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ddd',
-    paddingTop: 15
-},
-name: {
-    fontSize: 14,
-    color: '#888',
-    marginLeft: 10,
-    marginTop: 5,
-    alignSelf: 'center',
-  },
-card: {
-    backgroundColor: '#fff',
-    padding: 10,
-    margin: 10,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'black',
-    marginTop: 1
-},
+     backgroundColor: '#ddd',
+     paddingTop: 15
+ },
+ card: {
+     backgroundColor: '#fff',
+     padding: 10,
+     margin: 10,
+     borderRadius: 10,
+     borderWidth: 1,
+     borderColor: 'black',
+     marginTop: 1
+ },
 
-cardHeader: {
+ cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between'
 },
-
 headerLeft: {
     flexDirection: 'row',
 },
-
 backButton: {
     width: 220,
     height: 70,
     borderRadius: 35,
     borderWidth: 2,
     borderColor: 'black',
-    backgroundColor: '#FF4C68',
-    alignSelf: 'center',
-    position: 'absolute',
-    top: '87%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  backButton2: {
-    width: 350,
-    height: 50,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'black',
-    backgroundColor: '#FFBCCD',
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 13.5,
-  },
-userImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 60/2
-},
+     backgroundColor: '#FF4C68',
+     alignSelf: 'center',
+     position: 'absolute',
+     top: '85%',
+     top: '87%',
+     alignItems: 'center',
+     justifyContent: 'center'
+   },
 
-userName: {
+ userImage: {
+     width: 50,
+     height: 50,
+     borderRadius: 50/2,
+ },
+
+ userName: {
     fontWeight: 'bold',
     marginLeft: 10,
     marginTop: 15,
     fontSize: 17
 },
-
 icon: {
     fontSize: 22,
     color: 'grey',
     marginTop: 15
 },
-
 feedImage: {
     height: 300,
     borderRadius: 10,
     marginVertical: 10
 },
-
 cardFooter: {
     flexDirection: 'row',
     justifyContent: 'space-between'
 },
-
 footerLeft: {
     flexDirection: 'row',
 },
@@ -328,7 +288,6 @@ modalContainer: {
     bottom: 20,
     flexDirection: 'row',
     alignSelf: 'center'
-
   },
   dotActive: {
     margin: 3,
@@ -341,5 +300,4 @@ modalContainer: {
     fontSize: 10
   }
 });
-
 export default ScrapBookView;
