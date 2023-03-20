@@ -1,5 +1,5 @@
 
-const starting = "http://192.168.0.111:3000/"
+const starting = "http://192.168.0.170:3000/"
 
 const getHomeFeed = async () => {
     const response = await fetch(starting + 'api/getHomeFeed/', {
@@ -44,8 +44,8 @@ const getHomeFeed = async () => {
         }
 
 const isScrapbookLikedByUser = async (scrapId, userId) => {
-    const temp = starting + 'sbapi/isScrapbookLikedByUser/' + scrapId +'/' + userId
-    console.log(temp)
+    // const temp = starting + 'sbapi/isScrapbookLikedByUser/' + scrapId +'/' + userId
+    // console.log(temp)
     // console.log("Scrapbook ID: " + scrapId)
     // console.log("User ID: " + userId)
     const response = await fetch(starting + 'sbapi/isScrapbookLikedByUser/' + scrapId +'/' + userId, {
@@ -66,11 +66,11 @@ const isScrapbookLikedByUser = async (scrapId, userId) => {
 
 
 const addScrapbookLike = async (scrapId, userId) => {
-    console.log("addScrapbookLike")
-    console.log("Scrapbook ID: " + scrapId)
-    console.log(scrapId)
-    console.log("User ID: " + userId)
-    console.log(userId)
+    // console.log("addScrapbookLike")
+    // console.log("Scrapbook ID: " + scrapId)
+    // console.log(scrapId)
+    // console.log("User ID: " + userId)
+    // console.log(userId)
     const response = await fetch(starting + 'sbapi/addScrapbookLike/', {
         method: 'POST',
         headers: {
@@ -92,9 +92,9 @@ const addScrapbookLike = async (scrapId, userId) => {
 
 
 const deleteScrapbookLike = async (scrapId, userId) => {
-    console.log("DelScrapbookLike")
-    console.log("Scrapbook ID: " + scrapId)
-    console.log("User ID: " + userId)
+    // console.log("DelScrapbookLike")
+    // console.log("Scrapbook ID: " + scrapId)
+    // console.log("User ID: " + userId)
     const response = await fetch(starting + 'sbapi/deleteScrapbookLike/', {
         method: 'DELETE',
         headers: {
@@ -115,8 +115,8 @@ const deleteScrapbookLike = async (scrapId, userId) => {
 }
 
 const getUsersLikedScrapbooks = async (scrapId) => {
-    console.log("getUsersLikedScrapbooks")
-    console.log("Scrapbook ID: " + scrapId)
+    // console.log("getUsersLikedScrapbooks")
+    // console.log("Scrapbook ID: " + scrapId)
     const response = await fetch(starting + 'sbapi/getUsersLikedScrapbook/' + scrapId, {
         method: 'GET',
         headers: {
@@ -133,8 +133,8 @@ const getUsersLikedScrapbooks = async (scrapId) => {
 
 
 const getCommentsByID = async (scrapId) => {
-    console.log("getCommentsByID")
-    console.log("Scrapbook ID: " + scrapId)
+    // console.log("getCommentsByID")
+    // console.log("Scrapbook ID: " + scrapId)
     const response = await fetch(starting + 'sbapi/getCommentsByID/' + scrapId, {
         method: 'GET',
         headers: {
@@ -143,10 +143,58 @@ const getCommentsByID = async (scrapId) => {
             }
             });
             const data = await response.json();
-            console.log(data)
+            // console.log(data)
             return data
         }
 
+const insertScrapbookComment = async (scrapId, userId, comment) => {
+    console.log("insertScrapbookComment")
+    console.log("Scrapbook ID: " + scrapId)
+    console.log("User ID: " + userId)
+    console.log("Comment: " + comment)
+    const response = await fetch(starting + 'sbapi/insertScrapbookComment/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                scrapId: scrapId,
+                userId: userId,
+                comment: comment
+            })
+            });
+            const data = await response.json();
+            if (data) {
+                return true;
+            } else {
+                return false;
+            }
+}
 
-module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks , getCommentsByID
+const deleteScrapbookComment = async (commentId) => {
+    // console.log("deleteScrapbookComment")
+    // console.log("Comment ID: " + commentId)
+    const response = await fetch(starting + 'sbapi/deleteScrapbookComment/', {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                commentId: commentId
+            })
+            });
+            const data = await response.json();
+            if (data) {
+                return true;
+            } else {
+                return false;
+            }
+}
+
+
+
+
+module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks , getCommentsByID , insertScrapbookComment, deleteScrapbookComment
 }
