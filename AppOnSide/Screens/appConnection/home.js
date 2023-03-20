@@ -37,11 +37,99 @@ const getHomeFeed = async () => {
             };
             });
             
-            console.log(mergedPosts);
+            // console.log(mergedPosts);
             return mergedPosts
               
             
         }
 
+const isScrapbookLikedByUser = async (scrapId, userId) => {
+    const temp = starting + 'sbapi/isScrapbookLikedByUser/' + scrapId +'/' + userId
+    console.log(temp)
+    // console.log("Scrapbook ID: " + scrapId)
+    // console.log("User ID: " + userId)
+    const response = await fetch(starting + 'sbapi/isScrapbookLikedByUser/' + scrapId +'/' + userId, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            }
+            });
+            const data = await response.json();
+            // console.log(data)
+            if (data.length > 0) {
+                return true
+            } else {
+                return false
+            }
+        }
 
-module.exports = { getHomeFeed }
+
+const addScrapbookLike = async (scrapId, userId) => {
+    console.log("addScrapbookLike")
+    console.log("Scrapbook ID: " + scrapId)
+    console.log(scrapId)
+    console.log("User ID: " + userId)
+    console.log(userId)
+    const response = await fetch(starting + 'sbapi/addScrapbookLike/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                scrapId: scrapId,
+                userId: userId
+            })
+            });
+            const data = await response.json();
+            if (data) {
+                return true;
+            } else {
+                return false;
+            }
+}
+
+
+const deleteScrapbookLike = async (scrapId, userId) => {
+    console.log("DelScrapbookLike")
+    console.log("Scrapbook ID: " + scrapId)
+    console.log("User ID: " + userId)
+    const response = await fetch(starting + 'sbapi/deleteScrapbookLike/', {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                scrapId: scrapId,
+                userId: userId
+            })
+            });
+            const data = await response.json();
+            if (data) {
+                return true;
+            } else {
+                return false;
+            }
+}
+
+const getUsersLikedScrapbooks = async (scrapId) => {
+    console.log("getUsersLikedScrapbooks")
+    console.log("Scrapbook ID: " + scrapId)
+    const response = await fetch(starting + 'sbapi/getUsersLikedScrapbook/' + scrapId, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            }
+            });
+            const data = await response.json();
+            // console.log(data)
+            return data
+        }
+
+
+
+
+module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks}
