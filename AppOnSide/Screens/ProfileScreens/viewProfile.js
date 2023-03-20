@@ -110,18 +110,14 @@ const ViewProfile = (props) => {
     <View style={{flex: 1}}>
         <TopBar/>
         <View style={styles.container}>
-          {/* <TouchableOpacity onPress={()=> navigation.goBack()} style={styles.backButton}>
-            <Icon style={{color: 'black'}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
-          </TouchableOpacity> */}
           <View style={styles.headerContainer}>
                 <View style={styles.profileContainer}>
                   <Image
                       style={[styles.profilePhoto, {marginLeft: 2}]}
                       source={{uri : profileData.profileImage}}
-
                   />
                 </View>
-                  <View style={styles.statContainer}>
+                  <View style={[styles.statContainer, {paddingLeft: 10}]}>
                     <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
                     <Text style={styles.statLabel}>Scrap Books</Text>
                   </View>
@@ -153,7 +149,7 @@ const ViewProfile = (props) => {
             <ProfileNavigator/>
             <View style={styles.backButton}>
               <TouchableOpacity onPress={()=> navigation.goBack()}>
-                <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+                <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
               </TouchableOpacity>
             </View>
         </View>
@@ -203,7 +199,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
-  
   },
 
   headerContainer: {
@@ -212,26 +207,30 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 30,
   },
+
   profileContainer: {
     alignItems: 'center',
     marginTop: -20
   },
+
   profilePhoto: {
     width: 100,
     height: 100,
     borderRadius: 50,
   },
+
   nameText: {
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 10,
   },
+
   bioContainer: {
     padding: 15,
   },
+
   bioText: {
     fontSize: 16,
-    fontWeight: 'bold'
   },
   statsContainer: {
     flexDirection: 'row',
@@ -300,13 +299,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    color: '#fff',
-    bottom: 0,
+    color: 'black',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   buttonText2: {
     fontSize: 16,
-    color: '#fff',
+    color: 'black',
     bottom: -3,
     right : -1,
     textAlign: 'center',

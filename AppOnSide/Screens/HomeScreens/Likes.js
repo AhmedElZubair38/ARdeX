@@ -173,10 +173,8 @@ const styles = StyleSheet.create({
 
   },
   notificationList: {
-    marginTop: 70,
-    marginBottom: 210,
     padding: 15,
-    
+    marginBottom: 'absolute',
   },
   notificationBox: {
     padding: '4.5%',

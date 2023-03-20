@@ -83,11 +83,6 @@ const EditProfile = ({ route }) => {
 				</View>
 				</View>
 
-				<Image
-					style={styles.profilePhoto}
-					source={{uri: image.uri}}
-				/>
-
 				<View style={styles.buttons}>
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
 					<Text style={styles.buttonText}>Cancel Changes</Text>
@@ -114,7 +109,7 @@ const EditProfile = ({ route }) => {
 		alignSelf:'center',
 		width:100,
 		height:100,
-		marginTop: 40,
+		marginTop: '8%',
 	},
 	profilePhoto: {
 		width: 150,
@@ -131,17 +126,22 @@ const EditProfile = ({ route }) => {
 	},
 
 	button: {
-		marginTop: 20,
 		backgroundColor: '#FF4C68',
-		borderRadius: 5,
-		paddingVertical: 10,
-		paddingHorizontal: 20,
-		alignItems: 'center',
-		shadowColor: 'black',
+		borderRadius: 20,
+		padding: 10,
+		margin: 20,
+		shadowColor: 'grey',
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.9,
 		shadowRadius: 2,
-	},
+		alignSelf: 'center',
+		marginBottom: 10,
+		height:'33%',
+		width: '100%',
+		borderWidth: 1.5,
+		borderColor: 'black',
+		alignItems: 'center',
+	  },
 	buttonText: {
 		color: '#fff',
 		fontSize: 20,
@@ -151,25 +151,28 @@ const EditProfile = ({ route }) => {
 	form: {
 		width: '80%',
 		marginHorizontal: '10%',
-		marginTop: '5%'
+		marginTop: '15%',
+		
 	},
 	label: {
 		marginTop: 30,
-		fontFamily: 'Roboto',
-		fontSize: 22,
+		fontSize: 20,
 		fontWeight: 'bold',
+		
 	},
 	input: {
 		marginTop: 5,
 		borderColor: '#ccc',
 		borderWidth: 1,
-		borderRadius: 5,
+		borderRadius: 15,
 		padding: 10,
 		fontSize: 16,
 		shadowColor: 'black',
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.3,
 		shadowRadius: 2,
+		borderWidth: 1.5,
+		borderColor: 'black',
 	},
 	buttons: {
 		width: '80%',

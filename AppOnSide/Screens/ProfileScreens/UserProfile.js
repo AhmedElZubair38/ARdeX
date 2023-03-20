@@ -75,7 +75,7 @@ const ProfileView = (props) => {
                       source={{uri : profileData.profileImage}}
                   />
                 </View>
-                  <View style={styles.statContainer}>
+                  <View style={[styles.statContainer, {paddingLeft: 10}]}>
                     <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
                     <Text style={styles.statLabel}>ScrapBooks</Text>
                   </View>
@@ -113,60 +113,128 @@ const styles = StyleSheet.create({
   },
   indicator: {
     flex: 1
-},
+  },
+  backButton: {
+    width: 210,
+    height: 60,
+    borderRadius: 35,
+    borderWidth: 2,
+    borderColor: 'black',
+    backgroundColor: '#FF4C68',
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+  },
+
   headerContainer: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginHorizontal: 10
+    marginHorizontal: 15,
+    marginTop: 30,
   },
+
   profileContainer: {
     alignItems: 'center',
-    marginTop: 20
+    marginTop: -20
   },
+
   profilePhoto: {
-    width: 100,
-    height: 100,
+    width: 95,
+    height: 95,
     borderRadius: 50,
+    top: 10,
   },
+
   nameText: {
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 10,
   },
+
   bioContainer: {
     padding: 15,
   },
+
   bioText: {
     fontSize: 16,
   },
+  statsContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    marginBottom: 20,
+  },
   statContainer: {
-    justifyContent : 'space-between',
     alignItems: 'center',
     flex: 1,
-    paddingTop:30
   },
   statCount: {
     fontSize: 20,
-    fontWeight: 'bold',
   },
   statLabel: {
-    fontSize: 16,
-    color: '#999',
+    fontSize: 14,
+    color: 'grey',
+    fontWeight: 'bold'
+
+  },
+  buttonField:{
+    flexDirection: 'row'
   },
   button: {
     backgroundColor: '#FF4C68',
-    borderRadius: 5,
+    borderRadius: 20,
     padding: 10,
-    marginHorizontal: 20,
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+    alignSelf: 'center',
+    marginBottom: 10,
+    width: '80%',
+    borderWidth: 1.5,
+    borderColor: 'black',
+  },
+
+  buttonFollowing: {
+    backgroundColor: 'grey',
+    borderRadius: 20,
+    padding: 10,
+    marginLeft: 15,
     shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 2,
     marginBottom: 10,
+    width: '80%',
+    borderWidth: 1.5,
+    borderColor: 'black',
+  },
+
+  button2: {
+    backgroundColor: '#FF4C68',
+    borderRadius: 20,
+    padding: 10,
+    marginLeft: 5,
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+    marginBottom: 10,
+    width: '10%',
+    borderWidth: 1.5,
+    borderColor: 'black',
   },
   buttonText: {
     fontSize: 16,
     color: '#fff',
+    bottom: 0,
+    textAlign: 'center',
+  },
+  buttonText2: {
+    fontSize: 16,
+    color: '#fff',
+    bottom: -3,
+    right : -1,
     textAlign: 'center',
   },
   box: {
@@ -181,10 +249,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F5F5F5',
     shadowColor: 'grey',
-    shadowOffset: { width: 0, height: 1 },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 2,
-    marginBottom: 10,
   },
   image: { 
     height: 100,
@@ -199,7 +266,50 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
-  }
+  },
+  modal: {
+    flex : 1,
+    backgroundColor: 'grey',
+    alignItems: 'center',
+    height: '20%',
+    padding: 100,
+},
+modalText: {
+    fontSize: 18,
+    marginBottom: 20,
+},
+modalButton: {
+    padding: 10,
+    borderRadius: 5,
+    margin: 5,
+    backgroundColor: 'white',
+    alignItems: 'center',
+},
+modalButtonText: {
+    fontSize: 18,
+},
+buttonContainer: {
+    flexDirection: 'column',
+    width: '110%'
+},
+modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    backgroundColor: '#F5F5F5',
+    width: '100%'
+},
+modalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+buttonTextBlack: {
+  fontSize: 16,
+  color: 'black',
+  textAlign: 'center',
+}
 });
 
 export default ProfileView;

@@ -50,7 +50,7 @@ const handleNameFocus = () => {
         </View>
 
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
-            <Text style={styles.note}>Note: Your new username will only be aproved if it is not in use by some other user.</Text>
+            <Text style={styles.note}>Note: Your new username will only be aproved if it is not in use by some other user. Don't use an @</Text>
         </View>
 
         <View style={styles.confirmButton}>
