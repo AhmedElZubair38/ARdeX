@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     width: '87%',
-    
 
   },
   inputs: {    
