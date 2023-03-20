@@ -3,7 +3,7 @@ import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'reac
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
-import ImagePicker from 'react-native-image-crop-picker';
+var ImagePicker = require('react-native-image-crop-picker');
 
 
 const EditProfile = ({ route }) => {
