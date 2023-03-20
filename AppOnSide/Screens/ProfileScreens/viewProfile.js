@@ -106,26 +106,24 @@ const ViewProfile = (props) => {
   }
 
 
-
-  
-
   return (
     <View style={{flex: 1}}>
-        <TopBar position={absolute}/>
+        <TopBar/>
         <View style={styles.container}>
-          <TouchableOpacity onPress={()=> navigation.goBack()} style={styles.backButton}>
+          {/* <TouchableOpacity onPress={()=> navigation.goBack()} style={styles.backButton}>
             <Icon style={{color: 'black'}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View style={styles.headerContainer}>
                 <View style={styles.profileContainer}>
                   <Image
-                      style={styles.profilePhoto}
+                      style={[styles.profilePhoto, {marginLeft: 2}]}
                       source={{uri : profileData.profileImage}}
+
                   />
                 </View>
                   <View style={styles.statContainer}>
                     <Text style={styles.statCount}>{profileData.scrapbooks}</Text>
-                    <Text style={styles.statLabel}>Posts</Text>
+                    <Text style={styles.statLabel}>Scrap Books</Text>
                   </View>
                 <View style={styles.statContainer}>
                     <TouchableOpacity onPress={()=> navigation.navigate('ViewFollowers',{ userId: clickedUserId, mainUserId: props.route.params.mainUserId })}>
@@ -149,10 +147,15 @@ const ViewProfile = (props) => {
                   <Text style={check === true ? styles.buttonTextBlack : styles.buttonText}>{follow}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button2} onPress={()=> setModalVisible(true)}>
-                  <Icon style={styles.buttonText} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
+                  <Icon style={styles.buttonText2} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
               </TouchableOpacity>
             </View>
             <ProfileNavigator/>
+            <View style={styles.backButton}>
+              <TouchableOpacity onPress={()=> navigation.goBack()}>
+                <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
+              </TouchableOpacity>
+            </View>
         </View>
         <Modal
                 animationType="slide"
@@ -185,17 +188,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginBottom: 15
   },
   indicator: {
     flex: 1
-},
+  },
+  backButton: {
+    width: 210,
+    height: 60,
+    borderRadius: 35,
+    borderWidth: 2,
+    borderColor: 'black',
+    backgroundColor: '#FF4C68',
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+  
+  },
 
   headerContainer: {
     alignItems: 'center',
     flexDirection: 'row',
     marginHorizontal: 10,
-    marginTop: 20,
+    marginTop: 30,
   },
   profileContainer: {
     alignItems: 'center',
@@ -216,6 +231,7 @@ const styles = StyleSheet.create({
   },
   bioText: {
     fontSize: 16,
+    fontWeight: 'bold'
   },
   statsContainer: {
     flexDirection: 'row',
@@ -228,18 +244,19 @@ const styles = StyleSheet.create({
   },
   statCount: {
     fontSize: 20,
-    fontWeight: 'bold',
   },
   statLabel: {
-    fontSize: 16,
-    color: '#999',
+    fontSize: 14,
+    color: 'grey',
+    fontWeight: 'bold'
+
   },
   buttonField:{
     flexDirection: 'row'
   },
   button: {
     backgroundColor: '#FF4C68',
-    borderRadius: 10,
+    borderRadius: 20,
     padding: 10,
     marginLeft: 15,
     shadowColor: 'grey',
@@ -247,12 +264,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.9,
     shadowRadius: 2,
     marginBottom: 10,
-    width: '80%'
+    width: '80%',
+    borderWidth: 1.5,
+    borderColor: 'black',
   },
 
   buttonFollowing: {
     backgroundColor: 'grey',
-    borderRadius: 10,
+    borderRadius: 20,
     padding: 10,
     marginLeft: 15,
     shadowColor: 'grey',
@@ -260,12 +279,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.9,
     shadowRadius: 2,
     marginBottom: 10,
-    width: '80%'
+    width: '80%',
+    borderWidth: 1.5,
+    borderColor: 'black',
   },
 
   button2: {
     backgroundColor: '#FF4C68',
-    borderRadius: 10,
+    borderRadius: 20,
     padding: 10,
     marginLeft: 5,
     shadowColor: 'grey',
@@ -273,11 +294,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.9,
     shadowRadius: 2,
     marginBottom: 10,
-    width: '10%'
+    width: '10%',
+    borderWidth: 1.5,
+    borderColor: 'black',
   },
   buttonText: {
     fontSize: 16,
     color: '#fff',
+    bottom: 0,
+    textAlign: 'center',
+  },
+  buttonText2: {
+    fontSize: 16,
+    color: '#fff',
+    bottom: -3,
+    right : -1,
     textAlign: 'center',
   },
   box: {
@@ -352,11 +383,6 @@ buttonTextBlack: {
   fontSize: 16,
   color: 'black',
   textAlign: 'center',
-},
-backButton: {
-    paddingVertical: 10,
-    paddingLeft: 10
-
 }
 
 });

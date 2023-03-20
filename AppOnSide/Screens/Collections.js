@@ -7,6 +7,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 
 const Collections = () => {
+  
   const navigation = useNavigation();
 
   const scrapbooks = [
