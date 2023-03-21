@@ -30,6 +30,7 @@ const CreateNewScrapbook = ({route}) => {
     };
 
     const onClick = () => {
+        selectImagesFromGallery();
         handleSubmit();
         navigation.navigate('PreviewScrapbookPosts', { selectedImages })
        }
@@ -110,18 +111,7 @@ const CreateNewScrapbook = ({route}) => {
                 </View>
             </View>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-                <View style={styles.meow2}>
-                    <TouchableOpacity onPress={selectImagesFromGallery}>
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Upload Images </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-
             <View style={styles.buttons}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-                    <Text style={styles.buttonText}>Cancel</Text>
-                </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={onClick}>
                     <Text style={styles.buttonText}>Next</Text>
                 </TouchableOpacity>
@@ -210,6 +200,7 @@ const styles = StyleSheet.create({
     buttons: {
 		width: '80%',
 		marginHorizontal: '10%',
+        marginTop: 140,
 	},
     meow2: {
         width: 155,

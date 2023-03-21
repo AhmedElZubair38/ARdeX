@@ -8,7 +8,7 @@ import HomeScreen from 'AppOnSide/Screens/HomeScreens/HomeScreen';
 import MapsScreen from 'AppOnSide/Screens/MapsScreen';
 import Contact from 'AppOnSide/Screens/Contact';
 import UserProfile from 'AppOnSide/Screens/ProfileScreens/UserProfile';
-import AddPost from '../Screens/AddPostScreens/AddPost';
+import CreateNewScrapbook from '../Screens/AddPostScreens/CreateNewScrapbook';
 
 const Tab = createBottomTabNavigator();
 
@@ -58,10 +58,10 @@ export default function BottomTabNavigation({route}) {
                 />
 
             
-             <Tab.Screen name="AddPost"
-            component={AddPost}
+             <Tab.Screen name="CreateNewScrapbook"
+            component={CreateNewScrapbook}
             options={{
-                tabBarLabel: "Post", 
+                tabBarLabel: "CreateNewScrapbook", 
                 tabBarIcon: ({color, size}) => (
                     <Icon name={Platform.OS === 'ios' ? 'ios-add-circle' : 'add-circle'} color={color} size={size} />
 
