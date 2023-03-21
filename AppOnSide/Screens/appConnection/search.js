@@ -1,5 +1,5 @@
 
-const starting = "http://192.168.137.25:3000/"
+const starting = "http://localhost:3000/"
 
 const searchByNameAndUsername = async (query) => {
     const response = await fetch(starting + 'api/searchByNameAndUsername/' + query , {
