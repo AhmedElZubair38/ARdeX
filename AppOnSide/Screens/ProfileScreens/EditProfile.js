@@ -7,19 +7,20 @@ var ImagePicker = require('react-native-image-crop-picker');
 
 
 const EditProfile = ({ route }) => {
+	console.log(route.params)
 
 	const navigation = useNavigation();
-
-	const profile = {
+	const profile = route.params
+	const profile1 = {
 		name: 'The Weeknd',
 		bio: 'POP ftw',
-		profilePic: 'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
+		profileImage: 'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
 		coverPic: 'https://i.pinimg.com/736x/b4/60/aa/b460aad5dfd1e8a170c2af35a4827bf1.jpg',
 	}
 
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
-  const [profilePic, setProfilePic] = useState(profile.profilePic);
+  const [profileImage, setProfilePic] = useState(profile.profileImage);
 
   const [image, setImage] = useState('');
 
@@ -35,6 +36,7 @@ const EditProfile = ({ route }) => {
 		setImage({
 			uri: image.path
 		})
+		setProfilePic(image.path)
 	  })
   };
 
@@ -47,7 +49,7 @@ const EditProfile = ({ route }) => {
 			<View style={styles.profileContainer}>
 				<Image
 					style={styles.profilePhoto}
-					source={{uri : profilePic}}
+					source={{uri : profileImage}}
 				 />
 				<View>
 					 <TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute', width: 40, height: 40, alignSelf: 'center', marginTop: 10, borderRadius: 30, zIndex:1, bottom:0, right:-25}]} onPress={selectImagesFromGallery}>
