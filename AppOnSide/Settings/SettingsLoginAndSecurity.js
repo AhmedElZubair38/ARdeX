@@ -10,7 +10,12 @@ function SettingsLoginAndSecurity() {
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
       <View style={{flex: 1, backgroundColor: 'black'}}>
-      <Text style={styles.headerSettings}>Settings</Text>
+      <View style = {styles.pageHead}>
+          <TouchableOpacity onPress={()=> navigation.goBack()} >
+            <Icon style={{ color: 'white', paddingTop: 25, paddingLeft: 20}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
+          </TouchableOpacity>
+          <Text style={styles.headerSettings}>Settings</Text>
+        </View>
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
@@ -48,12 +53,6 @@ function SettingsLoginAndSecurity() {
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
         </View>
 
-      </View>
-      <View style={styles.meow}> 
-      <TouchableOpacity onPress={()=> navigation.goBack()}>
-        
-        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-      </TouchableOpacity>
       </View>
     </View>
   );
@@ -132,7 +131,23 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 2
 
-    }
+    },
+    pageHead: {
+      backgroundColor: 'black',
+      paddingLeft: 10,
+      paddingTop: 10,
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    headerSettings: {
+      paddingTop: '7%',
+      paddingBottom: '-1%',
+      paddingLeft: '5%',
+      fontSize: 32,
+      fontWeight: 'bold',
+      color: '#FFFFFF',
+      textAlign: 'left'
+    },
   });
 
 export default SettingsLoginAndSecurity;

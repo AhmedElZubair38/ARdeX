@@ -32,7 +32,12 @@ const handleNameFocus = () => {
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
       <View style={{flex: 1, backgroundColor: 'black'}}>
-      <Text style={styles.headerSettings}>Settings</Text>
+      <View style = {styles.pageHead}>
+          <TouchableOpacity onPress={()=> navigation.goBack()} >
+            <Icon style={{ color: 'white', paddingTop: 25, paddingLeft: 20}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
+          </TouchableOpacity>
+          <Text style={styles.headerSettings}>Settings</Text>
+        </View>
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
@@ -59,13 +64,6 @@ const handleNameFocus = () => {
             </TouchableOpacity>
         </View>
       </View>
-
-      <View style={styles.backButton}>
-      <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-      </TouchableOpacity>
-      </View>
-      
     </View>
   );
 }
@@ -195,6 +193,23 @@ const styles = StyleSheet.create({
         borderLeftColor: 'rgba(0, 0, 0, 0.1)',
         borderRightColor: 'rgba(0, 0, 0, 0.1)',
         borderTopColor: 'rgba(0, 0, 0, 0.1)'
+    },
+
+    pageHead: {
+      backgroundColor: 'black',
+      paddingLeft: 10,
+      paddingTop: 10,
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    headerSettings: {
+      paddingTop: '7%',
+      paddingBottom: '-1%',
+      paddingLeft: '5%',
+      fontSize: 32,
+      fontWeight: 'bold',
+      color: '#FFFFFF',
+      textAlign: 'left'
     },
   });
 
