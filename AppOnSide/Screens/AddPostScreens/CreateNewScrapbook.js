@@ -73,7 +73,8 @@ const CreateNewScrapbook = ({route}) => {
                     <Text style = {styles.Text}>Scrap Book Name</Text>
                 </View>
                 <TextInput style = {[styles.nameInput, {width:'90%'}]} 
-                    autoCapitalize = "none"/>
+                    // autoCapitalize = "none"
+                    />
             </View>
             <View style={styles.form}>
                 <View> 
@@ -82,7 +83,8 @@ const CreateNewScrapbook = ({route}) => {
                 <TextInput 
                     style = {[styles.nameInput,{height:100, width:'90%'}]} 
                     multiline
-                    autoCapitalize = "none">
+                    // autoCapitalize = "none"
+                    >
                 </TextInput>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: '5.5%', marginRight: '12%', marginVertical: 15}}>
