@@ -30,7 +30,6 @@ const CreateNewScrapbook = ({route}) => {
     };
 
     const onClick = () => {
-        selectImagesFromGallery();
         handleSubmit();
         navigation.navigate('PreviewScrapbookPosts', { selectedImages })
        }
@@ -110,6 +109,14 @@ const CreateNewScrapbook = ({route}) => {
                     <Text style={styles.Text}>Opinion</Text>
                 </View>
             </View>
+
+            <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+                 <View style={styles.meow2}>
+                     <TouchableOpacity onPress={selectImagesFromGallery}>
+                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}> Upload Images </Text>
+                     </TouchableOpacity>
+                 </View>
+             </View>
 
             <View style={styles.buttons}>
                 <TouchableOpacity style={styles.button} onPress={onClick}>
@@ -191,6 +198,8 @@ const styles = StyleSheet.create({
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.6,
 		shadowRadius: 2,
+        shadowRadius: 2,
+        borderWidth: 1.5,
 	},
 	buttonText: {
 		color: '#fff',
@@ -200,7 +209,7 @@ const styles = StyleSheet.create({
     buttons: {
 		width: '80%',
 		marginHorizontal: '10%',
-        marginTop: 140,
+        marginTop: 30,
 	},
     meow2: {
         width: 155,
@@ -218,7 +227,9 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.4, 
         shadowRadius: 2,
-        marginVertical: 10
+        marginVertical: 10,
+        shadowRadius: 2,
+        borderWidth: 1.5,
       },
 
       header: {
@@ -235,7 +246,7 @@ const styles = StyleSheet.create({
         paddingTop: '5%',
         paddingBottom: '4%',
         paddingHorizontal: '5%',
-        fontSize: 25,
+        fontSize: 26,
         fontWeight: 'bold',
         color: '#808080',
         textAlign: 'center',
