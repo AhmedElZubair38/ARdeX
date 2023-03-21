@@ -51,7 +51,7 @@ function SettingsChangePhoneNumber() {
             <Text style={styles.fieldLabel}>Please enter your old Phone Number</Text>
             <TextInput
             placeholder="Old Phone Number"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, {fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={oldpassBorderColor}
             onFocus={handleoldpassFocus}
             onBlur={handleoldpassBlur}
@@ -62,7 +62,7 @@ function SettingsChangePhoneNumber() {
             <Text style={styles.fieldLabel}>Please enter your new Phone Number</Text>
             <TextInput
             placeholder="New Phone Number"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5 }]}
             borderBottomColor={newpassBorderColor}
             onFocus={handlenewpassFocus}
             onBlur={handlenewpassBlur}
@@ -73,7 +73,7 @@ function SettingsChangePhoneNumber() {
             <Text style={styles.fieldLabel}>Please re-enter your new PhoneNumber</Text>
             <TextInput
             placeholder="Re-Enter New Phone Number"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={secondnewpassBorderColor}
             onFocus={handlesecondnewpassFocus}
             onBlur={handlesecondnewpassBlur}

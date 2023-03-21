@@ -52,7 +52,7 @@ const handlesecondnewpassBlur = () => {
             <Text style={styles.fieldLabel}>Please enter your old password</Text>
             <TextInput
             placeholder="Old Password"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={oldpassBorderColor}
             onFocus={handleoldpassFocus}
             onBlur={handleoldpassBlur}
@@ -63,7 +63,7 @@ const handlesecondnewpassBlur = () => {
             <Text style={styles.fieldLabel}>Please enter your new password</Text>
             <TextInput
             placeholder="New Password"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={newpassBorderColor}
             onFocus={handlenewpassFocus}
             onBlur={handlenewpassBlur}
@@ -74,7 +74,7 @@ const handlesecondnewpassBlur = () => {
             <Text style={styles.fieldLabel}>Please re-enter your new password</Text>
             <TextInput
             placeholder="Re-Enter New Password"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={secondnewpassBorderColor}
             onFocus={handlesecondnewpassFocus}
             onBlur={handlesecondnewpassBlur}
@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 24,
-        fontStyle: 'bold',
         color: '#808080',
         textAlign: 'left',
         fontWeight: 'bold',

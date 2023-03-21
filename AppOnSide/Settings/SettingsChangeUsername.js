@@ -42,7 +42,7 @@ const handleNameFocus = () => {
             <Text style={styles.fieldLabel}>Please enter your new prefered Username</Text>
             <TextInput
             placeholder="New Username"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, { fontSize: 14, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={nameBorderColor}
             onFocus={handleNameFocus}
             onBlur={handleNameBlur}
@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 26,
-        fontStyle: 'bold',
         color: '#808080',
         textAlign: 'left',
         fontWeight: 'bold',
@@ -139,7 +138,6 @@ const styles = StyleSheet.create({
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 32,
-        fontStyle: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },

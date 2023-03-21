@@ -67,7 +67,7 @@ function SettingsBlockedUsers() {
                       'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
                   }}
                 />
-                <Text style={styles.userName}>Naveen_Randi</Text>
+                <Text style={styles.userName}>Abc's</Text>
               </View>
               <View style={styles.headerRight}>
               <TouchableOpacity onPress={handlePress2}>
