@@ -22,71 +22,21 @@ const EditProfile = ({ route }) => {
   const [profilePic, setProfilePic] = useState(profile.profilePic);
 
   const [image, setImage] = useState('');
-  const [previousImageDimensions, setPreviousImageDimensions] = useState({});
-
-//   const onClick = () => {
-// 	console.log('Submit clicked!');
-//     navigation.navigate('PreviewEditProfile', { image });
-//   };
-
-//   const selectImagesFromGallery = async () => {
-
-//       ImagePicker.openPicker({
-//         multiple: false,
-//         mediaType: 'photo',
-// 		cropping: true,
-//       })
-// 	  .then((image) => {
-// 		console.log('received image', image);
-// 		setImage({
-// 			uri: image.path
-// 		})
-// 	  })
-//   };
-
-useEffect(() => {
-    Image.getSize(
-      profilePic,
-      (width, height) => {
-        setPreviousImageDimensions({
-          width,
-          height,
-          x: (150 - width) / 2,
-          y: (150 - height) / 2,
-        });
-      },
-      (error) => console.error(error)
-    );
-  }, [profilePic]);
-
-  const onClick = () => {
-    console.log('Submit clicked!');
-    navigation.navigate('PreviewEditProfile', { image });
-  };
 
   const selectImagesFromGallery = async () => {
-    ImagePicker.openPicker({
-      multiple: false,
-      mediaType: 'photo',
-      cropping: true,
-    }).then((newImage) => {
-      console.log('received image', newImage);
-      Image.getSize(
-        newImage.path,
-        (width, height) => {
-          setImage({ uri: newImage.path });
-          setPreviousImageDimensions({
-            width,
-            height,
-            x: (150 - width) / 2,
-            y: (150 - height) / 2,
-          });
-        },
-        (error) => console.error(error)
-      );
-    });
-  };
 
+      ImagePicker.openPicker({
+        multiple: false,
+        mediaType: 'photo',
+		cropping: true,
+      })
+	  .then((image) => {
+		console.log('received image', image);
+		setImage({
+			uri: image.path
+		})
+	  })
+  };
 
   return (
 		<View style={{flex: 1}}>
@@ -101,7 +51,7 @@ useEffect(() => {
 						/>
 						<View>
 							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute', width: 50, height: 50, alignSelf: 'center', marginTop: 10, borderRadius: 30}]} onPress={selectImagesFromGallery}>
-								<Icon size={26} style={styles.icon123} name={Platform.OS === 'ios' ? 'edit' : 'edit'}></Icon>
+								<Icon size={26} style={styles.icon123} onPress={selectImagesFromGallery} name={Platform.OS === 'ios' ? 'edit' : 'edit'}></Icon>
 							</TouchableOpacity>
 						</View>
 					
@@ -205,6 +155,7 @@ useEffect(() => {
 		color: 'black',
 		fontSize: 20,
 		fontWeight: 'bold',
+
 
 	},
 	form: {
