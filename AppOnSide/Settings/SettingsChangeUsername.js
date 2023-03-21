@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import queries from "../Screens/appConnection/settings.js"
 
 function SettingsChangeUsername() {
 
     // Initialize state variables for each text input field's border color
 const [nameBorderColor, setNameBorderColor] = useState('#000000');
 const [passwordBorderColor, setPasswordBorderColor] = useState('#000000');
+const [newUsername, setNewUsername] = useState('');
+
+const handleOnChangeText = (text) => {
+    setNewUsername(text);
+    console.log(text)
+  };
 
 // Event handlers for focusing and blurring the name text input field
 const handleNameFocus = () => {
@@ -28,6 +34,11 @@ const handleNameFocus = () => {
 
   const navigation = useNavigation();
 
+  const onClick = () => {
+    queries.changeUsername();
+    navigation.goBack();
+  }
+
   
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
@@ -46,11 +57,14 @@ const handleNameFocus = () => {
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
             <Text style={styles.fieldLabel}>Please enter your new prefered Username</Text>
             <TextInput
-            placeholder="New Username"
-            style={[styles.fieldInput, { fontSize: 14, paddingLeft: 10, paddingVertical: 5}]}
-            borderBottomColor={nameBorderColor}
-            onFocus={handleNameFocus}
-            onBlur={handleNameBlur}
+              placeholder="New Username"
+              style={[styles.fieldInput, { fontSize: 14, paddingLeft: 10, paddingVertical: 5}]}
+              borderBottomColor={nameBorderColor}
+              onFocus={handleNameFocus}
+              onBlur={handleNameBlur}
+              value={newUsername}
+              onChangeText={handleOnChangeText}
+
             />
         </View>
 
@@ -59,7 +73,7 @@ const handleNameFocus = () => {
         </View>
 
         <View style={styles.confirmButton}>
-            <TouchableOpacity onPress={()=> navigation.goBack()}>
+            <TouchableOpacity onPress={onClick}>
                 <Text style={{ color: 'black', fontSize: 21, fontWeight: 'bold'}}> Confirm Change</Text>
             </TouchableOpacity>
         </View>
