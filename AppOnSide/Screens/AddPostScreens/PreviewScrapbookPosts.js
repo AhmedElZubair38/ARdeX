@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'rea
 import React, { useState, useRef } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const PreviewScrapbookPosts = ({ route }) => {
@@ -28,10 +29,10 @@ const PreviewScrapbookPosts = ({ route }) => {
 
                 <View style={styles.buttonsContainer}>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-                        <Text style={styles.buttonText}>previous</Text>
+                        <Icon name={Platform.OS === 'ios' ? 'chevron-back-outline' : 'chevron-back-outline'} color={'white'} size={25} />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ScrapBookView')}>
-                        <Text style={styles.buttonText}>Next</Text>
+                        <Icon name={Platform.OS === 'ios' ? 'checkmark-outline' : 'checkmark-outline'} color={'white'} size={25} />
                     </TouchableOpacity>
                 </View>
             </View>

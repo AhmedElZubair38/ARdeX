@@ -29,7 +29,12 @@ function SettingsBlockedUsers() {
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
       <View style={{flex: 1, backgroundColor: 'black'}}>
-        <Text style={styles.headerSettings}>Settings</Text>
+      <View style = {styles.pageHead}>
+          <TouchableOpacity onPress={()=> navigation.goBack()} >
+            <Icon style={{ color: 'white', paddingTop: 25, paddingLeft: 20}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
+          </TouchableOpacity>
+          <Text style={styles.headerSettings}>Settings</Text>
+        </View>
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
@@ -67,7 +72,7 @@ function SettingsBlockedUsers() {
                       'https://lastfm.freetls.fastly.net/i/u/770x0/8cb4b221fbc680eedc9722830091c0a5.jpg',
                   }}
                 />
-                <Text style={styles.userName}>Naveen_Randi</Text>
+                <Text style={styles.userName}>Abc's</Text>
               </View>
               <View style={styles.headerRight}>
               <TouchableOpacity onPress={handlePress2}>
@@ -83,12 +88,6 @@ function SettingsBlockedUsers() {
             <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}> Confirm Changes </Text>
           </TouchableOpacity>
         </View>
-      </View>
-
-      <View style={styles.backButton}>
-        <TouchableOpacity onPress={()=> navigation.goBack()}>
-          <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold' }}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -260,6 +259,22 @@ const styles = StyleSheet.create({
     width: 120,
     height: '1%',
     alignSelf: 'center'
+  },
+  pageHead: {
+    backgroundColor: 'black',
+    paddingLeft: 10,
+    paddingTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  headerSettings: {
+    paddingTop: '7%',
+    paddingBottom: '-1%',
+    paddingLeft: '5%',
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    textAlign: 'left'
   },
   
   });

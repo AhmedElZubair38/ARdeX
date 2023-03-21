@@ -32,7 +32,12 @@ const handleNameFocus = () => {
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
       <View style={{flex: 1, backgroundColor: 'black'}}>
-      <Text style={styles.headerSettings}>Settings</Text>
+      <View style = {styles.pageHead}>
+          <TouchableOpacity onPress={()=> navigation.goBack()} >
+            <Icon style={{ color: 'white', paddingTop: 25, paddingLeft: 20}} size={30} name={Platform.OS === 'ios' ? 'ios-caret-back-outline' : 'caret-back'}/>
+          </TouchableOpacity>
+          <Text style={styles.headerSettings}>Settings</Text>
+        </View>
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
@@ -42,7 +47,7 @@ const handleNameFocus = () => {
             <Text style={styles.fieldLabel}>Please enter your new prefered Username</Text>
             <TextInput
             placeholder="New Username"
-            style={[styles.fieldInput, { fontSize: 10, paddingLeft: 10 }]}
+            style={[styles.fieldInput, { fontSize: 14, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={nameBorderColor}
             onFocus={handleNameFocus}
             onBlur={handleNameBlur}
@@ -59,13 +64,6 @@ const handleNameFocus = () => {
             </TouchableOpacity>
         </View>
       </View>
-
-      <View style={styles.backButton}>
-      <TouchableOpacity onPress={()=> navigation.goBack()}>
-        <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold'}}> <Icon style={{ color: 'black', paddingTop: '5%'}} size={21} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'md-caret-back'}/> Go Back </Text>
-      </TouchableOpacity>
-      </View>
-      
     </View>
   );
 }
@@ -127,7 +125,6 @@ const styles = StyleSheet.create({
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 26,
-        fontStyle: 'bold',
         color: '#808080',
         textAlign: 'left',
         fontWeight: 'bold',
@@ -139,7 +136,6 @@ const styles = StyleSheet.create({
         paddingBottom: '-1%',
         paddingLeft: '5%',
         fontSize: 32,
-        fontStyle: 'bold',
         color: '#FFFFFF',
         textAlign: 'left'
       },
@@ -197,6 +193,23 @@ const styles = StyleSheet.create({
         borderLeftColor: 'rgba(0, 0, 0, 0.1)',
         borderRightColor: 'rgba(0, 0, 0, 0.1)',
         borderTopColor: 'rgba(0, 0, 0, 0.1)'
+    },
+
+    pageHead: {
+      backgroundColor: 'black',
+      paddingLeft: 10,
+      paddingTop: 10,
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    headerSettings: {
+      paddingTop: '7%',
+      paddingBottom: '-1%',
+      paddingLeft: '5%',
+      fontSize: 32,
+      fontWeight: 'bold',
+      color: '#FFFFFF',
+      textAlign: 'left'
     },
   });
 
