@@ -106,9 +106,7 @@ const Comments = (props) => {
                                             <Text style= {styles.username}>@{Notification.username}</Text>
                                         </TouchableOpacity>
                                     </View>
-                                    {/* <TouchableOpacity onPress={()=> setModalVisible(true)}>
-                                        <Icon style={{fontSize: 18}} name={Platform.OS === 'ios' ? 'ios-ellipsis-horizontal' : 'ellipsis-horizontal'}/>
-                                    </TouchableOpacity> */}
+                                    
                                 </View>
                                 <Text>{Notification.comment}</Text>
                             </View>

@@ -217,6 +217,8 @@ export default function HomeScreen(props) {
     console.log(props.route.params.userId);
 
     const [DATA, setDATA] = useState(null);
+    const [refreshing, setRefreshing] = useState(false); // <-- Add this state variable
+
 
     const getData = async () => {
         const response = await queries.getHomeFeed();
@@ -244,7 +246,6 @@ export default function HomeScreen(props) {
     //     this.setState({isFetching: true,},() => {queries.getHomeFeed();});
     //     this.setState({isFetching: false,})
     // }
-    // const [refreshing, setRefreshing] = useState(false); // <-- Add this state variable
 
     const onRefresh = async () => {
         setRefreshing(true); // <-- Start the refreshing indicator
@@ -259,7 +260,7 @@ export default function HomeScreen(props) {
             <View style={styles.container}>
             <FlatList
                 onRefresh={() => onRefresh()}
-                refreshing={this.state.isFetching}
+                refreshing={refreshing}
                 data={DATA}
                 renderItem={({ item }) => (
                     <Item
