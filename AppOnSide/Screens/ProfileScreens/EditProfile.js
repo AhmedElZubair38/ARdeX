@@ -39,25 +39,25 @@ const EditProfile = ({ route }) => {
   };
 
   return (
-		<View style={{flex: 1}}>
-			<TopBar/>
-			<View style={styles.container}>
+	<View style={{flex: 1}}>
+	<TopBar/>
+	<View style={styles.container}>
+		<View>
+		
+			<View style={styles.profileContainer}>
+				<Image
+					style={styles.profilePhoto}
+					source={{uri : profilePic}}
+				 />
 				<View>
-				
-					<View style={styles.profileContainer}>
-						<Image
-							style={styles.profilePhoto}
-							source={{uri : profilePic}}
-						/>
-						<View>
-							<TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute', width: 50, height: 50, alignSelf: 'center', marginTop: 10, borderRadius: 30}]} onPress={selectImagesFromGallery}>
-								<Icon size={26} style={styles.icon123} onPress={selectImagesFromGallery} name={Platform.OS === 'ios' ? 'edit' : 'edit'}></Icon>
-							</TouchableOpacity>
-						</View>
-					
-					</View>
-					
+					 <TouchableOpacity style={[{backgroundColor:'#FF4C68',position:'absolute', width: 40, height: 40, alignSelf: 'center', marginTop: 10, borderRadius: 30, zIndex:1, bottom:0, right:-25}]} onPress={selectImagesFromGallery}>
+						 <Icon size={20} style={styles.icon123} name={Platform.OS === 'ios' ? 'edit' : 'edit'}></Icon>
+					 </TouchableOpacity>
 				</View>
+					
+			</View>
+					
+		</View>
 					
 				<View style={styles.form}>
 				<View>
@@ -117,14 +117,6 @@ const EditProfile = ({ route }) => {
 		height: 150,
 		borderRadius: 80,
 		alignSelf:'center',
-	},
-	profilePhoto2: {
-		width: 150,
-		height: 150,
-		borderRadius: 80,
-		alignSelf:'center',
-		bottom: '73%',
-		position: 'absolute',
 	},
 	changeAvatarButton: {
 		margin: 10,
