@@ -42,6 +42,11 @@ import Likes from './Screens/HomeScreens/Likes';
 import PreviewEditProfile from './Screens/ProfileScreens/PreviewEditProfile';
 import TopBar2 from './Navigators/TopBar2';
 
+
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 const Stack = createNativeStackNavigator();
 
 export default function App(props) {

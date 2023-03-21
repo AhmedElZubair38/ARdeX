@@ -38,7 +38,7 @@ const ProfileView = (props) => {
     bio = bio.substring(0, 50) + '...';}
     // Hey Everyone, I am Raj Jagasia. Nice to meet you.
     let data = {...temp, bio, followers, following, scrapbooks}
-    console.log(data)
+    // console.log(data)
     return data
   }
 

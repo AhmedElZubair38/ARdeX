@@ -3,11 +3,22 @@ import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'reac
 import TopBar from '../../Navigators/TopBar';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
+// import {getstorage, ref, uploadbytes, getdownloadurl, uniqueid } from "firebase/storage";
+import { collection, query, where, getDocs, updateDoc, doc, setDoc, addDoc } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// import { storage } from "./firebase";
+// import { app, database } from "../config/firebase";
+import { app, database } from "../firebaseConfig.js";
+import { getAuth } from "firebase/auth";
+
 var ImagePicker = require('react-native-image-crop-picker');
+
+import queries from "../appConnection/profile.js";
 
 
 const EditProfile = ({ route }) => {
 	console.log(route.params)
+	queries.changeName("1", "The Weeknd")
 
 	const navigation = useNavigation();
 	const profile = route.params
@@ -39,6 +50,121 @@ const EditProfile = ({ route }) => {
 		setProfilePic(image.path)
 	  })
   };
+
+  const handleConfirm = async() => {
+	  console.log("handleConfirm")
+	  console.log(name)
+	  console.log(bio)
+	  console.log(profileImage)
+	//   let newImage = url;
+	  const newImage = await uploadImage(profileImage)
+	  console.log("newImage", image)
+	await queries.changeName(profile.mainUserId, name)
+	  await queries.changeBio(profile.mainUserId, bio)
+	  await queries.changeProfileImage(profile.mainUserId, newImage)
+	//   navigation.navigate('Profile', {userId: route.params.mainUserID, mainUserID: route.params.mainUserID})
+	navigation.goBack()
+  }
+
+  function uniqueID() {
+	return Math.floor(Math.random() * Date.now())
+}
+
+
+// async function uploadImage(imageURL) {
+// const storage = getStorage();
+// var imageUID = uniqueID()
+// const imageRef = ref(storage, `scrapbook/${1}/${imageUID}`);
+// uploadBytes(imageRef, imageURL)
+//   .then(() => {
+// 	getDownloadURL(imageRef)
+// 	  .then((url) => {
+// 		// urls.push(url);
+// 		console.log("f;djlsadfjlkdsjfldsjfkladsfladjsfjdslkfjadls;fjsa")
+// 		console.log(url);
+// 		handleConfirm(url);
+// 	  })
+// 	  .catch((error) => {
+// 		console.log(error.message, "error getting the image url");
+// 	  });
+//   })
+//   .catch((error) => {
+// 	console.log(error.message);
+//   });
+// }
+
+//   async function uploadImage(imageURL) {
+// 	var url = "hello world";
+// 	console.log("Upload Image 1");
+// 	const storage = getStorage();
+// 	console.log("Upload Image 2");
+// 	try {
+// 		console.log("Fetched Image", imageURL);
+// 		// if (!image) {
+// 		//     pickImage();
+// 		// }
+// 		const response = await fetch(imageURL);
+// 		console.log("Upload Image 3");
+// 		const blob = await response.blob()
+// 		console.log("Upload Image 4");
+// 		var imageUID = uniqueID();
+// 		const storageRef = ref(storage, `scrapbook/${profile.mainUserID}/${imageUID}`);
+// 		console.log("Upload Image 5");
+// 		uploadBytes(storageRef, blob).then((snapshot) => {
+// 			console.log('Uploaded a blob or file!');
+// 			console.log('Uploaded Profile Image:', imageUID);
+// 			getDownloadURL(snapshot.ref).then((downloadURL) => {
+// 				console.log('File available at', downloadURL);
+// 				setImage(downloadURL);
+// 				url = downloadURL;
+// 				console.log("Image URL:", url);
+// 				return url;
+// 			});
+// 		});
+// 		// console.log("Image URL:", url);
+// 		// return url;
+// 	} catch (error) {
+// 		console.error("Network request failed:", error);
+// 		return null;
+// 	}
+// }
+
+
+async function uploadImage(imageURL) {
+	var url = "hello world";
+	console.log("Upload Image 1");
+	const storage = getStorage();
+	console.log("Upload Image 2");
+	try {
+	  console.log("Fetched Image", imageURL);
+	  // if (!image) {
+	  //     pickImage();
+	  // }
+	  const response = await fetch(imageURL);
+	  console.log("Upload Image 3");
+	  const blob = await response.blob()
+	  console.log("Upload Image 4");
+	  var imageUID = uniqueID();
+	  const storageRef = ref(storage, `scrapbook/${profile.mainUserID}/${imageUID}`);
+	  console.log("Upload Image 5");
+	  const snapshot = await uploadBytes(storageRef, blob);
+	  console.log('Uploaded a blob or file!');
+	  console.log('Uploaded Profile Image:', imageUID);
+	  const downloadURL = await getDownloadURL(snapshot.ref);
+	  console.log('File available at', downloadURL);
+	  setImage(downloadURL);
+	  url = downloadURL;
+	  console.log("Image URL:", url);
+	  return url;
+	} catch (error) {
+	  console.error("Network request failed:", error);
+	  return null;
+	}
+  }
+  
+
+
+
 
   return (
 	<View style={{flex: 1}}>
@@ -90,7 +216,7 @@ const EditProfile = ({ route }) => {
 					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
 					<Text style={styles.buttonText}>Cancel</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+					<TouchableOpacity style={styles.button} onPress={handleConfirm}>
 					<Text style={styles.buttonText}>Confirm Changes</Text>
 					</TouchableOpacity>
 				</View>

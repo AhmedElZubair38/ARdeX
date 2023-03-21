@@ -1,4 +1,4 @@
-const starting = "http://192.168.137.25:3000/"
+const starting = "http://192.168.0.170:3000/"
 
 const getHomeFeed = async () => {
     const response = await fetch(starting + 'api/getHomeFeed/', {

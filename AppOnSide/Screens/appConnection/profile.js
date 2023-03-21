@@ -1,6 +1,6 @@
 
 
-const starting = "http://192.168.137.25:3000/"
+const starting = "http://192.168.0.170:3000/"
 
 console.log("profile.js")
 const getProfileStuff = async (userId) => {
@@ -178,11 +178,101 @@ const deleteFollower = async (userId,followerId) => {
     }
 
 
+// const changeName = async (userId, name) => {
+//     console.log("changeNameheading")
+//     console.log(userId)
+//     console.log("name" +  name)
+//     const response = await fetch(starting + 'epapi/changeName' , {
+//         method: 'PATCH',
+//         headers: {
+//             Accept: 'application/json',
+//             'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                 userId: userId,
+//                 name: name,
+//             })
+//             });
+//             const data = await response.json();
+//             console.log("changeName")
+//             console.log(data)
+
+//             return data
+//     }
+
+const changeName = async (userId, name) => {
+    try {
+      const response = await fetch(starting + 'epapi/changeName', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: userId,
+          name: name,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+    //   console.log("changeName");
+    //   console.log(data);
+  
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      // handle the error, e.g. show an error message to the user
+    }
+  };
+  
+
+const changeBio = async (userId, bio) => {
+    const response = await fetch(starting + 'epapi/changeBio/' , {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                bio: bio,
+            })
+            });
+            const data = await response.json();
+
+            return data
+    }
+
+const changeProfileImage = async (userId, profileImage) => {
+    console.log("changeProfileImage")
+    console.log(userId)
+    console.log("profileImage" +  profileImage)
+    console.log(profileImage)
+    const response = await fetch(starting + 'epapi/changeProfileImage/' , {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                profileImage: profileImage,
+            })
+            });
+            const data = await response.json();
+
+            return data
+    }
+
+
+
+
 
 
 
 
 module.exports = {getProfileStuff, getFollowers, getFollowing, getFollowersCount, getFollowingCount, getScrapbooksCount, getScrapbooks, checkFollower,
-insertFollower, deleteFollower
+insertFollower, deleteFollower, changeName, changeBio, changeProfileImage
 
 }
