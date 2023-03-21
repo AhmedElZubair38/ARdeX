@@ -6,7 +6,7 @@ import TopBar from "../Navigators/TopBar";
 import { useNavigation } from '@react-navigation/native';
 
 
-const MyMap = () => {
+const MapScreen = () => {
 
   const navigation = useNavigation();
 
@@ -116,4 +116,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MyMap;
+export default MapScreen;

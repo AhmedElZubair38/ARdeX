@@ -1,4 +1,4 @@
-const starting = "http://localhost:3000/"
+const starting = "http://10.6.131.173:3000/"
 
 const getHomeFeed = async () => {
     const response = await fetch(starting + 'api/getHomeFeed/', {

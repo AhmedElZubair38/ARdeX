@@ -21,6 +21,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, like, com
     const [isFilled2, setIsFilled2] = useState(false);
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
+
     // console.log("Likew : "+like)
     const[likes,setLikes] = useState(like);
 
@@ -82,7 +83,7 @@ function Item ({username, scrapName, profileImage, imageName, caption, like, com
         await queries.insertReportScrapbook(mainUserId, scrapId);
     }
 
-
+    
     
     return (
         
@@ -235,6 +236,21 @@ export default function HomeScreen(props) {
         return <ActivityIndicator color='#FF4C68' size={120} style={styles.indicator} />;
       }
 
+      this.state = { 
+        isFetching: false,
+    }
+    
+    // const onRefresh = () => {
+    //     this.setState({isFetching: true,},() => {queries.getHomeFeed();});
+    //     this.setState({isFetching: false,})
+    // }
+    // const [refreshing, setRefreshing] = useState(false); // <-- Add this state variable
+
+    const onRefresh = async () => {
+        setRefreshing(true); // <-- Start the refreshing indicator
+        queries.getHomeFeed();
+        setRefreshing(false);
+    }
 
     return (
 
@@ -242,6 +258,8 @@ export default function HomeScreen(props) {
         <TopBar />
             <View style={styles.container}>
             <FlatList
+                onRefresh={() => onRefresh()}
+                refreshing={this.state.isFetching}
                 data={DATA}
                 renderItem={({ item }) => (
                     <Item
