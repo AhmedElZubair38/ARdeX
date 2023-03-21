@@ -82,6 +82,7 @@ export default function LoginUpdated({ navigation }) {
               onBlur={handleNameBlur}
               onChangeText={text => setEmail(text)}
               value={email}
+              autoCapitalize = "none"
             />
           </View>
           <View style={styles.fieldContainer}>
@@ -94,6 +95,7 @@ export default function LoginUpdated({ navigation }) {
               secureTextEntry={true}
               onChangeText={text => setPassword(text)}
               value={password}
+              autoCapitalize = "none"
             />
           </View>
 
@@ -104,7 +106,8 @@ export default function LoginUpdated({ navigation }) {
           </TouchableOpacity>
 
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 17, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 30, marginBottom: 30 }}> Don't have an account yet? </Text>
+            <Text onPress={() => navigation.navigate('Register')}
+            style={{ fontSize: 17, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 30, marginBottom: 30 }}> Don't have an account yet? </Text>
             <Text
               onPress={() => navigation.navigate('Register')}
               style={{ fontSize: 17, fontStyle: 'italic', color: '#FF4C68', textAlign: 'center', marginTop: 30, marginBottom: 30 }}> Sign up.

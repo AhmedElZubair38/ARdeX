@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, ScrollView, Alert } from "react-native";
 import { SocialIcon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import { db } from "../firebaseConfig";
+import { app, database } from "../firebaseConfig";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, getDoc, setDoc, addDoc } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
@@ -79,10 +79,10 @@ export default function Register() {
   const [name, setName] = React.useState("Raj");
   const [confirmPassword, setConfirmPassword] = React.useState("qwerty");
 
-  const collectionRef = collection(db, "userProfile");
+  // const collectionRef = collection(db, "userProfile");
   const auth = getAuth();
   const database = getDatabase();
-  const userProfileRef = collection(db, "userProfile");
+  // const userProfileRef = collection(db, "userProfile");
   async function handleSubmit() {
 
     // console.log(name + email + username + password + confirmPassword);
@@ -196,6 +196,7 @@ export default function Register() {
               // value={email}
               // onChangeText={(value) => handleInputChange('email', value)}
               onChangeText={text => setEmail(text)}
+              autoCapitalize = "none"
 
             />
           </View>
@@ -210,6 +211,7 @@ export default function Register() {
               onFocus={handleUsernameFocus}
               onBlur={handleUsernameBlur}
               onChangeText={text => setUsername(text)}
+              autoCapitalize = "none"
             // value={username}
             // onChangeText={(value) => handleInputChange('username', value)}
             />
@@ -225,6 +227,7 @@ export default function Register() {
               onBlur={handlePasswordBlur}
               secureTextEntry={true}
               onChangeText={text => setPassword(text)}
+              autoCapitalize = "none"
             // value={password}
             // onChangeText={(value) => handleInputChange('phone', value)}
             />
@@ -240,6 +243,7 @@ export default function Register() {
               onBlur={handleconfPasswordBlur}
               secureTextEntry={true}
               onChangeText={text => setConfirmPassword(text)}
+              autoCapitalize = "none"
 
             />
           </View>

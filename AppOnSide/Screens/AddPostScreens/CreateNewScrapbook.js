@@ -8,7 +8,8 @@ var ImagePicker = require('react-native-image-crop-picker');
 const CreateNewScrapbook = ({route}) => {
 
     console.log(route)
-    
+    mainUserId = route.params.mainUserId
+    console.log(mainUserId)
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
