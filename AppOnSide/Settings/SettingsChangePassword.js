@@ -3,6 +3,9 @@ import { Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-nativ
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import { getAuth, sendPasswordResetEmail, resetPasswordEmail } from "firebase/auth";
+import {app, database} from '../Screens/firebaseConfig.js';
+
 
 function SettingsChangePassword() {
 
@@ -44,7 +47,27 @@ const handleEmailBlur = () => {
   setsecondnewpassBorderColor('#000000');
 };
 
+const [resetPasswordEmail, setResetPasswordEmail] = useState("");
+
   const navigation = useNavigation();
+
+  const resetPassword = () => {
+    const auth = getAuth();
+    if (!resetPasswordEmail) {
+        alert("Please enter email to reset password.")
+    }
+    sendPasswordResetEmail(auth, resetPasswordEmail)
+        .then(() => {
+            alert("Password Reset Link Sent");
+            navigation.goBack()
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+            // ..
+        });
+}
 
   
   return (
@@ -59,32 +82,22 @@ const handleEmailBlur = () => {
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
-      <Text style={styles.header}>Enter your e-mail</Text>
-        
+
+        <Text style={styles.header}>Change Password</Text>
+
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
             <Text style={styles.fieldLabel}>Please enter your e-mail</Text>
             <TextInput
-            placeholder="e-mail"
+            placeholder="E-Mail"
             style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
             borderBottomColor={oldpassBorderColor}
             onFocus={handleEmailFocus}
             onBlur={handleEmailBlur}
+            value={resetPasswordEmail}
+            onChangeText={(text) => setResetPasswordEmail(text)}
             />
         </View>
-
-        <Text style={styles.header}>Change Password</Text>
-        
-        <View style={[styles.fieldContainer, { marginTop: 30 }]}>
-            <Text style={styles.fieldLabel}>Please enter your old password</Text>
-            <TextInput
-            placeholder="Old Password"
-            style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
-            borderBottomColor={oldpassBorderColor}
-            onFocus={handleoldpassFocus}
-            onBlur={handleoldpassBlur}
-            />
-        </View>
-
+{/* 
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
             <Text style={styles.fieldLabel}>Please enter your new password</Text>
             <TextInput
@@ -94,9 +107,9 @@ const handleEmailBlur = () => {
             onFocus={handlenewpassFocus}
             onBlur={handlenewpassBlur}
             />
-        </View>
+        </View> */}
 
-        <View style={[styles.fieldContainer, { marginTop: 30 }]}>
+        {/* <View style={[styles.fieldContainer, { marginTop: 30 }]}>
             <Text style={styles.fieldLabel}>Please re-enter your new password</Text>
             <TextInput
             placeholder="Re-Enter New Password"
@@ -105,15 +118,15 @@ const handleEmailBlur = () => {
             onFocus={handlesecondnewpassFocus}
             onBlur={handlesecondnewpassBlur}
             />
-        </View>
+        </View> */}
 
         <View style={[styles.fieldContainer, { marginTop: 10 }]}>
-            <Text style={styles.note}>Note: Your new username will only be aproved if the username is not in use by some other user.</Text>
+            <Text style={styles.note}>Note: You will receive a email to reset your password.</Text>
         </View>
 
         <View style={styles.confirmButton}>
-            <TouchableOpacity onPress={()=> navigation.goBack()}>
-                <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold'}}> Confirm Change</Text>
+            <TouchableOpacity onPress={resetPassword}>
+                <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold'}}> Send E-mail</Text>
             </TouchableOpacity>
         </View>
       </View>

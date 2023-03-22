@@ -39,7 +39,7 @@ function SettingsBlockedUsers() {
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
         <Text style={styles.header}> Blocked Users </Text>
-        <View style={styles.container}>
+        {/* <View style={styles.container}>
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <View style={styles.headerLeft}>
@@ -59,9 +59,9 @@ function SettingsBlockedUsers() {
               </View>
             </View>
           </View>
-        </View>
+        </View> */}
 
-        <View style={styles.container}>
+        {/* <View style={styles.container}>
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <View style={styles.headerLeft}>
@@ -81,13 +81,16 @@ function SettingsBlockedUsers() {
               </View>
             </View>
           </View>
+        </View> */}
+        <View>
+          <Text style={{margin: 20, fontSize:15, color: 'red', }}>If you would like to block a user please send a email to ardexg4@gmail.com</Text>
         </View>
 
-        <View style={styles.confirmButton}>
+        {/* <View style={styles.confirmButton}>
           <TouchableOpacity onPress={()=> navigation.goBack()}>
             <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}> Confirm Changes </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </View>
   );
