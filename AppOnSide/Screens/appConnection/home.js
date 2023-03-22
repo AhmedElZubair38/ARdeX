@@ -36,7 +36,7 @@ const getHomeFeed = async () => {
             };
             });
             
-            // console.log(mergedPosts);
+            console.log(mergedPosts);
             return mergedPosts
               
             

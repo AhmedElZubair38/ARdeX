@@ -258,7 +258,7 @@ export default function HomeScreen(props) {
 
         <View style={{flex: 1}}>
         <TopBar
-                      userId = {userId}
+                      userId = {mainUserId}
               mainUserId = {mainUserId} />
             <View style={styles.container}>
             <FlatList

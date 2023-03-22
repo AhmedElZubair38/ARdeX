@@ -49,10 +49,10 @@ const PreviewScrapbookPosts = ({ route }) => {
             let newImage =  await uploadImage(image) 
             console.log("newImage", newImage)
             await queries.addScrapbookImage(scrapId.scrapid,newImage)
-            queries.deleteScrapbookImage(scrapId.scrapid)
+            // queries.deleteScrapbookImage(scrapId.scrapid)
         })
         // await queries.addScrapbookImage(1,"https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
-        navigation.navigate("Search",{userId: route.params.mainUserId, mainUserId: route.params.mainUserId})
+        navigation.navigate("Home",{userId: route.params.mainUserId, mainUserId: route.params.mainUserId})
     }
     // const handleSubmit = async () => {
     //     console.log("handleConfirm");
