@@ -1,9 +1,16 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import TopBar from '../../Navigators/TopBar'
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { collection, query, where, getDocs, updateDoc, doc, setDoc, addDoc } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// import { storage } from "./firebase";
+// import { app, database } from "../config/firebase";
+import { app, database } from "../firebaseConfig.js";
+import { getAuth } from "firebase/auth";
 
+import queries from "../appConnection/scrapbook.js";
 
 const PreviewScrapbookPosts = ({ route }) => {
 
@@ -11,7 +18,31 @@ const PreviewScrapbookPosts = ({ route }) => {
     console.log("route",route.params)
     console.log("props",selectedImages)
 
+    let scrapType = "0"
+    if (!route.params.isFiction) {
+        scrapType = "1"
+    }
+
+    let latitude = null;
+    let longitude = null;
+    if(route.params.isEnabled) {
+        latitude = route.params.latitude;
+        longitude = route.params.longitude;
+    }
+
+
+
     const navigation = useNavigation();
+
+
+    const handleSubmit = async() => {
+        console.log("handleConfirm")
+        console.log(selectedImages)
+        alert("Scrapbook Created\n It will take a some time to upload all the images\n You can view your scrapbook in the 'Profile' page after it is uploaded")
+        // const scrapId = await queries.insertScrapbook2(route.params.scrapbookName, route.params.scrapbookCaption, latitude,latitude, scrapType, route.params.mainUserId)
+        // console.log("scrapId", scrapId)
+        // navigation.navigate("Home",{userId: route.params.mainUserId, mainUserId: route.params.mainUserId})
+    }
 
     return (
         <View style={{ flex: 1 }}>
@@ -33,7 +64,7 @@ const PreviewScrapbookPosts = ({ route }) => {
                     <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                         <Icon name={Platform.OS === 'ios' ? 'chevron-back-outline' : 'chevron-back-outline'} color={'white'} size={25} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ScrapBookView')}>
+                    <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                         <Icon name={Platform.OS === 'ios' ? 'checkmark-outline' : 'checkmark-outline'} color={'white'} size={25} />
                     </TouchableOpacity>
                 </View>
