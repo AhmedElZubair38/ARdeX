@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 
     rectangle: {
       width: 320,
-      height: 600,
+      height: 550,
       borderRadius: 35,
       borderWidth: 2,
       borderColor: 'black',

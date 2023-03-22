@@ -126,7 +126,8 @@ const styles = StyleSheet.create({
   parentContainer: {
 
     flex: 1,
-    backgroundColor: '#FF4C68'
+    backgroundColor: '#FF4C68',
+    borderBottomWidth: -1
   },
 
   topContainer: {
@@ -145,6 +146,8 @@ const styles = StyleSheet.create({
     overflow: 'visible',
     borderWidth: 2,
     borderColor: 'black',
+    borderBottomColor: 'white',
+    borderBottomWidth: 2,
   },
 
   fieldContainer: {

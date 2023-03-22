@@ -242,7 +242,7 @@ async function requestLocationPermission() {
                         value={isEnabled}
                     />
             </View>
-            <View style={{marginTop: 10, marginBottom: 25}}>
+            <View style={{marginTop: 10, marginBottom: 20}}>
                 <Text style={styles.Text}>Is the information:</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Text style={styles.Text}>Fiction</Text>
@@ -344,8 +344,8 @@ const styles = StyleSheet.create({
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.6,
 		shadowRadius: 2,
-        shadowRadius: 2,
-        borderWidth: 1.5,
+    shadowRadius: 2,
+    borderWidth: 1,
 	},
 	buttonText: {
 		color: '#fff',
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
 		width: '80%',
 		marginHorizontal: '10%',
         position: 'absolute',
-        bottom: 40,
+        bottom: 20,
 	},
     meow2: {
         width: 155,
@@ -376,7 +376,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         marginVertical: 10,
         shadowRadius: 2,
-        borderWidth: 1.5,
+        borderWidth: 1,
       },
 
       header: {
