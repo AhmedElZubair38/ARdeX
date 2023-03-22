@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
 
   rectangle: {
     width: 320,
-    height: 530,
+    height: 600,
     borderRadius: 35,
     borderWidth: 2,
     borderColor: 'black',

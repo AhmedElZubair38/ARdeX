@@ -122,18 +122,6 @@ function Item ({username, scrapName, profileImage, imageName, caption, like, com
             }
 
           </ScrollView>
-
-          <View style={styles.wrapDot}>
-            {
-              imageName.map((e, index) =>
-                <Text
-                  key={e}
-                  style={imageActive == index ? styles.dotActive : styles.dot}>
-                    ●
-                </Text>
-              )
-            }
-          </View>
         </View>
                 <View style={styles.cardFooter}>
                     <View style={styles.footerLeft}>
