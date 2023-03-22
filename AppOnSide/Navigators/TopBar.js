@@ -15,7 +15,7 @@ return (
           <Image source={require('AppOnSide/Photos/transparent-logo.png')} style={{ width: 105, height: 35, marginBottom: -25}}/>
           </TouchableOpacity>
 
-          <View style={{ flexDirection: 'row', marginBottom: -25, marginRight: -15 }}>
+          <View style={{ flexDirection: 'row', marginBottom: -25}}>
               {/* <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
               </TouchableOpacity> */}

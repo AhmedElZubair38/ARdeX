@@ -14,7 +14,7 @@ return (
             <Icon style={styles.icon2} name={Platform.OS === 'ios' ? 'chevron-back-outline' : 'chevron-back-outline'}/>
           </TouchableOpacity>
 
-          <View style={{ flexDirection: 'row', marginBottom: -25, marginRight: -15 }}>
+          <View style={{ flexDirection: 'row', marginBottom: -25}}>
               {/* <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
               </TouchableOpacity> */}
