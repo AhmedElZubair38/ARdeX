@@ -127,7 +127,8 @@ const PreviewScrapbookPosts = ({ route }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <TopBar />
+            <TopBar               userId = {userId}
+              mainUserId = {userId}/>
             <View style={styles.container}>
                 <View>
                     <Text style={styles.HeaderText}>Preview Your Scrapbook Posts</Text>

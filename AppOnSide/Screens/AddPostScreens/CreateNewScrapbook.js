@@ -189,7 +189,10 @@ async function requestLocationPermission() {
 
   return (
     <View style={{flex: 1}}>
-        <TopBar/>
+        <TopBar
+                        userId = {userId}
+              mainUserId = {userId}
+        />
         <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.header2}>Create New Scrapbook</Text>

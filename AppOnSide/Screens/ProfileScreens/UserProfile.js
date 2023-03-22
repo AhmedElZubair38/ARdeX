@@ -66,7 +66,10 @@ const ProfileView = (props) => {
 
   return (
     <View style={{flex: 1}}>
-        <TopBar/>
+        <TopBar
+          userId = {userId}
+          mainUserId = {userId}
+        />
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <View style={styles.profileContainer}>
