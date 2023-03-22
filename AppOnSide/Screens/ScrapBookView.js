@@ -172,14 +172,14 @@ const ScrapBookView = (props) => {
                            
                         </View>
                     </View>
-                    <TouchableOpacity onPress={() => setIsFilled2(!isFilled2)}>
+                    {/* <TouchableOpacity onPress={() => setIsFilled2(!isFilled2)}>
                                 <Icon2
                                     name={isFilled2 ? 'bookmark' : 'bookmark-o'}
                                     size={26}
                                     style={{ paddingHorizontal: 13 }}
                                     color={isFilled2 ? 'black' : 'grey'}
                                  />
-                             </TouchableOpacity>
+                             </TouchableOpacity> */}
                  </View>
                  <Text style={{ marginTop: 1, marginLeft: 1, fontSize: 16, paddingTop: 10}}> { likes} <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16}}>Likes </Text> </Text>
                  <Text style={{ marginTop: 5, marginLeft: 1, fontSize: 16, fontWeight: 'bold'}}> { ScrapBookData.caption} </Text>
