@@ -170,6 +170,7 @@ async function requestLocationPermission() {
           const images = await ImagePicker.openPicker({
             multiple: true,
             mediaType: 'photo',
+            cropping: true,
           });
           const selectedImagesPaths = images.map((image) => image.path);
           console.log('received image', selectedImagesPaths);
@@ -199,7 +200,7 @@ async function requestLocationPermission() {
             </View>
             <View style={styles.form}> 
                 <View style={{ justifyContent:'center' }}> 
-                    <Text style = {styles.Text}      >Scrapbook Name</Text>
+                    <Text style = {styles.Text}>Scrapbook Name</Text>
 
 
                 </View>

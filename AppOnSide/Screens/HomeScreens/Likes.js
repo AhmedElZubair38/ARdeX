@@ -89,7 +89,7 @@ export default function Likes(props) {
           }}
         />
       ) : (
-        <Text style={styles.note}>No results found.</Text>
+        <Text style={styles.note}>No Likes...</Text>
       )}
       </View>
 

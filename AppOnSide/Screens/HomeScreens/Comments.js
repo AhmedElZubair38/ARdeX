@@ -24,7 +24,7 @@ const Comments = (props) => {
 
 
 // console.log(props.route.params.scrapId)
-    const[com, setData] = useState(null)
+    const[com, setData] = useState([])
 
     const getData = async (scrapId) => {
         const data = await queries.getCommentsByID(scrapId)
@@ -85,6 +85,8 @@ const Comments = (props) => {
                 <Text style={styles.headerText}>Comments</Text>
                 </TouchableOpacity>
             </View>
+
+            {com.length > 0 ? (
             <FlatList
                 data = {comments}
                 extraData = {this.state}
@@ -115,6 +117,11 @@ const Comments = (props) => {
                     )
                 }}
             />
+            ) : (
+                <Text style={styles.note}>No Comments...</Text>
+              )}
+
+
         </View>
         <View style={styles.search}>
             <View style={styles.inputContainer}>
@@ -132,23 +139,6 @@ const Comments = (props) => {
                 </TouchableOpacity>
             </View>
         </View>
-        {/* <Modal
-                animationType="slide"
-                transparent={true}
-                isVisible={modalVisible}
-                onRequestClose={() => setModalVisible(false)}
-                backdropOpacity={0.5}
-            >
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalContent}>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButton}>
-                                <Text style={styles.modalButtonText}>Close</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </Modal> */}
     </View>
   )
 }
@@ -161,6 +151,14 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
     },
+    note: {
+        fontSize: 18,
+        textAlign: 'center',
+        color: '#FF4C68',
+        marginBottom: 5,
+        fontWeight: 'bold',
+        top : '30%',
+      },
     head: {
         flexDirection : 'row',
         alignItems: 'center', 

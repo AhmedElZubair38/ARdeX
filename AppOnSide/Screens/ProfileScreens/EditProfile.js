@@ -56,78 +56,17 @@ const EditProfile = ({ route }) => {
 	  console.log(name)
 	  console.log(bio)
 	  console.log(profileImage)
-	//   let newImage = url;
 	  const newImage = await uploadImage(profileImage)
 	  console.log("newImage", image)
 	await queries.changeName(profile.mainUserId, name)
 	  await queries.changeBio(profile.mainUserId, bio)
 	  await queries.changeProfileImage(profile.mainUserId, newImage)
-	//   navigation.navigate('Profile', {userId: route.params.mainUserID, mainUserID: route.params.mainUserID})
 	navigation.goBack()
   }
 
   function uniqueID() {
 	return Math.floor(Math.random() * Date.now())
 }
-
-
-// async function uploadImage(imageURL) {
-// const storage = getStorage();
-// var imageUID = uniqueID()
-// const imageRef = ref(storage, `scrapbook/${1}/${imageUID}`);
-// uploadBytes(imageRef, imageURL)
-//   .then(() => {
-// 	getDownloadURL(imageRef)
-// 	  .then((url) => {
-// 		// urls.push(url);
-// 		console.log("f;djlsadfjlkdsjfldsjfkladsfladjsfjdslkfjadls;fjsa")
-// 		console.log(url);
-// 		handleConfirm(url);
-// 	  })
-// 	  .catch((error) => {
-// 		console.log(error.message, "error getting the image url");
-// 	  });
-//   })
-//   .catch((error) => {
-// 	console.log(error.message);
-//   });
-// }
-
-//   async function uploadImage(imageURL) {
-// 	var url = "hello world";
-// 	console.log("Upload Image 1");
-// 	const storage = getStorage();
-// 	console.log("Upload Image 2");
-// 	try {
-// 		console.log("Fetched Image", imageURL);
-// 		// if (!image) {
-// 		//     pickImage();
-// 		// }
-// 		const response = await fetch(imageURL);
-// 		console.log("Upload Image 3");
-// 		const blob = await response.blob()
-// 		console.log("Upload Image 4");
-// 		var imageUID = uniqueID();
-// 		const storageRef = ref(storage, `scrapbook/${profile.mainUserID}/${imageUID}`);
-// 		console.log("Upload Image 5");
-// 		uploadBytes(storageRef, blob).then((snapshot) => {
-// 			console.log('Uploaded a blob or file!');
-// 			console.log('Uploaded Profile Image:', imageUID);
-// 			getDownloadURL(snapshot.ref).then((downloadURL) => {
-// 				console.log('File available at', downloadURL);
-// 				setImage(downloadURL);
-// 				url = downloadURL;
-// 				console.log("Image URL:", url);
-// 				return url;
-// 			});
-// 		});
-// 		// console.log("Image URL:", url);
-// 		// return url;
-// 	} catch (error) {
-// 		console.error("Network request failed:", error);
-// 		return null;
-// 	}
-// }
 
 
 async function uploadImage(imageURL) {
@@ -137,9 +76,7 @@ async function uploadImage(imageURL) {
 	console.log("Upload Image 2");
 	try {
 	  console.log("Fetched Image", imageURL);
-	  // if (!image) {
-	  //     pickImage();
-	  // }
+
 	  const response = await fetch(imageURL);
 	  console.log("Upload Image 3");
 	  const blob = await response.blob()
@@ -162,7 +99,6 @@ async function uploadImage(imageURL) {
 	}
   }
   
-
 
 
 
