@@ -3,8 +3,9 @@ import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const TopBar = () => {
+const TopBar = (props) => {
 
+  console.log(props)
 const navigation = useNavigation();
 
 return (

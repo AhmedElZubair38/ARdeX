@@ -239,14 +239,14 @@ export default function ScrapbooksList(props) {
                     scrapName={item.scrapName}
                     like={item.likes}
                     comments={item.comments}
-                    key={item.username}
+                    key={item.scrapId}
                     userId={item.userId}
                     name={item.name}
                     mainUserId={props.route.params.mainUserId}
                     scrapId={item.scrapId}
                     />
                 )}
-                keyExtractor={item => item.username}/>
+                keyExtractor={item => item.scrapId}/>
         </View>
     )
 }
