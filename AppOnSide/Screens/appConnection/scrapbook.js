@@ -40,4 +40,25 @@ const insertScrapbook2 = async (scrapName, caption, latitude, longitude, scrapTy
                 return data
         }
 
-module.exports = { insertScrapbook2, addScrapbookImage }
+const deleteScrapbookImage = async (scrapId) => {
+    console.log("deleteScrapbookImage")
+    console.log(scrapId)
+    console.log('###############################################################################################')
+    const response = await fetch(starting + 'sbapi/deleteScrapbookImage/' , {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "scrapId": scrapId,
+                "imageName" : "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            })
+            });
+            const data = await response.json();
+            console.log(data)
+            return data
+    }
+
+
+module.exports = { insertScrapbook2, addScrapbookImage, deleteScrapbookImage }

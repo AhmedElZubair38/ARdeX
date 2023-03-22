@@ -156,6 +156,8 @@ async function requestLocationPermission() {
             alert('Please select at least one image');
             return;
         }
+        setScrapbookName('');
+        setScrapbookCaption('');
         navigation.navigate('PreviewScrapbookPosts', { selectedImages, scrapbookName, scrapbookCaption, latitude, longitude, isFiction, mainUserId, isEnabled })
        }
 

@@ -39,10 +39,91 @@ const PreviewScrapbookPosts = ({ route }) => {
         console.log("handleConfirm")
         console.log(selectedImages)
         alert("Scrapbook Created\n It will take a some time to upload all the images\n You can view your scrapbook in the 'Profile' page after it is uploaded")
-        // const scrapId = await queries.insertScrapbook2(route.params.scrapbookName, route.params.scrapbookCaption, latitude,latitude, scrapType, route.params.mainUserId)
-        // console.log("scrapId", scrapId)
+        const scrapId = await queries.insertScrapbook2(route.params.scrapbookName, route.params.scrapbookCaption, latitude,latitude, scrapType, route.params.mainUserId)
+        console.log("scrapId", scrapId)
+        console.log("scrapId.scrapId", scrapId.scrapid)
         // navigation.navigate("Home",{userId: route.params.mainUserId, mainUserId: route.params.mainUserId})
+        selectedImages.forEach(async (image) => {
+            console.log("image", image)
+            let newImage =  await uploadImage(image) 
+            console.log("newImage", newImage)
+            await queries.addScrapbookImage(scrapId.scrapid,newImage)
+            queries.deleteScrapbookImage(scrapId.scrapid)
+        })
+        // await queries.addScrapbookImage(1,"https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+        navigation.navigate("Search",{userId: route.params.mainUserId, mainUserId: route.params.mainUserId})
     }
+    // const handleSubmit = async () => {
+    //     console.log("handleConfirm");
+    //     console.log(selectedImages);
+    //     alert(
+    //       "Scrapbook Created\n It will take a some time to upload all the images\n You can view your scrapbook in the 'Profile' page after it is uploaded"
+    //     );
+    //     const scrapId = await queries.insertScrapbook2(
+    //       route.params.scrapbookName,
+    //       route.params.scrapbookCaption,
+    //       latitude,
+    //       latitude,
+    //       scrapType,
+    //       route.params.mainUserId
+    //     );
+    //     console.log("scrapId", scrapId);
+    //     console.log("scrapId.scrapId", scrapId.scrapid);
+      
+    //     // Upload all selected images and add them to the scrapbook
+    //     const promises = selectedImages.map(async (image) => {
+    //       console.log("image", image);
+    //       let newImage = await uploadImage(image);
+    //       console.log("newImage", newImage);
+    //       return queries.addScrapbookImage(scrapId.scrapid, newImage);
+    //     });
+    //     await Promise.all(promises);
+      
+    //     // Navigate to the home screen
+    //     navigation.navigate("Home", {
+    //       userId: route.params.mainUserId,
+    //       mainUserId: route.params.mainUserId,
+    //     });
+    //   };
+      
+
+
+
+    function uniqueID() {
+        return Math.floor(Math.random() * Date.now())
+    }
+
+    async function uploadImage(imageURL) {
+        var url = "hello world";
+        console.log("Upload Image 1");
+        const storage = getStorage();
+        console.log("Upload Image 2");
+        try {
+          console.log("Fetched Image", imageURL);
+          // if (!image) {
+          //     pickImage();
+          // }
+          const response = await fetch(imageURL);
+          console.log("Upload Image 3");
+          const blob = await response.blob()
+          console.log("Upload Image 4");
+          var imageUID = uniqueID();
+          const storageRef = ref(storage, `scrapbook/${route.params.mainUserId}/${imageUID}`);
+          console.log("Upload Image 5");
+          const snapshot = await uploadBytes(storageRef, blob);
+          console.log('Uploaded a blob or file!');
+          console.log('Uploaded Profile Image:', imageUID);
+          const downloadURL = await getDownloadURL(snapshot.ref);
+          console.log('File available at', downloadURL);
+        //   setImage(downloadURL);
+          url = downloadURL;
+          console.log("Image URL:", url);
+          return url;
+        } catch (error) {
+          console.error("Network request failed:", error);
+          return null;
+        }
+      }
 
     return (
         <View style={{ flex: 1 }}>
