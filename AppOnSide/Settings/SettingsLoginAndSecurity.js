@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-function SettingsLoginAndSecurity() {
-
+function SettingsLoginAndSecurity(props) {
+mainUserId = props.route.params.mainUserId;
   const navigation = useNavigation();
 
   return (
@@ -23,7 +23,7 @@ function SettingsLoginAndSecurity() {
         
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-person' : 'person'}/>
-        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangeUsername')}>
+        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangeUsername',{mainUserId: mainUserId})}>
             <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Change Username </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
@@ -31,7 +31,7 @@ function SettingsLoginAndSecurity() {
 
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={22} name={Platform.OS === 'ios' ? 'ios-key' : 'md-key'}/>
-        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangePassword')}>
+        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangePassword',{mainUserId: mainUserId})}>
             <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 60, textAlign: 'center' }}> Change Password </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={22} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
@@ -39,7 +39,7 @@ function SettingsLoginAndSecurity() {
 
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-contacts' : 'call'}/>
-        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangePhoneNumber')}>
+        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangePhoneNumber',{mainUserId: mainUserId})}>
             <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 15, textAlign: 'center' }}> Change Phone Number </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
@@ -47,7 +47,7 @@ function SettingsLoginAndSecurity() {
 
         <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
         <Icon style={{ color: 'black', paddingTop: '4%', paddingLeft: '-1%'}} size={22} name={Platform.OS === 'ios' ? 'ios-people-sharp' : 'md-people-sharp'}/>
-        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangeAccountType')}>
+        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsChangeAccountType',{mainUserId: mainUserId})}>
             <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', padding: 13, paddingLeft: 5, paddingRight: 25, textAlign: 'center' }}> Change Account Type </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>

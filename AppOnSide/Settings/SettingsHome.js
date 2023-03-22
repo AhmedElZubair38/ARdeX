@@ -28,7 +28,7 @@ function SettingsHome(props) {
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '10%'}}>
           <Icon style={{ color: 'black', paddingTop: '3.2%'}} size={26} name={Platform.OS === 'ios' ? 'ios-person' : 'md-lock-closed'}/>
-          <TouchableOpacity  onPress={()=> navigation.navigate('SettingsLoginAndSecurity')}>
+          <TouchableOpacity  onPress={()=> navigation.navigate('SettingsLoginAndSecurity',{mainUserId: mainUserId})}>
               <Text style={{ color: 'black', fontSize: 20, padding: 13, paddingLeft: 5, paddingRight: 70, textAlign: 'center', fontWeight: 'bold' }}> Login & Security </Text>
           </TouchableOpacity>
           <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>
@@ -36,7 +36,7 @@ function SettingsHome(props) {
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
         <Icon style={{ color: 'black', paddingTop: '3.5%'}} size={26} name={Platform.OS === 'ios' ? 'ios-key' : 'settings-sharp'}/>
-        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsGeneral')}>
+        <TouchableOpacity  onPress={()=> navigation.navigate('SettingsGeneral',{mainUserId: mainUserId})}>
             <Text style={{ color: 'black', fontSize: 20, padding: 13, paddingLeft: 5, paddingRight: 150, textAlign: 'center', fontWeight: 'bold' }}> General </Text>
         </TouchableOpacity>
         <Icon style={{ color: 'black', paddingTop: '5%'}} size={20} name={Platform.OS === 'ios' ? 'ios-caret-forward-outline' : 'caret-forward-outline'}/>

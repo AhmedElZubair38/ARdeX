@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import queries from "../Screens/appConnection/settings.js"
+import queries1 from "../Screens/appConnection/register.js"  
+import queries2 from "../Screens/appConnection/settings.js"  
 
-function SettingsChangeUsername() {
+function SettingsChangeUsername(props) {
+
+  const mainUserId = props.route.params.mainUserId
 
     // Initialize state variables for each text input field's border color
 const [nameBorderColor, setNameBorderColor] = useState('#000000');
@@ -34,9 +37,21 @@ const handleNameFocus = () => {
 
   const navigation = useNavigation();
 
-  const onClick = () => {
-    queries.changeUsername();
-    navigation.goBack();
+  const onClick = async () => {
+    if (newUsername.length < 6) {
+      alert("Username should be 6 or more characters")
+      return
+    } 
+    const usernameCheck = await queries1.checkUsername(newUsername)
+    if (usernameCheck===false){
+      alert("Username Already in use")
+      return
+    } else {
+      const changeUsername = await queries2.changeUsername(mainUserId, newUsername)
+      alert("Username Changed")
+      console.log(changeUsername)
+      navigation.goBack();
+  }
   }
 
   
@@ -64,12 +79,13 @@ const handleNameFocus = () => {
               onBlur={handleNameBlur}
               value={newUsername}
               onChangeText={handleOnChangeText}
+              autoCapitalize="none"
 
             />
         </View>
 
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
-            <Text style={styles.note}>Note: Your new username will only be aproved if it is not in use by some other user. Don't use an @</Text>
+            <Text style={styles.note}>Note: Your new username will only be aproved if it is not in use by some other user.</Text>
         </View>
 
         <View style={styles.confirmButton}>
