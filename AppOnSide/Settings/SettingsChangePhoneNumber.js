@@ -3,6 +3,7 @@ import { Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-nativ
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import queries2 from "../Screens/appConnection/settings.js"  
 
 function SettingsChangePhoneNumber() {
 
@@ -10,6 +11,8 @@ function SettingsChangePhoneNumber() {
     const [oldpassBorderColor, setoldpassBorderColor] = useState('#000000');
     const [newpassBorderColor, setnewpassBorderColor] = useState('#000000');
     const [secondnewpassBorderColor, setsecondnewpassBorderColor] = useState('#000000');
+    const [phone, setPhone] = useState('');
+    const [confirmPhone, setConfirmPhone] = useState('');
 
     // Event handlers for focusing and blurring the name text input field
     const handleoldpassFocus = () => {
@@ -35,6 +38,18 @@ function SettingsChangePhoneNumber() {
     setsecondnewpassBorderColor('#000000');
     };
 
+    const onConfirm = async () => {
+      if(confirmPhone !== phone){
+        alert("Phone Numbers do not match")
+        return
+      } else {
+        const changePhone = await queries2.changePhone(phone)
+        alert("Phone Number Changed")
+        console.log(changePhone)
+        navigation.goBack();
+      }
+    }
+
   const navigation = useNavigation();
 
   
@@ -52,7 +67,7 @@ function SettingsChangePhoneNumber() {
       <View style={styles.rectangle}>
         <Text style={styles.header}>Change Phone Number</Text>
         
-        <View style={[styles.fieldContainer, { marginTop: 30 }]}>
+        {/* <View style={[styles.fieldContainer, { marginTop: 30 }]}>
             <Text style={styles.fieldLabel}>Please enter your old Phone Number</Text>
             <TextInput
             placeholder="Old Phone Number"
@@ -61,7 +76,7 @@ function SettingsChangePhoneNumber() {
             onFocus={handleoldpassFocus}
             onBlur={handleoldpassBlur}
             />
-        </View>
+        </View> */}
 
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
             <Text style={styles.fieldLabel}>Please enter your new Phone Number</Text>
@@ -71,6 +86,8 @@ function SettingsChangePhoneNumber() {
             borderBottomColor={newpassBorderColor}
             onFocus={handlenewpassFocus}
             onBlur={handlenewpassBlur}
+            value={phone}
+            onChangeText={setPhone}
             />
         </View>
 
@@ -82,16 +99,18 @@ function SettingsChangePhoneNumber() {
             borderBottomColor={secondnewpassBorderColor}
             onFocus={handlesecondnewpassFocus}
             onBlur={handlesecondnewpassBlur}
+            value={confirmPhone}
+            onChangeText={setConfirmPhone}
             />
         </View>
 
         <View style={[styles.fieldContainer, { marginTop: 10 }]}>
-            <Text style={styles.note}>Note: Make sure your new Phone Number is written in the format (9715XXXXXXXX).</Text>
+            <Text style={styles.note}>Note: Make sure your new Phone Number is written in the format (5XXXXXXXX). We are already considering +971 as default</Text>
         </View>
 
         <View style={styles.confirmButton}>
-            <TouchableOpacity onPress={()=> navigation.goBack()}>
-                <Text style={{ color: 'black', fontSize: 21, fontWeight: 'bold'}}> Confirm Change</Text>
+            <TouchableOpacity onPress={onConfirm}>
+                <Text style={{ color: 'black', fontSize: 21, fontWeight: 'bold'}} onPress={onConfirm}> Confirm Change</Text>
             </TouchableOpacity>
         </View>
       </View>
