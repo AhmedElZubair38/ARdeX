@@ -3,7 +3,10 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-function SettingsHome() {
+function SettingsHome(props) {
+
+  console.log(props.route.params)
+  mainUserId = props.route.params.mainUserId
 
   const navigation = useNavigation();
   

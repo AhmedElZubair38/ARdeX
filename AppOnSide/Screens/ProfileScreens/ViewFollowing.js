@@ -47,7 +47,9 @@ export default function ViewFollowing(props) {
 
   return (
     <View style={styles.container}>
-      <TopBar2/>
+      <TopBar2
+        mainUserId={props.route.params.mainUserId}
+      />
       <View style={styles.search}>
         <View style={styles.inputContainer}>
           <TextInput

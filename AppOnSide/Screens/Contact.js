@@ -7,6 +7,7 @@ import TopBar from "../Navigators/TopBar"; // import the TopBar component
 import queries from "./appConnection/search.js"
 
 export default function Contact(props) {
+  const mainUserId = props.route.params.mainUserId
   console.log("Contact")
   console.log(props.route.params)
   const navigation = useNavigation();
@@ -44,7 +45,10 @@ export default function Contact(props) {
 
   return (
     <View style={styles.container}>
-      <TopBar />
+      <TopBar 
+                  userId = {mainUserId}
+          mainUserId = {mainUserId}
+      />
       <View style={styles.search}>
         <View style={styles.inputContainer}>
           <TextInput

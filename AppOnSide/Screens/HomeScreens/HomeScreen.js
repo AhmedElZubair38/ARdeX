@@ -213,6 +213,7 @@ export default function HomeScreen(props) {
 
     const navigation = useNavigation();
     console.log("HomeScreen")
+    mainUserId = props.route.params.userId;
     
     console.log(props.route.params.userId);
 
@@ -256,7 +257,9 @@ export default function HomeScreen(props) {
     return (
 
         <View style={{flex: 1}}>
-        <TopBar />
+        <TopBar
+                      userId = {userId}
+              mainUserId = {mainUserId} />
             <View style={styles.container}>
             <FlatList
                 onRefresh={() => onRefresh()}

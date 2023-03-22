@@ -3,7 +3,7 @@ import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const TopBar2 = () => {
+const TopBar2 = (props) => {
 
 const navigation = useNavigation();
 
@@ -18,7 +18,7 @@ return (
               <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('SettingsHome')}>
+              <TouchableOpacity onPress={() => navigation.navigate('SettingsHome',props)}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'settings' : 'settings'}/>
               </TouchableOpacity>
           </View>

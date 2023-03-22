@@ -15,6 +15,7 @@ import queries from "../appConnection/scrapbook.js";
 const PreviewScrapbookPosts = ({ route }) => {
 
     const { selectedImages } = route.params;
+    mainUserId = route.params.mainUserId
     console.log("route",route.params)
     console.log("props",selectedImages)
 
@@ -127,8 +128,8 @@ const PreviewScrapbookPosts = ({ route }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <TopBar               userId = {userId}
-              mainUserId = {userId}/>
+            <TopBar               userId = {mainUserId}
+              mainUserId = {mainUserId}/>
             <View style={styles.container}>
                 <View>
                     <Text style={styles.HeaderText}>Preview Your Scrapbook Posts</Text>

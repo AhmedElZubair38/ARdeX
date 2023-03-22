@@ -190,8 +190,8 @@ async function requestLocationPermission() {
   return (
     <View style={{flex: 1}}>
         <TopBar
-                        userId = {userId}
-              mainUserId = {userId}
+                        userId = {mainUserId}
+              mainUserId = {mainUserId}
         />
         <ScrollView style={styles.container}>
             <View>

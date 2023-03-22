@@ -17,6 +17,7 @@ const ProfileView = (props) => {
 
   // console.log("UserProfile.js")
   const userId = props.route.params.userId
+  const mainUserId = props.route.params.mainUserId
   // console.log("userid:" + userId)
   // console.log(props)
   // console.log("Main:" + props.route.params.mainUserId)
@@ -67,8 +68,8 @@ const ProfileView = (props) => {
   return (
     <View style={{flex: 1}}>
         <TopBar
-          userId = {userId}
-          mainUserId = {userId}
+          userId = {mainUserId}
+          mainUserId = {mainUserId}
         />
         <View style={styles.container}>
             <View style={styles.headerContainer}>

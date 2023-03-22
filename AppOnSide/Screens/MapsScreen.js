@@ -106,7 +106,9 @@ useEffect(() => {
 
   return (
     <View style={{flex: 1}}>
-      <TopBar />
+      <TopBar 
+        mainUserId={props.route.params.mainUserId}
+      />
     
       <MapView
         style={{ flex: 1 }}

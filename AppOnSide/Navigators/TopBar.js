@@ -19,7 +19,7 @@ return (
               <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('SettingsHome')}>
+              <TouchableOpacity onPress={() => navigation.navigate('SettingsHome',props)}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'settings' : 'settings'}/>
               </TouchableOpacity>
           </View>
