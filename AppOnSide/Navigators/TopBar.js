@@ -16,9 +16,9 @@ return (
           </TouchableOpacity>
 
           <View style={{ flexDirection: 'row', marginBottom: -25, marginRight: -15 }}>
-              <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
+              {/* <TouchableOpacity onPress={() => navigation.navigate('Collections')}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'bookmark' : 'bookmark'}/>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <TouchableOpacity onPress={() => navigation.navigate('SettingsHome',props)}>
               <Icon style={styles.icon} name={Platform.OS === 'ios' ? 'settings' : 'settings'}/>
               </TouchableOpacity>
