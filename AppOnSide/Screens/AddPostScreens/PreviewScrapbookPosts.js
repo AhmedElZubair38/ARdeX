@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const PreviewScrapbookPosts = ({ route }) => {
 
     const { selectedImages } = route.params;
+    console.log("route",route.params)
     console.log("props",selectedImages)
 
     const navigation = useNavigation();

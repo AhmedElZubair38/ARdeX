@@ -6,8 +6,9 @@ import TopBar from "../Navigators/TopBar";
 import { useNavigation } from '@react-navigation/native';
 
 
-const MapScreen = () => {
+const MapScreen = (props) => {
 
+  console.log(props)
   const navigation = useNavigation();
 
   const [latitude, setLatitude] = useState(null);
