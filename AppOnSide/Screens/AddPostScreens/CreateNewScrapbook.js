@@ -194,7 +194,7 @@ async function requestLocationPermission() {
                         userId = {mainUserId}
               mainUserId = {mainUserId}
         />
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <View>
                 <Text style={styles.header2}>Create New Scrapbook</Text>
             </View>
@@ -269,7 +269,7 @@ async function requestLocationPermission() {
                     <Text style={styles.buttonText}>Next</Text>
                 </TouchableOpacity>
             </View>
-        </ScrollView>
+        </View>
     </View>  
     )
 }
@@ -355,7 +355,8 @@ const styles = StyleSheet.create({
     buttons: {
 		width: '80%',
 		marginHorizontal: '10%',
-        marginTop: 30,
+        position: 'absolute',
+        bottom: 40,
 	},
     meow2: {
         width: 155,
