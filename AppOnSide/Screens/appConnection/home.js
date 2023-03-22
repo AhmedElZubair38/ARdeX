@@ -89,6 +89,53 @@ const getHomeFeed = async () => {
                     
                 }
 
+
+                const getMapFeed = async () => {
+                    const response = await fetch(starting + 'api/getMapFeed/' , {
+                        method: 'GET',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                            }
+                            });
+                            const posts = await response.json();
+                            // console.log(data)
+                            const groupedPosts = posts.reduce((acc, post) => {
+                            const { userId, scrapId, username, name, profileImage, scrapName, caption, longitude, latitude, likes, comments, dateEdited } = post;
+                            const key = `${userId}_${scrapId}_${username}_${name}_${profileImage}_${scrapName}_${caption}_${longitude}_${latitude}_${likes}_${comments}_${dateEdited}`;
+
+                            if (!acc[key]) {
+                                acc[key] = {
+                                ...post,
+                                images: []
+                                };
+                            }
+
+                            if (post.imageName) {
+                                acc[key].images.push(post.imageName);
+                            }
+
+                            return acc;
+                            }, {});
+
+                            const mergedPosts = Object.values(groupedPosts).map(post => {
+                            return {
+                                ...post,
+                                imageName: post.images.length > 0 ? post.images : null,
+                                images: undefined
+                            };
+                            });
+
+                            // console.log(mergedPosts);
+                            return mergedPosts
+
+
+                        }
+
+
+
+
+
 const isScrapbookLikedByUser = async (scrapId, userId) => {
     // const temp = starting + 'sbapi/isScrapbookLikedByUser/' + scrapId +'/' + userId
     // console.log(temp)
@@ -289,5 +336,6 @@ const insertReportScrapbook = async (userId, scrapId) => {
 
 
 
-module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks , getCommentsByID , insertScrapbookComment, deleteScrapbookComment, insertReportUser, insertReportScrapbook, getHomeFeedByUser
+module.exports = { getHomeFeed , isScrapbookLikedByUser, addScrapbookLike, deleteScrapbookLike, getUsersLikedScrapbooks , getCommentsByID , insertScrapbookComment, deleteScrapbookComment, insertReportUser, insertReportScrapbook, getHomeFeedByUser,
+    getMapFeed
 }
