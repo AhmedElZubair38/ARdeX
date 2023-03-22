@@ -252,17 +252,6 @@ export default function Register() {
             <Text style={{ color: 'white', fontSize: 23, padding: 10, textAlign: 'center' }}> Sign Up </Text>
           </TouchableOpacity>
 
-          <Text style={{ fontSize: 13, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20 }}> or Signup via </Text>
-
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <SocialIcon
-              type="google"
-              iconSize={34}
-              onPress={() => console.log('Sign up with Google')}
-              style={{ width: 60, height: 60, shadowColor: 'grey', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.9, shadowRadius: 2, marginRight: 20, marginTop: 10 }}
-            />
-          </View>
-
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <Text style={{ fontSize: 16, fontStyle: 'italic', color: '#808080', textAlign: 'center', marginTop: 20, marginBottom: 30 }}> Already have an account? </Text>
             <Text

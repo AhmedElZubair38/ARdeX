@@ -10,6 +10,7 @@ function SettingsChangePassword() {
 const [oldpassBorderColor, setoldpassBorderColor] = useState('#000000');
 const [newpassBorderColor, setnewpassBorderColor] = useState('#000000');
 const [secondnewpassBorderColor, setsecondnewpassBorderColor] = useState('#000000');
+const [emailBorderColor, setemailBorderColor] = useState('#000000');
 
 // Event handlers for focusing and blurring the name text input field
 const handleoldpassFocus = () => {
@@ -35,6 +36,13 @@ const handlesecondnewpassBlur = () => {
   setsecondnewpassBorderColor('#000000');
 };
 
+// Event handlers for focusing and blurring the name text input field
+const handleEmailFocus = () => {
+  setsecondnewpassBorderColor('#00cc00');
+};
+const handleEmailBlur = () => {
+  setsecondnewpassBorderColor('#000000');
+};
 
   const navigation = useNavigation();
 
@@ -51,6 +59,19 @@ const handlesecondnewpassBlur = () => {
       </View>
       <View style={{flex: 1, backgroundColor: 'white'}}/>
       <View style={styles.rectangle}>
+      <Text style={styles.header}>Enter your e-mail</Text>
+        
+        <View style={[styles.fieldContainer, { marginTop: 30 }]}>
+            <Text style={styles.fieldLabel}>Please enter your e-mail</Text>
+            <TextInput
+            placeholder="e-mail"
+            style={[styles.fieldInput, { fontSize: 12, paddingLeft: 10, paddingVertical: 5}]}
+            borderBottomColor={oldpassBorderColor}
+            onFocus={handleEmailFocus}
+            onBlur={handleEmailBlur}
+            />
+        </View>
+
         <Text style={styles.header}>Change Password</Text>
         
         <View style={[styles.fieldContainer, { marginTop: 30 }]}>
