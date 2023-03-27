@@ -1,4 +1,4 @@
-const starting = "http://10.6.131.173:3000/"
+const starting = "http://10.6.132.240:3000/"
 
 const changeUsername = async (userID,newUsername) => {
     const response = await fetch(starting + 'epapi/changeUsername/' , {

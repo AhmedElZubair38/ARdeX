@@ -1,5 +1,5 @@
 
-const starting = "http://10.6.131.173:3000/"
+const starting = "http://10.6.132.240:3000/"
 
 const insertScrapbook2 = async (scrapName, caption, latitude, longitude, scrapType, userId) => {
     const response = await fetch(starting + 'sbapi/insertScrapbook2/' , {
